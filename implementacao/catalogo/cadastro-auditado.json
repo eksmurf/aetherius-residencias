@@ -440,7 +440,8 @@
             "kind": "container"
           }
         ]
-      }
+      },
+      "stage": "initial_vanilla"
     },
     {
       "id": "vlindrel-hall",
@@ -1240,7 +1241,8 @@
             "kind": "container"
           }
         ]
-      }
+      },
+      "stage": "initial_vanilla"
     },
     {
       "id": "hjerim",
@@ -2071,7 +2073,8 @@
             "partner": "016970:Skyrim.esm"
           }
         ]
-      }
+      },
+      "stage": "initial_vanilla"
     },
     {
       "id": "proudspire-manor",
@@ -2933,7 +2936,8 @@
             "kind": "container"
           }
         ]
-      }
+      },
+      "stage": "initial_vanilla"
     },
     {
       "id": "honeyside",
@@ -3308,7 +3312,8 @@
             "kind": "container"
           }
         ]
-      }
+      },
+      "stage": "initial_vanilla"
     },
     {
       "id": "severin-manor",
@@ -3958,7 +3963,8 @@
             "kind": "container"
           }
         ]
-      }
+      },
+      "stage": "future_dlc_mods"
     },
     {
       "id": "forgers-retreat",
@@ -4080,7 +4086,8 @@
             "partner": "01297C:Granite Hill.esp"
           }
         ]
-      }
+      },
+      "stage": "future_dlc_mods"
     },
     {
       "id": "karthmans-retreat",
@@ -4228,7 +4235,8 @@
             "kind": "container"
           }
         ]
-      }
+      },
+      "stage": "future_dlc_mods"
     },
     {
       "id": "fenrens-residence",
@@ -4406,7 +4414,8 @@
             "kind": "container"
           }
         ]
-      }
+      },
+      "stage": "future_dlc_mods"
     },
     {
       "id": "falcrost-residence",
@@ -4641,7 +4650,8 @@
             "kind": "container"
           }
         ]
-      }
+      },
+      "stage": "future_dlc_mods"
     },
     {
       "id": "burzag-yomgur-longhouse",
@@ -4779,7 +4789,8 @@
             "partner": "164AC7:Vernim Wood.esp"
           }
         ]
-      }
+      },
+      "stage": "future_dlc_mods"
     },
     {
       "id": "frostview-hall",
@@ -4976,7 +4987,8 @@
             "kind": "container"
           }
         ]
-      }
+      },
+      "stage": "future_dlc_mods"
     }
   ]
 }

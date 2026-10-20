@@ -1,5 +1,7 @@
 # Enquete sobre residências e decisões de produto
 
+**Escopo vigente — 0.2.1 (20/10/2026):** começar somente com Breezehome, Vlindrel Hall, Hjerim, Proudspire Manor e Honeyside, após validação individual. Severin Manor e casas de mods ficam para etapas futuras. O rascunho inicial contém apenas essas cinco casas; a configuração ativa permanece vazia e desativada. Hjerim ainda requer armazenamento aprovado. Esta decisão substitui referências anteriores a um piloto sem lista definida.
+
 ## Texto pronto para publicar
 
 Estamos planejando um sistema de compra de residências no servidor Aetherius, com pagamento em Septims, a moeda do jogo, ou Diademas, o cash adquirido com dinheiro real. A propriedade ficará registrada no perfil do jogador, que receberá uma chave para trancar e destrancar a casa.

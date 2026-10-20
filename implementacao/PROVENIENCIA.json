@@ -1,5 +1,5 @@
 {
-  "version": "0.2.0",
+  "version": "0.2.1",
   "preparedOn": "2026-10-20",
   "target": "Aetherius official server",
   "upstream": {
@@ -85,16 +85,28 @@
     "deployed": false,
     "draftResidencesMapped": 12,
     "catalogStructureChecked": true,
-    "isolatedUiPreviewChecked": true
+    "isolatedUiPreviewChecked": true,
+    "initialStageResidences": 5
   },
   "pending": [
     "Official Diademas wallet implementation",
-    "Official plugin revision confirmation, approval of 12 mapped residences, prices and dedicated key item",
+    "Official plugin revision confirmation, approval of the five vanilla pilot residences, storage (especially Hjerim), prices and dedicated key item",
     "Automated system tests and in-game validation"
   ],
   "catalogProvenance": "catalogo/PROVENIENCIA-MAPEAMENTO.json",
   "uiReferences": [
     "Received admin-panel/admin.css: green palette, 68% background alpha and serif title",
     "Received ui-core/PROVENANCE.md: AetheriusUI_Core 665831014f8c10e6b599ae1b29a1f6612522b0f7"
-  ]
+  ],
+  "initialStage": {
+    "scope": "vanilla_only",
+    "ids": [
+      "breezehome",
+      "vlindrel-hall",
+      "hjerim",
+      "proudspire-manor",
+      "honeyside"
+    ],
+    "deferredResidences": 7
+  }
 }

@@ -1,5 +1,7 @@
 # Etapas de implementação e critérios de aceite
 
+**Escopo vigente — 0.2.1 (20/10/2026):** começar somente com Breezehome, Vlindrel Hall, Hjerim, Proudspire Manor e Honeyside, após validação individual. Severin Manor e casas de mods ficam para etapas futuras. O rascunho inicial contém apenas essas cinco casas; a configuração ativa permanece vazia e desativada. Hjerim ainda requer armazenamento aprovado. Esta decisão substitui referências anteriores a um piloto sem lista definida.
+
 Atualização de 19/10/2026: o [pacote inicial](../implementacao/README.md) está preparado para entrega. Desenvolvimento e entrega são nossa responsabilidade; os superiores fazem integração e implantação. Código e testes foram preparados, sem execução de testes ou implantação. A carteira concreta de Diademas, o item de chave e o catálogo real ainda exigem integração. As etapas abaixo continuam sendo critérios de conclusão, não evidência de aprovação.
 
 ## Sequência de entregas

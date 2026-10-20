@@ -1,12 +1,15 @@
 # Mapeamento para confirmação no servidor oficial
 
-Em 20/10/2026, foram levantados 12 interiores prioritários: cinco do jogo base, Severin Manor do DLC Dragonborn e seis de mods. O cadastro registra 15 pares de portas recíprocas e audita 270 recipientes. Quinze baús/cofres passaram na triagem inicial; nenhum imóvel está liberado para venda.
+A primeira etapa da versão 0.2.1 foi restrita a **Breezehome, Vlindrel Hall, Hjerim, Proudspire Manor e Honeyside**: oito pares de portas, 186 recipientes inspecionados e cinco baús/cofres candidatos. Hjerim segue sem armazenamento aprovado. Nenhuma casa está liberada para venda.
+
+O levantamento de 20/10/2026 continua preservado: 12 interiores, 15 pares de portas e 270 recipientes, com 15 baús/cofres candidatos no total. Severin Manor (DLC) e as seis casas de mods ficam separadas para etapas futuras, assim como a fila de 87 outros candidatos.
 
 ## Arquivos para a equipe
 
 - [IMOVEIS.md](IMOVEIS.md): relação resumida das 12 casas.
 - [cadastro-auditado.json](cadastro-auditado.json): IDs, origem, portas, baús, donos nativos, exclusões e pendências por imóvel.
-- [residences.draft.json](residences.draft.json): definições com referências concretas, preços vazios e `forSale: false`, separadas da configuração ativa.
+- [residences.draft.json](residences.draft.json): somente as cinco casas vanilla da primeira etapa, com referências concretas, preços vazios e `forSale: false`, separadas da configuração ativa.
+- [Etapas futuras](etapas-futuras/README.md): rascunho separado dos sete imóveis de DLC/mods; não importar no piloto.
 - [fila-de-mapeamento.json](fila-de-mapeamento.json): 87 outros candidatos nominais, incluindo dependências, casas ocupadas e locais compartilhados. Ainda sem levantamento completo das portas.
 - [PROVENIENCIA-MAPEAMENTO.json](PROVENIENCIA-MAPEAMENTO.json): comparação das listas e hashes dos arquivos disponíveis.
 - `evidencias/`: leituras dos registros e união dos objetos declarados por todos os plugins que contribuem para cada interior.
@@ -35,7 +38,7 @@ Hjerim, Forger's Retreat e Burzag Yomgur Longhouse ficaram sem baú sugerido. É
 2. Aprovar quais casas poderão ser comercializadas. Dono nativo ausente não prova que a casa está vaga; presença de NPCs, missões, serviços públicos e posse anterior precisa ser revisada.
 3. Resolver portas/fechaduras nativas, dependências de missão e todos os recipientes excluídos. Confirmar que entradas internas, externas e acessos alternativos foram cobertos.
 4. Definir nome exibido, preços reais, item dedicado de chave e a integração da carteira de Diademas.
-5. Copiar somente os imóveis aprovados para `server/config/residences.json`, preencher preços e habilitar venda durante o piloto. Aumentar revisão se atualizar um imóvel já persistido.
+5. Copiar somente as casas vanilla aprovadas da primeira etapa para `server/config/residences.json`, preencher preços e habilitar venda durante o piloto. Aumentar revisão se atualizar um imóvel já persistido.
 6. Homologar com dois jogadores: entrada/saída, compra concorrente, chave, baús, reset, reconexão e reinicialização.
 
 **Não importar o rascunho inteiro apenas porque `forSale` está falso.** O módulo protege referências cadastradas mesmo sem oferta de venda; isso poderia bloquear casas ou objetos de missão. O pacote mantém a configuração ativa vazia e desativada.

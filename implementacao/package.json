@@ -1,11 +1,15 @@
 {
   "name": "aetherius-residences",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "test": "node --test tests/unit.test.cjs tests/ui.test.cjs",
     "test:postgres": "node --test --test-concurrency=1 tests/postgres.test.cjs"
   },
-  "devDependencies": { "pg": "8.13.1" }
+  "devDependencies": {
+    "pg": "8.13.1"
+  }
 }

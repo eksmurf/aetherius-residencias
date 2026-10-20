@@ -1,5 +1,13 @@
 # Alterações
 
+## 0.2.1 — 20/10/2026
+
+- Primeira etapa restrita a Breezehome, Vlindrel Hall, Hjerim, Proudspire Manor e Honeyside: oito pares de portas e cinco baús/cofres candidatos. Hjerim continua dependendo de armazenamento aprovado.
+- Rascunho inicial agora contém somente as cinco casas vanilla. Severin Manor e seis casas de mods preservadas em `catalogo/etapas-futuras/`, fora do piloto.
+- Auditoria completa das 12 casas, evidências e fila de 87 candidatos preservadas. Gerador identifica a etapa de cada imóvel e reproduz os dois rascunhos separados.
+- Documentação, metadados e pacote atualizados. Configuração ativa permanece vazia/desativada, sem preços ou chave inventados. Nenhuma alteração de runtime, painel, plugin ou banco.
+- Conferência estrutural do recorte e integridade do pacote; testes automatizados do sistema e homologação no jogo permanecem pendentes.
+
 ## 0.2.0 — 20/10/2026
 
 - Cadastro preliminar de 12 casas: 15 pares de portas, 270 recipientes auditados e 15 baús/cofres sugeridos. Seis casas são de mods. Acrescentadas fila de 87 candidatos nominais, evidências e pendências por imóvel.

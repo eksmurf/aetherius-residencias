@@ -1,12 +1,14 @@
 # Projeto de compra de residências do Aetherius
 
-**Entrega para integração no servidor oficial:** [pacote ZIP 0.2.0](dist/aetherius-residencias-0.2.0.zip) · [SHA256 do ZIP](dist/aetherius-residencias-0.2.0.zip.sha256) · [guia de instalação e pendências](implementacao/README.md).
+**Entrega para integração no servidor oficial:** [pacote ZIP 0.2.1](dist/aetherius-residencias-0.2.1.zip) · [SHA256 do ZIP](dist/aetherius-residencias-0.2.1.zip.sha256) · [guia de instalação e pendências](implementacao/README.md).
 
 O código está em `implementacao/` e os estudos em `docs/`. O modelo de CI permanece em `implementacao/ci/`; o envio deste repositório não executa testes nem implanta o sistema.
 
-## Cadastro e painel da versão 0.2.0
+## Primeira etapa da versão 0.2.1: cinco casas vanilla
 
-O [cadastro auditado](implementacao/catalogo/README.md) contém 12 imóveis, incluindo seis de mods, com 15 pares de portas conferidos nos arquivos. A configuração ativa permanece vazia; o rascunho documenta as confirmações necessárias antes da venda. Outros 87 candidatos nominais estão na fila de mapeamento.
+A primeira etapa inclui somente **Breezehome, Vlindrel Hall, Hjerim, Proudspire Manor e Honeyside**. O [rascunho inicial](implementacao/catalogo/residences.draft.json) contém essas cinco casas, oito pares de portas e cinco baús/cofres candidatos. Hjerim ainda precisa de armazenamento aprovado. A configuração ativa continua vazia e desativada; preços, chave e homologação seguem pendentes.
+
+O [cadastro auditado](implementacao/catalogo/README.md) preserva o levantamento das 12 casas. Severin Manor e as seis casas de mods foram separadas em [etapas futuras](implementacao/catalogo/etapas-futuras/README.md), fora do piloto. Os outros 87 candidatos também ficam para investigação posterior.
 
 O painel segue as cores e transparência do administrativo: nome da casa no topo, opções pelo mouse e Fechar no rodapé. ESC também fecha, sem cancelar pedidos em andamento. A prévia isolada foi conferida para clique, ESC, resposta atrasada e largura reduzida; isso não substitui os testes no cliente oficial.
 
@@ -16,7 +18,7 @@ Preparar a compra de residências com Septims ou Diademas, com posse vinculada a
 
 **Diretriz vigente em 13/10/2026:** o alvo é o servidor oficial do Aetherius, sua base de dados, seu cliente distribuído e sua economia. Planejamento, implementação e validação devem seguir essa estrutura. O host local só entra no trabalho quando o solicitante pedir explicitamente. Os documentos nesta pasta registram o projeto; sua localização não define um ambiente de execução.
 
-**Estado em 20/10/2026:** implementação inicial preparada em [implementacao/README.md](implementacao/README.md), para encaminhar aos superiores responsáveis pela integração e implantação. Inclui módulo de compra/posse/chave, migração, interface, integrador e testes. O adaptador concreto da carteira de Diademas permanece pendente. O [cadastro preliminar](implementacao/catalogo/IMOVEIS.md) agora contém 12 casas com referências físicas, incluindo seis de mods; os superiores ainda precisam confirmar versões, ocupação, armazenamento e preços antes de colocá-las à venda. Código ainda não homologado; a estrutura do cadastro foi conferida, mas os testes automatizados do sistema e os testes no jogo continuam pendentes. Nada foi implantado. As fontes oficiais recebidas orientam a arquitetura, mas não comprovam sozinhas qual revisão está executando no servidor neste momento.
+**Estado em 20/10/2026:** implementação inicial preparada em [implementacao/README.md](implementacao/README.md), para encaminhar aos superiores responsáveis pela integração e implantação. Inclui módulo de compra/posse/chave, migração, interface, integrador e testes. O adaptador concreto da carteira de Diademas permanece pendente. O [cadastro preliminar](implementacao/catalogo/IMOVEIS.md) separa as cinco casas vanilla da primeira etapa dos sete imóveis de DLC/mods adiados; os superiores ainda precisam confirmar versões, ocupação, armazenamento e preços das casas do piloto antes de colocá-las à venda. Código ainda não homologado; a estrutura do cadastro foi conferida, mas os testes automatizados do sistema e os testes no jogo continuam pendentes. Nada foi implantado. As fontes oficiais recebidas orientam a arquitetura, mas não comprovam sozinhas qual revisão está executando no servidor neste momento.
 
 ## Moedas e responsabilidade técnica
 
@@ -50,7 +52,7 @@ Uma casa com entrada principal, acesso pelos fundos e dois baús será **um imó
 
 ## Escopo da primeira versão
 
-- Catálogo de residências mapeado no mundo do servidor oficial, começando com um piloto restrito.
+- Piloto restrito a Breezehome, Vlindrel Hall, Hjerim, Proudspire Manor e Honeyside. DLC e mods ficam para etapas futuras.
 - Compra em ambas as moedas após validar seus adaptadores reais.
 - Registro persistente por perfil, chave inicial, trancar/destrancar e recuperação de chave perdida.
 - Proteção de múltiplas entradas e dos baús cadastrados, inclusive após reconexão e reinício.

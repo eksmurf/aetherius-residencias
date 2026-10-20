@@ -1,6 +1,6 @@
 # Implementação de residências para o servidor oficial
 
-Pacote 0.2.0 atualizado em 20/10/2026 para entrega aos responsáveis pelo Aetherius. Contém a implementação inicial do módulo, migração PostgreSQL, interface, integrador e testes. Usa como contrato os arquivos oficiais recebidos em 09/10 e os pontos de integração do painel de 13/10. O Alduinak permanece referência de comportamento, fixada em `db9933d911eec60092d3646b4ee28dc19f2fe254`; o HEAD remoto foi conferido novamente em 19/10 e continuava nessa revisão.
+Pacote 0.2.1 atualizado em 20/10/2026 para entrega aos responsáveis pelo Aetherius. Contém a implementação inicial do módulo, migração PostgreSQL, interface, integrador e testes. Usa como contrato os arquivos oficiais recebidos em 09/10 e os pontos de integração do painel de 13/10. O Alduinak permanece referência de comportamento, fixada em `db9933d911eec60092d3646b4ee28dc19f2fe254`; o HEAD remoto foi conferido novamente em 19/10 e continuava nessa revisão.
 
 **Estado de entrega: código para integração e validação, ainda não homologado.** Não houve instalação, migração, débito ou teste no servidor. Nenhum servidor de laboratório foi iniciado. Os testes executáveis foram incluídos para rodar na infraestrutura dos responsáveis; não há resultado de execução que permita declarar o pacote aprovado.
 
@@ -19,7 +19,9 @@ Pacote 0.2.0 atualizado em 20/10/2026 para entrega aos responsáveis pelo Aether
 
 ## Atualização do cadastro e da interface
 
-O [mapeamento](catalogo/README.md) reúne 12 casas, incluindo seis de mods, com 15 pares de portas e 270 recipientes inspecionados. O rascunho não é carregado automaticamente. Os responsáveis precisam confirmar versões, ocupação, missões, preços e armazenamento.
+A primeira etapa é restrita a **Breezehome, Vlindrel Hall, Hjerim, Proudspire Manor e Honeyside**. O rascunho `catalogo/residences.draft.json` contém somente essas cinco casas: oito pares de portas, 186 recipientes inspecionados e cinco baús/cofres candidatos. Hjerim ainda não tem armazenamento aprovado.
+
+O [mapeamento completo](catalogo/README.md) preserva as 12 casas investigadas. Os sete imóveis de DLC/mods ficam em `catalogo/etapas-futuras/residences.draft.json`, fora do piloto. Nenhum rascunho é carregado automaticamente. Os responsáveis precisam confirmar versões, ocupação, missões, preços e armazenamento antes de importar somente casas vanilla aprovadas.
 
 O painel usa a paleta verde e transparência do painel de administração recebido, com seletores isolados para coexistir com o CORE UI. O nome da casa fica no topo, inclusive nas confirmações; as opções são clicáveis, Fechar fica no rodapé e ESC também fecha. A ponte do cliente ativa foco/cursor ao abrir e o devolve ao jogo ao fechar. Fechar não cancela compra em andamento; respostas atrasadas não reabrem a interface. Homologar foco, ESC e coexistência com os demais menus no cliente distribuído.
 
@@ -37,7 +39,7 @@ O painel usa a paleta verde e transparência do painel de administração recebi
 5. Integrar a carteira de Diademas conforme [CONTRATO-DIADEMAS.md](CONTRATO-DIADEMAS.md). Não copiar o exemplo para produção como se já fosse a integração.
 6. Preencher `server/config/residences.json` com o item de chave e o catálogo real, conforme [CATALOGO.md](CATALOGO.md). O padrão `maxPerProfile: 1` é configurável e não está ativado enquanto o módulo estiver desativado. `allowProfiles` não vazio restringe a interface de operação ao piloto; lista vazia abre o fluxo a todos os perfis autenticados quando habilitado.
 7. Compilar o cliente pelo processo oficial e distribuir o JavaScript compilado, o `index.html` efetivamente carregado pelo Meridian/CEF e a pasta `residences`. Confirmar o caminho real da página antes de copiar; alterar um HTML não usado pelo cliente não instala a interface.
-8. Rodar os testes e a matriz no servidor com contas/imóveis restritos. Somente depois habilitar compras públicas. A configuração ativa continua vazia. O cadastro preliminar separado em `catalogo/` contém 12 casas com referências lidas, mas ainda sem aprovação para venda; conferir suas pendências antes de importar qualquer definição.
+8. Rodar os testes e a matriz no servidor com contas/imóveis restritos. Somente depois habilitar compras públicas. A configuração ativa continua vazia. O rascunho inicial em `catalogo/residences.draft.json` contém apenas as cinco casas vanilla, ainda sem aprovação para venda. Conferir as pendências antes de importar qualquer definição; não importar o arquivo de `etapas-futuras/`.
 
 ## Inicialização e proteção
 

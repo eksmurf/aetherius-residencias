@@ -1,5 +1,7 @@
 # Arquitetura proposta para residências
 
+**Escopo vigente — 0.2.1 (20/10/2026):** começar somente com Breezehome, Vlindrel Hall, Hjerim, Proudspire Manor e Honeyside, após validação individual. Severin Manor e casas de mods ficam para etapas futuras. O rascunho inicial contém apenas essas cinco casas; a configuração ativa permanece vazia e desativada. Hjerim ainda requer armazenamento aprovado. Esta decisão substitui referências anteriores a um piloto sem lista definida.
+
 ## Alvo oficial
 
 Integrar o módulo ao backend e ao cliente oficiais do Aetherius. As fontes recebidas em `analise-painel-20261009/aetherius-server-main` mostram `server/gamemode` para os serviços, PostgreSQL por `database.js` e identidade autenticada em `server/ts/systems/official-identity.ts`. Conferir essas interfaces contra a revisão efetivamente usada antes da implantação. O laboratório `Aetherius-RP-Local` não é base de implementação, fonte do catálogo nem etapa padrão de testes. Usar o host local somente mediante pedido explícito.

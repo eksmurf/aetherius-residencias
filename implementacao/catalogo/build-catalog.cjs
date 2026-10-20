@@ -78,8 +78,13 @@ const inventory = membership.map(member => {
     containers,pending,status:'mapped_pending_official_confirmation',
     draft:{id:names[member.cell.toLowerCase()],name:value(cell,'Name'),revision:1,forSale:false,prices:{},refs}};
 });
-const definitions=inventory.map(r=>r.draft);
-validateCatalog(definitions); // Structural check of the generated data, not a runtime/game test.
+for (const residence of inventory) {
+  residence.stage = residence.origin === 'base' ? 'initial_vanilla' : 'future_dlc_mods';
+}
+const initial=inventory.filter(r=>r.stage==='initial_vanilla');
+const future=inventory.filter(r=>r.stage==='future_dlc_mods');
+const definitions=initial.map(r=>r.draft);
+validateCatalog(inventory.map(r=>r.draft)); // Structural check only; not a runtime/game test.
 const selected=new Set(membership.map(m=>m.cell.toLowerCase()));
 const queue=allCells.filter(r=>!selected.has(r.formid.toLowerCase()) &&
   String(value(r,'Flags')).includes('IsInteriorCell') &&
@@ -89,13 +94,19 @@ const queue=allCells.filter(r=>!selected.has(r.formid.toLowerCase()) &&
     forSale:false}));
 const write=(name,data)=>fs.writeFileSync(path.join(__dirname,name),JSON.stringify(data,null,2)+'\n');
 write('residences.draft.json',definitions);
+fs.mkdirSync(path.join(__dirname,'etapas-futuras'),{recursive:true});
+write('etapas-futuras/residences.draft.json',future.map(r=>r.draft));
 write('cadastro-auditado.json',{date:'2026-10-20',liveDeploymentVerified:false,requiresConfirmation:true,residences:inventory});
 write('fila-de-mapeamento.json',{date:'2026-10-20',scope:'Named residential candidates in the inspected source cells; not an exhaustive world inventory.',candidates:queue});
 const summary={residences:inventory.length,base:inventory.filter(r=>r.origin==='base').length,dlc:inventory.filter(r=>r.origin==='dlc').length,mods:inventory.filter(r=>r.origin==='mod').length,
   doorPairs:inventory.reduce((n,r)=>n+r.doorPairs.length,0),containersInspected:inventory.reduce((n,r)=>n+r.containers.length,0),
-  containersSuggested:inventory.reduce((n,r)=>n+r.containers.filter(c=>c.suggestedForDraft).length,0),queue:queue.length,forSale:0};
+  containersSuggested:inventory.reduce((n,r)=>n+r.containers.filter(c=>c.suggestedForDraft).length,0),queue:queue.length,forSale:0,
+  initialStage:{scope:'vanilla_only',residences:initial.length,ids:initial.map(r=>r.id),
+    doorPairs:initial.reduce((n,r)=>n+r.doorPairs.length,0),
+    containersSuggested:initial.reduce((n,r)=>n+r.containers.filter(c=>c.suggestedForDraft).length,0)},
+  futureStages:{residences:future.length,ids:future.map(r=>r.id),draft:'etapas-futuras/residences.draft.json'}};
 write('resumo.json',summary);
-const table=['| Imóvel | Origem | Pares de portas | Recipientes inspecionados | Baús/cofres sugeridos |','|---|---|---:|---:|---:|',
-  ...inventory.map(r=>`| ${r.name} | ${r.cell.split(':')[1]} | ${r.doorPairs.length} | ${r.containers.length} | ${r.containers.filter(c=>c.suggestedForDraft).length} |`)].join('\n');
-fs.writeFileSync(path.join(__dirname,'IMOVEIS.md'),'# Imóveis identificados em 20/10/2026\n\nCadastros preliminares: nenhum imóvel liberado para venda. As referências foram lidas nos plugins disponíveis com ordem compatível com a lista oficial recebida; a revisão instalada ainda precisa ser confirmada.\n\n'+table+'\n\nOs pares são recíprocos no arquivo; sua disponibilidade durante o jogo ainda exige homologação. “Sugerido” significa apenas baú/cofre sem respawn, sem enable parent e não inicialmente desativado nos registros lidos. Não certifica ausência de scripts ou interferência de missões.\n\nVeja `cadastro-auditado.json` para os IDs de todas as portas, recipientes, donos nativos e pendências de cada casa. `residences.draft.json` é um rascunho separado da configuração ativa: preços vazios e `forSale: false`. Não o importe inteiro antes de resolver as pendências; mesmo imóveis sem venda podem receber bloqueios quando cadastrados no módulo.\n\n`fila-de-mapeamento.json` contém os demais candidatos nominais encontrados, incluindo imóveis ocupados, dependências e locais compartilhados. Não é uma lista de casas vagas nem um inventário exaustivo de todas as células dos mods.\n');
+const table=list=>['| Imóvel | Origem | Pares de portas | Recipientes inspecionados | Baús/cofres sugeridos |','|---|---|---:|---:|---:|',
+  ...list.map(r=>`| ${r.name} | ${r.cell.split(':')[1]} | ${r.doorPairs.length} | ${r.containers.length} | ${r.containers.filter(c=>c.suggestedForDraft).length} |`)].join('\n');
+fs.writeFileSync(path.join(__dirname,'IMOVEIS.md'),'# Imóveis identificados em 20/10/2026\n\nCadastros preliminares: nenhum imóvel liberado para venda. As referências foram lidas nos plugins disponíveis com ordem compatível com a lista oficial recebida; a revisão instalada ainda precisa ser confirmada.\n\n## Primeira etapa: cinco casas vanilla\n\nSomente estas casas compõem `residences.draft.json`. São oito pares de portas e cinco baús/cofres candidatos. Hjerim depende da seleção ou adaptação de armazenamento persistente.\n\n'+table(initial)+'\n\n## Etapas futuras: DLC e mods\n\nEstes sete imóveis ficam fora do piloto. Seus rascunhos foram preservados em `etapas-futuras/residences.draft.json`, sem aprovação para importação ou venda.\n\n'+table(future)+'\n\nOs pares são recíprocos no arquivo; sua disponibilidade durante o jogo ainda exige homologação. “Sugerido” significa apenas baú/cofre sem respawn, sem enable parent e não inicialmente desativado nos registros lidos. Não certifica ausência de scripts ou interferência de missões.\n\nVeja `cadastro-auditado.json` para os IDs de todas as portas, recipientes, donos nativos e pendências das 12 casas, identificadas pelo campo `stage`. O rascunho inicial permanece separado da configuração ativa: preços vazios e `forSale: false`. Importar somente as casas vanilla aprovadas; mesmo imóveis sem venda podem receber bloqueios quando cadastrados no módulo.\n\n`fila-de-mapeamento.json` contém 87 outros candidatos nominais, para investigação futura, incluindo imóveis ocupados, dependências e locais compartilhados. Não é uma lista de casas vagas nem um inventário exaustivo de todas as células dos mods.\n');
 console.log(JSON.stringify(summary));

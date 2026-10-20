@@ -147,11 +147,22 @@
     }
   ],
   "delivery": {
-    "version": "0.2.0",
+    "version": "0.2.1",
     "path": "implementacao",
     "cashWalletIntegrationComplete": false,
     "realKeyConfigured": false,
-    "homologated": false
+    "homologated": false,
+    "initialStage": {
+      "scope": "vanilla_only",
+      "ids": [
+        "breezehome",
+        "vlindrel-hall",
+        "hjerim",
+        "proudspire-manor",
+        "honeyside"
+      ],
+      "deferredResidences": 7
+    }
   },
   "catalogProvenance": "implementacao/catalogo/PROVENIENCIA-MAPEAMENTO.json"
 }

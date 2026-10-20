@@ -1,0 +1,175 @@
+[
+  {
+    "id": "severin-manor",
+    "name": "Severin Manor",
+    "revision": 1,
+    "forSale": false,
+    "prices": {},
+    "refs": [
+      {
+        "desc": "017EF7:Dragonborn.esm",
+        "kind": "entry",
+        "partner": "017F33:Dragonborn.esm"
+      },
+      {
+        "desc": "017F33:Dragonborn.esm",
+        "kind": "exit",
+        "partner": "017EF7:Dragonborn.esm"
+      },
+      {
+        "desc": "036EB9:Dragonborn.esm",
+        "kind": "container"
+      },
+      {
+        "desc": "036EF2:Dragonborn.esm",
+        "kind": "container"
+      },
+      {
+        "desc": "036EF3:Dragonborn.esm",
+        "kind": "container"
+      },
+      {
+        "desc": "036EF4:Dragonborn.esm",
+        "kind": "container"
+      },
+      {
+        "desc": "036EFF:Dragonborn.esm",
+        "kind": "container"
+      }
+    ]
+  },
+  {
+    "id": "forgers-retreat",
+    "name": "Forger's Retreat",
+    "revision": 1,
+    "forSale": false,
+    "prices": {},
+    "refs": [
+      {
+        "desc": "01297C:Granite Hill.esp",
+        "kind": "entry",
+        "partner": "0245EF:Granite Hill.esp"
+      },
+      {
+        "desc": "0245EF:Granite Hill.esp",
+        "kind": "exit",
+        "partner": "01297C:Granite Hill.esp"
+      }
+    ]
+  },
+  {
+    "id": "karthmans-retreat",
+    "name": "Karthman's Retreat",
+    "revision": 1,
+    "forSale": false,
+    "prices": {},
+    "refs": [
+      {
+        "desc": "07F609:Amber Guard.esp",
+        "kind": "entry",
+        "partner": "0853BF:Amber Guard.esp"
+      },
+      {
+        "desc": "0853BF:Amber Guard.esp",
+        "kind": "exit",
+        "partner": "07F609:Amber Guard.esp"
+      },
+      {
+        "desc": "093F0D:Amber Guard.esp",
+        "kind": "container"
+      }
+    ]
+  },
+  {
+    "id": "fenrens-residence",
+    "name": "Fenrens Residence",
+    "revision": 1,
+    "forSale": false,
+    "prices": {},
+    "refs": [
+      {
+        "desc": "0B7F19:Neugrad.esp",
+        "kind": "entry",
+        "partner": "0B7F36:Neugrad.esp"
+      },
+      {
+        "desc": "0B7F36:Neugrad.esp",
+        "kind": "exit",
+        "partner": "0B7F19:Neugrad.esp"
+      },
+      {
+        "desc": "0B7F42:Neugrad.esp",
+        "kind": "container"
+      }
+    ]
+  },
+  {
+    "id": "falcrost-residence",
+    "name": "Falcrost Residence",
+    "revision": 1,
+    "forSale": false,
+    "prices": {},
+    "refs": [
+      {
+        "desc": "02B5C2:North Keep.esp",
+        "kind": "entry",
+        "partner": "072A39:North Keep.esp"
+      },
+      {
+        "desc": "072A39:North Keep.esp",
+        "kind": "exit",
+        "partner": "02B5C2:North Keep.esp"
+      },
+      {
+        "desc": "072A8B:North Keep.esp",
+        "kind": "container"
+      }
+    ]
+  },
+  {
+    "id": "burzag-yomgur-longhouse",
+    "name": "Burzag Yomgur Longhouse",
+    "revision": 1,
+    "forSale": false,
+    "prices": {},
+    "refs": [
+      {
+        "desc": "164AC7:Vernim Wood.esp",
+        "kind": "entry",
+        "partner": "179062:Vernim Wood.esp"
+      },
+      {
+        "desc": "179062:Vernim Wood.esp",
+        "kind": "exit",
+        "partner": "164AC7:Vernim Wood.esp"
+      }
+    ]
+  },
+  {
+    "id": "frostview-hall",
+    "name": "Frostview Hall",
+    "revision": 1,
+    "forSale": false,
+    "prices": {},
+    "refs": [
+      {
+        "desc": "4596FE:The Great City of Winterhold v4.esp",
+        "kind": "entry",
+        "partner": "45962B:The Great City of Winterhold v4.esp"
+      },
+      {
+        "desc": "45962B:The Great City of Winterhold v4.esp",
+        "kind": "exit",
+        "partner": "4596FE:The Great City of Winterhold v4.esp"
+      },
+      {
+        "desc": "4595F8:The Great City of Winterhold v4.esp",
+        "kind": "container"
+      },
+      {
+        "desc": "496362:The Great City of Winterhold v4.esp",
+        "kind": "container"
+      }
+    ]
+  }
+]

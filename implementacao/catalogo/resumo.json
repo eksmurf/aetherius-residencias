@@ -7,5 +7,31 @@
   "containersInspected": 270,
   "containersSuggested": 15,
   "queue": 87,
-  "forSale": 0
+  "forSale": 0,
+  "initialStage": {
+    "scope": "vanilla_only",
+    "residences": 5,
+    "ids": [
+      "breezehome",
+      "vlindrel-hall",
+      "hjerim",
+      "proudspire-manor",
+      "honeyside"
+    ],
+    "doorPairs": 8,
+    "containersSuggested": 5
+  },
+  "futureStages": {
+    "residences": 7,
+    "ids": [
+      "severin-manor",
+      "forgers-retreat",
+      "karthmans-retreat",
+      "fenrens-residence",
+      "falcrost-residence",
+      "burzag-yomgur-longhouse",
+      "frostview-hall"
+    ],
+    "draft": "etapas-futuras/residences.draft.json"
+  }
 }

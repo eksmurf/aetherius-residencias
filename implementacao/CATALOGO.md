@@ -1,6 +1,8 @@
 # Cadastro de residências no mundo oficial
 
-Atualização de 20/10/2026: o [cadastro preliminar](catalogo/README.md) contém referências concretas de 12 imóveis, incluindo seis de mods. Ele está separado da configuração ativa e exige as confirmações registradas por imóvel. Os preços continuam sem definição.
+Atualização 0.2.1 de 20/10/2026: a primeira etapa contém somente Breezehome, Vlindrel Hall, Hjerim, Proudspire Manor e Honeyside. O arquivo `catalogo/residences.draft.json` reúne essas cinco casas, separado da configuração ativa e com preços vazios e venda desativada.
+
+O [cadastro auditado](catalogo/README.md) mantém as 12 casas investigadas. Severin Manor e as seis casas de mods estão separadas em `catalogo/etapas-futuras/residences.draft.json`; não importar esses sete imóveis no piloto. Todos exigem confirmação individual. Hjerim depende de seleção ou adaptação de armazenamento persistente antes da venda.
 
 `server/config/residences.json` começa desativado e sem imóveis. O responsável deve cadastrar as referências efetivas dos plugins oficiais e um item dedicado de chave. Não usar os IDs de teste como endereços reais.
 

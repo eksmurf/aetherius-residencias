@@ -1,5 +1,5 @@
 {
-  "version": "0.2.0",
+  "version": "0.2.1",
   "date": "2026-10-20",
   "algorithm": "SHA256",
   "excludes": [
@@ -13,18 +13,28 @@
     },
     {
       "path": "CATALOGO.md",
-      "bytes": 2546,
-      "sha256": "5675582a1ecba3e00f340c5d27611567e983ecf0a7268e4b689064263d6ae779"
+      "bytes": 2902,
+      "sha256": "3280d15ab8777af2cf977eb60d172a66ceeecbf3ea0ab4b368e971866955b723"
     },
     {
       "path": "catalogo/build-catalog.cjs",
-      "bytes": 9640,
-      "sha256": "b1ee0915d7cad6bdd2229d364fd994fcfd79be5aa611f49e81758d864e8417be"
+      "bytes": 10884,
+      "sha256": "60e7f7738210bc36f896c415e1d426f8f093348226421df08923f9c2a5ae2d11"
     },
     {
       "path": "catalogo/cadastro-auditado.json",
-      "bytes": 167619,
-      "sha256": "9f72b717ef0f2da5c94064b320f27e21e5ec6569a8486e8217d20bf53e607be1"
+      "bytes": 168027,
+      "sha256": "3a6eadd9062f39e6d707a49319ca0c1ece35a9b6e6c6a8518109d9e6ec7a3c18"
+    },
+    {
+      "path": "catalogo/etapas-futuras/README.md",
+      "bytes": 703,
+      "sha256": "8861706f3fd6fd6138174ffe4a8b934c3e3052060f8b678142302abcef4c6c34"
+    },
+    {
+      "path": "catalogo/etapas-futuras/residences.draft.json",
+      "bytes": 3803,
+      "sha256": "5754b2ac34822306166d9d6a680c222b91ab04382d44570266e24cc1e2c0941c"
     },
     {
       "path": "catalogo/evidencias/bases-containers.jsonl",
@@ -88,8 +98,8 @@
     },
     {
       "path": "catalogo/IMOVEIS.md",
-      "bytes": 1860,
-      "sha256": "35ea657420c8a96242170bd1fd527fa61d5b5034c648630c6e6ba910ae9800c8"
+      "bytes": 2427,
+      "sha256": "e463c5cf7fdad1c8f56248ebaedacc06c61f7646c2ed7cbcc246c2d5e87bc0df"
     },
     {
       "path": "catalogo/PROVENIENCIA-MAPEAMENTO.json",
@@ -98,23 +108,23 @@
     },
     {
       "path": "catalogo/README.md",
-      "bytes": 5160,
-      "sha256": "b73a106b7ee6dbb89dcaacedb7c6fd49fb4bb7bf74ab089576227148ae7cc87c"
+      "bytes": 5596,
+      "sha256": "adf2a08ed5e5ce0b3a3feccb4260746b16922b0e81d84f642f3a0d37418b5f1d"
     },
     {
       "path": "catalogo/residences.draft.json",
-      "bytes": 6786,
-      "sha256": "f678a769f9b823a36660690e305980d8430d605186ae29d9d747b965db9954c1"
+      "bytes": 2986,
+      "sha256": "4f5ec48464aa6452419bdfafc528e0109b19ccb37e89b0671c196fb856074ad3"
     },
     {
       "path": "catalogo/resumo.json",
-      "bytes": 170,
-      "sha256": "9675f83648e0897f421d1c4df83cc765b7a2c765989a18b75481e765b2152eae"
+      "bytes": 721,
+      "sha256": "28b63804f0dbf1d4e44d1388f88d0886c6301755eeccbc94d800dd912b9181a7"
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 1438,
-      "sha256": "195c880440e144d1f3ed3e1e6b092edeefd6a2461c52acf1d0b286e6ecb66b52"
+      "bytes": 2320,
+      "sha256": "d54d65173c7a7b52be1928cb9ce03db7057fd358ecaf98b5fa9bca1fafd1422d"
     },
     {
       "path": "ci/residences.yml",
@@ -148,18 +158,18 @@
     },
     {
       "path": "package.json",
-      "bytes": 317,
-      "sha256": "d701540789fc62098de9d24d449939ee5a66181316f1d2d13cae377b2d8db51a"
+      "bytes": 329,
+      "sha256": "b0d2ded352f3b8a5180cedd47bba1f95d01ae1d883f241fae0f2d533a8f91815"
     },
     {
       "path": "PROVENIENCIA.json",
-      "bytes": 4250,
-      "sha256": "e53b903415b58093dec04480bbbe1f2f53690ad2c7a770f29f3fe2a8fd052399"
+      "bytes": 4544,
+      "sha256": "1c4577988a132f1f495e4feaa18bfffb77de2d93071d1ec2fe7546155a16e605"
     },
     {
       "path": "README.md",
-      "bytes": 10001,
-      "sha256": "79a8e5dad8ae2b50a7f8a971fbcbdcbe98ac682553de85e3dfc36aa2c03d48e0"
+      "bytes": 10459,
+      "sha256": "bc739d3ed624668bb9d0e7e8ba49b044aacb32c1505011e14a15ae7feab8726d"
     },
     {
       "path": "server/config/residences.json",
