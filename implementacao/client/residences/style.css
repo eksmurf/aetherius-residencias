@@ -1,7 +1,38 @@
-#aetherius-residences { position:fixed; z-index:1200; top:15%; left:50%; transform:translateX(-50%); width:min(540px,85vw); max-height:70vh; overflow:auto; padding:24px; color:#f3eee2; background:rgba(22,25,29,.97); border:1px solid #a28a59; border-radius:8px; font:16px/1.5 'Segoe UI',sans-serif; box-shadow:0 12px 40px #0009; }
-#aetherius-residences[hidden] { display:none; }
-#aetherius-residences h2 { margin:0 0 16px; }
-#aetherius-residences p { margin:12px 0; }
-#aetherius-residences button { display:block; width:100%; margin:10px 0; padding:10px 14px; color:inherit; background:#343a41; border:1px solid #8a7c60; border-radius:4px; font:inherit; cursor:pointer; }
-#aetherius-residences button:focus-visible { outline:3px solid #e4c57c; outline-offset:2px; }
-#aetherius-residences button:disabled { opacity:.5; cursor:default; }
+/* Aetherius admin palette/transparency; scoped to preserve CORE UI, HUD and chat. */
+#aetherius-residences {
+  --ar-bg:rgba(10,14,14,.68); --ar-panel:rgba(16,24,24,.35); --ar-line:#293c37;
+  --ar-text:#e8e9e2; --ar-muted:#a4b0aa; --ar-accent:#51bf8a; --ar-accent-soft:rgba(81,191,138,.12);
+  position:fixed; inset:50% auto auto 50%; transform:translate(-50%,-50%);
+  width:480px; max-width:calc(100vw - 32px); max-height:calc(100vh - 32px);
+  display:flex; flex-direction:column; z-index:100001; pointer-events:auto;
+  color:var(--ar-text); background:var(--ar-bg); border:1px solid var(--ar-line); border-radius:9px;
+  box-shadow:0 22px 60px rgba(0,0,0,.4); font:14px/1.5 'Segoe UI',Arial,sans-serif; text-align:left; color-scheme:dark;
+}
+#aetherius-residences[hidden], #aetherius-residences [hidden] { display:none!important; }
+#aetherius-residences * { box-sizing:border-box; }
+#aetherius-residences .ar-header { padding:23px 26px 19px; border-bottom:1px solid var(--ar-line); flex-shrink:0; }
+#aetherius-residences .ar-eyebrow { margin:0 0 8px; font-size:10px; letter-spacing:.18em; color:var(--ar-muted); }
+#aetherius-residences h2 { margin:0; font:700 25px/1.3 Georgia,'Times New Roman',serif; color:var(--ar-accent); overflow-wrap:anywhere; }
+#aetherius-residences .ar-body { min-height:0; overflow-y:auto; padding:20px 26px 24px; }
+#aetherius-residences p { margin:0 0 14px; }
+#aetherius-residences .ar-subtitle { font-weight:500; }
+#aetherius-residences .ar-muted { color:var(--ar-muted); font-size:12px; }
+#aetherius-residences .ar-section-label { margin:22px 0 10px; color:var(--ar-muted); font-size:11px; letter-spacing:.06em; }
+#aetherius-residences button { display:block; width:100%; margin:10px 0 0; padding:12px 14px; cursor:pointer; color:var(--ar-text); background:rgba(255,255,255,.025); border:1px solid var(--ar-line); border-radius:3px 5px 3px 4px; font:inherit; line-height:1.4; transition:background-color .12s,border-color .12s,color .12s; }
+#aetherius-residences button:hover:not(:disabled) { background:rgba(255,255,255,.075); border-color:#737c76; }
+#aetherius-residences button:disabled { cursor:not-allowed; opacity:.4; }
+#aetherius-residences :focus-visible { outline:2px solid var(--ar-accent); outline-offset:3px; }
+#aetherius-residences .ar-price { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:17px 16px; background:var(--ar-panel); text-align:left; }
+#aetherius-residences .ar-price strong { color:var(--ar-accent); font-weight:500; font-variant-numeric:tabular-nums; }
+#aetherius-residences .ar-primary { background:var(--ar-accent-soft); border-color:#6aab85; color:#e5f5ec; }
+#aetherius-residences .ar-primary:hover:not(:disabled) { background:rgba(81,191,138,.23); border-color:var(--ar-accent); }
+#aetherius-residences .ar-total { font-size:22px; color:var(--ar-accent); font-variant-numeric:tabular-nums; }
+#aetherius-residences .ar-footer { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 26px; border-top:1px solid var(--ar-line); flex-shrink:0; }
+#aetherius-residences .ar-hint { color:var(--ar-muted); font-size:11px; }
+#aetherius-residences .ar-close { width:auto; min-width:108px; margin:0; padding:9px 18px; }
+#aetherius-residences .ar-notice { margin:18px 0 0; padding:12px 14px; background:rgba(81,191,138,.07); border-left:2px solid var(--ar-accent); font-size:12px; }
+#aetherius-residences ::-webkit-scrollbar { width:7px; }
+#aetherius-residences ::-webkit-scrollbar-thumb { background:#505953; border:2px solid #121713; border-radius:4px; }
+@media(max-width:420px) {
+  #aetherius-residences .ar-header, #aetherius-residences .ar-body, #aetherius-residences .ar-footer { padding-left:18px; padding-right:18px; }
+}

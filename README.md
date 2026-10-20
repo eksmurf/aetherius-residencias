@@ -1,14 +1,22 @@
 # Projeto de compra de residências do Aetherius
 
-**Entrega para integração no servidor oficial:** [pacote ZIP 0.1.0](dist/aetherius-residencias-0.1.0.zip) · [SHA256 do ZIP](dist/aetherius-residencias-0.1.0.zip.sha256) · [guia de instalação e pendências](implementacao/README.md).
+**Entrega para integração no servidor oficial:** [pacote ZIP 0.2.0](dist/aetherius-residencias-0.2.0.zip) · [SHA256 do ZIP](dist/aetherius-residencias-0.2.0.zip.sha256) · [guia de instalação e pendências](implementacao/README.md).
 
 O código está em `implementacao/` e os estudos em `docs/`. O modelo de CI permanece em `implementacao/ci/`; o envio deste repositório não executa testes nem implanta o sistema.
+
+## Cadastro e painel da versão 0.2.0
+
+O [cadastro auditado](implementacao/catalogo/README.md) contém 12 imóveis, incluindo seis de mods, com 15 pares de portas conferidos nos arquivos. A configuração ativa permanece vazia; o rascunho documenta as confirmações necessárias antes da venda. Outros 87 candidatos nominais estão na fila de mapeamento.
+
+O painel segue as cores e transparência do administrativo: nome da casa no topo, opções pelo mouse e Fechar no rodapé. ESC também fecha, sem cancelar pedidos em andamento. A prévia isolada foi conferida para clique, ESC, resposta atrasada e largura reduzida; isso não substitui os testes no cliente oficial.
+
+![Prévia do painel; os preços exibidos são ilustrativos](docs/images/painel-residencias-0.2.0.png)
 
 Preparar a compra de residências com Septims ou Diademas, com posse vinculada ao `profile_id` do jogador, entrega de chave e controle das portas e dos baús. A proposta inicial usa os interiores existentes do mundo, sem criar uma instância por comprador, e adapta o sistema do Alduinak às regras e à economia do Aetherius.
 
 **Diretriz vigente em 13/10/2026:** o alvo é o servidor oficial do Aetherius, sua base de dados, seu cliente distribuído e sua economia. Planejamento, implementação e validação devem seguir essa estrutura. O host local só entra no trabalho quando o solicitante pedir explicitamente. Os documentos nesta pasta registram o projeto; sua localização não define um ambiente de execução.
 
-**Estado em 19/10/2026:** implementação inicial preparada em [implementacao/README.md](implementacao/README.md), para encaminhar aos superiores responsáveis pela integração e implantação. Inclui módulo de compra/posse/chave, migração, interface, integrador e testes. O adaptador concreto da carteira de Diademas e o catálogo de imóveis reais permanecem pendentes de integração. Código ainda não homologado; nenhum teste foi executado no host local ou no servidor e nada foi implantado. As fontes oficiais recebidas orientam a arquitetura, mas não comprovam sozinhas qual revisão está executando no servidor neste momento.
+**Estado em 20/10/2026:** implementação inicial preparada em [implementacao/README.md](implementacao/README.md), para encaminhar aos superiores responsáveis pela integração e implantação. Inclui módulo de compra/posse/chave, migração, interface, integrador e testes. O adaptador concreto da carteira de Diademas permanece pendente. O [cadastro preliminar](implementacao/catalogo/IMOVEIS.md) agora contém 12 casas com referências físicas, incluindo seis de mods; os superiores ainda precisam confirmar versões, ocupação, armazenamento e preços antes de colocá-las à venda. Código ainda não homologado; a estrutura do cadastro foi conferida, mas os testes automatizados do sistema e os testes no jogo continuam pendentes. Nada foi implantado. As fontes oficiais recebidas orientam a arquitetura, mas não comprovam sozinhas qual revisão está executando no servidor neste momento.
 
 ## Moedas e responsabilidade técnica
 

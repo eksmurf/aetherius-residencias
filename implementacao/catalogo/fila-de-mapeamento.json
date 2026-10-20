@@ -1,0 +1,876 @@
+{
+  "date": "2026-10-20",
+  "scope": "Named residential candidates in the inspected source cells; not an exhaustive world inventory.",
+  "candidates": [
+    {
+      "cell": "011CB3:HearthFires.esm",
+      "name": "Windstad Manor",
+      "editorId": "BYOHHouse2Hjaalmarch",
+      "plugin": "HearthFires.esm",
+      "winner": "Embers XD.esp",
+      "nativeOwner": "000DB1:Skyrim.esm",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "004849:HearthFires.esm",
+      "name": "Lakeview Manor, Cellar",
+      "editorId": "BYOHHouse1FalkreathBasement",
+      "plugin": "HearthFires.esm",
+      "winner": "weapons armor clothing & clutter fixes.esp",
+      "nativeOwner": "000DB1:Skyrim.esm",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "015154:HearthFires.esm",
+      "name": "Windstad Manor, Cellar",
+      "editorId": "BYOHHouse2HjaalmarchBasement",
+      "plugin": "HearthFires.esm",
+      "winner": "weapons armor clothing & clutter fixes.esp",
+      "nativeOwner": "000DB1:Skyrim.esm",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "016A55:HearthFires.esm",
+      "name": "Heljarchen Hall, Cellar",
+      "editorId": "BYOHHouse3PaleBasement",
+      "plugin": "HearthFires.esm",
+      "winner": "weapons armor clothing & clutter fixes.esp",
+      "nativeOwner": "000DB1:Skyrim.esm",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "016A56:HearthFires.esm",
+      "name": "Heljarchen Hall",
+      "editorId": "BYOHHouse3Pale",
+      "plugin": "HearthFires.esm",
+      "winner": "Embers XD.esp",
+      "nativeOwner": null,
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "002FEC:HearthFires.esm",
+      "name": "Lakeview Manor",
+      "editorId": "BYOHHouse1Falkreath",
+      "plugin": "HearthFires.esm",
+      "winner": "Embers XD.esp",
+      "nativeOwner": "000DB1:Skyrim.esm",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "004C36:AnotherOakwood.esp",
+      "name": "Burgunde's House",
+      "editorId": "OakwoodBurgundesHouse",
+      "plugin": "AnotherOakwood.esp",
+      "winner": "AnotherOakwood.esp",
+      "nativeOwner": "00A542:AnotherOakwood.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "041CD2:AnotherOakwood.esp",
+      "name": "Clebus and Jetta's House",
+      "editorId": "OakwoodClebusAndJettasHouse",
+      "plugin": "AnotherOakwood.esp",
+      "winner": "AnotherOakwood.esp",
+      "nativeOwner": "041CCE:AnotherOakwood.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "004C39:AnotherOakwood.esp",
+      "name": "House of Clan Green-Blade",
+      "editorId": "OakwoodHouseOfClanGreenBlade",
+      "plugin": "AnotherOakwood.esp",
+      "winner": "AnotherOakwood.esp",
+      "nativeOwner": "004C49:AnotherOakwood.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "037A22:AnotherOakwood.esp",
+      "name": "Ninnia's House",
+      "editorId": "OakwoodNinniasHouse",
+      "plugin": "AnotherOakwood.esp",
+      "winner": "AnotherOakwood.esp",
+      "nativeOwner": "03CBA9:AnotherOakwood.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "037A25:AnotherOakwood.esp",
+      "name": "Ereni Residence",
+      "editorId": "OakwoodEreniResidence",
+      "plugin": "AnotherOakwood.esp",
+      "winner": "AnotherOakwood.esp",
+      "nativeOwner": "037A23:AnotherOakwood.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "004C35:AnotherOakwood.esp",
+      "name": "Alber and Bibi's House",
+      "editorId": "OakwoodAlberAndBibisHouse",
+      "plugin": "AnotherOakwood.esp",
+      "winner": "AnotherOakwood.esp",
+      "nativeOwner": "004C46:AnotherOakwood.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "009AEC:Granite Hill.esp",
+      "name": "Tassila's House",
+      "editorId": "GraniteHillTassilasHouse",
+      "plugin": "Granite Hill.esp",
+      "winner": "Granite Hill.esp",
+      "nativeOwner": "009AED:Granite Hill.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "001FB9:Granite Hill.esp",
+      "name": "Arnemar and Abolind's House",
+      "editorId": "GraniteHillArnemarAndAbolindsHouse",
+      "plugin": "Granite Hill.esp",
+      "winner": "Granite Hill.esp",
+      "nativeOwner": "001FC0:Granite Hill.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "001FBA:Granite Hill.esp",
+      "name": "Captain Vist's House",
+      "editorId": "GraniteHillCaptainVistHouse",
+      "plugin": "Granite Hill.esp",
+      "winner": "Granite Hill.esp",
+      "nativeOwner": "0054BB:Granite Hill.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "000A66:Granite Hill.esp",
+      "name": "Farold and Llodi's House",
+      "editorId": "GraniteHillFaroldAndLlodisHouse",
+      "plugin": "Granite Hill.esp",
+      "winner": "Granite Hill.esp",
+      "nativeOwner": "000B17:Granite Hill.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "001FBB:Granite Hill.esp",
+      "name": "Guard House",
+      "editorId": "GraniteHillGuardHouse",
+      "plugin": "Granite Hill.esp",
+      "winner": "Granite Hill.esp",
+      "nativeOwner": "001FC2:Granite Hill.esp",
+      "status": "non_residential_or_shared_review",
+      "forSale": false
+    },
+    {
+      "cell": "000B11:Granite Hill.esp",
+      "name": "Ariald and Gelsa's House",
+      "editorId": "GraniteHillArialdAndGelsasHouse",
+      "plugin": "Granite Hill.esp",
+      "winner": "Granite Hill.esp",
+      "nativeOwner": "000B16:Granite Hill.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "000A67:Granite Hill.esp",
+      "name": "House of Clan Rock-Biter",
+      "editorId": "GraniteHillHouseOfClanRockBiter01",
+      "plugin": "Granite Hill.esp",
+      "winner": "Granite Hill.esp",
+      "nativeOwner": "000B15:Granite Hill.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "001FBE:Granite Hill.esp",
+      "name": "Rukka's House",
+      "editorId": "GraniteHillRukkasHouse",
+      "plugin": "Granite Hill.esp",
+      "winner": "Granite Hill.esp",
+      "nativeOwner": "0054C7:Granite Hill.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "0337AE:Vernim Wood.esp",
+      "name": "Alsuna's House",
+      "editorId": "VernimWoodAlsunasHouse",
+      "plugin": "Vernim Wood.esp",
+      "winner": "Vernim Wood.esp",
+      "nativeOwner": "0337A5:Vernim Wood.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "0337AF:Vernim Wood.esp",
+      "name": "Trollthane Hall",
+      "editorId": "VernimWoodHouseOfClanTrollthane",
+      "plugin": "Vernim Wood.esp",
+      "winner": "Vernim Wood.esp",
+      "nativeOwner": "0337A7:Vernim Wood.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "0E0924:Vernim Wood.esp",
+      "name": "Abard and Komara's House",
+      "editorId": "VernimWoodBlacksmith",
+      "plugin": "Vernim Wood.esp",
+      "winner": "Vernim Wood.esp",
+      "nativeOwner": "0E091A:Vernim Wood.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "02E577:Amol Village.esp",
+      "name": "Okke and Tilda's House",
+      "editorId": "AmolBlacksmith",
+      "plugin": "Amol Village.esp",
+      "winner": "Amol Village.esp",
+      "nativeOwner": "0388EA:Amol Village.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "0182D6:Amber Guard.esp",
+      "name": "Cellar of Clan Crook-Antler",
+      "editorId": "AmberGuardHouseOfClanCrookAntlerBasement",
+      "plugin": "Amber Guard.esp",
+      "winner": "Amber Guard.esp",
+      "nativeOwner": "00F47E:Amber Guard.esp",
+      "status": "non_residential_or_shared_review",
+      "forSale": false
+    },
+    {
+      "cell": "029F56:Amber Guard.esp",
+      "name": "The Brewhouse",
+      "editorId": "AmberGuardTheBrewhouseBedroom",
+      "plugin": "Amber Guard.esp",
+      "winner": "Amber Guard.esp",
+      "nativeOwner": "02FEFD:Amber Guard.esp",
+      "status": "non_residential_or_shared_review",
+      "forSale": false
+    },
+    {
+      "cell": "00F4B3:Amber Guard.esp",
+      "name": "The Brewhouse",
+      "editorId": "AmberGuardTheBrewhouse",
+      "plugin": "Amber Guard.esp",
+      "winner": "Amber Guard.esp",
+      "nativeOwner": "02FEFD:Amber Guard.esp",
+      "status": "non_residential_or_shared_review",
+      "forSale": false
+    },
+    {
+      "cell": "00F46F:Amber Guard.esp",
+      "name": "House of Clan Crook-Antler",
+      "editorId": "AmberGuardHouseOfClanCrookAntler",
+      "plugin": "Amber Guard.esp",
+      "winner": "Amber Guard.esp",
+      "nativeOwner": "00F47E:Amber Guard.esp",
+      "status": "non_residential_or_shared_review",
+      "forSale": false
+    },
+    {
+      "cell": "1B5B7F:Amber Guard.esp",
+      "name": "Adelm and Deike's House",
+      "editorId": "AmberGuardAdelmAndDeikesHouse",
+      "plugin": "Amber Guard.esp",
+      "winner": "Amber Guard.esp",
+      "nativeOwner": "1B5B74:Amber Guard.esp",
+      "status": "non_residential_or_shared_review",
+      "forSale": false
+    },
+    {
+      "cell": "009570:Amber Guard.esp",
+      "name": "Isgrim's House",
+      "editorId": "AmberGuardIsgrimsHouse",
+      "plugin": "Amber Guard.esp",
+      "winner": "Amber Guard.esp",
+      "nativeOwner": "00C590:Amber Guard.esp",
+      "status": "non_residential_or_shared_review",
+      "forSale": false
+    },
+    {
+      "cell": "00F4AD:Amber Guard.esp",
+      "name": "Durmia's House",
+      "editorId": "AmberGuardDurmiasHouse",
+      "plugin": "Amber Guard.esp",
+      "winner": "Amber Guard.esp",
+      "nativeOwner": "00F553:Amber Guard.esp",
+      "status": "non_residential_or_shared_review",
+      "forSale": false
+    },
+    {
+      "cell": "04D485:Amber Guard.esp",
+      "name": "Audomar's House",
+      "editorId": "AmberGuardMinersBarracks",
+      "plugin": "Amber Guard.esp",
+      "winner": "Amber Guard.esp",
+      "nativeOwner": "061FA1:Amber Guard.esp",
+      "status": "non_residential_or_shared_review",
+      "forSale": false
+    },
+    {
+      "cell": "1B5B6F:Amber Guard.esp",
+      "name": "Edzard and Ambrine's House",
+      "editorId": "AmberGuardEdzardAndAmbrinesHouse",
+      "plugin": "Amber Guard.esp",
+      "winner": "Amber Guard.esp",
+      "nativeOwner": "1B5B73:Amber Guard.esp",
+      "status": "non_residential_or_shared_review",
+      "forSale": false
+    },
+    {
+      "cell": "03B730:Dunpar Wall.esp",
+      "name": "Barold And Rola's House",
+      "editorId": "DunparWallBaroldAndRolasHouse",
+      "plugin": "Dunpar Wall.esp",
+      "winner": "Dunpar Wall.esp",
+      "nativeOwner": "03B73F:Dunpar Wall.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "03B733:Dunpar Wall.esp",
+      "name": "Ludovica's House",
+      "editorId": "DunparWallLudovicasHouse",
+      "plugin": "Dunpar Wall.esp",
+      "winner": "Dunpar Wall.esp",
+      "nativeOwner": "067F11:Dunpar Wall.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "03B734:Dunpar Wall.esp",
+      "name": "Nivadura's House",
+      "editorId": "DunparWallNivadurasHouse",
+      "plugin": "Dunpar Wall.esp",
+      "winner": "Dunpar Wall.esp",
+      "nativeOwner": "067F13:Dunpar Wall.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "00088C:Falkhurst.esp",
+      "name": "Helrun's House",
+      "editorId": "FalkhurstHelrunsHouse",
+      "plugin": "Falkhurst.esp",
+      "winner": "Falkhurst.esp",
+      "nativeOwner": "0008E6:Falkhurst.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "000A65:Granitehall.esp",
+      "name": "Bernarda's House",
+      "editorId": "GranitehallBernardasHouse",
+      "plugin": "Granitehall.esp",
+      "winner": "Granitehall.esp",
+      "nativeOwner": "000C71:Granitehall.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "000A66:Granitehall.esp",
+      "name": "Farold and Llodi's House",
+      "editorId": "GranitehallFaroldAndLlodisHouse",
+      "plugin": "Granitehall.esp",
+      "winner": "Granitehall.esp",
+      "nativeOwner": "000B17:Granitehall.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "000B11:Granitehall.esp",
+      "name": "Ariald and Gelsa's House",
+      "editorId": "GranitehallArialdAndGelsasHouse",
+      "plugin": "Granitehall.esp",
+      "winner": "Granitehall.esp",
+      "nativeOwner": "000B16:Granitehall.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "000A67:Granitehall.esp",
+      "name": "House of Clan Rock-Biter",
+      "editorId": "GranitehallHouseOfClanRockBiter01",
+      "plugin": "Granitehall.esp",
+      "winner": "Granitehall.esp",
+      "nativeOwner": "000B15:Granitehall.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "000B13:Granitehall.esp",
+      "name": "House of Clan Rock-Biter",
+      "editorId": "GranitehallHouseOfClanRockBiter02",
+      "plugin": "Granitehall.esp",
+      "winner": "Granitehall.esp",
+      "nativeOwner": "000B15:Granitehall.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "00FC59:Iggath.esp",
+      "name": "Gerbold and Irmela's House",
+      "editorId": "IggathHouse",
+      "plugin": "Iggath.esp",
+      "winner": "Iggath.esp",
+      "nativeOwner": "00FC56:Iggath.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "00F3FC:Lainalten.esp",
+      "name": "Hartmann and Insa's House",
+      "editorId": "LainaltenHartmannAndInsasHouse",
+      "plugin": "Lainalten.esp",
+      "winner": "Lainalten.esp",
+      "nativeOwner": "00F401:Lainalten.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "00F3FB:Lainalten.esp",
+      "name": "Gerwig and Hertha's House",
+      "editorId": "LainaltenGerwigAndHerthasHouse",
+      "plugin": "Lainalten.esp",
+      "winner": "Lainalten.esp",
+      "nativeOwner": "00F400:Lainalten.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "02E786:Laintar Dale.esp",
+      "name": "Mathard and Bruna's House",
+      "editorId": "LaintarDaleBlacksmith",
+      "plugin": "Laintar Dale.esp",
+      "winner": "Laintar Dale.esp",
+      "nativeOwner": "02E790:Laintar Dale.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "04CF10:Laintar Dale.esp",
+      "name": "Ostoria Residence Chambers",
+      "editorId": "LaintarDaleOstoriaResidenceChambers",
+      "plugin": "Laintar Dale.esp",
+      "winner": "Laintar Dale.esp",
+      "nativeOwner": "02E792:Laintar Dale.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "02E788:Laintar Dale.esp",
+      "name": "Ostoria Residence",
+      "editorId": "LaintarDaleOstoriaResidence",
+      "plugin": "Laintar Dale.esp",
+      "winner": "Laintar Dale.esp",
+      "nativeOwner": "02E792:Laintar Dale.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "02E78B:Laintar Dale.esp",
+      "name": "Laintar Dale Barracks",
+      "editorId": "LaintarDaleGuardHouse",
+      "plugin": "Laintar Dale.esp",
+      "winner": "Laintar Dale.esp",
+      "nativeOwner": "02E795:Laintar Dale.esp",
+      "status": "non_residential_or_shared_review",
+      "forSale": false
+    },
+    {
+      "cell": "01F0D8:Neugrad.esp",
+      "name": "Clepsina Residence",
+      "editorId": "NeugradWatchViscountHouse",
+      "plugin": "Neugrad.esp",
+      "winner": "Neugrad.esp",
+      "nativeOwner": "019F99:Neugrad.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "01F0D3:Neugrad.esp",
+      "name": "Granec Residence",
+      "editorId": "NeugradWatchBlacksmith",
+      "plugin": "Neugrad.esp",
+      "winner": "Neugrad.esp",
+      "nativeOwner": "019F96:Neugrad.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "113829:Neugrad.esp",
+      "name": "Temperin Bathhouse",
+      "editorId": "NeugradWatchMine",
+      "plugin": "Neugrad.esp",
+      "winner": "Neugrad.esp",
+      "nativeOwner": "019F99:Neugrad.esp",
+      "status": "non_residential_or_shared_review",
+      "forSale": false
+    },
+    {
+      "cell": "00FCF9:New Weynon.esp",
+      "name": "Pursenas and Larsa's House",
+      "editorId": "NewWeynonBlacksmith",
+      "plugin": "New Weynon.esp",
+      "winner": "New Weynon.esp",
+      "nativeOwner": "00FD00:New Weynon.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "03A98C:North Keep.esp",
+      "name": "Valgador Residence",
+      "editorId": "NorthkeepViscountHouse",
+      "plugin": "North Keep.esp",
+      "winner": "North Keep.esp",
+      "nativeOwner": "03A98F:North Keep.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "03A985:North Keep.esp",
+      "name": "Pripata Residence",
+      "editorId": "NorthkeepBlacksmith",
+      "plugin": "North Keep.esp",
+      "winner": "North Keep.esp",
+      "nativeOwner": "03A98D:North Keep.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "0505FA:Reich Corigate.esp",
+      "name": "House of Clan Breight-Vein",
+      "editorId": "ReichCorigateHouseOfClanBrightVein01",
+      "plugin": "Reich Corigate.esp",
+      "winner": "Reich Corigate.esp",
+      "nativeOwner": "039EBB:Reich Corigate.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "0505F1:Reich Corigate.esp",
+      "name": "Laurient and Arganith's House",
+      "editorId": "ReichCorigateLaurientAndArganithsHouse",
+      "plugin": "Reich Corigate.esp",
+      "winner": "Reich Corigate.esp",
+      "nativeOwner": "0505F8:Reich Corigate.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "0505F2:Reich Corigate.esp",
+      "name": "Ostrolf and Visild's House",
+      "editorId": "ReichCorigateOstrolfAndVisildsHouse",
+      "plugin": "Reich Corigate.esp",
+      "winner": "Reich Corigate.esp",
+      "nativeOwner": "0505F7:Reich Corigate.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "06489F:Reich Corigate.esp",
+      "name": "Mormiless' House",
+      "editorId": "ReichCorigateMormilessHouse",
+      "plugin": "Reich Corigate.esp",
+      "winner": "Reich Corigate.esp",
+      "nativeOwner": "0648F2:Reich Corigate.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "08EF06:Reich Corigate.esp",
+      "name": "House of Clan Breight-Vein",
+      "editorId": "ReichCorigateHouseOfClanBrightVein02",
+      "plugin": "Reich Corigate.esp",
+      "winner": "Reich Corigate.esp",
+      "nativeOwner": "039EBB:Reich Corigate.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "08EF07:Reich Corigate.esp",
+      "name": "House of Clan Breight-Vein",
+      "editorId": "ReichCorigateHouseOfClanBrightVein03",
+      "plugin": "Reich Corigate.esp",
+      "winner": "Reich Corigate.esp",
+      "nativeOwner": "039EBB:Reich Corigate.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "07F5E0:Stonehills.esp",
+      "name": "Aleuc's House",
+      "editorId": "StonehillsBlacksmith",
+      "plugin": "Stonehills.esp",
+      "winner": "Stonehills.esp",
+      "nativeOwner": "07F5DB:Stonehills.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "07F5E1:Stonehills.esp",
+      "name": "Humbold and Bechta's House",
+      "editorId": "StonehillsHouse",
+      "plugin": "Stonehills.esp",
+      "winner": "Stonehills.esp",
+      "nativeOwner": "07F5D9:Stonehills.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "07F5E2:Stonehills.esp",
+      "name": "Fironis' House",
+      "editorId": "StonehillsBathhouse",
+      "plugin": "Stonehills.esp",
+      "winner": "Stonehills.esp",
+      "nativeOwner": "07F5D8:Stonehills.esp",
+      "status": "non_residential_or_shared_review",
+      "forSale": false
+    },
+    {
+      "cell": "00088C:Sunthgat.esp",
+      "name": "Helrun's House",
+      "editorId": "SunthgatHelrunsHouse",
+      "plugin": "Sunthgat.esp",
+      "winner": "Sunthgat.esp",
+      "nativeOwner": "0008E6:Sunthgat.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "1F1302:COTN - Falkreath.esp",
+      "name": "Hakkvild's High Hall, Upstairs",
+      "editorId": "FalkreathJarlsLonghouseUpstairs",
+      "plugin": "COTN - Falkreath.esp",
+      "winner": "COTN - Falkreath.esp",
+      "nativeOwner": "0C139B:Skyrim.esm",
+      "status": "non_residential_or_shared_review",
+      "forSale": false
+    },
+    {
+      "cell": "108514:COTN - Falkreath.esp",
+      "name": "Kust's House",
+      "editorId": "COTN_FalkreathKustsHouse",
+      "plugin": "COTN - Falkreath.esp",
+      "winner": "COTN Falkreath - Embers XD Patch.esp",
+      "nativeOwner": "108571:COTN - Falkreath.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "1BE6AF:COTN - Falkreath.esp",
+      "name": "Valdr's House",
+      "editorId": "COTN_FalkreathValdrsHouse",
+      "plugin": "COTN - Falkreath.esp",
+      "winner": "COTN Falkreath - Embers XD Patch.esp",
+      "nativeOwner": "1BE745:COTN - Falkreath.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "43AF6C:The Great City of Winterhold v4.esp",
+      "name": "Runi's House",
+      "editorId": "WinterholdRunisHouseTGCoWH",
+      "plugin": "The Great City of Winterhold v4.esp",
+      "winner": "TGC Winterhold - Embers XD patch.esp",
+      "nativeOwner": "408522:The Great City of Winterhold v4.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "2C4200:The Great City of Winterhold v4.esp",
+      "name": "Winterhold Warehouse",
+      "editorId": "WinterholdWarehouseTGCoWH",
+      "plugin": "The Great City of Winterhold v4.esp",
+      "winner": "TGC Winterhold - Embers XD patch.esp",
+      "nativeOwner": "2C4304:The Great City of Winterhold v4.esp",
+      "status": "non_residential_or_shared_review",
+      "forSale": false
+    },
+    {
+      "cell": "324847:The Great City of Winterhold v4.esp",
+      "name": "Magna's House",
+      "editorId": "WinterholdMagnashouseTGCoWH",
+      "plugin": "The Great City of Winterhold v4.esp",
+      "winner": "The Great City of Winterhold v4.esp",
+      "nativeOwner": "31F6B7:The Great City of Winterhold v4.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "4084C6:The Great City of Winterhold v4.esp",
+      "name": "Chayim and Euthymia's House",
+      "editorId": "WinterholdChayimshouseTGCoWH",
+      "plugin": "The Great City of Winterhold v4.esp",
+      "winner": "The Great City of Winterhold v4.esp",
+      "nativeOwner": "40851F:The Great City of Winterhold v4.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "3247C9:The Great City of Winterhold v4.esp",
+      "name": "Frida's House",
+      "editorId": "WinterholdFridashouseTGCoWH",
+      "plugin": "The Great City of Winterhold v4.esp",
+      "winner": "The Great City of Winterhold v4.esp",
+      "nativeOwner": "3248A2:The Great City of Winterhold v4.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "002575:The Great City of Winterhold v4.esp",
+      "name": "Winterhold Guardhouse",
+      "editorId": "WinterholdGuardhouseTGC",
+      "plugin": "The Great City of Winterhold v4.esp",
+      "winner": "The Great City of Winterhold v4.esp",
+      "nativeOwner": "105178:Skyrim.esm",
+      "status": "non_residential_or_shared_review",
+      "forSale": false
+    },
+    {
+      "cell": "4CDEE7:The Great City of Winterhold v4.esp",
+      "name": "House of Clan Frost-Vein",
+      "editorId": "WinterholdHouseFrostVeinTGCoWH",
+      "plugin": "The Great City of Winterhold v4.esp",
+      "winner": "The Great City of Winterhold v4.esp",
+      "nativeOwner": "00FB72:The Great City of Winterhold v4.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "9E2AA0:Grand Solitude - The Walls of High King Erling.esp",
+      "name": "House of Clan Frost-Will",
+      "editorId": "WSHouseofClanFrostWill",
+      "plugin": "Grand Solitude - The Walls of High King Erling.esp",
+      "winner": "Grand Solitude - New NPCs Disabled.esp",
+      "nativeOwner": "AB6105:Grand Solitude - The Walls of High King Erling.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "1F7639:Grand Solitude - The Walls of High King Erling.esp",
+      "name": "House of Clan Elk-Heart",
+      "editorId": "WSSquallGateHouseofClanElkHeart",
+      "plugin": "Grand Solitude - The Walls of High King Erling.esp",
+      "winner": "Grand Solitude - New NPCs Disabled.esp",
+      "nativeOwner": "AB64ED:Grand Solitude - The Walls of High King Erling.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "9E2AAC:Grand Solitude - The Walls of High King Erling.esp",
+      "name": "House of Clan Snowfire",
+      "editorId": "WSHouseofClanSnowFire",
+      "plugin": "Grand Solitude - The Walls of High King Erling.esp",
+      "winner": "Grand Solitude - New NPCs Disabled.esp",
+      "nativeOwner": "AB6275:Grand Solitude - The Walls of High King Erling.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "A689CD:Grand Solitude - The Walls of High King Erling.esp",
+      "name": "Horst's House",
+      "editorId": "WSHorstsHouse",
+      "plugin": "Grand Solitude - The Walls of High King Erling.esp",
+      "winner": "Grand Solitude - New NPCs Disabled.esp",
+      "nativeOwner": "AB60FF:Grand Solitude - The Walls of High King Erling.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "A6851E:Grand Solitude - The Walls of High King Erling.esp",
+      "name": "Manserand Manor",
+      "editorId": "WSSquallGateManserandManor",
+      "plugin": "Grand Solitude - The Walls of High King Erling.esp",
+      "winner": "Grand Solitude - The Walls of High King Erling.esp",
+      "nativeOwner": null,
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "A688A3:Grand Solitude - The Walls of High King Erling.esp",
+      "name": "Erik's House",
+      "editorId": "WSEriksHouse",
+      "plugin": "Grand Solitude - The Walls of High King Erling.esp",
+      "winner": "Grand Solitude - New NPCs Disabled.esp",
+      "nativeOwner": "AB6002:Grand Solitude - The Walls of High King Erling.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "1F75C5:Grand Solitude - The Walls of High King Erling.esp",
+      "name": "Ulrecht House",
+      "editorId": "WSSquallGateUlrechtHouse",
+      "plugin": "Grand Solitude - The Walls of High King Erling.esp",
+      "winner": "Grand Solitude - New NPCs Disabled.esp",
+      "nativeOwner": "AB6A3D:Grand Solitude - The Walls of High King Erling.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "A68B2E:Grand Solitude - The Walls of High King Erling.esp",
+      "name": "Unvald Family House",
+      "editorId": "WSUnvaldFamilyHouse",
+      "plugin": "Grand Solitude - The Walls of High King Erling.esp",
+      "winner": "Grand Solitude - New NPCs Disabled.esp",
+      "nativeOwner": "AB64DF:Grand Solitude - The Walls of High King Erling.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "1F7469:Grand Solitude - The Walls of High King Erling.esp",
+      "name": "Pepilium Family House",
+      "editorId": "WSPepiliumFamilyHouse",
+      "plugin": "Grand Solitude - The Walls of High King Erling.esp",
+      "winner": "Grand Solitude - New NPCs Disabled.esp",
+      "nativeOwner": "AB62DF:Grand Solitude - The Walls of High King Erling.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "A686C6:Grand Solitude - The Walls of High King Erling.esp",
+      "name": "Giltrius House",
+      "editorId": "WSSquallGateGiltriusHouse",
+      "plugin": "Grand Solitude - The Walls of High King Erling.esp",
+      "winner": "Grand Solitude - New NPCs Disabled.esp",
+      "nativeOwner": "AB64E8:Grand Solitude - The Walls of High King Erling.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "9E2A94:Grand Solitude - The Walls of High King Erling.esp",
+      "name": "Lundgeir's House",
+      "editorId": "WSLundgeirsHouse",
+      "plugin": "Grand Solitude - The Walls of High King Erling.esp",
+      "winner": "Grand Solitude - New NPCs Disabled.esp",
+      "nativeOwner": "AB62DC:Grand Solitude - The Walls of High King Erling.esp",
+      "status": "interior_identified_doors_not_mapped",
+      "forSale": false
+    },
+    {
+      "cell": "1F7795:Grand Solitude - The Walls of High King Erling.esp",
+      "name": "Storm Gate Barracks",
+      "editorId": "WSStormGateGuardhouse",
+      "plugin": "Grand Solitude - The Walls of High King Erling.esp",
+      "winner": "Grand Solitude - The Walls of High King Erling.esp",
+      "nativeOwner": "02EBEE:Skyrim.esm",
+      "status": "non_residential_or_shared_review",
+      "forSale": false
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "project": "Aetherius Residencias",
   "status": "implementation_package_pending_official_integration_and_validation",
-  "reviewDate": "2026-10-19",
+  "reviewDate": "2026-10-20",
   "timezone": "America/Sao_Paulo",
   "scope": "Implementação para entrega aos superiores; integração e implantação por eles no servidor oficial. Laboratório não autorizado para execução.",
   "upstream": {
@@ -67,7 +67,10 @@
     "pollPublished": false,
     "realResidenceCatalogValidated": false,
     "automatedTestsExecuted": false,
-    "deployed": false
+    "deployed": false,
+    "draftResidencesMapped": 12,
+    "catalogStructureChecked": true,
+    "isolatedUiPreviewChecked": true
   },
   "executionTarget": "official_server",
   "localHostRequiresExplicitRequest": true,
@@ -144,10 +147,11 @@
     }
   ],
   "delivery": {
-    "version": "0.1.0",
+    "version": "0.2.0",
     "path": "implementacao",
     "cashWalletIntegrationComplete": false,
     "realKeyConfigured": false,
     "homologated": false
-  }
+  },
+  "catalogProvenance": "implementacao/catalogo/PROVENIENCIA-MAPEAMENTO.json"
 }

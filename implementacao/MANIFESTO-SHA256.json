@@ -1,6 +1,6 @@
 {
-  "version": "0.1.0",
-  "date": "2026-10-19",
+  "version": "0.2.0",
+  "date": "2026-10-20",
   "algorithm": "SHA256",
   "excludes": [
     "MANIFESTO-SHA256.json"
@@ -13,8 +13,108 @@
     },
     {
       "path": "CATALOGO.md",
-      "bytes": 2269,
-      "sha256": "19c3876b0fc87e3033c0e8e0f9384661093122b3ea9bc14efc2350bbf9a2be68"
+      "bytes": 2546,
+      "sha256": "5675582a1ecba3e00f340c5d27611567e983ecf0a7268e4b689064263d6ae779"
+    },
+    {
+      "path": "catalogo/build-catalog.cjs",
+      "bytes": 9640,
+      "sha256": "b1ee0915d7cad6bdd2229d364fd994fcfd79be5aa611f49e81758d864e8417be"
+    },
+    {
+      "path": "catalogo/cadastro-auditado.json",
+      "bytes": 167619,
+      "sha256": "9f72b717ef0f2da5c94064b320f27e21e5ec6569a8486e8217d20bf53e607be1"
+    },
+    {
+      "path": "catalogo/evidencias/bases-containers.jsonl",
+      "bytes": 27502,
+      "sha256": "a91fd66320c6f8bb64daacaca3c920e29dd6d2e5f5fde97261dcfe6189351971"
+    },
+    {
+      "path": "catalogo/evidencias/bases-frostview.jsonl",
+      "bytes": 3968,
+      "sha256": "9be06b4a5aa8be85445eab998b2c2ef11a6f61ad0a34185faf3deeb48ff1b5e3"
+    },
+    {
+      "path": "catalogo/evidencias/celulas-base.jsonl",
+      "bytes": 5960,
+      "sha256": "755296070870c0be9a56c5fc0e1f1f41b832c404c9b9fd9e2df2f41ae2a0bd14"
+    },
+    {
+      "path": "catalogo/evidencias/celulas-cidades.jsonl",
+      "bytes": 21620,
+      "sha256": "ec537b070efaa57bea242d72bd0c64edb9b5a759a0e8ff9a3aabb15d52a9cc8d"
+    },
+    {
+      "path": "catalogo/evidencias/celulas-mods.jsonl",
+      "bytes": 75420,
+      "sha256": "6079b524e273d2b65f0010d5396915624b17250d69cd16b4784289613baaa5b8"
+    },
+    {
+      "path": "catalogo/evidencias/membros-interiores.json",
+      "bytes": 235252,
+      "sha256": "13cd7aa87bfd1fa162516d0ea8093bf0efddafd520f872c10a4b2405d5e665e9"
+    },
+    {
+      "path": "catalogo/evidencias/objetos-frostview.jsonl",
+      "bytes": 6987,
+      "sha256": "986845b7c444cdf07fe2d19bf85a802be7453925c06f7267f59483b8815d277e"
+    },
+    {
+      "path": "catalogo/evidencias/objetos-interiores.jsonl",
+      "bytes": 211009,
+      "sha256": "6f3798e8e172910ceb6c18f8255a2a9b66f7199056fdd60f86530a36119de5ee"
+    },
+    {
+      "path": "catalogo/evidencias/origem-plugins.json",
+      "bytes": 14396,
+      "sha256": "dad29fd320f6b46c6bb402f57068693277deec14ff6edc4b5149b806eb98cb2a"
+    },
+    {
+      "path": "catalogo/evidencias/portas-frostview.jsonl",
+      "bytes": 1489,
+      "sha256": "82b7edef3b88f38ab994b7527b10dc343b30ff8e310e610a5fa1b3715f476561"
+    },
+    {
+      "path": "catalogo/evidencias/portas-parceiras.jsonl",
+      "bytes": 13720,
+      "sha256": "04f71a6aaf3e346e24911a265e9506b865c9196f5af93316d7f4a818a073bfd7"
+    },
+    {
+      "path": "catalogo/fila-de-mapeamento.json",
+      "bytes": 31297,
+      "sha256": "bad4ab3976adf48ac9f0a17ef8f9d06d89267496cc89789e8b16a527525ab75c"
+    },
+    {
+      "path": "catalogo/IMOVEIS.md",
+      "bytes": 1860,
+      "sha256": "35ea657420c8a96242170bd1fd527fa61d5b5034c648630c6e6ba910ae9800c8"
+    },
+    {
+      "path": "catalogo/PROVENIENCIA-MAPEAMENTO.json",
+      "bytes": 15539,
+      "sha256": "10fbf911b9b1ca18225eb0964d8c68b7747095824c8069a10bf5c8bec78cabd0"
+    },
+    {
+      "path": "catalogo/README.md",
+      "bytes": 5160,
+      "sha256": "b73a106b7ee6dbb89dcaacedb7c6fd49fb4bb7bf74ab089576227148ae7cc87c"
+    },
+    {
+      "path": "catalogo/residences.draft.json",
+      "bytes": 6786,
+      "sha256": "f678a769f9b823a36660690e305980d8430d605186ae29d9d747b965db9954c1"
+    },
+    {
+      "path": "catalogo/resumo.json",
+      "bytes": 170,
+      "sha256": "9675f83648e0897f421d1c4df83cc765b7a2c765989a18b75481e765b2152eae"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 1438,
+      "sha256": "195c880440e144d1f3ed3e1e6b092edeefd6a2461c52acf1d0b286e6ecb66b52"
     },
     {
       "path": "ci/residences.yml",
@@ -23,13 +123,13 @@
     },
     {
       "path": "client/residences/app.js",
-      "bytes": 6247,
-      "sha256": "a4f82085d12bbc305dba5eadd27f8f039f0b449c993351d3bc5791df3cf6e442"
+      "bytes": 8658,
+      "sha256": "3f8a0d245969b001299aab98bb9d49fbde1d2ab49e032eb409da9b897561d3eb"
     },
     {
       "path": "client/residences/style.css",
-      "bytes": 835,
-      "sha256": "22e52aa95cafe363ee8a38fe25faf4ffefae1506b8004b6260db9ce31b22f72e"
+      "bytes": 3745,
+      "sha256": "43935fc27f5824f3c3deb4910a5f776e723d3bad39597431d880be6c719e49b3"
     },
     {
       "path": "CONTRATO-DIADEMAS.md",
@@ -48,18 +148,18 @@
     },
     {
       "path": "package.json",
-      "bytes": 299,
-      "sha256": "37f805b384e60f4b55924f643af10540b91c5309ef8a56f4ccf54a0065fe2721"
+      "bytes": 317,
+      "sha256": "d701540789fc62098de9d24d449939ee5a66181316f1d2d13cae377b2d8db51a"
     },
     {
       "path": "PROVENIENCIA.json",
-      "bytes": 3835,
-      "sha256": "eb0100159448b3d3ae9acc0ca589f850057b0e181ad2fad17b0e9eae22e9f61c"
+      "bytes": 4250,
+      "sha256": "e53b903415b58093dec04480bbbe1f2f53690ad2c7a770f29f3fe2a8fd052399"
     },
     {
       "path": "README.md",
-      "bytes": 9001,
-      "sha256": "e46977960775cd54e3524e36d12683d10b5478abbf7e8e4c37d1b10e6a955b98"
+      "bytes": 10001,
+      "sha256": "79a8e5dad8ae2b50a7f8a971fbcbdcbe98ac682553de85e3dfc36aa2c03d48e0"
     },
     {
       "path": "server/config/residences.json",
@@ -110,6 +210,11 @@
       "path": "tests/postgres.test.cjs",
       "bytes": 9989,
       "sha256": "353a194af8709a5fce9c67bbaca0d22b157524d1d8b8e1209b0d199906da0aa8"
+    },
+    {
+      "path": "tests/ui.test.cjs",
+      "bytes": 4894,
+      "sha256": "0abf9ac10bfeaae1def076612c0d0f2271c23e9936daf4dcff83c09c9f150135"
     },
     {
       "path": "tests/unit.test.cjs",

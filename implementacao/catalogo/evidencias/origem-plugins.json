@@ -1,0 +1,689 @@
+{
+  "profile": "AETHERIUS - PERFORMANCE",
+  "read_incomplete": false,
+  "bsa_failures": [],
+  "bsa_failures_omitted": 0,
+  "warnings": [
+    "could not read the [Archive] sResourceArchiveList from a Skyrim.ini (looked in the profile folder and the game dir) — the base-game BSAs (Skyrim - Textures*.bsa, etc.) are NOT in the asset scan, so an asset present ONLY in a vanilla archive may read as absent. If your MO2 uses profile-specific INIs, make sure the active profile has a Skyrim.ini."
+  ],
+  "warnings_omitted": 0,
+  "selector_notes": [],
+  "selector_notes_omitted": 0,
+  "results": [
+    {
+      "path": "Alchemy Requires Bottles Redux.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "ALCHEMY OVERHAUL",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "ALCHEMY OVERHAUL",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "Amber Guard.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Amber Guard",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Amber Guard",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "Amol Village.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Amol Village",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Amol Village",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "AnotherOakwood.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Oakwood",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Oakwood",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "ccBGSSSE001-Fish.esm",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "CreationClubContent",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "CreationClubContent",
+          "kind": "loose"
+        },
+        {
+          "name": "Data",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": true
+    },
+    {
+      "path": "COTN - Falkreath.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Cities of the North - Falkreath",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Cities of the North - Falkreath",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "COTN Falkreath - Embers XD Patch.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Cities of the North - Falkreath Patch Collection",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Cities of the North - Falkreath Patch Collection",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "Dragonborn.esm",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Data",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Data",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "Dunpar Wall.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Dunpar Wall",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Dunpar Wall",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "Embers XD.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Embers XD",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Embers XD",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "Falkhurst.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Falkhurst",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Falkhurst",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "GlassMaking&Recycling.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "ALCHEMY OVERHAUL",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "ALCHEMY OVERHAUL",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "Grand Solitude - New NPCs Disabled.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Grand Solitude - New NPCs Disabled",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Grand Solitude - New NPCs Disabled",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "Grand Solitude - The Walls of High King Erling.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Grand Solitude - The Walls of High King Erling",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Grand Solitude - The Walls of High King Erling",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "Granite Hill.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Granite Hill Village",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Granite Hill Village",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "Granitehall.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Granitehall",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Granitehall",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "Greymoor.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Greymoor",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Greymoor",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "HearthFires.esm",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Data",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Data",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "Iggath.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Iggath",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Iggath",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "Interesting Locations.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Interesting Locations",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Interesting Locations",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "JKs Skyrim.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "JK's Skyrim",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "JK's Skyrim",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "Lainalten.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Lainalten",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Lainalten",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "Laintar Dale.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Laintar Dale",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Laintar Dale",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "Neugrad.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Neugrad",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Neugrad",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "New Weynon.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "New Weynon",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "New Weynon",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "North Keep Ownership Flagged.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "SupportEgirl's Patch Hub",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "SupportEgirl's Patch Hub",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "North Keep.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Northkeep",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Northkeep",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "Northern Roads - Neugrad Patch.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Northern Roads - Patches Compendium",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Northern Roads - Patches Compendium",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "Open World Loot.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Open World Loot - Encounter Zone and Loot Overhaul",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Open World Loot - Encounter Zone and Loot Overhaul",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "Reich Corigate.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Reich Corigate",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Reich Corigate",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "Shadows.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Window Shadows RT Updated",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Window Shadows RT Updated",
+          "kind": "loose"
+        },
+        {
+          "name": "Window Shadows RT",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": true
+    },
+    {
+      "path": "Skyrim.esm",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Data",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Data",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "Stonehills.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Stonehills",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Stonehills",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "Sunthgat.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Sunthgat",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Sunthgat",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "TGC Winterhold - Embers XD patch.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "The Great City of Winterhold Patch Collection",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "The Great City of Winterhold Patch Collection",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "The Great City of Winterhold v4.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "The Great City Of Winterhold SSE Edition",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "The Great City Of Winterhold SSE Edition",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "unofficial skyrim special edition patch.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Unofficial Skyrim Special Edition Patch - USSEP",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Unofficial Skyrim Special Edition Patch - USSEP",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "Update.esm",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Data",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Data",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "Vernim Wood.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Vernim Wood",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Vernim Wood",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "Vokrii - Minimalistic Perks of Skyrim.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Vokrii - Minimalistic Perks of Skyrim",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Vokrii - Minimalistic Perks of Skyrim",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    },
+    {
+      "path": "weapons armor clothing & clutter fixes.esp",
+      "error": null,
+      "exists": true,
+      "winner": {
+        "name": "Weapons Armor Clothing and Clutter Fixes",
+        "kind": "loose"
+      },
+      "providers": [
+        {
+          "name": "Weapons Armor Clothing and Clutter Fixes",
+          "kind": "loose"
+        }
+      ],
+      "ambiguous": false
+    }
+  ],
+  "accounting": {
+    "total": 41,
+    "rendered": 41,
+    "skipped": 0,
+    "capped": 0,
+    "truncated": 0,
+    "offset": 0,
+    "remaining": 0,
+    "notes": 0
+  },
+  "truncated": false
+}

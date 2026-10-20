@@ -1,0 +1,529 @@
+{
+  "date": "2026-10-20",
+  "housecarlEpoch": "e2-7f6816a2cb626d27",
+  "receivedSourceDate": "2026-10-09",
+  "liveDeploymentVerified": false,
+  "note": "Hashes dos arquivos disponíveis para comparação pelos responsáveis; igualdade da ordem não comprova igualdade dos binários no servidor. Dois provedores ambíguos permanecem explicitamente listados.",
+  "profiles": [
+    {
+      "name": "AETHERIUS - PERFORMANCE",
+      "receivedActiveCount": 413,
+      "sourceActiveCount": 413,
+      "activeOrderMatches": true,
+      "receivedFileSha256": "1a38547e0f77128a9cd8bbd9effba6b01ef773689eb50ff17a064833c4e077b0",
+      "sourceFileSha256": "a6242b0aab7267bb47a21e0239120cc1dc1ef2f25d82780b1335ea08bfdf4867"
+    },
+    {
+      "name": "AETHERIUS - GRAFICO - QUALIDADE",
+      "receivedActiveCount": 413,
+      "sourceActiveCount": 413,
+      "activeOrderMatches": true,
+      "receivedFileSha256": "d14213c792c55918efb7520235a19eaab075e3cd637d047ae37dfad334daf36e",
+      "sourceFileSha256": "d14213c792c55918efb7520235a19eaab075e3cd637d047ae37dfad334daf36e"
+    }
+  ],
+  "plugins": [
+    {
+      "plugin": "Alchemy Requires Bottles Redux.esp",
+      "reportedWinner": "ALCHEMY OVERHAUL",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "ALCHEMY OVERHAUL",
+          "sha256": "1129d9b6b7162278383a6573e3b7c38a6620db900e225d1173a4abb10debf8c5",
+          "bytes": 14105
+        }
+      ]
+    },
+    {
+      "plugin": "Amber Guard.esp",
+      "reportedWinner": "Amber Guard",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Amber Guard",
+          "sha256": "2a19c0894a1a0bc5420c1a54918fe8c92d77bd2dea41eed5537e2975a1ac7239",
+          "bytes": 1537118
+        }
+      ]
+    },
+    {
+      "plugin": "Amol Village.esp",
+      "reportedWinner": "Amol Village",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Amol Village",
+          "sha256": "9c5d3b9ed39e514809e9cefe7cff83f8710a60ea248525fbcf8bff5ad3e7b958",
+          "bytes": 381153
+        }
+      ]
+    },
+    {
+      "plugin": "AnotherOakwood.esp",
+      "reportedWinner": "Oakwood",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Oakwood",
+          "sha256": "e29668024dc76c1dfb8e3724448522ae1b8853815cc221c5f0024e433d2b2264",
+          "bytes": 844208
+        }
+      ]
+    },
+    {
+      "plugin": "ccBGSSSE001-Fish.esm",
+      "reportedWinner": "CreationClubContent",
+      "ambiguous": true,
+      "providers": [
+        {
+          "mod": "CreationClubContent",
+          "sha256": "0036c3bb38754d1681529f6f828987506efbecc97fe6008753ac05e7c6738fff",
+          "bytes": 1425176
+        },
+        {
+          "mod": "Data",
+          "sha256": "0036c3bb38754d1681529f6f828987506efbecc97fe6008753ac05e7c6738fff",
+          "bytes": 1425176
+        }
+      ]
+    },
+    {
+      "plugin": "COTN - Falkreath.esp",
+      "reportedWinner": "Cities of the North - Falkreath",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Cities of the North - Falkreath",
+          "sha256": "96d5bcea3ba204f8a1f68454a6cfb2e4ae76fc8249171518c4891805c13066ed",
+          "bytes": 980039
+        }
+      ]
+    },
+    {
+      "plugin": "COTN Falkreath - Embers XD Patch.esp",
+      "reportedWinner": "Cities of the North - Falkreath Patch Collection",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Cities of the North - Falkreath Patch Collection",
+          "sha256": "16718310d31e8f84d0ca446386e47b6ea2acbd08d7be89084331781891479dc8",
+          "bytes": 59193
+        }
+      ]
+    },
+    {
+      "plugin": "Dragonborn.esm",
+      "reportedWinner": "Data",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Data",
+          "sha256": "635f21a938a17b8677f524cf41210933afc7f23820f2e210ab3bb6d3cd837046",
+          "bytes": 64664159
+        }
+      ]
+    },
+    {
+      "plugin": "Dunpar Wall.esp",
+      "reportedWinner": "Dunpar Wall",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Dunpar Wall",
+          "sha256": "c3d6cc67c1f4ccc683820a267d0ceb1bb0a8f16c5f4cd1fe06ffd8ff0d267550",
+          "bytes": 474705
+        }
+      ]
+    },
+    {
+      "plugin": "Embers XD.esp",
+      "reportedWinner": "Embers XD",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Embers XD",
+          "sha256": "70e089e6841a63444aa96bc8bccc26351862c0512e139c575c91a14598f58ff3",
+          "bytes": 259127
+        }
+      ]
+    },
+    {
+      "plugin": "Falkhurst.esp",
+      "reportedWinner": "Falkhurst",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Falkhurst",
+          "sha256": "71d9442f145c5d75be1982467d4e1786dffd7974438589c2ec5159c8cfba8c4d",
+          "bytes": 469295
+        }
+      ]
+    },
+    {
+      "plugin": "GlassMaking&Recycling.esp",
+      "reportedWinner": "ALCHEMY OVERHAUL",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "ALCHEMY OVERHAUL",
+          "sha256": "fa6ffeca0cd6b55f64cbd8d833640788e18d4a64c911f68a0d2b89002a27333a",
+          "bytes": 33979
+        }
+      ]
+    },
+    {
+      "plugin": "Grand Solitude - New NPCs Disabled.esp",
+      "reportedWinner": "Grand Solitude - New NPCs Disabled",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Grand Solitude - New NPCs Disabled",
+          "sha256": "a6a8a17cf620f5e6a9f57351e864900a586ee64991a056c7709fbc1fd5c2a356",
+          "bytes": 17683
+        }
+      ]
+    },
+    {
+      "plugin": "Grand Solitude - The Walls of High King Erling.esp",
+      "reportedWinner": "Grand Solitude - The Walls of High King Erling",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Grand Solitude - The Walls of High King Erling",
+          "sha256": "d5aa79a7492b29d82a8b688343a593bd54296b02a7f3a2e2ddafd288d5694b97",
+          "bytes": 2604369
+        }
+      ]
+    },
+    {
+      "plugin": "Granite Hill.esp",
+      "reportedWinner": "Granite Hill Village",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Granite Hill Village",
+          "sha256": "ba80e9d4fc721bec37bc421683136e1884b4d4c2f494b3f8149f56f68875fdd4",
+          "bytes": 689737
+        }
+      ]
+    },
+    {
+      "plugin": "Granitehall.esp",
+      "reportedWinner": "Granitehall",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Granitehall",
+          "sha256": "e2bb30f7370ceb335f142c9d4b18aa18b30665fef184ea0c535b5498835c2fc1",
+          "bytes": 452014
+        }
+      ]
+    },
+    {
+      "plugin": "Greymoor.esp",
+      "reportedWinner": "Greymoor",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Greymoor",
+          "sha256": "c3da279b0ca5e74ce2688b4693cf6cf1529861a91d982e7771e73e197131d2dd",
+          "bytes": 363790
+        }
+      ]
+    },
+    {
+      "plugin": "HearthFires.esm",
+      "reportedWinner": "Data",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Data",
+          "sha256": "0f681496771e6d1983c6c1c9dd6602964068837f015bfa21e69a149c3b050047",
+          "bytes": 3979105
+        }
+      ]
+    },
+    {
+      "plugin": "Iggath.esp",
+      "reportedWinner": "Iggath",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Iggath",
+          "sha256": "1a2601546ff3fdefe75fa3e632594873207babe43a8c3a8ffb5d0de8807c0ce5",
+          "bytes": 305269
+        }
+      ]
+    },
+    {
+      "plugin": "Interesting Locations.esp",
+      "reportedWinner": "Interesting Locations",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Interesting Locations",
+          "sha256": "4bb3541758ea2b84fd6681b8d11a909ff870418f0a56d14546bc8280962d8642",
+          "bytes": 1218888
+        }
+      ]
+    },
+    {
+      "plugin": "JKs Skyrim.esp",
+      "reportedWinner": "JK's Skyrim",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "JK's Skyrim",
+          "sha256": "6f0e2551017806ad9ab7acb074003a81457fa9606ab5e7b2833a862ce393f646",
+          "bytes": 3157818
+        }
+      ]
+    },
+    {
+      "plugin": "Lainalten.esp",
+      "reportedWinner": "Lainalten",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Lainalten",
+          "sha256": "0662fce098a3d8e28cbd2c7247ffd8302299caa326db452c0eee802a000379a5",
+          "bytes": 355463
+        }
+      ]
+    },
+    {
+      "plugin": "Laintar Dale.esp",
+      "reportedWinner": "Laintar Dale",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Laintar Dale",
+          "sha256": "e7fdf98a21eff9cbe0bdd4a71e30d0161848137e1cdb4e6199945287f447f5fa",
+          "bytes": 788075
+        }
+      ]
+    },
+    {
+      "plugin": "Neugrad.esp",
+      "reportedWinner": "Neugrad",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Neugrad",
+          "sha256": "b897b02d52a0afe69bd1220e841917e5660d539462dc47e3d83a34976a7d6499",
+          "bytes": 1403841
+        }
+      ]
+    },
+    {
+      "plugin": "New Weynon.esp",
+      "reportedWinner": "New Weynon",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "New Weynon",
+          "sha256": "5d7e43a9bed01c0f2f6982d1691fc2c3a54a8433f4d15de2015b985d61809b99",
+          "bytes": 317075
+        }
+      ]
+    },
+    {
+      "plugin": "North Keep Ownership Flagged.esp",
+      "reportedWinner": "SupportEgirl's Patch Hub",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "SupportEgirl's Patch Hub",
+          "sha256": "e3dadfd334af67d087124bbc7404e7b917c9318f05125faa3cd42c20a9ad9479",
+          "bytes": 52579
+        }
+      ]
+    },
+    {
+      "plugin": "North Keep.esp",
+      "reportedWinner": "Northkeep",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Northkeep",
+          "sha256": "f3cf4a95e722fb04d86546fadffb7d094cc9106c56e410d4773be88747a3621d",
+          "bytes": 618213
+        }
+      ]
+    },
+    {
+      "plugin": "Northern Roads - Neugrad Patch.esp",
+      "reportedWinner": "Northern Roads - Patches Compendium",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Northern Roads - Patches Compendium",
+          "sha256": "ee1cf9fb62c065e0011654912511ae1994593463b80eeb333c711568613f6a31",
+          "bytes": 99103
+        }
+      ]
+    },
+    {
+      "plugin": "Open World Loot.esp",
+      "reportedWinner": "Open World Loot - Encounter Zone and Loot Overhaul",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Open World Loot - Encounter Zone and Loot Overhaul",
+          "sha256": "d98a1581653a326fc12db8a1faa9c98fa76dff384a8f7be9aec532d3f24360ac",
+          "bytes": 424917
+        }
+      ]
+    },
+    {
+      "plugin": "Reich Corigate.esp",
+      "reportedWinner": "Reich Corigate",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Reich Corigate",
+          "sha256": "2216752d0a48169cc3b7c2d9197d0af5b458b5f091a92ff46e5dff785bc4dd2c",
+          "bytes": 591743
+        }
+      ]
+    },
+    {
+      "plugin": "Shadows.esp",
+      "reportedWinner": "Window Shadows RT Updated",
+      "ambiguous": true,
+      "providers": [
+        {
+          "mod": "Window Shadows RT Updated",
+          "sha256": "9661eaf10a1d8c0dbe0f411c3fb10332660b966ad0a808e6dbd70e34ea46e11f",
+          "bytes": 1027239
+        },
+        {
+          "mod": "Window Shadows RT",
+          "sha256": "001a52b261f5c91c3bbbde9ed93a2801e132bae7dd28de99a2234f79101f5a5f",
+          "bytes": 974673
+        }
+      ]
+    },
+    {
+      "plugin": "Skyrim.esm",
+      "reportedWinner": "Data",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Data",
+          "sha256": "e198c3b85e5e48e0c92a6580d8f66e644256b68d812ee32b61735cf9b753df73",
+          "bytes": 249752131
+        }
+      ]
+    },
+    {
+      "plugin": "Stonehills.esp",
+      "reportedWinner": "Stonehills",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Stonehills",
+          "sha256": "7dcc681e882718611d6557e5238d2cd913d7b9f0c3c9bc040e3399dbd760f141",
+          "bytes": 480433
+        }
+      ]
+    },
+    {
+      "plugin": "Sunthgat.esp",
+      "reportedWinner": "Sunthgat",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Sunthgat",
+          "sha256": "357877750ace9e936f61e2c3e21e278b75deac2869f7af50564cc7bf16a18885",
+          "bytes": 260479
+        }
+      ]
+    },
+    {
+      "plugin": "TGC Winterhold - Embers XD patch.esp",
+      "reportedWinner": "The Great City of Winterhold Patch Collection",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "The Great City of Winterhold Patch Collection",
+          "sha256": "4645bb45298a72c151caed948e4590120d5b18f482826bde1169f033ed933bd3",
+          "bytes": 3090
+        }
+      ]
+    },
+    {
+      "plugin": "The Great City of Winterhold v4.esp",
+      "reportedWinner": "The Great City Of Winterhold SSE Edition",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "The Great City Of Winterhold SSE Edition",
+          "sha256": "fc8a6add1f1218a93b12d6ed3452cfbd78b35ad9f7d30dddf559ac11783faed4",
+          "bytes": 1478587
+        }
+      ]
+    },
+    {
+      "plugin": "unofficial skyrim special edition patch.esp",
+      "reportedWinner": "Unofficial Skyrim Special Edition Patch - USSEP",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Unofficial Skyrim Special Edition Patch - USSEP",
+          "sha256": "2df73db3622005e04470e3603f804e2fd855ae932a9847073f386bd8013e9d98",
+          "bytes": 21106651
+        }
+      ]
+    },
+    {
+      "plugin": "Update.esm",
+      "reportedWinner": "Data",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Data",
+          "sha256": "b298b0f65fa0127fd13c1f5ef6bb30eaf9d21fd19f5e6f8f91f829c9007d3280",
+          "bytes": 19121864
+        }
+      ]
+    },
+    {
+      "plugin": "Vernim Wood.esp",
+      "reportedWinner": "Vernim Wood",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Vernim Wood",
+          "sha256": "f41a7c1778efc3e47a7709b2c51cd3f920d8ac29de8b617cccc700b2e70d248d",
+          "bytes": 1082991
+        }
+      ]
+    },
+    {
+      "plugin": "Vokrii - Minimalistic Perks of Skyrim.esp",
+      "reportedWinner": "Vokrii - Minimalistic Perks of Skyrim",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Vokrii - Minimalistic Perks of Skyrim",
+          "sha256": "6d60ef6e669ea4f388c01918164092fda174bd70a13fe4cdc7cfb566d3729f1c",
+          "bytes": 621166
+        }
+      ]
+    },
+    {
+      "plugin": "weapons armor clothing & clutter fixes.esp",
+      "reportedWinner": "Weapons Armor Clothing and Clutter Fixes",
+      "ambiguous": false,
+      "providers": [
+        {
+          "mod": "Weapons Armor Clothing and Clutter Fixes",
+          "sha256": "a2e9169b7f9e27cf6d679a75f852410d3e436ae6d5af54b50629cbf4e1b29a47",
+          "bytes": 3117323
+        }
+      ]
+    }
+  ]
+}

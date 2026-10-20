@@ -1,0 +1,4982 @@
+{
+  "date": "2026-10-20",
+  "liveDeploymentVerified": false,
+  "requiresConfirmation": true,
+  "residences": [
+    {
+      "id": "breezehome",
+      "name": "Breezehome",
+      "origin": "base",
+      "cell": "0165A8:Skyrim.esm",
+      "cellEditorId": "WhiterunBreezehome",
+      "cellWinner": "Embers XD.esp",
+      "nativeCellOwner": null,
+      "declaredObjects": 532,
+      "placedNpcs": [
+        "0A2C94:Skyrim.esm"
+      ],
+      "doorPairs": [
+        {
+          "entry": "01A6F9:Skyrim.esm",
+          "exit": "0166A9:Skyrim.esm",
+          "reciprocal": true,
+          "exterior": true,
+          "structurallyUsable": true,
+          "entryCell": "01A270:Skyrim.esm",
+          "entryWinner": "HearthFires.esm",
+          "exitWinner": "HearthFires.esm",
+          "nativeKey": null,
+          "nativeLock": null,
+          "nativeOwner": null,
+          "entryEnableParent": null,
+          "exitEnableParent": null
+        }
+      ],
+      "nonTeleportDoors": [
+        "00426C:HearthFires.esm",
+        "0CB4A4:Skyrim.esm",
+        "0CB4A5:Skyrim.esm",
+        "0CB4A6:Skyrim.esm"
+      ],
+      "containers": [
+        {
+          "reference": "004265:HearthFires.esm",
+          "base": "0F3923:Skyrim.esm",
+          "baseEditorId": "PlayerHouseChest",
+          "baseFlags": "0",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": "000007:Skyrim.esm",
+          "enableParent": "004274:HearthFires.esm",
+          "excludedReasons": [
+            "conditional_enable_parent"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "004271:HearthFires.esm",
+          "base": "020673:Skyrim.esm",
+          "baseEditorId": "TreasBanditChestEMPTY",
+          "baseFlags": "Respawns",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "004274:HearthFires.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "03EE69:Skyrim.esm",
+          "base": "024CA4:Skyrim.esm",
+          "baseEditorId": "Cupboard01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0E4EC9:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "03EE76:Skyrim.esm",
+          "base": "000845:Skyrim.esm",
+          "baseEditorId": "BarrelFood01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "Interesting Locations.esp",
+          "owner": null,
+          "enableParent": "0E4EC8:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0CB42D:Skyrim.esm",
+          "base": "024CA6:Skyrim.esm",
+          "baseEditorId": "EndTable01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0C6E3A:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0CB42E:Skyrim.esm",
+          "base": "024CA6:Skyrim.esm",
+          "baseEditorId": "EndTable01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0C6E3A:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0CB432:Skyrim.esm",
+          "base": "024CA5:Skyrim.esm",
+          "baseEditorId": "Dresser01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0C6E3A:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0CB433:Skyrim.esm",
+          "base": "024CA5:Skyrim.esm",
+          "baseEditorId": "Dresser01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0E4ECA:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0CB435:Skyrim.esm",
+          "base": "024CA6:Skyrim.esm",
+          "baseEditorId": "EndTable01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "unofficial skyrim special edition patch.esp",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0E4ECA:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0CB437:Skyrim.esm",
+          "base": "0C4D4E:Skyrim.esm",
+          "baseEditorId": "NobleCupboard01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0C6E39:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0CB43A:Skyrim.esm",
+          "base": "0C2A06:Skyrim.esm",
+          "baseEditorId": "NobleNightTable01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0C6E3A:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0CB442:Skyrim.esm",
+          "base": "0C4D4E:Skyrim.esm",
+          "baseEditorId": "NobleCupboard01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0C6E3B:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0CB45D:Skyrim.esm",
+          "base": "097F68:Skyrim.esm",
+          "baseEditorId": "MiscSack02LargeFlat",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0C6E3C:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0CB45E:Skyrim.esm",
+          "base": "097F68:Skyrim.esm",
+          "baseEditorId": "MiscSack02LargeFlat",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0C6E3C:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0CB46C:Skyrim.esm",
+          "base": "097F6A:Skyrim.esm",
+          "baseEditorId": "MiscSack02SmallFlat",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0C6E3B:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0CB46D:Skyrim.esm",
+          "base": "097F6A:Skyrim.esm",
+          "baseEditorId": "MiscSack02SmallFlat",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0C6E3B:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0CB4C9:Skyrim.esm",
+          "base": "097F68:Skyrim.esm",
+          "baseEditorId": "MiscSack02LargeFlat",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E4ECA:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0F3922:Skyrim.esm",
+          "base": "0F3923:Skyrim.esm",
+          "baseEditorId": "PlayerHouseChest",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [],
+          "suggestedForDraft": true
+        },
+        {
+          "reference": "102A59:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0C6E3B:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102A6C:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0C6E3B:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102A81:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E4EC8:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102A8F:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E4EC8:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "109E0D:Skyrim.esm",
+          "base": "05AF47:unofficial skyrim special edition patch.esp",
+          "baseEditorId": "USKPTreasAlchemySatchelRareNoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "unofficial skyrim special edition patch.esp",
+          "baseWinner": "unofficial skyrim special edition patch.esp",
+          "owner": null,
+          "enableParent": "0E4EC8:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "10EB84:Skyrim.esm",
+          "base": "0F3923:Skyrim.esm",
+          "baseEditorId": "PlayerHouseChest",
+          "baseFlags": "0",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": "000007:Skyrim.esm",
+          "enableParent": "0E4EC8:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent"
+          ],
+          "suggestedForDraft": false
+        }
+      ],
+      "pending": [
+        "Confirmar hashes/revisão dos plugins no servidor e no cliente.",
+        "Aprovar comercialização, nome exibido e preços em Septims/Diademas.",
+        "Conferir todas as rotas de acesso no jogo e a coexistência com missões, NPCs e propriedade nativa.",
+        "Homologar fechadura nativa, chave dedicada, persistência e reset dos recipientes.",
+        "Integrar carteira oficial de Diademas antes de habilitar cash.",
+        "Os recipientes excluídos ficam fora da proteção; decidir remoção, bloqueio ou adaptação antes de vender."
+      ],
+      "status": "mapped_pending_official_confirmation",
+      "draft": {
+        "id": "breezehome",
+        "name": "Breezehome",
+        "revision": 1,
+        "forSale": false,
+        "prices": {},
+        "refs": [
+          {
+            "desc": "01A6F9:Skyrim.esm",
+            "kind": "entry",
+            "partner": "0166A9:Skyrim.esm"
+          },
+          {
+            "desc": "0166A9:Skyrim.esm",
+            "kind": "exit",
+            "partner": "01A6F9:Skyrim.esm"
+          },
+          {
+            "desc": "0F3922:Skyrim.esm",
+            "kind": "container"
+          }
+        ]
+      }
+    },
+    {
+      "id": "vlindrel-hall",
+      "name": "Vlindrel Hall",
+      "origin": "base",
+      "cell": "016DFA:Skyrim.esm",
+      "cellEditorId": "MarkarthVlindrelHall",
+      "cellWinner": "Shadows.esp",
+      "nativeCellOwner": null,
+      "declaredObjects": 1436,
+      "placedNpcs": [
+        "0A2C92:Skyrim.esm",
+        "102D4C:Skyrim.esm"
+      ],
+      "doorPairs": [
+        {
+          "entry": "07BDBD:Skyrim.esm",
+          "exit": "077D5B:Skyrim.esm",
+          "reciprocal": true,
+          "exterior": true,
+          "structurallyUsable": true,
+          "entryCell": "016E02:Skyrim.esm",
+          "entryWinner": "JKs Skyrim.esp",
+          "exitWinner": "Skyrim.esm",
+          "nativeKey": null,
+          "nativeLock": null,
+          "nativeOwner": "000DB1:Skyrim.esm",
+          "entryEnableParent": null,
+          "exitEnableParent": null
+        }
+      ],
+      "nonTeleportDoors": [
+        "0D94D3:Skyrim.esm",
+        "0E1586:Skyrim.esm",
+        "0E1587:Skyrim.esm",
+        "0E2D4C:Skyrim.esm",
+        "0E2D4D:Skyrim.esm",
+        "102D43:Skyrim.esm",
+        "102D46:Skyrim.esm"
+      ],
+      "containers": [
+        {
+          "reference": "0041EF:HearthFires.esm",
+          "base": "004111:HearthFires.esm",
+          "baseEditorId": "TreasSatchelEMPTY",
+          "baseFlags": "0",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "unofficial skyrim special edition patch.esp",
+          "owner": null,
+          "enableParent": "004206:HearthFires.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0041FF:HearthFires.esm",
+          "base": "021366:Skyrim.esm",
+          "baseEditorId": "UpperEndTable01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "004206:HearthFires.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "004200:HearthFires.esm",
+          "base": "021362:Skyrim.esm",
+          "baseEditorId": "UpperWardrobe01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "004206:HearthFires.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "004202:HearthFires.esm",
+          "base": "01D13C:Skyrim.esm",
+          "baseEditorId": "TreasUpperChestEMPTY",
+          "baseFlags": "Respawns",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "004206:HearthFires.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "077CAB:Skyrim.esm",
+          "base": "0F3923:Skyrim.esm",
+          "baseEditorId": "PlayerHouseChest",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [],
+          "suggestedForDraft": true
+        },
+        {
+          "reference": "077CB3:Skyrim.esm",
+          "base": "000845:Skyrim.esm",
+          "baseEditorId": "BarrelFood01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "unofficial skyrim special edition patch.esp",
+          "baseWinner": "Interesting Locations.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "077CC6:Skyrim.esm",
+          "base": "021364:Skyrim.esm",
+          "baseEditorId": "UpperCupboard01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0E2D54:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0C6450:Skyrim.esm",
+          "base": "0C644C:Skyrim.esm",
+          "baseEditorId": "MerchantSpouseApothecaryChest",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Alchemy Requires Bottles Redux.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0C6451:Skyrim.esm",
+          "base": "0C644B:Skyrim.esm",
+          "baseEditorId": "MerchantSpouseBlacksmithChest",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "unofficial skyrim special edition patch.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0C6452:Skyrim.esm",
+          "base": "0C644D:Skyrim.esm",
+          "baseEditorId": "MerchantSpouseInnkeeperChest",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0C6453:Skyrim.esm",
+          "base": "0C644F:Skyrim.esm",
+          "baseEditorId": "MerchantSpouseMiscVendorChest",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "unofficial skyrim special edition patch.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0C6454:Skyrim.esm",
+          "base": "0C644E:Skyrim.esm",
+          "baseEditorId": "MerchantSpouseSpellsChest",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "unofficial skyrim special edition patch.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DC602:Skyrim.esm",
+          "base": "021365:Skyrim.esm",
+          "baseEditorId": "UpperDresser01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0E2D52:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DC678:Skyrim.esm",
+          "base": "021366:Skyrim.esm",
+          "baseEditorId": "UpperEndTable01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0E2D54:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DC67E:Skyrim.esm",
+          "base": "000845:Skyrim.esm",
+          "baseEditorId": "BarrelFood01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Interesting Locations.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DC683:Skyrim.esm",
+          "base": "021365:Skyrim.esm",
+          "baseEditorId": "UpperDresser01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0E2D53:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DC6B0:Skyrim.esm",
+          "base": "097F68:Skyrim.esm",
+          "baseEditorId": "MiscSack02LargeFlat",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DC6B1:Skyrim.esm",
+          "base": "097F64:Skyrim.esm",
+          "baseEditorId": "MiscSack02Large",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DC6B2:Skyrim.esm",
+          "base": "097F6C:Skyrim.esm",
+          "baseEditorId": "MiscSackLargeFlat01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E157F:Skyrim.esm",
+          "base": "0C4D4E:Skyrim.esm",
+          "baseEditorId": "NobleCupboard01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0E2D53:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E15AD:Skyrim.esm",
+          "base": "097F6E:Skyrim.esm",
+          "baseEditorId": "MiscSackLargeFlat02",
+          "baseFlags": "0",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "004205:HearthFires.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E15AE:Skyrim.esm",
+          "base": "097F68:Skyrim.esm",
+          "baseEditorId": "MiscSack02LargeFlat",
+          "baseFlags": "0",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "004205:HearthFires.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E15AF:Skyrim.esm",
+          "base": "08836B:Skyrim.esm",
+          "baseEditorId": "MeadBarrel02",
+          "baseFlags": "0",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "004205:HearthFires.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E15C4:Skyrim.esm",
+          "base": "021366:Skyrim.esm",
+          "baseEditorId": "UpperEndTable01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0E2D53:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E2DEC:Skyrim.esm",
+          "base": "097F68:Skyrim.esm",
+          "baseEditorId": "MiscSack02LargeFlat",
+          "baseFlags": "0",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "004205:HearthFires.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E2E2F:Skyrim.esm",
+          "base": "092B13:Skyrim.esm",
+          "baseEditorId": "BarrelIngredientUncommon01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "GlassMaking&Recycling.esp",
+          "owner": null,
+          "enableParent": "0E2D55:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E2E30:Skyrim.esm",
+          "base": "0AF6AE:Skyrim.esm",
+          "baseEditorId": "TreasAlchemySatchelUncommon",
+          "baseFlags": "Respawns",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E2D55:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E2E5A:Skyrim.esm",
+          "base": "06B303:Skyrim.esm",
+          "baseEditorId": "NobleWardrobe01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0E2D52:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E2E5B:Skyrim.esm",
+          "base": "0C4D4E:Skyrim.esm",
+          "baseEditorId": "NobleCupboard01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0E2D52:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E2E5C:Skyrim.esm",
+          "base": "0C4D4E:Skyrim.esm",
+          "baseEditorId": "NobleCupboard01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0E2D52:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E2E5D:Skyrim.esm",
+          "base": "0C2A04:Skyrim.esm",
+          "baseEditorId": "NobleChestDrawers02",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0E2D52:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E2E62:Skyrim.esm",
+          "base": "0C4D4E:Skyrim.esm",
+          "baseEditorId": "NobleCupboard01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0E2D52:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E2E65:Skyrim.esm",
+          "base": "0C4D4E:Skyrim.esm",
+          "baseEditorId": "NobleCupboard01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0E2D52:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E2E98:Skyrim.esm",
+          "base": "097F6A:Skyrim.esm",
+          "baseEditorId": "MiscSack02SmallFlat",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E2D52:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E2E99:Skyrim.esm",
+          "base": "097F6C:Skyrim.esm",
+          "baseEditorId": "MiscSackLargeFlat01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E2D52:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E2E9A:Skyrim.esm",
+          "base": "097F66:Skyrim.esm",
+          "baseEditorId": "MiscSack02Small",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E2D52:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E2ECE:Skyrim.esm",
+          "base": "021365:Skyrim.esm",
+          "baseEditorId": "UpperDresser01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0E2D54:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E3C8B:Skyrim.esm",
+          "base": "000845:Skyrim.esm",
+          "baseEditorId": "BarrelFood01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Interesting Locations.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102C4E:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E2D53:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102C64:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E2D53:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102C7E:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E2D53:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102C95:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E2D53:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102CAB:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E2D53:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102CC5:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E2D53:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102CDC:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E2D53:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102CF2:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E2D53:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102D0C:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E2D53:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        }
+      ],
+      "pending": [
+        "Confirmar hashes/revisão dos plugins no servidor e no cliente.",
+        "Aprovar comercialização, nome exibido e preços em Septims/Diademas.",
+        "Conferir todas as rotas de acesso no jogo e a coexistência com missões, NPCs e propriedade nativa.",
+        "Homologar fechadura nativa, chave dedicada, persistência e reset dos recipientes.",
+        "Integrar carteira oficial de Diademas antes de habilitar cash.",
+        "Os recipientes excluídos ficam fora da proteção; decidir remoção, bloqueio ou adaptação antes de vender."
+      ],
+      "status": "mapped_pending_official_confirmation",
+      "draft": {
+        "id": "vlindrel-hall",
+        "name": "Vlindrel Hall",
+        "revision": 1,
+        "forSale": false,
+        "prices": {},
+        "refs": [
+          {
+            "desc": "07BDBD:Skyrim.esm",
+            "kind": "entry",
+            "partner": "077D5B:Skyrim.esm"
+          },
+          {
+            "desc": "077D5B:Skyrim.esm",
+            "kind": "exit",
+            "partner": "07BDBD:Skyrim.esm"
+          },
+          {
+            "desc": "077CAB:Skyrim.esm",
+            "kind": "container"
+          }
+        ]
+      }
+    },
+    {
+      "id": "hjerim",
+      "name": "Hjerim",
+      "origin": "base",
+      "cell": "016778:Skyrim.esm",
+      "cellEditorId": "WindhelmHjerim",
+      "cellWinner": "Shadows.esp",
+      "nativeCellOwner": null,
+      "declaredObjects": 1601,
+      "placedNpcs": [
+        "0A2C96:Skyrim.esm",
+        "1028FD:Skyrim.esm",
+        "102902:Skyrim.esm",
+        "102906:Skyrim.esm"
+      ],
+      "doorPairs": [
+        {
+          "entry": "016970:Skyrim.esm",
+          "exit": "0168DC:Skyrim.esm",
+          "reciprocal": true,
+          "exterior": true,
+          "structurallyUsable": true,
+          "entryCell": "01691F:Skyrim.esm",
+          "entryWinner": "Skyrim.esm",
+          "exitWinner": "HearthFires.esm",
+          "nativeKey": "021679:Skyrim.esm",
+          "nativeLock": "255",
+          "nativeOwner": null,
+          "entryEnableParent": null,
+          "exitEnableParent": null
+        }
+      ],
+      "nonTeleportDoors": [
+        "0DF5A3:Skyrim.esm",
+        "0DF5A4:Skyrim.esm",
+        "1028ED:Skyrim.esm",
+        "1028FC:Skyrim.esm",
+        "10290B:Skyrim.esm",
+        "10290F:Skyrim.esm",
+        "102912:Skyrim.esm",
+        "102A23:Skyrim.esm",
+        "102A26:Skyrim.esm"
+      ],
+      "containers": [
+        {
+          "reference": "0041BA:HearthFires.esm",
+          "base": "0ACD6F:Skyrim.esm",
+          "baseEditorId": "TreasSatchel",
+          "baseFlags": "Respawns",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0041CC:HearthFires.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0041BE:HearthFires.esm",
+          "base": "0C2A04:Skyrim.esm",
+          "baseEditorId": "NobleChestDrawers02",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0041CC:HearthFires.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0041BF:HearthFires.esm",
+          "base": "0C2A06:Skyrim.esm",
+          "baseEditorId": "NobleNightTable01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0041CC:HearthFires.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0041C4:HearthFires.esm",
+          "base": "01D13C:Skyrim.esm",
+          "baseEditorId": "TreasUpperChestEMPTY",
+          "baseFlags": "Respawns",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0041CC:HearthFires.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF49B:Skyrim.esm",
+          "base": "0C2A04:Skyrim.esm",
+          "baseEditorId": "NobleChestDrawers02",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "unofficial skyrim special edition patch.esp",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF49D:Skyrim.esm",
+          "base": "0C2A05:Skyrim.esm",
+          "baseEditorId": "NobleChestDrawers01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "Update.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0DF48E:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF49E:Skyrim.esm",
+          "base": "0C2A05:Skyrim.esm",
+          "baseEditorId": "NobleChestDrawers01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0DF48E:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF4A7:Skyrim.esm",
+          "base": "000845:Skyrim.esm",
+          "baseEditorId": "BarrelFood01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Interesting Locations.esp",
+          "owner": null,
+          "enableParent": "0DF48E:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF4C1:Skyrim.esm",
+          "base": "097F54:Skyrim.esm",
+          "baseEditorId": "MiscSackLarge",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF48E:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF4C2:Skyrim.esm",
+          "base": "097F64:Skyrim.esm",
+          "baseEditorId": "MiscSack02Large",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF48E:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF4C3:Skyrim.esm",
+          "base": "097F70:Skyrim.esm",
+          "baseEditorId": "MiscSackLargeFlat03",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF48E:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF4C4:Skyrim.esm",
+          "base": "097F6C:Skyrim.esm",
+          "baseEditorId": "MiscSackLargeFlat01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF48E:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF4C5:Skyrim.esm",
+          "base": "097F6A:Skyrim.esm",
+          "baseEditorId": "MiscSack02SmallFlat",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF48E:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF4C6:Skyrim.esm",
+          "base": "097F6A:Skyrim.esm",
+          "baseEditorId": "MiscSack02SmallFlat",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF48E:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF4C7:Skyrim.esm",
+          "base": "097F68:Skyrim.esm",
+          "baseEditorId": "MiscSack02LargeFlat",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF48E:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF4C8:Skyrim.esm",
+          "base": "097F68:Skyrim.esm",
+          "baseEditorId": "MiscSack02LargeFlat",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF48E:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF4C9:Skyrim.esm",
+          "base": "097F68:Skyrim.esm",
+          "baseEditorId": "MiscSack02LargeFlat",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF48E:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF5A9:Skyrim.esm",
+          "base": "06B303:Skyrim.esm",
+          "baseEditorId": "NobleWardrobe01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0041CB:HearthFires.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF5AA:Skyrim.esm",
+          "base": "06B303:Skyrim.esm",
+          "baseEditorId": "NobleWardrobe01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "unofficial skyrim special edition patch.esp",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0DF48F:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF5AC:Skyrim.esm",
+          "base": "0F3923:Skyrim.esm",
+          "baseEditorId": "PlayerHouseChest",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "10FD82:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF5B5:Skyrim.esm",
+          "base": "0C2A06:Skyrim.esm",
+          "baseEditorId": "NobleNightTable01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0DF48F:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF5B6:Skyrim.esm",
+          "base": "0C2A06:Skyrim.esm",
+          "baseEditorId": "NobleNightTable01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0DF48F:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF5F8:Skyrim.esm",
+          "base": "097F68:Skyrim.esm",
+          "baseEditorId": "MiscSack02LargeFlat",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF48F:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF5F9:Skyrim.esm",
+          "base": "097F68:Skyrim.esm",
+          "baseEditorId": "MiscSack02LargeFlat",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF48F:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF5FA:Skyrim.esm",
+          "base": "097F68:Skyrim.esm",
+          "baseEditorId": "MiscSack02LargeFlat",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF48F:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF61B:Skyrim.esm",
+          "base": "021362:Skyrim.esm",
+          "baseEditorId": "UpperWardrobe01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0DF496:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF61E:Skyrim.esm",
+          "base": "021365:Skyrim.esm",
+          "baseEditorId": "UpperDresser01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0DF496:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF66C:Skyrim.esm",
+          "base": "097F70:Skyrim.esm",
+          "baseEditorId": "MiscSackLargeFlat03",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF48D:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF66D:Skyrim.esm",
+          "base": "097F64:Skyrim.esm",
+          "baseEditorId": "MiscSack02Large",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF48D:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF66E:Skyrim.esm",
+          "base": "097F51:Skyrim.esm",
+          "baseEditorId": "MiscSackSmall",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Interesting Locations.esp",
+          "owner": null,
+          "enableParent": "0DF48D:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF66F:Skyrim.esm",
+          "base": "097F6E:Skyrim.esm",
+          "baseEditorId": "MiscSackLargeFlat02",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF48D:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF670:Skyrim.esm",
+          "base": "097F66:Skyrim.esm",
+          "baseEditorId": "MiscSack02Small",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF48D:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF671:Skyrim.esm",
+          "base": "097F68:Skyrim.esm",
+          "baseEditorId": "MiscSack02LargeFlat",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF48D:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF672:Skyrim.esm",
+          "base": "097F64:Skyrim.esm",
+          "baseEditorId": "MiscSack02Large",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF48D:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF673:Skyrim.esm",
+          "base": "097F64:Skyrim.esm",
+          "baseEditorId": "MiscSack02Large",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF48D:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0DF6E8:Skyrim.esm",
+          "base": "021366:Skyrim.esm",
+          "baseEditorId": "UpperEndTable01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0DF497:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E0E51:Skyrim.esm",
+          "base": "02B034:Skyrim.esm",
+          "baseEditorId": "MS11ButcherChest",
+          "baseFlags": "0",
+          "referenceWinner": "unofficial skyrim special edition patch.esp",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "10292B:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF48D:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102939:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF48D:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "10294E:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF48F:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "10295C:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF48F:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102970:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF48E:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "10297E:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF48E:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102993:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF493:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "1029A1:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF493:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "1029B6:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF491:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "1029C4:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF491:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "1029FD:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF48F:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102A0B:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0DF48F:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        }
+      ],
+      "pending": [
+        "Confirmar hashes/revisão dos plugins no servidor e no cliente.",
+        "Aprovar comercialização, nome exibido e preços em Septims/Diademas.",
+        "Conferir todas as rotas de acesso no jogo e a coexistência com missões, NPCs e propriedade nativa.",
+        "Homologar fechadura nativa, chave dedicada, persistência e reset dos recipientes.",
+        "Integrar carteira oficial de Diademas antes de habilitar cash.",
+        "Nenhum baú fixo convencional sem respawn passou na triagem; selecionar/adaptar armazenamento antes de vender.",
+        "Os recipientes excluídos ficam fora da proteção; decidir remoção, bloqueio ou adaptação antes de vender."
+      ],
+      "status": "mapped_pending_official_confirmation",
+      "draft": {
+        "id": "hjerim",
+        "name": "Hjerim",
+        "revision": 1,
+        "forSale": false,
+        "prices": {},
+        "refs": [
+          {
+            "desc": "016970:Skyrim.esm",
+            "kind": "entry",
+            "partner": "0168DC:Skyrim.esm"
+          },
+          {
+            "desc": "0168DC:Skyrim.esm",
+            "kind": "exit",
+            "partner": "016970:Skyrim.esm"
+          }
+        ]
+      }
+    },
+    {
+      "id": "proudspire-manor",
+      "name": "Proudspire Manor",
+      "origin": "base",
+      "cell": "016A06:Skyrim.esm",
+      "cellEditorId": "SolitudeProudspireManor",
+      "cellWinner": "Embers XD.esp",
+      "nativeCellOwner": null,
+      "declaredObjects": 1484,
+      "placedNpcs": [
+        "0A2C95:Skyrim.esm",
+        "102AE9:Skyrim.esm",
+        "102AEC:Skyrim.esm"
+      ],
+      "doorPairs": [
+        {
+          "entry": "037F40:Skyrim.esm",
+          "exit": "016B0A:Skyrim.esm",
+          "reciprocal": true,
+          "exterior": true,
+          "structurallyUsable": true,
+          "entryCell": "037EE6:Skyrim.esm",
+          "entryWinner": "Skyrim.esm",
+          "exitWinner": "Skyrim.esm",
+          "nativeKey": null,
+          "nativeLock": null,
+          "nativeOwner": null,
+          "entryEnableParent": null,
+          "exitEnableParent": null
+        },
+        {
+          "entry": "05D8E7:Skyrim.esm",
+          "exit": "05D8B9:Skyrim.esm",
+          "reciprocal": true,
+          "exterior": true,
+          "structurallyUsable": true,
+          "entryCell": "037EE6:Skyrim.esm",
+          "entryWinner": "Skyrim.esm",
+          "exitWinner": "Skyrim.esm",
+          "nativeKey": null,
+          "nativeLock": null,
+          "nativeOwner": null,
+          "entryEnableParent": null,
+          "exitEnableParent": null
+        },
+        {
+          "entry": "03AF95:Skyrim.esm",
+          "exit": "05D8BB:Skyrim.esm",
+          "reciprocal": true,
+          "exterior": true,
+          "structurallyUsable": true,
+          "entryCell": "037EE6:Skyrim.esm",
+          "entryWinner": "Skyrim.esm",
+          "exitWinner": "Update.esm",
+          "nativeKey": null,
+          "nativeLock": null,
+          "nativeOwner": null,
+          "entryEnableParent": null,
+          "exitEnableParent": null
+        }
+      ],
+      "nonTeleportDoors": [
+        "004188:HearthFires.esm",
+        "0D8A89:Skyrim.esm",
+        "0D8AB2:Skyrim.esm"
+      ],
+      "containers": [
+        {
+          "reference": "00413B:HearthFires.esm",
+          "base": "0AF6AC:Skyrim.esm",
+          "baseEditorId": "TreasAlchemySatchelCommon",
+          "baseFlags": "Respawns",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "004189:HearthFires.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "00415E:HearthFires.esm",
+          "base": "06B303:Skyrim.esm",
+          "baseEditorId": "NobleWardrobe01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "004189:HearthFires.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "004166:HearthFires.esm",
+          "base": "06B30E:Skyrim.esm",
+          "baseEditorId": "NobleChest01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "004189:HearthFires.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "004167:HearthFires.esm",
+          "base": "06B30E:Skyrim.esm",
+          "baseEditorId": "NobleChest01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "004189:HearthFires.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "004168:HearthFires.esm",
+          "base": "021363:Skyrim.esm",
+          "baseEditorId": "TreasUpperChest",
+          "baseFlags": "Respawns",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "004189:HearthFires.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "09DA07:Skyrim.esm",
+          "base": "0F3923:Skyrim.esm",
+          "baseEditorId": "PlayerHouseChest",
+          "baseFlags": "0",
+          "referenceWinner": "unofficial skyrim special edition patch.esp",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [],
+          "suggestedForDraft": true
+        },
+        {
+          "reference": "0D89BF:Skyrim.esm",
+          "base": "0C2A05:Skyrim.esm",
+          "baseEditorId": "NobleChestDrawers01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0D89D5:Skyrim.esm",
+          "base": "0C4D4E:Skyrim.esm",
+          "baseEditorId": "NobleCupboard01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0E25D0:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0D8A0B:Skyrim.esm",
+          "base": "097F6E:Skyrim.esm",
+          "baseEditorId": "MiscSackLargeFlat02",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0D8A1C:Skyrim.esm",
+          "base": "0C4D4E:Skyrim.esm",
+          "baseEditorId": "NobleCupboard01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0E25D0:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0D8A55:Skyrim.esm",
+          "base": "0C2A04:Skyrim.esm",
+          "baseEditorId": "NobleChestDrawers02",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0D8AAA:Skyrim.esm",
+          "base": "0C4D4F:Skyrim.esm",
+          "baseEditorId": "NobleCupboard02",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0E25D1:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0D8ABA:Skyrim.esm",
+          "base": "021365:Skyrim.esm",
+          "baseEditorId": "UpperDresser01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0E25D4:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0D8ABB:Skyrim.esm",
+          "base": "021366:Skyrim.esm",
+          "baseEditorId": "UpperEndTable01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0E25D4:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0D8AC4:Skyrim.esm",
+          "base": "097F6E:Skyrim.esm",
+          "baseEditorId": "MiscSackLargeFlat02",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E25D4:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0D8AC8:Skyrim.esm",
+          "base": "097F54:Skyrim.esm",
+          "baseEditorId": "MiscSackLarge",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E25D4:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0D8AED:Skyrim.esm",
+          "base": "024CA4:Skyrim.esm",
+          "baseEditorId": "Cupboard01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0E25D3:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0D8AFF:Skyrim.esm",
+          "base": "024CA4:Skyrim.esm",
+          "baseEditorId": "Cupboard01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0E25D2:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0D8B00:Skyrim.esm",
+          "base": "097F54:Skyrim.esm",
+          "baseEditorId": "MiscSackLarge",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E25D2:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0D8B06:Skyrim.esm",
+          "base": "097F6E:Skyrim.esm",
+          "baseEditorId": "MiscSackLargeFlat02",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E25D2:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0D8B2A:Skyrim.esm",
+          "base": "000845:Skyrim.esm",
+          "baseEditorId": "BarrelFood01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Interesting Locations.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0D8B33:Skyrim.esm",
+          "base": "097F54:Skyrim.esm",
+          "baseEditorId": "MiscSackLarge",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E25D3:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0D9B49:Skyrim.esm",
+          "base": "0059D1:HearthFires.esm",
+          "baseEditorId": "BYOHHouseSafewithLockPlayer",
+          "baseFlags": "0",
+          "referenceWinner": "weapons armor clothing & clutter fixes.esp",
+          "baseWinner": "HearthFires.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [],
+          "suggestedForDraft": true
+        },
+        {
+          "reference": "0E25E5:Skyrim.esm",
+          "base": "10E882:Skyrim.esm",
+          "baseEditorId": "BarrelFood01_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "unofficial skyrim special edition patch.esp",
+          "baseWinner": "GlassMaking&Recycling.esp",
+          "owner": null,
+          "enableParent": "0E25D0:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E2627:Skyrim.esm",
+          "base": "0C2A06:Skyrim.esm",
+          "baseEditorId": "NobleNightTable01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E272C:Skyrim.esm",
+          "base": "000845:Skyrim.esm",
+          "baseEditorId": "BarrelFood01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Interesting Locations.esp",
+          "owner": null,
+          "enableParent": "0E25D3:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E272D:Skyrim.esm",
+          "base": "000845:Skyrim.esm",
+          "baseEditorId": "BarrelFood01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Interesting Locations.esp",
+          "owner": null,
+          "enableParent": "0E25D3:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E272E:Skyrim.esm",
+          "base": "000845:Skyrim.esm",
+          "baseEditorId": "BarrelFood01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Interesting Locations.esp",
+          "owner": null,
+          "enableParent": "0E25D3:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E272F:Skyrim.esm",
+          "base": "000845:Skyrim.esm",
+          "baseEditorId": "BarrelFood01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Interesting Locations.esp",
+          "owner": null,
+          "enableParent": "0E25D3:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E2730:Skyrim.esm",
+          "base": "097F54:Skyrim.esm",
+          "baseEditorId": "MiscSackLarge",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E25D3:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E2731:Skyrim.esm",
+          "base": "097F6C:Skyrim.esm",
+          "baseEditorId": "MiscSackLargeFlat01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E25D3:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E2749:Skyrim.esm",
+          "base": "097F54:Skyrim.esm",
+          "baseEditorId": "MiscSackLarge",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E25D4:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E274A:Skyrim.esm",
+          "base": "097F54:Skyrim.esm",
+          "baseEditorId": "MiscSackLarge",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E25D4:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E274B:Skyrim.esm",
+          "base": "097F54:Skyrim.esm",
+          "baseEditorId": "MiscSackLarge",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E25D4:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E274C:Skyrim.esm",
+          "base": "000845:Skyrim.esm",
+          "baseEditorId": "BarrelFood01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Interesting Locations.esp",
+          "owner": null,
+          "enableParent": "0E25D4:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E274D:Skyrim.esm",
+          "base": "000845:Skyrim.esm",
+          "baseEditorId": "BarrelFood01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Interesting Locations.esp",
+          "owner": null,
+          "enableParent": "0E25D4:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0E300E:Skyrim.esm",
+          "base": "000845:Skyrim.esm",
+          "baseEditorId": "BarrelFood01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Interesting Locations.esp",
+          "owner": null,
+          "enableParent": "0E25D0:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102AAD:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E25D3:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102ABB:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E25D3:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102AD0:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E25D2:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102ADE:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E25D2:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102B13:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E25D0:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102B21:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E25D0:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102B37:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E25D5:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102B45:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E25D5:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102B60:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E25D1:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102B6E:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0E25D1:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "12C605:ccBGSSSE001-Fish.esm",
+          "base": "000FFC:ccBGSSSE001-Fish.esm",
+          "baseEditorId": "ccBGSSSE001_FishTankSmallChest",
+          "baseFlags": "0",
+          "referenceWinner": "ccBGSSSE001-Fish.esm",
+          "baseWinner": "ccBGSSSE001-Fish.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        }
+      ],
+      "pending": [
+        "Confirmar hashes/revisão dos plugins no servidor e no cliente.",
+        "Aprovar comercialização, nome exibido e preços em Septims/Diademas.",
+        "Conferir todas as rotas de acesso no jogo e a coexistência com missões, NPCs e propriedade nativa.",
+        "Homologar fechadura nativa, chave dedicada, persistência e reset dos recipientes.",
+        "Integrar carteira oficial de Diademas antes de habilitar cash.",
+        "Os recipientes excluídos ficam fora da proteção; decidir remoção, bloqueio ou adaptação antes de vender."
+      ],
+      "status": "mapped_pending_official_confirmation",
+      "draft": {
+        "id": "proudspire-manor",
+        "name": "Proudspire Manor",
+        "revision": 1,
+        "forSale": false,
+        "prices": {},
+        "refs": [
+          {
+            "desc": "037F40:Skyrim.esm",
+            "kind": "entry",
+            "partner": "016B0A:Skyrim.esm"
+          },
+          {
+            "desc": "016B0A:Skyrim.esm",
+            "kind": "exit",
+            "partner": "037F40:Skyrim.esm"
+          },
+          {
+            "desc": "05D8E7:Skyrim.esm",
+            "kind": "entry",
+            "partner": "05D8B9:Skyrim.esm"
+          },
+          {
+            "desc": "05D8B9:Skyrim.esm",
+            "kind": "exit",
+            "partner": "05D8E7:Skyrim.esm"
+          },
+          {
+            "desc": "03AF95:Skyrim.esm",
+            "kind": "entry",
+            "partner": "05D8BB:Skyrim.esm"
+          },
+          {
+            "desc": "05D8BB:Skyrim.esm",
+            "kind": "exit",
+            "partner": "03AF95:Skyrim.esm"
+          },
+          {
+            "desc": "09DA07:Skyrim.esm",
+            "kind": "container"
+          },
+          {
+            "desc": "0D9B49:Skyrim.esm",
+            "kind": "container"
+          }
+        ]
+      }
+    },
+    {
+      "id": "honeyside",
+      "name": "Honeyside",
+      "origin": "base",
+      "cell": "016BDD:Skyrim.esm",
+      "cellEditorId": "RiftenHoneyside",
+      "cellWinner": "Shadows.esp",
+      "nativeCellOwner": null,
+      "declaredObjects": 770,
+      "placedNpcs": [
+        "0A2C93:Skyrim.esm",
+        "102BDF:Skyrim.esm",
+        "102BE2:Skyrim.esm"
+      ],
+      "doorPairs": [
+        {
+          "entry": "042277:Skyrim.esm",
+          "exit": "016C4E:Skyrim.esm",
+          "reciprocal": true,
+          "exterior": true,
+          "structurallyUsable": true,
+          "entryCell": "016BE0:Skyrim.esm",
+          "entryWinner": "Skyrim.esm",
+          "exitWinner": "Skyrim.esm",
+          "nativeKey": null,
+          "nativeLock": null,
+          "nativeOwner": null,
+          "entryEnableParent": null,
+          "exitEnableParent": null
+        },
+        {
+          "entry": "053057:Skyrim.esm",
+          "exit": "053056:Skyrim.esm",
+          "reciprocal": true,
+          "exterior": true,
+          "structurallyUsable": true,
+          "entryCell": "000D74:Skyrim.esm",
+          "entryWinner": "Skyrim.esm",
+          "exitWinner": "Skyrim.esm",
+          "nativeKey": "0A7B36:Skyrim.esm",
+          "nativeLock": "255",
+          "nativeOwner": null,
+          "entryEnableParent": null,
+          "exitEnableParent": null
+        }
+      ],
+      "nonTeleportDoors": [
+        "004256:HearthFires.esm",
+        "0D71FB:Skyrim.esm"
+      ],
+      "containers": [
+        {
+          "reference": "004247:HearthFires.esm",
+          "base": "06B303:Skyrim.esm",
+          "baseEditorId": "NobleWardrobe01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "004255:HearthFires.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "004248:HearthFires.esm",
+          "base": "01D13C:Skyrim.esm",
+          "baseEditorId": "TreasUpperChestEMPTY",
+          "baseFlags": "Respawns",
+          "referenceWinner": "HearthFires.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "004255:HearthFires.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "08DEEA:Skyrim.esm",
+          "base": "000845:Skyrim.esm",
+          "baseEditorId": "BarrelFood01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Interesting Locations.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "08DEEB:Skyrim.esm",
+          "base": "092B13:Skyrim.esm",
+          "baseEditorId": "BarrelIngredientUncommon01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "GlassMaking&Recycling.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "08DEEC:Skyrim.esm",
+          "base": "10D9C1:Skyrim.esm",
+          "baseEditorId": "BarrelMeat01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "GlassMaking&Recycling.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0D71FA:Skyrim.esm",
+          "base": "024CA7:Skyrim.esm",
+          "baseEditorId": "CommonWardrobe01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0C7F1A:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0D71FD:Skyrim.esm",
+          "base": "024CA6:Skyrim.esm",
+          "baseEditorId": "EndTable01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0C7F1A:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0D721E:Skyrim.esm",
+          "base": "0F3923:Skyrim.esm",
+          "baseEditorId": "PlayerHouseChest",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [],
+          "suggestedForDraft": true
+        },
+        {
+          "reference": "0D7227:Skyrim.esm",
+          "base": "0C4D4F:Skyrim.esm",
+          "baseEditorId": "NobleCupboard02",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0C7F19:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0D9243:Skyrim.esm",
+          "base": "0C2A06:Skyrim.esm",
+          "baseEditorId": "NobleNightTable01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0C7F18:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0D9245:Skyrim.esm",
+          "base": "07DF28:Skyrim.esm",
+          "baseEditorId": "UpperEndTable02",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0C7F18:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0D9246:Skyrim.esm",
+          "base": "0C2A06:Skyrim.esm",
+          "baseEditorId": "NobleNightTable01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0C7F18:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0D9251:Skyrim.esm",
+          "base": "024CA5:Skyrim.esm",
+          "baseEditorId": "Dresser01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0C7F1A:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0D9278:Skyrim.esm",
+          "base": "06B303:Skyrim.esm",
+          "baseEditorId": "NobleWardrobe01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": "0C7F18:Skyrim.esm",
+          "excludedReasons": [
+            "respawn",
+            "conditional_enable_parent",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102BAB:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0C7F18:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102BC1:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0C7F18:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102BE9:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0C7F1B:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "102BFF:Skyrim.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Skyrim.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": "0C7F1B:Skyrim.esm",
+          "excludedReasons": [
+            "conditional_enable_parent",
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        }
+      ],
+      "pending": [
+        "Confirmar hashes/revisão dos plugins no servidor e no cliente.",
+        "Aprovar comercialização, nome exibido e preços em Septims/Diademas.",
+        "Conferir todas as rotas de acesso no jogo e a coexistência com missões, NPCs e propriedade nativa.",
+        "Homologar fechadura nativa, chave dedicada, persistência e reset dos recipientes.",
+        "Integrar carteira oficial de Diademas antes de habilitar cash.",
+        "Os recipientes excluídos ficam fora da proteção; decidir remoção, bloqueio ou adaptação antes de vender."
+      ],
+      "status": "mapped_pending_official_confirmation",
+      "draft": {
+        "id": "honeyside",
+        "name": "Honeyside",
+        "revision": 1,
+        "forSale": false,
+        "prices": {},
+        "refs": [
+          {
+            "desc": "042277:Skyrim.esm",
+            "kind": "entry",
+            "partner": "016C4E:Skyrim.esm"
+          },
+          {
+            "desc": "016C4E:Skyrim.esm",
+            "kind": "exit",
+            "partner": "042277:Skyrim.esm"
+          },
+          {
+            "desc": "053057:Skyrim.esm",
+            "kind": "entry",
+            "partner": "053056:Skyrim.esm"
+          },
+          {
+            "desc": "053056:Skyrim.esm",
+            "kind": "exit",
+            "partner": "053057:Skyrim.esm"
+          },
+          {
+            "desc": "0D721E:Skyrim.esm",
+            "kind": "container"
+          }
+        ]
+      }
+    },
+    {
+      "id": "severin-manor",
+      "name": "Severin Manor",
+      "origin": "dlc",
+      "cell": "017EBE:Dragonborn.esm",
+      "cellEditorId": "DLC2RRSeverinHouse",
+      "cellWinner": "Shadows.esp",
+      "nativeCellOwner": "018425:Dragonborn.esm",
+      "declaredObjects": 834,
+      "placedNpcs": [
+        "018285:Dragonborn.esm",
+        "018287:Dragonborn.esm",
+        "018289:Dragonborn.esm",
+        "039670:Dragonborn.esm",
+        "03967C:Dragonborn.esm",
+        "039688:Dragonborn.esm",
+        "039694:Dragonborn.esm"
+      ],
+      "doorPairs": [
+        {
+          "entry": "017EF7:Dragonborn.esm",
+          "exit": "017F33:Dragonborn.esm",
+          "reciprocal": true,
+          "exterior": true,
+          "structurallyUsable": true,
+          "entryCell": "0142EC:Dragonborn.esm",
+          "entryWinner": "Dragonborn.esm",
+          "exitWinner": "Dragonborn.esm",
+          "nativeKey": null,
+          "nativeLock": null,
+          "nativeOwner": null,
+          "entryEnableParent": null,
+          "exitEnableParent": null
+        }
+      ],
+      "nonTeleportDoors": [
+        "036E3F:Dragonborn.esm",
+        "036E40:Dragonborn.esm",
+        "036E41:Dragonborn.esm",
+        "03AB3E:Dragonborn.esm",
+        "03AB41:Dragonborn.esm"
+      ],
+      "containers": [
+        {
+          "reference": "01F31D:Dragonborn.esm",
+          "base": "01F31C:Dragonborn.esm",
+          "baseEditorId": "DLC2RR02Safe",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "Dragonborn.esm",
+          "owner": "000007:Skyrim.esm",
+          "enableParent": null,
+          "excludedReasons": [
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0359BF:Dragonborn.esm",
+          "base": "10E889:Skyrim.esm",
+          "baseEditorId": "MiscSack02Small_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0359C0:Dragonborn.esm",
+          "base": "10E889:Skyrim.esm",
+          "baseEditorId": "MiscSack02Small_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0359C1:Dragonborn.esm",
+          "base": "10E889:Skyrim.esm",
+          "baseEditorId": "MiscSack02Small_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "036DB5:Dragonborn.esm",
+          "base": "10E884:Skyrim.esm",
+          "baseEditorId": "BarrelIngredientCommon01_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "GlassMaking&Recycling.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "036DB6:Dragonborn.esm",
+          "base": "10E885:Skyrim.esm",
+          "baseEditorId": "BarrelIngredientUncommon01_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "GlassMaking&Recycling.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "036DB7:Dragonborn.esm",
+          "base": "10E884:Skyrim.esm",
+          "baseEditorId": "BarrelIngredientCommon01_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "GlassMaking&Recycling.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "036E03:Dragonborn.esm",
+          "base": "10E883:Skyrim.esm",
+          "baseEditorId": "MiscSackLargeFlat01_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "036E04:Dragonborn.esm",
+          "base": "10E883:Skyrim.esm",
+          "baseEditorId": "MiscSackLargeFlat01_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "036E4B:Dragonborn.esm",
+          "base": "10E884:Skyrim.esm",
+          "baseEditorId": "BarrelIngredientCommon01_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "GlassMaking&Recycling.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "036E4C:Dragonborn.esm",
+          "base": "10E884:Skyrim.esm",
+          "baseEditorId": "BarrelIngredientCommon01_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "GlassMaking&Recycling.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "036E95:Dragonborn.esm",
+          "base": "03C365:Dragonborn.esm",
+          "baseEditorId": "BarrelMeat01_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "unofficial skyrim special edition patch.esp",
+          "baseWinner": "GlassMaking&Recycling.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "036EB9:Dragonborn.esm",
+          "base": "03C361:Dragonborn.esm",
+          "baseEditorId": "PersonalChestSmall_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "Dragonborn.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [],
+          "suggestedForDraft": true
+        },
+        {
+          "reference": "036EC4:Dragonborn.esm",
+          "base": "03C366:Dragonborn.esm",
+          "baseEditorId": "BarrelFish01_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "Dragonborn.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "036EC5:Dragonborn.esm",
+          "base": "03C366:Dragonborn.esm",
+          "baseEditorId": "BarrelFish01_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "Dragonborn.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "036EC6:Dragonborn.esm",
+          "base": "10E882:Skyrim.esm",
+          "baseEditorId": "BarrelFood01_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "GlassMaking&Recycling.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "036EE5:Dragonborn.esm",
+          "base": "03C366:Dragonborn.esm",
+          "baseEditorId": "BarrelFish01_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "unofficial skyrim special edition patch.esp",
+          "baseWinner": "Dragonborn.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "036EF1:Dragonborn.esm",
+          "base": "10E886:Skyrim.esm",
+          "baseEditorId": "MiscSackLarge_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "unofficial skyrim special edition patch.esp",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "036EF2:Dragonborn.esm",
+          "base": "03C361:Dragonborn.esm",
+          "baseEditorId": "PersonalChestSmall_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "Dragonborn.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [],
+          "suggestedForDraft": true
+        },
+        {
+          "reference": "036EF3:Dragonborn.esm",
+          "base": "03C361:Dragonborn.esm",
+          "baseEditorId": "PersonalChestSmall_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "Dragonborn.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [],
+          "suggestedForDraft": true
+        },
+        {
+          "reference": "036EF4:Dragonborn.esm",
+          "base": "03C361:Dragonborn.esm",
+          "baseEditorId": "PersonalChestSmall_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "Dragonborn.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [],
+          "suggestedForDraft": true
+        },
+        {
+          "reference": "036EFF:Dragonborn.esm",
+          "base": "03C361:Dragonborn.esm",
+          "baseEditorId": "PersonalChestSmall_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "Dragonborn.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [],
+          "suggestedForDraft": true
+        },
+        {
+          "reference": "036F01:Dragonborn.esm",
+          "base": "10E882:Skyrim.esm",
+          "baseEditorId": "BarrelFood01_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "unofficial skyrim special edition patch.esp",
+          "baseWinner": "GlassMaking&Recycling.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "036F02:Dragonborn.esm",
+          "base": "10E882:Skyrim.esm",
+          "baseEditorId": "BarrelFood01_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "unofficial skyrim special edition patch.esp",
+          "baseWinner": "GlassMaking&Recycling.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "036F03:Dragonborn.esm",
+          "base": "10E882:Skyrim.esm",
+          "baseEditorId": "BarrelFood01_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "GlassMaking&Recycling.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "036F04:Dragonborn.esm",
+          "base": "03C366:Dragonborn.esm",
+          "baseEditorId": "BarrelFish01_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "Dragonborn.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "036F41:Dragonborn.esm",
+          "base": "10E884:Skyrim.esm",
+          "baseEditorId": "BarrelIngredientCommon01_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "GlassMaking&Recycling.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "036F42:Dragonborn.esm",
+          "base": "10E884:Skyrim.esm",
+          "baseEditorId": "BarrelIngredientCommon01_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "GlassMaking&Recycling.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "036F62:Dragonborn.esm",
+          "base": "10E883:Skyrim.esm",
+          "baseEditorId": "MiscSackLargeFlat01_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "036F63:Dragonborn.esm",
+          "base": "10E883:Skyrim.esm",
+          "baseEditorId": "MiscSackLargeFlat01_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0395DE:Dragonborn.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "039601:Dragonborn.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "03961C:Dragonborn.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "03962F:Dragonborn.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "03964D:Dragonborn.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "03965B:Dragonborn.esm",
+          "base": "0DC9E7:Skyrim.esm",
+          "baseEditorId": "PlayerBookShelfContainer",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "03AB77:Dragonborn.esm",
+          "base": "03C364:Dragonborn.esm",
+          "baseEditorId": "DLC2DarkElfUrn01Food_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "unofficial skyrim special edition patch.esp",
+          "baseWinner": "Dragonborn.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "03AB78:Dragonborn.esm",
+          "base": "03C364:Dragonborn.esm",
+          "baseEditorId": "DLC2DarkElfUrn01Food_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "unofficial skyrim special edition patch.esp",
+          "baseWinner": "Dragonborn.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "03AB79:Dragonborn.esm",
+          "base": "03C363:Dragonborn.esm",
+          "baseEditorId": "DLC2DarkElfUrn01Ingredients_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "Dragonborn.esm",
+          "baseWinner": "Dragonborn.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "03AB7A:Dragonborn.esm",
+          "base": "03C364:Dragonborn.esm",
+          "baseEditorId": "DLC2DarkElfUrn01Food_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "unofficial skyrim special edition patch.esp",
+          "baseWinner": "Dragonborn.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        }
+      ],
+      "pending": [
+        "Confirmar hashes/revisão dos plugins no servidor e no cliente.",
+        "Aprovar comercialização, nome exibido e preços em Septims/Diademas.",
+        "Conferir todas as rotas de acesso no jogo e a coexistência com missões, NPCs e propriedade nativa.",
+        "Homologar fechadura nativa, chave dedicada, persistência e reset dos recipientes.",
+        "Integrar carteira oficial de Diademas antes de habilitar cash.",
+        "Os recipientes excluídos ficam fora da proteção; decidir remoção, bloqueio ou adaptação antes de vender.",
+        "Resolver o dono nativo da célula: 018425:Dragonborn.esm."
+      ],
+      "status": "mapped_pending_official_confirmation",
+      "draft": {
+        "id": "severin-manor",
+        "name": "Severin Manor",
+        "revision": 1,
+        "forSale": false,
+        "prices": {},
+        "refs": [
+          {
+            "desc": "017EF7:Dragonborn.esm",
+            "kind": "entry",
+            "partner": "017F33:Dragonborn.esm"
+          },
+          {
+            "desc": "017F33:Dragonborn.esm",
+            "kind": "exit",
+            "partner": "017EF7:Dragonborn.esm"
+          },
+          {
+            "desc": "036EB9:Dragonborn.esm",
+            "kind": "container"
+          },
+          {
+            "desc": "036EF2:Dragonborn.esm",
+            "kind": "container"
+          },
+          {
+            "desc": "036EF3:Dragonborn.esm",
+            "kind": "container"
+          },
+          {
+            "desc": "036EF4:Dragonborn.esm",
+            "kind": "container"
+          },
+          {
+            "desc": "036EFF:Dragonborn.esm",
+            "kind": "container"
+          }
+        ]
+      }
+    },
+    {
+      "id": "forgers-retreat",
+      "name": "Forger's Retreat",
+      "origin": "mod",
+      "cell": "0245AE:Granite Hill.esp",
+      "cellEditorId": "ForgersRetreat",
+      "cellWinner": "Granite Hill.esp",
+      "nativeCellOwner": null,
+      "declaredObjects": 190,
+      "placedNpcs": [
+        "0275BA:Granite Hill.esp",
+        "0275BE:Granite Hill.esp",
+        "0275BF:Granite Hill.esp"
+      ],
+      "doorPairs": [
+        {
+          "entry": "01297C:Granite Hill.esp",
+          "exit": "0245EF:Granite Hill.esp",
+          "reciprocal": true,
+          "exterior": true,
+          "structurallyUsable": true,
+          "entryCell": "000D74:Skyrim.esm",
+          "entryWinner": "Granite Hill.esp",
+          "exitWinner": "Granite Hill.esp",
+          "nativeKey": null,
+          "nativeLock": null,
+          "nativeOwner": null,
+          "entryEnableParent": null,
+          "exitEnableParent": null
+        }
+      ],
+      "nonTeleportDoors": [],
+      "containers": [
+        {
+          "reference": "024641:Granite Hill.esp",
+          "base": "024CA5:Skyrim.esm",
+          "baseEditorId": "Dresser01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Granite Hill.esp",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "027561:Granite Hill.esp",
+          "base": "03AC21:Skyrim.esm",
+          "baseEditorId": "TreasBanditChest",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Granite Hill.esp",
+          "baseWinner": "Open World Loot.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "027594:Granite Hill.esp",
+          "base": "097F6E:Skyrim.esm",
+          "baseEditorId": "MiscSackLargeFlat02",
+          "baseFlags": "0",
+          "referenceWinner": "Granite Hill.esp",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "027596:Granite Hill.esp",
+          "base": "097F6C:Skyrim.esm",
+          "baseEditorId": "MiscSackLargeFlat01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Granite Hill.esp",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        }
+      ],
+      "pending": [
+        "Confirmar hashes/revisão dos plugins no servidor e no cliente.",
+        "Aprovar comercialização, nome exibido e preços em Septims/Diademas.",
+        "Conferir todas as rotas de acesso no jogo e a coexistência com missões, NPCs e propriedade nativa.",
+        "Homologar fechadura nativa, chave dedicada, persistência e reset dos recipientes.",
+        "Integrar carteira oficial de Diademas antes de habilitar cash.",
+        "Nenhum baú fixo convencional sem respawn passou na triagem; selecionar/adaptar armazenamento antes de vender.",
+        "Os recipientes excluídos ficam fora da proteção; decidir remoção, bloqueio ou adaptação antes de vender."
+      ],
+      "status": "mapped_pending_official_confirmation",
+      "draft": {
+        "id": "forgers-retreat",
+        "name": "Forger's Retreat",
+        "revision": 1,
+        "forSale": false,
+        "prices": {},
+        "refs": [
+          {
+            "desc": "01297C:Granite Hill.esp",
+            "kind": "entry",
+            "partner": "0245EF:Granite Hill.esp"
+          },
+          {
+            "desc": "0245EF:Granite Hill.esp",
+            "kind": "exit",
+            "partner": "01297C:Granite Hill.esp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "karthmans-retreat",
+      "name": "Karthman's Retreat",
+      "origin": "mod",
+      "cell": "029F55:Amber Guard.esp",
+      "cellEditorId": "AmberGuardAbandonedHouse",
+      "cellWinner": "Amber Guard.esp",
+      "nativeCellOwner": null,
+      "declaredObjects": 79,
+      "placedNpcs": [],
+      "doorPairs": [
+        {
+          "entry": "07F609:Amber Guard.esp",
+          "exit": "0853BF:Amber Guard.esp",
+          "reciprocal": true,
+          "exterior": true,
+          "structurallyUsable": true,
+          "entryCell": "000D74:Skyrim.esm",
+          "entryWinner": "Amber Guard.esp",
+          "exitWinner": "Amber Guard.esp",
+          "nativeKey": null,
+          "nativeLock": null,
+          "nativeOwner": null,
+          "entryEnableParent": null,
+          "exitEnableParent": null
+        }
+      ],
+      "nonTeleportDoors": [],
+      "containers": [
+        {
+          "reference": "093F0B:Amber Guard.esp",
+          "base": "024CA6:Skyrim.esm",
+          "baseEditorId": "EndTable01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Amber Guard.esp",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "093F0C:Amber Guard.esp",
+          "base": "024CA6:Skyrim.esm",
+          "baseEditorId": "EndTable01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Amber Guard.esp",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "093F0D:Amber Guard.esp",
+          "base": "0F3923:Skyrim.esm",
+          "baseEditorId": "PlayerHouseChest",
+          "baseFlags": "0",
+          "referenceWinner": "Amber Guard.esp",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [],
+          "suggestedForDraft": true
+        },
+        {
+          "reference": "093F15:Amber Guard.esp",
+          "base": "10E882:Skyrim.esm",
+          "baseEditorId": "BarrelFood01_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "Amber Guard.esp",
+          "baseWinner": "GlassMaking&Recycling.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "093F23:Amber Guard.esp",
+          "base": "10E888:Skyrim.esm",
+          "baseEditorId": "MiscSack02LargeFlat_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "Amber Guard.esp",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "093F75:Amber Guard.esp",
+          "base": "10AAD2:Skyrim.esm",
+          "baseEditorId": "TreasStrongBox",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Amber Guard.esp",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        }
+      ],
+      "pending": [
+        "Confirmar hashes/revisão dos plugins no servidor e no cliente.",
+        "Aprovar comercialização, nome exibido e preços em Septims/Diademas.",
+        "Conferir todas as rotas de acesso no jogo e a coexistência com missões, NPCs e propriedade nativa.",
+        "Homologar fechadura nativa, chave dedicada, persistência e reset dos recipientes.",
+        "Integrar carteira oficial de Diademas antes de habilitar cash.",
+        "Os recipientes excluídos ficam fora da proteção; decidir remoção, bloqueio ou adaptação antes de vender."
+      ],
+      "status": "mapped_pending_official_confirmation",
+      "draft": {
+        "id": "karthmans-retreat",
+        "name": "Karthman's Retreat",
+        "revision": 1,
+        "forSale": false,
+        "prices": {},
+        "refs": [
+          {
+            "desc": "07F609:Amber Guard.esp",
+            "kind": "entry",
+            "partner": "0853BF:Amber Guard.esp"
+          },
+          {
+            "desc": "0853BF:Amber Guard.esp",
+            "kind": "exit",
+            "partner": "07F609:Amber Guard.esp"
+          },
+          {
+            "desc": "093F0D:Amber Guard.esp",
+            "kind": "container"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fenrens-residence",
+      "name": "Fenrens Residence",
+      "origin": "mod",
+      "cell": "0B7F22:Neugrad.esp",
+      "cellEditorId": "NeugradWatchPlayerHouse",
+      "cellWinner": "Neugrad.esp",
+      "nativeCellOwner": "000DB1:Skyrim.esm",
+      "declaredObjects": 87,
+      "placedNpcs": [],
+      "doorPairs": [
+        {
+          "entry": "0B7F19:Neugrad.esp",
+          "exit": "0B7F36:Neugrad.esp",
+          "reciprocal": true,
+          "exterior": true,
+          "structurallyUsable": true,
+          "entryCell": "000D74:Skyrim.esm",
+          "entryWinner": "Neugrad.esp",
+          "exitWinner": "Neugrad.esp",
+          "nativeKey": null,
+          "nativeLock": null,
+          "nativeOwner": null,
+          "entryEnableParent": null,
+          "exitEnableParent": null
+        }
+      ],
+      "nonTeleportDoors": [],
+      "containers": [
+        {
+          "reference": "0B7F42:Neugrad.esp",
+          "base": "0F3923:Skyrim.esm",
+          "baseEditorId": "PlayerHouseChest",
+          "baseFlags": "0",
+          "referenceWinner": "Neugrad.esp",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [],
+          "suggestedForDraft": true
+        },
+        {
+          "reference": "0B7F48:Neugrad.esp",
+          "base": "021362:Skyrim.esm",
+          "baseEditorId": "UpperWardrobe01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Neugrad.esp",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0B7F53:Neugrad.esp",
+          "base": "021365:Skyrim.esm",
+          "baseEditorId": "UpperDresser01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Neugrad.esp",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0B7F77:Neugrad.esp",
+          "base": "10AAD2:Skyrim.esm",
+          "baseEditorId": "TreasStrongBox",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Neugrad.esp",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0B7F7C:Neugrad.esp",
+          "base": "10E884:Skyrim.esm",
+          "baseEditorId": "BarrelIngredientCommon01_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "Neugrad.esp",
+          "baseWinner": "GlassMaking&Recycling.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0B7F7D:Neugrad.esp",
+          "base": "097F6E:Skyrim.esm",
+          "baseEditorId": "MiscSackLargeFlat02",
+          "baseFlags": "0",
+          "referenceWinner": "Neugrad.esp",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0B7F7E:Neugrad.esp",
+          "base": "097F6C:Skyrim.esm",
+          "baseEditorId": "MiscSackLargeFlat01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Neugrad.esp",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "0B7F99:Neugrad.esp",
+          "base": "097F64:Skyrim.esm",
+          "baseEditorId": "MiscSack02Large",
+          "baseFlags": "0",
+          "referenceWinner": "Neugrad.esp",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        }
+      ],
+      "pending": [
+        "Confirmar hashes/revisão dos plugins no servidor e no cliente.",
+        "Aprovar comercialização, nome exibido e preços em Septims/Diademas.",
+        "Conferir todas as rotas de acesso no jogo e a coexistência com missões, NPCs e propriedade nativa.",
+        "Homologar fechadura nativa, chave dedicada, persistência e reset dos recipientes.",
+        "Integrar carteira oficial de Diademas antes de habilitar cash.",
+        "Os recipientes excluídos ficam fora da proteção; decidir remoção, bloqueio ou adaptação antes de vender.",
+        "Resolver o dono nativo da célula: 000DB1:Skyrim.esm."
+      ],
+      "status": "mapped_pending_official_confirmation",
+      "draft": {
+        "id": "fenrens-residence",
+        "name": "Fenrens Residence",
+        "revision": 1,
+        "forSale": false,
+        "prices": {},
+        "refs": [
+          {
+            "desc": "0B7F19:Neugrad.esp",
+            "kind": "entry",
+            "partner": "0B7F36:Neugrad.esp"
+          },
+          {
+            "desc": "0B7F36:Neugrad.esp",
+            "kind": "exit",
+            "partner": "0B7F19:Neugrad.esp"
+          },
+          {
+            "desc": "0B7F42:Neugrad.esp",
+            "kind": "container"
+          }
+        ]
+      }
+    },
+    {
+      "id": "falcrost-residence",
+      "name": "Falcrost Residence",
+      "origin": "mod",
+      "cell": "03A98A:North Keep.esp",
+      "cellEditorId": "NorthkeepPlayerHouse",
+      "cellWinner": "North Keep.esp",
+      "nativeCellOwner": "000DB1:Skyrim.esm",
+      "declaredObjects": 162,
+      "placedNpcs": [],
+      "doorPairs": [
+        {
+          "entry": "02B5C2:North Keep.esp",
+          "exit": "072A39:North Keep.esp",
+          "reciprocal": true,
+          "exterior": true,
+          "structurallyUsable": true,
+          "entryCell": "000D74:Skyrim.esm",
+          "entryWinner": "North Keep.esp",
+          "exitWinner": "North Keep.esp",
+          "nativeKey": null,
+          "nativeLock": null,
+          "nativeOwner": null,
+          "entryEnableParent": null,
+          "exitEnableParent": null
+        }
+      ],
+      "nonTeleportDoors": [
+        "072A3B:North Keep.esp",
+        "072A3C:North Keep.esp"
+      ],
+      "containers": [
+        {
+          "reference": "072A64:North Keep.esp",
+          "base": "10E883:Skyrim.esm",
+          "baseEditorId": "MiscSackLargeFlat01_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "North Keep.esp",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "072A66:North Keep.esp",
+          "base": "10E884:Skyrim.esm",
+          "baseEditorId": "BarrelIngredientCommon01_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "North Keep.esp",
+          "baseWinner": "GlassMaking&Recycling.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "072A67:North Keep.esp",
+          "base": "10E887:Skyrim.esm",
+          "baseEditorId": "MiscSackLargeFlat02_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "North Keep.esp",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "072A69:North Keep.esp",
+          "base": "109D86:Skyrim.esm",
+          "baseEditorId": "WinterholdBookCase01",
+          "baseFlags": "0",
+          "referenceWinner": "North Keep.esp",
+          "baseWinner": "GlassMaking&Recycling.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "072A71:North Keep.esp",
+          "base": "00837C:HearthFires.esm",
+          "baseEditorId": "BYOHHouseNobleWardrobe01",
+          "baseFlags": "AllowSoundsWhenAnimation",
+          "referenceWinner": "North Keep.esp",
+          "baseWinner": "HearthFires.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "072A78:North Keep.esp",
+          "base": "00837C:HearthFires.esm",
+          "baseEditorId": "BYOHHouseNobleWardrobe01",
+          "baseFlags": "AllowSoundsWhenAnimation",
+          "referenceWinner": "North Keep.esp",
+          "baseWinner": "HearthFires.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "072A79:North Keep.esp",
+          "base": "00837C:HearthFires.esm",
+          "baseEditorId": "BYOHHouseNobleWardrobe01",
+          "baseFlags": "AllowSoundsWhenAnimation",
+          "referenceWinner": "North Keep.esp",
+          "baseWinner": "HearthFires.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "072A8B:North Keep.esp",
+          "base": "008372:HearthFires.esm",
+          "baseEditorId": "BYOHHouseNobleChest01",
+          "baseFlags": "AllowSoundsWhenAnimation",
+          "referenceWinner": "North Keep.esp",
+          "baseWinner": "HearthFires.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [],
+          "suggestedForDraft": true
+        },
+        {
+          "reference": "072AD1:North Keep.esp",
+          "base": "003165:Update.esm",
+          "baseEditorId": "BarrelEmpty01_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "North Keep.esp",
+          "baseWinner": "GlassMaking&Recycling.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "072AD2:North Keep.esp",
+          "base": "003165:Update.esm",
+          "baseEditorId": "BarrelEmpty01_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "North Keep.esp",
+          "baseWinner": "GlassMaking&Recycling.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "072AD4:North Keep.esp",
+          "base": "0C4D4E:Skyrim.esm",
+          "baseEditorId": "NobleCupboard01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "North Keep.esp",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "072ADA:North Keep.esp",
+          "base": "10E883:Skyrim.esm",
+          "baseEditorId": "MiscSackLargeFlat01_NoRespawn",
+          "baseFlags": "0",
+          "referenceWinner": "North Keep.esp",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        }
+      ],
+      "pending": [
+        "Confirmar hashes/revisão dos plugins no servidor e no cliente.",
+        "Aprovar comercialização, nome exibido e preços em Septims/Diademas.",
+        "Conferir todas as rotas de acesso no jogo e a coexistência com missões, NPCs e propriedade nativa.",
+        "Homologar fechadura nativa, chave dedicada, persistência e reset dos recipientes.",
+        "Integrar carteira oficial de Diademas antes de habilitar cash.",
+        "Os recipientes excluídos ficam fora da proteção; decidir remoção, bloqueio ou adaptação antes de vender.",
+        "Resolver o dono nativo da célula: 000DB1:Skyrim.esm."
+      ],
+      "status": "mapped_pending_official_confirmation",
+      "draft": {
+        "id": "falcrost-residence",
+        "name": "Falcrost Residence",
+        "revision": 1,
+        "forSale": false,
+        "prices": {},
+        "refs": [
+          {
+            "desc": "02B5C2:North Keep.esp",
+            "kind": "entry",
+            "partner": "072A39:North Keep.esp"
+          },
+          {
+            "desc": "072A39:North Keep.esp",
+            "kind": "exit",
+            "partner": "02B5C2:North Keep.esp"
+          },
+          {
+            "desc": "072A8B:North Keep.esp",
+            "kind": "container"
+          }
+        ]
+      }
+    },
+    {
+      "id": "burzag-yomgur-longhouse",
+      "name": "Burzag Yomgur Longhouse",
+      "origin": "mod",
+      "cell": "17901B:Vernim Wood.esp",
+      "cellEditorId": "BurzagYomgurLonghouse01",
+      "cellWinner": "Vernim Wood.esp",
+      "nativeCellOwner": null,
+      "declaredObjects": 180,
+      "placedNpcs": [
+        "1790D3:Vernim Wood.esp",
+        "1790D8:Vernim Wood.esp",
+        "1790DF:Vernim Wood.esp",
+        "1790E1:Vernim Wood.esp"
+      ],
+      "doorPairs": [
+        {
+          "entry": "164AC7:Vernim Wood.esp",
+          "exit": "179062:Vernim Wood.esp",
+          "reciprocal": true,
+          "exterior": true,
+          "structurallyUsable": true,
+          "entryCell": "000D74:Skyrim.esm",
+          "entryWinner": "Vernim Wood.esp",
+          "exitWinner": "Vernim Wood.esp",
+          "nativeKey": null,
+          "nativeLock": null,
+          "nativeOwner": null,
+          "entryEnableParent": null,
+          "exitEnableParent": null
+        }
+      ],
+      "nonTeleportDoors": [],
+      "containers": [
+        {
+          "reference": "17901F:Vernim Wood.esp",
+          "base": "042DBB:Skyrim.esm",
+          "baseEditorId": "OrcDresser01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Vernim Wood.esp",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "17905E:Vernim Wood.esp",
+          "base": "0774C9:Skyrim.esm",
+          "baseEditorId": "TreasOrcChestBoss",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Vernim Wood.esp",
+          "baseWinner": "Vokrii - Minimalistic Perks of Skyrim.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "17905F:Vernim Wood.esp",
+          "base": "042D91:Skyrim.esm",
+          "baseEditorId": "OrcEndTable01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Vernim Wood.esp",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "17909D:Vernim Wood.esp",
+          "base": "042DBB:Skyrim.esm",
+          "baseEditorId": "OrcDresser01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Vernim Wood.esp",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "1790CE:Vernim Wood.esp",
+          "base": "0774C8:Skyrim.esm",
+          "baseEditorId": "TreasOrcChest",
+          "baseFlags": "Respawns",
+          "referenceWinner": "Vernim Wood.esp",
+          "baseWinner": "Open World Loot.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn"
+          ],
+          "suggestedForDraft": false
+        }
+      ],
+      "pending": [
+        "Confirmar hashes/revisão dos plugins no servidor e no cliente.",
+        "Aprovar comercialização, nome exibido e preços em Septims/Diademas.",
+        "Conferir todas as rotas de acesso no jogo e a coexistência com missões, NPCs e propriedade nativa.",
+        "Homologar fechadura nativa, chave dedicada, persistência e reset dos recipientes.",
+        "Integrar carteira oficial de Diademas antes de habilitar cash.",
+        "Nenhum baú fixo convencional sem respawn passou na triagem; selecionar/adaptar armazenamento antes de vender.",
+        "Os recipientes excluídos ficam fora da proteção; decidir remoção, bloqueio ou adaptação antes de vender."
+      ],
+      "status": "mapped_pending_official_confirmation",
+      "draft": {
+        "id": "burzag-yomgur-longhouse",
+        "name": "Burzag Yomgur Longhouse",
+        "revision": 1,
+        "forSale": false,
+        "prices": {},
+        "refs": [
+          {
+            "desc": "164AC7:Vernim Wood.esp",
+            "kind": "entry",
+            "partner": "179062:Vernim Wood.esp"
+          },
+          {
+            "desc": "179062:Vernim Wood.esp",
+            "kind": "exit",
+            "partner": "164AC7:Vernim Wood.esp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "frostview-hall",
+      "name": "Frostview Hall",
+      "origin": "mod",
+      "cell": "4595D9:The Great City of Winterhold v4.esp",
+      "cellEditorId": "WinterholdPlayersHouseTGCoWH",
+      "cellWinner": "The Great City of Winterhold v4.esp",
+      "nativeCellOwner": "000DB1:Skyrim.esm",
+      "declaredObjects": 194,
+      "placedNpcs": [],
+      "doorPairs": [
+        {
+          "entry": "4596FE:The Great City of Winterhold v4.esp",
+          "exit": "45962B:The Great City of Winterhold v4.esp",
+          "reciprocal": true,
+          "exterior": true,
+          "structurallyUsable": true,
+          "entryCell": "000D74:Skyrim.esm",
+          "entryWinner": "The Great City of Winterhold v4.esp",
+          "exitWinner": "The Great City of Winterhold v4.esp",
+          "nativeKey": null,
+          "nativeLock": null,
+          "nativeOwner": null,
+          "entryEnableParent": null,
+          "exitEnableParent": null
+        }
+      ],
+      "nonTeleportDoors": [],
+      "containers": [
+        {
+          "reference": "4595F8:The Great City of Winterhold v4.esp",
+          "base": "081DD8:Skyrim.esm",
+          "baseEditorId": "TGREvidenceChestNoble",
+          "baseFlags": "AllowSoundsWhenAnimation",
+          "referenceWinner": "The Great City of Winterhold v4.esp",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [],
+          "suggestedForDraft": true
+        },
+        {
+          "reference": "45960E:The Great City of Winterhold v4.esp",
+          "base": "000845:Skyrim.esm",
+          "baseEditorId": "BarrelFood01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "The Great City of Winterhold v4.esp",
+          "baseWinner": "Interesting Locations.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "459639:The Great City of Winterhold v4.esp",
+          "base": "0C4D4F:Skyrim.esm",
+          "baseEditorId": "NobleCupboard02",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "The Great City of Winterhold v4.esp",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "496362:The Great City of Winterhold v4.esp",
+          "base": "0F3923:Skyrim.esm",
+          "baseEditorId": "PlayerHouseChest",
+          "baseFlags": "0",
+          "referenceWinner": "The Great City of Winterhold v4.esp",
+          "baseWinner": "Skyrim.esm",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [],
+          "suggestedForDraft": true
+        },
+        {
+          "reference": "49636A:The Great City of Winterhold v4.esp",
+          "base": "021365:Skyrim.esm",
+          "baseEditorId": "UpperDresser01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "The Great City of Winterhold v4.esp",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "49636B:The Great City of Winterhold v4.esp",
+          "base": "021362:Skyrim.esm",
+          "baseEditorId": "UpperWardrobe01",
+          "baseFlags": "Respawns",
+          "referenceWinner": "The Great City of Winterhold v4.esp",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "496378:The Great City of Winterhold v4.esp",
+          "base": "021364:Skyrim.esm",
+          "baseEditorId": "UpperCupboard01",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "The Great City of Winterhold v4.esp",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "496391:The Great City of Winterhold v4.esp",
+          "base": "109D86:Skyrim.esm",
+          "baseEditorId": "WinterholdBookCase01",
+          "baseFlags": "0",
+          "referenceWinner": "The Great City of Winterhold v4.esp",
+          "baseWinner": "GlassMaking&Recycling.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "not_a_chest_or_safe",
+            "special_or_quest_container"
+          ],
+          "suggestedForDraft": false
+        },
+        {
+          "reference": "496392:The Great City of Winterhold v4.esp",
+          "base": "07DF28:Skyrim.esm",
+          "baseEditorId": "UpperEndTable02",
+          "baseFlags": "AllowSoundsWhenAnimation, Respawns",
+          "referenceWinner": "The Great City of Winterhold v4.esp",
+          "baseWinner": "weapons armor clothing & clutter fixes.esp",
+          "owner": null,
+          "enableParent": null,
+          "excludedReasons": [
+            "respawn",
+            "not_a_chest_or_safe"
+          ],
+          "suggestedForDraft": false
+        }
+      ],
+      "pending": [
+        "Confirmar hashes/revisão dos plugins no servidor e no cliente.",
+        "Aprovar comercialização, nome exibido e preços em Septims/Diademas.",
+        "Conferir todas as rotas de acesso no jogo e a coexistência com missões, NPCs e propriedade nativa.",
+        "Homologar fechadura nativa, chave dedicada, persistência e reset dos recipientes.",
+        "Integrar carteira oficial de Diademas antes de habilitar cash.",
+        "Os recipientes excluídos ficam fora da proteção; decidir remoção, bloqueio ou adaptação antes de vender.",
+        "Resolver o dono nativo da célula: 000DB1:Skyrim.esm."
+      ],
+      "status": "mapped_pending_official_confirmation",
+      "draft": {
+        "id": "frostview-hall",
+        "name": "Frostview Hall",
+        "revision": 1,
+        "forSale": false,
+        "prices": {},
+        "refs": [
+          {
+            "desc": "4596FE:The Great City of Winterhold v4.esp",
+            "kind": "entry",
+            "partner": "45962B:The Great City of Winterhold v4.esp"
+          },
+          {
+            "desc": "45962B:The Great City of Winterhold v4.esp",
+            "kind": "exit",
+            "partner": "4596FE:The Great City of Winterhold v4.esp"
+          },
+          {
+            "desc": "4595F8:The Great City of Winterhold v4.esp",
+            "kind": "container"
+          },
+          {
+            "desc": "496362:The Great City of Winterhold v4.esp",
+            "kind": "container"
+          }
+        ]
+      }
+    }
+  ]
+}

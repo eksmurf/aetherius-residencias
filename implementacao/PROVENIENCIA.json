@@ -1,6 +1,6 @@
 {
-  "version": "0.1.0",
-  "preparedOn": "2026-10-19",
+  "version": "0.2.0",
+  "preparedOn": "2026-10-20",
   "target": "Aetherius official server",
   "upstream": {
     "url": "https://github.com/Alduinak-RP/alduinak",
@@ -82,11 +82,19 @@
     "pollPublished": false,
     "realResidenceCatalogValidated": false,
     "automatedTestsExecuted": false,
-    "deployed": false
+    "deployed": false,
+    "draftResidencesMapped": 12,
+    "catalogStructureChecked": true,
+    "isolatedUiPreviewChecked": true
   },
   "pending": [
     "Official Diademas wallet implementation",
-    "Real residence references, prices and dedicated key item",
-    "Official revision compatibility, automated tests and game validation"
+    "Official plugin revision confirmation, approval of 12 mapped residences, prices and dedicated key item",
+    "Automated system tests and in-game validation"
+  ],
+  "catalogProvenance": "catalogo/PROVENIENCIA-MAPEAMENTO.json",
+  "uiReferences": [
+    "Received admin-panel/admin.css: green palette, 68% background alpha and serif title",
+    "Received ui-core/PROVENANCE.md: AetheriusUI_Core 665831014f8c10e6b599ae1b29a1f6612522b0f7"
   ]
 }

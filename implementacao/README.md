@@ -1,10 +1,10 @@
 # Implementação de residências para o servidor oficial
 
-Pacote 0.1.0 preparado em 19/10/2026 para entrega aos responsáveis pelo Aetherius. Contém a implementação inicial do módulo, migração PostgreSQL, interface, integrador e testes. Usa como contrato os arquivos oficiais recebidos em 09/10 e os pontos de integração do painel de 13/10. O Alduinak permanece referência de comportamento, fixada em `db9933d911eec60092d3646b4ee28dc19f2fe254`; o HEAD remoto foi conferido novamente em 19/10 e continuava nessa revisão.
+Pacote 0.2.0 atualizado em 20/10/2026 para entrega aos responsáveis pelo Aetherius. Contém a implementação inicial do módulo, migração PostgreSQL, interface, integrador e testes. Usa como contrato os arquivos oficiais recebidos em 09/10 e os pontos de integração do painel de 13/10. O Alduinak permanece referência de comportamento, fixada em `db9933d911eec60092d3646b4ee28dc19f2fe254`; o HEAD remoto foi conferido novamente em 19/10 e continuava nessa revisão.
 
 **Estado de entrega: código para integração e validação, ainda não homologado.** Não houve instalação, migração, débito ou teste no servidor. Nenhum servidor de laboratório foi iniciado. Os testes executáveis foram incluídos para rodar na infraestrutura dos responsáveis; não há resultado de execução que permita declarar o pacote aprovado.
 
-`PROVENIENCIA.json` identifica as fontes recebidas e suas revisões/hashes, sem afirmar que são as instaladas. `MANIFESTO-SHA256.json` relaciona os arquivos deste pacote para conferência da entrega. São nove testes unitários e onze testes PostgreSQL preparados, todos ainda sem execução.
+`PROVENIENCIA.json` identifica as fontes recebidas e suas revisões/hashes, sem afirmar que são as instaladas. `MANIFESTO-SHA256.json` relaciona os arquivos deste pacote para conferência da entrega. São nove testes unitários de domínio, cinco de interface e onze testes PostgreSQL preparados, todos ainda sem execução.
 
 ## O que foi implementado
 
@@ -16,6 +16,12 @@ Pacote 0.1.0 preparado em 19/10/2026 para entrega aos responsáveis pelo Aetheri
 - Bloqueio de portas trancadas e de ativação/saque/depósito em baús privados. Saída interna liberada, inclusive durante indisponibilidade após inicialização.
 - Interface de oferta, confirmação, escolha da moeda, fechadura, reposição e recuperação. `/casa` consulta uma entrada próxima; tentar abrir uma entrada bloqueada também oferece a consulta.
 - Migração aditiva, configuração inicialmente desativada, integração com backup e testes unitários/PostgreSQL.
+
+## Atualização do cadastro e da interface
+
+O [mapeamento](catalogo/README.md) reúne 12 casas, incluindo seis de mods, com 15 pares de portas e 270 recipientes inspecionados. O rascunho não é carregado automaticamente. Os responsáveis precisam confirmar versões, ocupação, missões, preços e armazenamento.
+
+O painel usa a paleta verde e transparência do painel de administração recebido, com seletores isolados para coexistir com o CORE UI. O nome da casa fica no topo, inclusive nas confirmações; as opções são clicáveis, Fechar fica no rodapé e ESC também fecha. A ponte do cliente ativa foco/cursor ao abrir e o devolve ao jogo ao fechar. Fechar não cancela compra em andamento; respostas atrasadas não reabrem a interface. Homologar foco, ESC e coexistência com os demais menus no cliente distribuído.
 
 ## Integração pelos responsáveis
 
@@ -31,7 +37,7 @@ Pacote 0.1.0 preparado em 19/10/2026 para entrega aos responsáveis pelo Aetheri
 5. Integrar a carteira de Diademas conforme [CONTRATO-DIADEMAS.md](CONTRATO-DIADEMAS.md). Não copiar o exemplo para produção como se já fosse a integração.
 6. Preencher `server/config/residences.json` com o item de chave e o catálogo real, conforme [CATALOGO.md](CATALOGO.md). O padrão `maxPerProfile: 1` é configurável e não está ativado enquanto o módulo estiver desativado. `allowProfiles` não vazio restringe a interface de operação ao piloto; lista vazia abre o fluxo a todos os perfis autenticados quando habilitado.
 7. Compilar o cliente pelo processo oficial e distribuir o JavaScript compilado, o `index.html` efetivamente carregado pelo Meridian/CEF e a pasta `residences`. Confirmar o caminho real da página antes de copiar; alterar um HTML não usado pelo cliente não instala a interface.
-8. Rodar os testes e a matriz no servidor com contas/imóveis restritos. Somente depois habilitar compras públicas. O catálogo deste pacote está vazio: não inventa endereços ou coloca portas reais à venda.
+8. Rodar os testes e a matriz no servidor com contas/imóveis restritos. Somente depois habilitar compras públicas. A configuração ativa continua vazia. O cadastro preliminar separado em `catalogo/` contém 12 casas com referências lidas, mas ainda sem aprovação para venda; conferir suas pendências antes de importar qualquer definição.
 
 ## Inicialização e proteção
 

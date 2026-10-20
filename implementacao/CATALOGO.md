@@ -1,5 +1,7 @@
 # Cadastro de residências no mundo oficial
 
+Atualização de 20/10/2026: o [cadastro preliminar](catalogo/README.md) contém referências concretas de 12 imóveis, incluindo seis de mods. Ele está separado da configuração ativa e exige as confirmações registradas por imóvel. Os preços continuam sem definição.
+
 `server/config/residences.json` começa desativado e sem imóveis. O responsável deve cadastrar as referências efetivas dos plugins oficiais e um item dedicado de chave. Não usar os IDs de teste como endereços reais.
 
 Cada imóvel recebe `id`, `name`, `revision`, `forSale`, `prices` e `refs`. `prices` pode conter `septims` e `diademas`, com valores inteiros positivos independentes. A ausência de uma moeda retira a oferta correspondente. `revision` aumenta quando nome, preços ou oferta mudam. As referências tornam-se imutáveis pelo carregador depois do cadastro.
