@@ -1,0 +1,10 @@
+'use strict';
+// Copy to server/gamemode/residences/official-diademas.cjs only after integrating the official wallet.
+module.exports = {
+  contract: 'aetherius-diademas-same-transaction-v1',
+  async debitInTransaction(conn, { accountId, characterId, profileId, amount, idempotencyKey }) {
+    // The debit and the official wallet ledger must use this connection and transaction.
+    // Do not commit, rollback, call an HTTP purchase endpoint or create a second balance.
+    throw Object.assign(new Error('Carteira oficial de Diademas não integrada.'), { code:'DIADEMAS_UNAVAILABLE' });
+  },
+};

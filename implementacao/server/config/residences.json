@@ -1,0 +1,9 @@
+{
+  "enabled": false,
+  "purchasesEnabled": false,
+  "maxPerProfile": 1,
+  "maxDistance": 250,
+  "allowProfiles": [],
+  "keyDescriptor": null,
+  "residences": []
+}

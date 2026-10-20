@@ -1,0 +1,153 @@
+{
+  "project": "Aetherius Residencias",
+  "status": "implementation_package_pending_official_integration_and_validation",
+  "reviewDate": "2026-10-19",
+  "timezone": "America/Sao_Paulo",
+  "scope": "Implementação para entrega aos superiores; integração e implantação por eles no servidor oficial. Laboratório não autorizado para execução.",
+  "upstream": {
+    "url": "https://github.com/Alduinak-RP/alduinak",
+    "branch": "main",
+    "remoteHeadAtCheck": "db9933d911eec60092d3646b4ee28dc19f2fe254",
+    "commitDate": "2026-10-06T18:24:24-03:00",
+    "checkout": "D:/SkyMP-Lab/Servidor-SkyMP-Teste/tmp/alduinak-residencias-20261013",
+    "previousStudyCommit": "040f868dfbe233841e7ee9337d57ceb986d03def",
+    "otherLocalReferenceCommit": "243c8c6b5ee1c7e191e3891daef403bfe28a96bd",
+    "housingDiffVsPrevious": {
+      "files": 4,
+      "insertions": 1325,
+      "deletions": 373
+    },
+    "files": [
+      {
+        "path": "skymp5-server/ts/systems/housingSystem.ts",
+        "sha256": "e572e9a37ce60072b89b80621c62aa1c2516224607a5e056e5a5e5f85be83ac9",
+        "url": "https://github.com/Alduinak-RP/alduinak/blob/db9933d911eec60092d3646b4ee28dc19f2fe254/skymp5-server/ts/systems/housingSystem.ts"
+      },
+      {
+        "path": "skymp5-client/src/services/services/housingService.ts",
+        "sha256": "7e44d8c7ea99a79dfc6d83a08181a6db89f7d0f4bc01280acafc014e3b9a2021",
+        "url": "https://github.com/Alduinak-RP/alduinak/blob/db9933d911eec60092d3646b4ee28dc19f2fe254/skymp5-client/src/services/services/housingService.ts"
+      },
+      {
+        "path": "skymp5-front/src/features/housing/index.tsx",
+        "sha256": "9b007022cd2b5db14444b7e4f8281cccc9c962d6da73cf6aa3b28bcf6577270d",
+        "url": "https://github.com/Alduinak-RP/alduinak/blob/db9933d911eec60092d3646b4ee28dc19f2fe254/skymp5-front/src/features/housing/index.tsx"
+      },
+      {
+        "path": "skymp5-front/src/features/housing/styles.scss",
+        "sha256": "dc5304262cfcae1ae1773e46e1f81fda6d0a9a8903679b474758c99204260525",
+        "url": "https://github.com/Alduinak-RP/alduinak/blob/db9933d911eec60092d3646b4ee28dc19f2fe254/skymp5-front/src/features/housing/styles.scss"
+      },
+      {
+        "path": "skymp5-server/ts/systems/playerText.ts",
+        "sha256": "ca2da7e97a2b9e88683e60b33c24b51d4a7683ddeec3fb354e7e7a0bacb93ab9",
+        "url": "https://github.com/Alduinak-RP/alduinak/blob/db9933d911eec60092d3646b4ee28dc19f2fe254/skymp5-server/ts/systems/playerText.ts"
+      },
+      {
+        "path": "docs/docs_roleplay_property_factions.md",
+        "sha256": "3431784e2c13bbb58404795c41786e5fcd9fb731342a799468f5c7d75fbfcfc4",
+        "url": "https://github.com/Alduinak-RP/alduinak/blob/db9933d911eec60092d3646b4ee28dc19f2fe254/docs/docs_roleplay_property_factions.md"
+      },
+      {
+        "path": "TERMS.md",
+        "sha256": "830dcba5557c93116b8730830604bacd288470af376bcc973281eccd7c79f369",
+        "url": "https://github.com/Alduinak-RP/alduinak/blob/db9933d911eec60092d3646b4ee28dc19f2fe254/TERMS.md"
+      }
+    ]
+  },
+  "requirementsInputs": [
+    "codex-clipboard-55e5d8fa-5a6b-4634-b365-184446733a8f.png",
+    "codex-clipboard-e5c823b4-fe7f-440d-a7eb-a9b9d433e699.png"
+  ],
+  "validation": {
+    "staticStudy": true,
+    "implementationStarted": true,
+    "databaseModified": false,
+    "gameTestsExecuted": false,
+    "pollPublished": false,
+    "realResidenceCatalogValidated": false,
+    "automatedTestsExecuted": false,
+    "deployed": false
+  },
+  "executionTarget": "official_server",
+  "localHostRequiresExplicitRequest": true,
+  "currencies": {
+    "septims": "Moeda do jogo",
+    "diademas": "Cash adquirido pelo jogador com dinheiro real; consumir saldo da carteira oficial"
+  },
+  "aetheriusOfficialSources": [
+    {
+      "path": "D:\\SkyMP-Lab\\Servidor-SkyMP-Teste\\analise-painel-20261009\\aetherius-server-main\\server\\gamemode\\housing-service.js",
+      "sha256": "eef8dd99421b1b3094e2ac25c1bc7538a9993cf4ce3e43e8e626e4da902717c1",
+      "role": "received_official_source",
+      "verifiedLiveDeployment": false
+    },
+    {
+      "path": "D:\\SkyMP-Lab\\Servidor-SkyMP-Teste\\analise-painel-20261009\\aetherius-server-main\\server\\gamemode\\database.js",
+      "sha256": "d792cccbd6ae961773a16d8bde21a65a0cea9418eeca91c8683611099d75707c",
+      "role": "received_official_source",
+      "verifiedLiveDeployment": false
+    },
+    {
+      "path": "D:\\SkyMP-Lab\\Servidor-SkyMP-Teste\\analise-painel-20261009\\aetherius-server-main\\server\\gamemode\\db\\schema-core.sql",
+      "sha256": "88031832b8adb79456e0205a9b4504a1276aa6922f7114507b5405754137da6f",
+      "role": "received_official_source",
+      "verifiedLiveDeployment": false
+    },
+    {
+      "path": "D:\\SkyMP-Lab\\Servidor-SkyMP-Teste\\analise-painel-20261009\\aetherius-server-main\\server\\gamemode\\core\\transaction-service.js",
+      "sha256": "c866cdade42b5b2581fda4e245a19dadb5f89abe2d2196b599a77e9669dde721",
+      "role": "received_official_source",
+      "verifiedLiveDeployment": false
+    },
+    {
+      "path": "D:\\SkyMP-Lab\\Servidor-SkyMP-Teste\\analise-painel-20261009\\aetherius-server-main\\server\\ts\\systems\\official-identity.ts",
+      "sha256": "c1bbf1bcb045dac240eb45bda1e437a83af33b9d130f4f5a8c3e069d6b9239de",
+      "role": "received_official_source",
+      "verifiedLiveDeployment": false
+    },
+    {
+      "path": "D:\\SkyMP-Lab\\Servidor-SkyMP-Teste\\painel-integracao-20261013\\backend\\aetherius-store.cjs",
+      "sha256": "f0ddf2de30cf438dc97620cdd17ffab4a39542df0807be157cb54e06e959ab11",
+      "role": "official_integration_package",
+      "verifiedLiveDeployment": false
+    },
+    {
+      "path": "D:\\SkyMP-Lab\\Servidor-SkyMP-Teste\\painel-integracao-20261013\\backend\\official-lib\\official-reader.cjs",
+      "sha256": "4191cd298ae0c99f9977f9f93e865d0859032f1c152d0bf2d20680b1e77b3911",
+      "role": "official_integration_package",
+      "verifiedLiveDeployment": false
+    },
+    {
+      "path": "D:\\SkyMP-Lab\\Servidor-SkyMP-Teste\\analise-painel-20261009\\aetherius-server-main\\server\\gamemode\\commands.js",
+      "sha256": "ea38359fa0455eac92ec581059f9e68f3d43962e44cd6894699b57924870fd91",
+      "role": "received_official_source",
+      "verifiedLiveDeployment": false
+    },
+    {
+      "path": "D:\\SkyMP-Lab\\Servidor-SkyMP-Teste\\analise-painel-20261009\\aetherius-server-main\\server\\gamemode\\core\\ui-event-router.js",
+      "sha256": "d80cfb6816201cc470497294306c8a1005010625eadd9cba10baf87f22cd3013",
+      "role": "received_official_source",
+      "verifiedLiveDeployment": false
+    },
+    {
+      "path": "D:\\SkyMP-Lab\\Servidor-SkyMP-Teste\\analise-painel-20261009\\aetherius-server-main\\server\\gamemode\\core\\command-registry.js",
+      "sha256": "9957d9f439d983b8eb6f714822077fd2eea3cd1adce7097ca97fa0966ae3b57a",
+      "role": "received_official_source",
+      "verifiedLiveDeployment": false
+    },
+    {
+      "path": "D:\\SkyMP-Lab\\Servidor-SkyMP-Teste\\analise-painel-20261009\\aetherius-client-main\\client\\src\\services\\services\\BridgeService.ts",
+      "sha256": "da5c41cf29471142d4259c5cee1c6d564b9779735290d76996e49406f67075cd",
+      "role": "received_official_source",
+      "verifiedLiveDeployment": false
+    }
+  ],
+  "delivery": {
+    "version": "0.1.0",
+    "path": "implementacao",
+    "cashWalletIntegrationComplete": false,
+    "realKeyConfigured": false,
+    "homologated": false
+  }
+}

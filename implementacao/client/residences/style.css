@@ -1,0 +1,7 @@
+#aetherius-residences { position:fixed; z-index:1200; top:15%; left:50%; transform:translateX(-50%); width:min(540px,85vw); max-height:70vh; overflow:auto; padding:24px; color:#f3eee2; background:rgba(22,25,29,.97); border:1px solid #a28a59; border-radius:8px; font:16px/1.5 'Segoe UI',sans-serif; box-shadow:0 12px 40px #0009; }
+#aetherius-residences[hidden] { display:none; }
+#aetherius-residences h2 { margin:0 0 16px; }
+#aetherius-residences p { margin:12px 0; }
+#aetherius-residences button { display:block; width:100%; margin:10px 0; padding:10px 14px; color:inherit; background:#343a41; border:1px solid #8a7c60; border-radius:4px; font:inherit; cursor:pointer; }
+#aetherius-residences button:focus-visible { outline:3px solid #e4c57c; outline-offset:2px; }
+#aetherius-residences button:disabled { opacity:.5; cursor:default; }

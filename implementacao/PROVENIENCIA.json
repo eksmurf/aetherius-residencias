@@ -1,0 +1,92 @@
+{
+  "version": "0.1.0",
+  "preparedOn": "2026-10-19",
+  "target": "Aetherius official server",
+  "upstream": {
+    "url": "https://github.com/Alduinak-RP/alduinak",
+    "commit": "db9933d911eec60092d3646b4ee28dc19f2fe254"
+  },
+  "sources": [
+    {
+      "file": "analise-painel-20261009/aetherius-server-main/server/gamemode/housing-service.js",
+      "sha256": "eef8dd99421b1b3094e2ac25c1bc7538a9993cf4ce3e43e8e626e4da902717c1",
+      "role": "received_official_source",
+      "verifiedLiveDeployment": false
+    },
+    {
+      "file": "analise-painel-20261009/aetherius-server-main/server/gamemode/database.js",
+      "sha256": "d792cccbd6ae961773a16d8bde21a65a0cea9418eeca91c8683611099d75707c",
+      "role": "received_official_source",
+      "verifiedLiveDeployment": false
+    },
+    {
+      "file": "analise-painel-20261009/aetherius-server-main/server/gamemode/db/schema-core.sql",
+      "sha256": "88031832b8adb79456e0205a9b4504a1276aa6922f7114507b5405754137da6f",
+      "role": "received_official_source",
+      "verifiedLiveDeployment": false
+    },
+    {
+      "file": "analise-painel-20261009/aetherius-server-main/server/gamemode/core/transaction-service.js",
+      "sha256": "c866cdade42b5b2581fda4e245a19dadb5f89abe2d2196b599a77e9669dde721",
+      "role": "received_official_source",
+      "verifiedLiveDeployment": false
+    },
+    {
+      "file": "analise-painel-20261009/aetherius-server-main/server/ts/systems/official-identity.ts",
+      "sha256": "c1bbf1bcb045dac240eb45bda1e437a83af33b9d130f4f5a8c3e069d6b9239de",
+      "role": "received_official_source",
+      "verifiedLiveDeployment": false
+    },
+    {
+      "file": "painel-integracao-20261013/backend/aetherius-store.cjs",
+      "sha256": "f0ddf2de30cf438dc97620cdd17ffab4a39542df0807be157cb54e06e959ab11",
+      "role": "official_integration_package",
+      "verifiedLiveDeployment": false
+    },
+    {
+      "file": "painel-integracao-20261013/backend/official-lib/official-reader.cjs",
+      "sha256": "4191cd298ae0c99f9977f9f93e865d0859032f1c152d0bf2d20680b1e77b3911",
+      "role": "official_integration_package",
+      "verifiedLiveDeployment": false
+    },
+    {
+      "file": "analise-painel-20261009/aetherius-server-main/server/gamemode/commands.js",
+      "sha256": "ea38359fa0455eac92ec581059f9e68f3d43962e44cd6894699b57924870fd91",
+      "role": "received_official_source",
+      "verifiedLiveDeployment": false
+    },
+    {
+      "file": "analise-painel-20261009/aetherius-server-main/server/gamemode/core/ui-event-router.js",
+      "sha256": "d80cfb6816201cc470497294306c8a1005010625eadd9cba10baf87f22cd3013",
+      "role": "received_official_source",
+      "verifiedLiveDeployment": false
+    },
+    {
+      "file": "analise-painel-20261009/aetherius-server-main/server/gamemode/core/command-registry.js",
+      "sha256": "9957d9f439d983b8eb6f714822077fd2eea3cd1adce7097ca97fa0966ae3b57a",
+      "role": "received_official_source",
+      "verifiedLiveDeployment": false
+    },
+    {
+      "file": "analise-painel-20261009/aetherius-client-main/client/src/services/services/BridgeService.ts",
+      "sha256": "da5c41cf29471142d4259c5cee1c6d564b9779735290d76996e49406f67075cd",
+      "role": "received_official_source",
+      "verifiedLiveDeployment": false
+    }
+  ],
+  "validation": {
+    "staticStudy": true,
+    "implementationStarted": true,
+    "databaseModified": false,
+    "gameTestsExecuted": false,
+    "pollPublished": false,
+    "realResidenceCatalogValidated": false,
+    "automatedTestsExecuted": false,
+    "deployed": false
+  },
+  "pending": [
+    "Official Diademas wallet implementation",
+    "Real residence references, prices and dedicated key item",
+    "Official revision compatibility, automated tests and game validation"
+  ]
+}
