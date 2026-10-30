@@ -1,6 +1,6 @@
 # Mapeamento para confirmação no servidor oficial
 
-A primeira etapa da versão 0.2.1 foi restrita a **Breezehome, Vlindrel Hall, Hjerim, Proudspire Manor e Honeyside**: oito pares de portas, 186 recipientes inspecionados e cinco baús/cofres candidatos. Hjerim segue sem armazenamento aprovado. Nenhuma casa está liberada para venda.
+A primeira etapa da versão 0.3.0 foi restrita a **Breezehome, Vlindrel Hall, Hjerim, Proudspire Manor e Honeyside**: oito pares de portas, 186 recipientes inspecionados e cinco baús/cofres candidatos. Hjerim segue sem armazenamento aprovado. Nenhuma casa está liberada para venda.
 
 O levantamento de 20/10/2026 continua preservado: 12 interiores, 15 pares de portas e 270 recipientes, com 15 baús/cofres candidatos no total. Severin Manor (DLC) e as seis casas de mods ficam separadas para etapas futuras, assim como a fila de 87 outros candidatos.
 
@@ -30,16 +30,16 @@ Os pares de porta foram conferidos em ambas as direções, incluindo o lado exte
 
 O rascunho inclui apenas baús/cofres convencionais sem `Respawns`, sem `EnableParent` e sem o flag de desativação inicial nos registros lidos. Exclui recipientes especiais identificados por suas funções, como mercadores, estantes, aquários e baús de missão. Essas regras são uma triagem: não garantem ausência de scripts ou de referências em missões.
 
-Hjerim, Forger's Retreat e Burzag Yomgur Longhouse ficaram sem baú sugerido. É necessário selecionar ou adaptar armazenamento persistente antes de vendê-las. Os demais recipientes excluídos continuam fora da proteção do rascunho; a equipe precisa decidir quais adaptar, bloquear ou remover da área negociada.
+Hjerim, Forger's Retreat e Burzag Yomgur Longhouse ficaram sem baú sugerido. É necessário selecionar ou adaptar armazenamento persistente antes de vendê-las. Na versão 0.3, os recipientes excluídos da triagem de persistência também entram em `storageGuards`: ficam protegidos contra visitantes, mas ainda precisam de adaptação, bloqueio ou remoção para evitar perda por respawn/missões. A regra de célula protege armazenamento dinâmico; portas internas ficam em `interiorPassages`.
 
 ## Confirmação e ativação pelos superiores
 
 1. Comparar plugins/hashes e confirmar os vencedores de registros no servidor e no cliente distribuído.
 2. Aprovar quais casas poderão ser comercializadas. Dono nativo ausente não prova que a casa está vaga; presença de NPCs, missões, serviços públicos e posse anterior precisa ser revisada.
 3. Resolver portas/fechaduras nativas, dependências de missão e todos os recipientes excluídos. Confirmar que entradas internas, externas e acessos alternativos foram cobertos.
-4. Definir nome exibido, preços reais, item dedicado de chave e a integração da carteira de Diademas.
+4. Definir nome exibido, preços reais, migração das chaves físicas antigas para chaves vinculadas e preservação da integração oficial de Diademas.
 5. Copiar somente as casas vanilla aprovadas da primeira etapa para `server/config/residences.json`, preencher preços e habilitar venda durante o piloto. Aumentar revisão se atualizar um imóvel já persistido.
-6. Homologar com dois jogadores: entrada/saída, compra concorrente, chave, baús, reset, reconexão e reinicialização.
+6. Homologar com dois jogadores: entrada/saída, compra concorrente, chave vinculada, baús, reset, reconexão, reinicialização, familiares/visitantes, impostos e revenda.
 
 **Não importar o rascunho inteiro apenas porque `forSale` está falso.** O módulo protege referências cadastradas mesmo sem oferta de venda; isso poderia bloquear casas ou objetos de missão. O pacote mantém a configuração ativa vazia e desativada.
 

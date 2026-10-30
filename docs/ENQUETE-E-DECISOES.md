@@ -1,5 +1,7 @@
 # Enquete sobre residências e decisões de produto
 
+**Revisão vigente 0.3.0 — 29/10/2026:** as regras de chave, impostos, familiares/visitantes, painel TAB e venda foram substituídas por [REGRAS-0.3.md](../implementacao/REGRAS-0.3.md). Este documento preserva o estudo anterior; referências abaixo a reposição manual, impostos/venda apenas futuros ou painel na porta não são mais requisitos vigentes. O piloto permanece nas cinco casas vanilla.
+
 **Escopo vigente — 0.2.1 (20/10/2026):** começar somente com Breezehome, Vlindrel Hall, Hjerim, Proudspire Manor e Honeyside, após validação individual. Severin Manor e casas de mods ficam para etapas futuras. O rascunho inicial contém apenas essas cinco casas; a configuração ativa permanece vazia e desativada. Hjerim ainda requer armazenamento aprovado. Esta decisão substitui referências anteriores a um piloto sem lista definida.
 
 ## Texto pronto para publicar

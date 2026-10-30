@@ -39,7 +39,7 @@
   function send(data) {
     if (pending) return;
     const input = { version: 1, requestId: requestId(), ...data };
-    if (['purchase','lock','reissue'].includes(input.action)) lastMutation = input;
+    if (['purchase'].includes(input.action)) lastMutation = input;
     pending = input; notice = ''; render();
     try { emit('cef::ui:event', 'residences:request', input); }
     catch (error) { pending = null; notice = error.message; render(); return; }
@@ -66,22 +66,15 @@
     } else if (offer && view === 'purchase' && selectedPrice) {
       body.append(node('p', 'Confirmar compra', 'ar-subtitle'));
       body.append(node('p', `${selectedPrice.amount.toLocaleString('pt-BR')} ${labels[selectedPrice.currency]}`, 'ar-total'));
-      body.append(node('p', 'A residência ficará registrada no seu perfil. Você receberá uma chave para trancar e destrancar as entradas.', 'ar-muted'));
+      body.append(node('p', 'A residência ficará registrada no seu perfil. Sua chave será vinculada ao perfil e aparecerá no inventário pessoal.', 'ar-muted'));
       if (selectedPrice.currency === 'diademas') body.append(node('p', 'Será usado o saldo de Diademas já existente na sua conta.', 'ar-muted'));
-      body.append(button('Confirmar compra', () => send({ action:'purchase', residenceId:offer.residenceId, revision:offer.revision, currency:selectedPrice.currency }), 'ar-primary'));
-      body.append(button('Voltar', () => navigate('offer')));
-    } else if (offer && view === 'reissue') {
-      body.append(node('p', 'Reposição da chave', 'ar-subtitle'));
-      body.append(node('p', 'As chaves anteriores deixarão de funcionar e a residência será trancada. A posse permanece no seu perfil.', 'ar-muted'));
-      body.append(button('Confirmar reposição', () => send({ action:'reissue', residenceId:offer.residenceId }), 'ar-primary'));
+      body.append(button('Confirmar compra', () => send({ action:'purchase', residenceId:offer.residenceId, revision:offer.revision, accessRevision:offer.accessRevision, offerKind:offer.offerKind, currency:selectedPrice.currency }), 'ar-primary'));
       body.append(button('Voltar', () => navigate('offer')));
     } else if (offer) {
       body.append(node('p', offer.owned ? (offer.owner ? 'Esta residência pertence ao seu perfil.' : 'Residência já adquirida.') : 'Residência disponível para consulta.', 'ar-subtitle'));
       body.append(node('p', `${offer.refs.filter(r => r.kind === 'entry').length} entrada(s) · ${offer.refs.filter(r => r.kind === 'container').length} baú(s) privado(s)`, 'ar-muted'));
       if (offer.owner) {
-        body.append(button(offer.locked ? 'Destrancar com a chave' : 'Trancar com a chave', () => send({ action:'lock', residenceId:offer.residenceId, locked:!offer.locked }), 'ar-primary'));
-        body.append(button('Solicitar reposição da chave', () => navigate('reissue')));
-        for (const key of offer.pendingKeys || []) if (key.sameCharacter) body.append(button('Recuperar entrega pendente', () => send({ action:'recover', keyId:key.id })));
+        body.append(node('p', 'Compra concluída. Sua chave está no inventário pessoal. Consulte a residência em TAB → Propriedades.', 'ar-muted'));
       } else if (offer.forSale) {
         body.append(node('p', 'Escolha como pagar', 'ar-section-label'));
         for (const price of offer.prices) {
@@ -125,9 +118,8 @@
       offer.owner = true; offer.owned = true; offer.forSale = false; offer.locked = data.locked;
       if (data.keyId) offer.pendingKeys = data.delivery === 'pending' ? [{ id:data.keyId, sameCharacter:true }] : [];
     }
-    if (offer && response.action === 'recover' && data.delivery === 'delivered') offer.pendingKeys = (offer.pendingKeys || []).filter(key => key.id !== data.keyId);
-    notice = data.delivery === 'pending' ? 'Posse registrada. A entrega da chave está pendente; recupere sem comprar novamente.' :
-      data.delivery === 'delivered' ? 'Chave entregue. A residência está registrada no seu perfil.' : 'Operação registrada.';
+
+    notice = 'Compra registrada. Sua chave está vinculada ao perfil. Gerencie a casa em TAB → Propriedades.';
     render();
   }
   document.addEventListener('keydown', event => {

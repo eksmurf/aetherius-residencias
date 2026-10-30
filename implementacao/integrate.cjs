@@ -48,6 +48,7 @@ let html=fs.readFileSync(htmlPath,'utf8');
 if (!html.includes('residences/style.css')) html=insertBefore(html,'</head>','<link rel="stylesheet" href="residences/style.css">\n');
 if (!html.includes('residences/app.js')) html=insertBefore(html,'</body>','<script src="residences/app.js"></script>\n');
 prepare(htmlPath,html);
+require('./core-patches.cjs')({serverRoot,clientRoot,prepare,insertBefore,copyTree});
 if (args.includes('--apply')) {
   const backup=path.join(serverRoot,'residences-backups',new Date().toISOString().replace(/[:.]/g,'-'));
   for (const [index,change] of changes.entries()) {
@@ -58,4 +59,4 @@ if (args.includes('--apply')) {
   }
   if(changes.length) { fs.mkdirSync(backup,{recursive:true}); fs.writeFileSync(path.join(backup,'files.json'),JSON.stringify(changes.map(c=>c.file),null,2)); }
 }
-process.stdout.write(JSON.stringify({applied:args.includes('--apply'),files:changes.map(c=>c.file),databaseModified:false,clientBuildRequired:true},null,2)+'\n');
+process.stdout.write(JSON.stringify({applied:args.includes('--apply'),files:changes.map(c=>c.file),databaseModified:false,clientBuildRequired:true,serverBuildRequired:true},null,2)+'\n');

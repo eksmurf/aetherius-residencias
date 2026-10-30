@@ -1,5 +1,12 @@
 'use strict';
 const messages = {
+  SELLER:'Não foi possível creditar o saldo oficial do vendedor. A compra não foi concluída.',
+  TAX_BASE:'Defina o valor base da casa em Septims antes da venda.', TAX_SUSPENDED:'Pague os impostos pendentes para recuperar a chave e o acesso à residência.',
+  PRIVATE: 'Residência privada', MEMBER_NOT_FOUND: 'Jogador não encontrado pelo nome completo ou profile_id.',
+  AMBIGUOUS: 'Há mais de um perfil com esse nome. Informe o profile_id.', FAMILY_LIMIT: 'Esta residência já possui dois familiares.',
+  MEMBER_LIMIT: 'Limite de 50 pessoas cadastradas nesta residência.',
+  STALE: 'As permissões mudaram. Atualize a consulta antes de confirmar.',
+  TAX_EARLY: 'O pagamento deste imposto ainda não está disponível.', TAX_CHANGED: 'Este vencimento já foi pago ou foi atualizado.',
   INVALID: 'Pedido inválido.', SESSION: 'A sessão do personagem mudou.',
   UNAVAILABLE: 'Residências temporariamente indisponíveis.', NOT_FOUND: 'Residência não cadastrada.',
   SOLD: 'Esta residência não está disponível para compra.', PRICE_CHANGED: 'A oferta mudou. Consulte novamente.',

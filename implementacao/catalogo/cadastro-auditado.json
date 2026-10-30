@@ -413,17 +413,52 @@
         "Confirmar hashes/revisão dos plugins no servidor e no cliente.",
         "Aprovar comercialização, nome exibido e preços em Septims/Diademas.",
         "Conferir todas as rotas de acesso no jogo e a coexistência com missões, NPCs e propriedade nativa.",
-        "Homologar fechadura nativa, chave dedicada, persistência e reset dos recipientes.",
+        "Homologar entrada direta, chave vinculada no CORE UI, persistência e reset dos recipientes.",
         "Integrar carteira oficial de Diademas antes de habilitar cash.",
-        "Os recipientes excluídos ficam fora da proteção; decidir remoção, bloqueio ou adaptação antes de vender."
+        "Os recipientes excluídos da triagem ficam em storageGuards para controle de acesso; resolver respawn/missões e decidir remoção, bloqueio ou adaptação antes de vender."
       ],
       "status": "mapped_pending_official_confirmation",
       "draft": {
         "id": "breezehome",
         "name": "Breezehome",
-        "revision": 1,
+        "revision": 2,
         "forSale": false,
         "prices": {},
+        "interiorCells": [
+          "0165A8:Skyrim.esm"
+        ],
+        "interiorPassages": [
+          "00426C:HearthFires.esm",
+          "0CB4A4:Skyrim.esm",
+          "0CB4A5:Skyrim.esm",
+          "0CB4A6:Skyrim.esm"
+        ],
+        "storageGuards": [
+          "004265:HearthFires.esm",
+          "004271:HearthFires.esm",
+          "03EE69:Skyrim.esm",
+          "03EE76:Skyrim.esm",
+          "0CB42D:Skyrim.esm",
+          "0CB42E:Skyrim.esm",
+          "0CB432:Skyrim.esm",
+          "0CB433:Skyrim.esm",
+          "0CB435:Skyrim.esm",
+          "0CB437:Skyrim.esm",
+          "0CB43A:Skyrim.esm",
+          "0CB442:Skyrim.esm",
+          "0CB45D:Skyrim.esm",
+          "0CB45E:Skyrim.esm",
+          "0CB46C:Skyrim.esm",
+          "0CB46D:Skyrim.esm",
+          "0CB4C9:Skyrim.esm",
+          "0F3922:Skyrim.esm",
+          "102A59:Skyrim.esm",
+          "102A6C:Skyrim.esm",
+          "102A81:Skyrim.esm",
+          "102A8F:Skyrim.esm",
+          "109E0D:Skyrim.esm",
+          "10EB84:Skyrim.esm"
+        ],
         "refs": [
           {
             "desc": "01A6F9:Skyrim.esm",
@@ -1214,17 +1249,78 @@
         "Confirmar hashes/revisão dos plugins no servidor e no cliente.",
         "Aprovar comercialização, nome exibido e preços em Septims/Diademas.",
         "Conferir todas as rotas de acesso no jogo e a coexistência com missões, NPCs e propriedade nativa.",
-        "Homologar fechadura nativa, chave dedicada, persistência e reset dos recipientes.",
+        "Homologar entrada direta, chave vinculada no CORE UI, persistência e reset dos recipientes.",
         "Integrar carteira oficial de Diademas antes de habilitar cash.",
-        "Os recipientes excluídos ficam fora da proteção; decidir remoção, bloqueio ou adaptação antes de vender."
+        "Os recipientes excluídos da triagem ficam em storageGuards para controle de acesso; resolver respawn/missões e decidir remoção, bloqueio ou adaptação antes de vender."
       ],
       "status": "mapped_pending_official_confirmation",
       "draft": {
         "id": "vlindrel-hall",
         "name": "Vlindrel Hall",
-        "revision": 1,
+        "revision": 2,
         "forSale": false,
         "prices": {},
+        "interiorCells": [
+          "016DFA:Skyrim.esm"
+        ],
+        "interiorPassages": [
+          "0D94D3:Skyrim.esm",
+          "0E1586:Skyrim.esm",
+          "0E1587:Skyrim.esm",
+          "0E2D4C:Skyrim.esm",
+          "0E2D4D:Skyrim.esm",
+          "102D43:Skyrim.esm",
+          "102D46:Skyrim.esm"
+        ],
+        "storageGuards": [
+          "0041EF:HearthFires.esm",
+          "0041FF:HearthFires.esm",
+          "004200:HearthFires.esm",
+          "004202:HearthFires.esm",
+          "077CAB:Skyrim.esm",
+          "077CB3:Skyrim.esm",
+          "077CC6:Skyrim.esm",
+          "0C6450:Skyrim.esm",
+          "0C6451:Skyrim.esm",
+          "0C6452:Skyrim.esm",
+          "0C6453:Skyrim.esm",
+          "0C6454:Skyrim.esm",
+          "0DC602:Skyrim.esm",
+          "0DC678:Skyrim.esm",
+          "0DC67E:Skyrim.esm",
+          "0DC683:Skyrim.esm",
+          "0DC6B0:Skyrim.esm",
+          "0DC6B1:Skyrim.esm",
+          "0DC6B2:Skyrim.esm",
+          "0E157F:Skyrim.esm",
+          "0E15AD:Skyrim.esm",
+          "0E15AE:Skyrim.esm",
+          "0E15AF:Skyrim.esm",
+          "0E15C4:Skyrim.esm",
+          "0E2DEC:Skyrim.esm",
+          "0E2E2F:Skyrim.esm",
+          "0E2E30:Skyrim.esm",
+          "0E2E5A:Skyrim.esm",
+          "0E2E5B:Skyrim.esm",
+          "0E2E5C:Skyrim.esm",
+          "0E2E5D:Skyrim.esm",
+          "0E2E62:Skyrim.esm",
+          "0E2E65:Skyrim.esm",
+          "0E2E98:Skyrim.esm",
+          "0E2E99:Skyrim.esm",
+          "0E2E9A:Skyrim.esm",
+          "0E2ECE:Skyrim.esm",
+          "0E3C8B:Skyrim.esm",
+          "102C4E:Skyrim.esm",
+          "102C64:Skyrim.esm",
+          "102C7E:Skyrim.esm",
+          "102C95:Skyrim.esm",
+          "102CAB:Skyrim.esm",
+          "102CC5:Skyrim.esm",
+          "102CDC:Skyrim.esm",
+          "102CF2:Skyrim.esm",
+          "102D0C:Skyrim.esm"
+        ],
         "refs": [
           {
             "desc": "07BDBD:Skyrim.esm",
@@ -2049,18 +2145,83 @@
         "Confirmar hashes/revisão dos plugins no servidor e no cliente.",
         "Aprovar comercialização, nome exibido e preços em Septims/Diademas.",
         "Conferir todas as rotas de acesso no jogo e a coexistência com missões, NPCs e propriedade nativa.",
-        "Homologar fechadura nativa, chave dedicada, persistência e reset dos recipientes.",
+        "Homologar entrada direta, chave vinculada no CORE UI, persistência e reset dos recipientes.",
         "Integrar carteira oficial de Diademas antes de habilitar cash.",
         "Nenhum baú fixo convencional sem respawn passou na triagem; selecionar/adaptar armazenamento antes de vender.",
-        "Os recipientes excluídos ficam fora da proteção; decidir remoção, bloqueio ou adaptação antes de vender."
+        "Os recipientes excluídos da triagem ficam em storageGuards para controle de acesso; resolver respawn/missões e decidir remoção, bloqueio ou adaptação antes de vender."
       ],
       "status": "mapped_pending_official_confirmation",
       "draft": {
         "id": "hjerim",
         "name": "Hjerim",
-        "revision": 1,
+        "revision": 2,
         "forSale": false,
         "prices": {},
+        "interiorCells": [
+          "016778:Skyrim.esm"
+        ],
+        "interiorPassages": [
+          "0DF5A3:Skyrim.esm",
+          "0DF5A4:Skyrim.esm",
+          "1028ED:Skyrim.esm",
+          "1028FC:Skyrim.esm",
+          "10290B:Skyrim.esm",
+          "10290F:Skyrim.esm",
+          "102912:Skyrim.esm",
+          "102A23:Skyrim.esm",
+          "102A26:Skyrim.esm"
+        ],
+        "storageGuards": [
+          "0041BA:HearthFires.esm",
+          "0041BE:HearthFires.esm",
+          "0041BF:HearthFires.esm",
+          "0041C4:HearthFires.esm",
+          "0DF49B:Skyrim.esm",
+          "0DF49D:Skyrim.esm",
+          "0DF49E:Skyrim.esm",
+          "0DF4A7:Skyrim.esm",
+          "0DF4C1:Skyrim.esm",
+          "0DF4C2:Skyrim.esm",
+          "0DF4C3:Skyrim.esm",
+          "0DF4C4:Skyrim.esm",
+          "0DF4C5:Skyrim.esm",
+          "0DF4C6:Skyrim.esm",
+          "0DF4C7:Skyrim.esm",
+          "0DF4C8:Skyrim.esm",
+          "0DF4C9:Skyrim.esm",
+          "0DF5A9:Skyrim.esm",
+          "0DF5AA:Skyrim.esm",
+          "0DF5AC:Skyrim.esm",
+          "0DF5B5:Skyrim.esm",
+          "0DF5B6:Skyrim.esm",
+          "0DF5F8:Skyrim.esm",
+          "0DF5F9:Skyrim.esm",
+          "0DF5FA:Skyrim.esm",
+          "0DF61B:Skyrim.esm",
+          "0DF61E:Skyrim.esm",
+          "0DF66C:Skyrim.esm",
+          "0DF66D:Skyrim.esm",
+          "0DF66E:Skyrim.esm",
+          "0DF66F:Skyrim.esm",
+          "0DF670:Skyrim.esm",
+          "0DF671:Skyrim.esm",
+          "0DF672:Skyrim.esm",
+          "0DF673:Skyrim.esm",
+          "0DF6E8:Skyrim.esm",
+          "0E0E51:Skyrim.esm",
+          "10292B:Skyrim.esm",
+          "102939:Skyrim.esm",
+          "10294E:Skyrim.esm",
+          "10295C:Skyrim.esm",
+          "102970:Skyrim.esm",
+          "10297E:Skyrim.esm",
+          "102993:Skyrim.esm",
+          "1029A1:Skyrim.esm",
+          "1029B6:Skyrim.esm",
+          "1029C4:Skyrim.esm",
+          "1029FD:Skyrim.esm",
+          "102A0B:Skyrim.esm"
+        ],
         "refs": [
           {
             "desc": "016970:Skyrim.esm",
@@ -2885,17 +3046,75 @@
         "Confirmar hashes/revisão dos plugins no servidor e no cliente.",
         "Aprovar comercialização, nome exibido e preços em Septims/Diademas.",
         "Conferir todas as rotas de acesso no jogo e a coexistência com missões, NPCs e propriedade nativa.",
-        "Homologar fechadura nativa, chave dedicada, persistência e reset dos recipientes.",
+        "Homologar entrada direta, chave vinculada no CORE UI, persistência e reset dos recipientes.",
         "Integrar carteira oficial de Diademas antes de habilitar cash.",
-        "Os recipientes excluídos ficam fora da proteção; decidir remoção, bloqueio ou adaptação antes de vender."
+        "Os recipientes excluídos da triagem ficam em storageGuards para controle de acesso; resolver respawn/missões e decidir remoção, bloqueio ou adaptação antes de vender."
       ],
       "status": "mapped_pending_official_confirmation",
       "draft": {
         "id": "proudspire-manor",
         "name": "Proudspire Manor",
-        "revision": 1,
+        "revision": 2,
         "forSale": false,
         "prices": {},
+        "interiorCells": [
+          "016A06:Skyrim.esm"
+        ],
+        "interiorPassages": [
+          "004188:HearthFires.esm",
+          "0D8A89:Skyrim.esm",
+          "0D8AB2:Skyrim.esm"
+        ],
+        "storageGuards": [
+          "00413B:HearthFires.esm",
+          "00415E:HearthFires.esm",
+          "004166:HearthFires.esm",
+          "004167:HearthFires.esm",
+          "004168:HearthFires.esm",
+          "09DA07:Skyrim.esm",
+          "0D89BF:Skyrim.esm",
+          "0D89D5:Skyrim.esm",
+          "0D8A0B:Skyrim.esm",
+          "0D8A1C:Skyrim.esm",
+          "0D8A55:Skyrim.esm",
+          "0D8AAA:Skyrim.esm",
+          "0D8ABA:Skyrim.esm",
+          "0D8ABB:Skyrim.esm",
+          "0D8AC4:Skyrim.esm",
+          "0D8AC8:Skyrim.esm",
+          "0D8AED:Skyrim.esm",
+          "0D8AFF:Skyrim.esm",
+          "0D8B00:Skyrim.esm",
+          "0D8B06:Skyrim.esm",
+          "0D8B2A:Skyrim.esm",
+          "0D8B33:Skyrim.esm",
+          "0D9B49:Skyrim.esm",
+          "0E25E5:Skyrim.esm",
+          "0E2627:Skyrim.esm",
+          "0E272C:Skyrim.esm",
+          "0E272D:Skyrim.esm",
+          "0E272E:Skyrim.esm",
+          "0E272F:Skyrim.esm",
+          "0E2730:Skyrim.esm",
+          "0E2731:Skyrim.esm",
+          "0E2749:Skyrim.esm",
+          "0E274A:Skyrim.esm",
+          "0E274B:Skyrim.esm",
+          "0E274C:Skyrim.esm",
+          "0E274D:Skyrim.esm",
+          "0E300E:Skyrim.esm",
+          "102AAD:Skyrim.esm",
+          "102ABB:Skyrim.esm",
+          "102AD0:Skyrim.esm",
+          "102ADE:Skyrim.esm",
+          "102B13:Skyrim.esm",
+          "102B21:Skyrim.esm",
+          "102B37:Skyrim.esm",
+          "102B45:Skyrim.esm",
+          "102B60:Skyrim.esm",
+          "102B6E:Skyrim.esm",
+          "12C605:ccBGSSSE001-Fish.esm"
+        ],
         "refs": [
           {
             "desc": "037F40:Skyrim.esm",
@@ -3275,17 +3494,44 @@
         "Confirmar hashes/revisão dos plugins no servidor e no cliente.",
         "Aprovar comercialização, nome exibido e preços em Septims/Diademas.",
         "Conferir todas as rotas de acesso no jogo e a coexistência com missões, NPCs e propriedade nativa.",
-        "Homologar fechadura nativa, chave dedicada, persistência e reset dos recipientes.",
+        "Homologar entrada direta, chave vinculada no CORE UI, persistência e reset dos recipientes.",
         "Integrar carteira oficial de Diademas antes de habilitar cash.",
-        "Os recipientes excluídos ficam fora da proteção; decidir remoção, bloqueio ou adaptação antes de vender."
+        "Os recipientes excluídos da triagem ficam em storageGuards para controle de acesso; resolver respawn/missões e decidir remoção, bloqueio ou adaptação antes de vender."
       ],
       "status": "mapped_pending_official_confirmation",
       "draft": {
         "id": "honeyside",
         "name": "Honeyside",
-        "revision": 1,
+        "revision": 2,
         "forSale": false,
         "prices": {},
+        "interiorCells": [
+          "016BDD:Skyrim.esm"
+        ],
+        "interiorPassages": [
+          "004256:HearthFires.esm",
+          "0D71FB:Skyrim.esm"
+        ],
+        "storageGuards": [
+          "004247:HearthFires.esm",
+          "004248:HearthFires.esm",
+          "08DEEA:Skyrim.esm",
+          "08DEEB:Skyrim.esm",
+          "08DEEC:Skyrim.esm",
+          "0D71FA:Skyrim.esm",
+          "0D71FD:Skyrim.esm",
+          "0D721E:Skyrim.esm",
+          "0D7227:Skyrim.esm",
+          "0D9243:Skyrim.esm",
+          "0D9245:Skyrim.esm",
+          "0D9246:Skyrim.esm",
+          "0D9251:Skyrim.esm",
+          "0D9278:Skyrim.esm",
+          "102BAB:Skyrim.esm",
+          "102BC1:Skyrim.esm",
+          "102BE9:Skyrim.esm",
+          "102BFF:Skyrim.esm"
+        ],
         "refs": [
           {
             "desc": "042277:Skyrim.esm",
@@ -3919,18 +4165,70 @@
         "Confirmar hashes/revisão dos plugins no servidor e no cliente.",
         "Aprovar comercialização, nome exibido e preços em Septims/Diademas.",
         "Conferir todas as rotas de acesso no jogo e a coexistência com missões, NPCs e propriedade nativa.",
-        "Homologar fechadura nativa, chave dedicada, persistência e reset dos recipientes.",
+        "Homologar entrada direta, chave vinculada no CORE UI, persistência e reset dos recipientes.",
         "Integrar carteira oficial de Diademas antes de habilitar cash.",
-        "Os recipientes excluídos ficam fora da proteção; decidir remoção, bloqueio ou adaptação antes de vender.",
+        "Os recipientes excluídos da triagem ficam em storageGuards para controle de acesso; resolver respawn/missões e decidir remoção, bloqueio ou adaptação antes de vender.",
         "Resolver o dono nativo da célula: 018425:Dragonborn.esm."
       ],
       "status": "mapped_pending_official_confirmation",
       "draft": {
         "id": "severin-manor",
         "name": "Severin Manor",
-        "revision": 1,
+        "revision": 2,
         "forSale": false,
         "prices": {},
+        "interiorCells": [
+          "017EBE:Dragonborn.esm"
+        ],
+        "interiorPassages": [
+          "036E3F:Dragonborn.esm",
+          "036E40:Dragonborn.esm",
+          "036E41:Dragonborn.esm",
+          "03AB3E:Dragonborn.esm",
+          "03AB41:Dragonborn.esm"
+        ],
+        "storageGuards": [
+          "01F31D:Dragonborn.esm",
+          "0359BF:Dragonborn.esm",
+          "0359C0:Dragonborn.esm",
+          "0359C1:Dragonborn.esm",
+          "036DB5:Dragonborn.esm",
+          "036DB6:Dragonborn.esm",
+          "036DB7:Dragonborn.esm",
+          "036E03:Dragonborn.esm",
+          "036E04:Dragonborn.esm",
+          "036E4B:Dragonborn.esm",
+          "036E4C:Dragonborn.esm",
+          "036E95:Dragonborn.esm",
+          "036EB9:Dragonborn.esm",
+          "036EC4:Dragonborn.esm",
+          "036EC5:Dragonborn.esm",
+          "036EC6:Dragonborn.esm",
+          "036EE5:Dragonborn.esm",
+          "036EF1:Dragonborn.esm",
+          "036EF2:Dragonborn.esm",
+          "036EF3:Dragonborn.esm",
+          "036EF4:Dragonborn.esm",
+          "036EFF:Dragonborn.esm",
+          "036F01:Dragonborn.esm",
+          "036F02:Dragonborn.esm",
+          "036F03:Dragonborn.esm",
+          "036F04:Dragonborn.esm",
+          "036F41:Dragonborn.esm",
+          "036F42:Dragonborn.esm",
+          "036F62:Dragonborn.esm",
+          "036F63:Dragonborn.esm",
+          "0395DE:Dragonborn.esm",
+          "039601:Dragonborn.esm",
+          "03961C:Dragonborn.esm",
+          "03962F:Dragonborn.esm",
+          "03964D:Dragonborn.esm",
+          "03965B:Dragonborn.esm",
+          "03AB77:Dragonborn.esm",
+          "03AB78:Dragonborn.esm",
+          "03AB79:Dragonborn.esm",
+          "03AB7A:Dragonborn.esm"
+        ],
         "refs": [
           {
             "desc": "017EF7:Dragonborn.esm",
@@ -4062,18 +4360,28 @@
         "Confirmar hashes/revisão dos plugins no servidor e no cliente.",
         "Aprovar comercialização, nome exibido e preços em Septims/Diademas.",
         "Conferir todas as rotas de acesso no jogo e a coexistência com missões, NPCs e propriedade nativa.",
-        "Homologar fechadura nativa, chave dedicada, persistência e reset dos recipientes.",
+        "Homologar entrada direta, chave vinculada no CORE UI, persistência e reset dos recipientes.",
         "Integrar carteira oficial de Diademas antes de habilitar cash.",
         "Nenhum baú fixo convencional sem respawn passou na triagem; selecionar/adaptar armazenamento antes de vender.",
-        "Os recipientes excluídos ficam fora da proteção; decidir remoção, bloqueio ou adaptação antes de vender."
+        "Os recipientes excluídos da triagem ficam em storageGuards para controle de acesso; resolver respawn/missões e decidir remoção, bloqueio ou adaptação antes de vender."
       ],
       "status": "mapped_pending_official_confirmation",
       "draft": {
         "id": "forgers-retreat",
         "name": "Forger's Retreat",
-        "revision": 1,
+        "revision": 2,
         "forSale": false,
         "prices": {},
+        "interiorCells": [
+          "0245AE:Granite Hill.esp"
+        ],
+        "interiorPassages": [],
+        "storageGuards": [
+          "024641:Granite Hill.esp",
+          "027561:Granite Hill.esp",
+          "027594:Granite Hill.esp",
+          "027596:Granite Hill.esp"
+        ],
         "refs": [
           {
             "desc": "01297C:Granite Hill.esp",
@@ -4208,17 +4516,29 @@
         "Confirmar hashes/revisão dos plugins no servidor e no cliente.",
         "Aprovar comercialização, nome exibido e preços em Septims/Diademas.",
         "Conferir todas as rotas de acesso no jogo e a coexistência com missões, NPCs e propriedade nativa.",
-        "Homologar fechadura nativa, chave dedicada, persistência e reset dos recipientes.",
+        "Homologar entrada direta, chave vinculada no CORE UI, persistência e reset dos recipientes.",
         "Integrar carteira oficial de Diademas antes de habilitar cash.",
-        "Os recipientes excluídos ficam fora da proteção; decidir remoção, bloqueio ou adaptação antes de vender."
+        "Os recipientes excluídos da triagem ficam em storageGuards para controle de acesso; resolver respawn/missões e decidir remoção, bloqueio ou adaptação antes de vender."
       ],
       "status": "mapped_pending_official_confirmation",
       "draft": {
         "id": "karthmans-retreat",
         "name": "Karthman's Retreat",
-        "revision": 1,
+        "revision": 2,
         "forSale": false,
         "prices": {},
+        "interiorCells": [
+          "029F55:Amber Guard.esp"
+        ],
+        "interiorPassages": [],
+        "storageGuards": [
+          "093F0B:Amber Guard.esp",
+          "093F0C:Amber Guard.esp",
+          "093F0D:Amber Guard.esp",
+          "093F15:Amber Guard.esp",
+          "093F23:Amber Guard.esp",
+          "093F75:Amber Guard.esp"
+        ],
         "refs": [
           {
             "desc": "07F609:Amber Guard.esp",
@@ -4386,18 +4706,32 @@
         "Confirmar hashes/revisão dos plugins no servidor e no cliente.",
         "Aprovar comercialização, nome exibido e preços em Septims/Diademas.",
         "Conferir todas as rotas de acesso no jogo e a coexistência com missões, NPCs e propriedade nativa.",
-        "Homologar fechadura nativa, chave dedicada, persistência e reset dos recipientes.",
+        "Homologar entrada direta, chave vinculada no CORE UI, persistência e reset dos recipientes.",
         "Integrar carteira oficial de Diademas antes de habilitar cash.",
-        "Os recipientes excluídos ficam fora da proteção; decidir remoção, bloqueio ou adaptação antes de vender.",
+        "Os recipientes excluídos da triagem ficam em storageGuards para controle de acesso; resolver respawn/missões e decidir remoção, bloqueio ou adaptação antes de vender.",
         "Resolver o dono nativo da célula: 000DB1:Skyrim.esm."
       ],
       "status": "mapped_pending_official_confirmation",
       "draft": {
         "id": "fenrens-residence",
         "name": "Fenrens Residence",
-        "revision": 1,
+        "revision": 2,
         "forSale": false,
         "prices": {},
+        "interiorCells": [
+          "0B7F22:Neugrad.esp"
+        ],
+        "interiorPassages": [],
+        "storageGuards": [
+          "0B7F42:Neugrad.esp",
+          "0B7F48:Neugrad.esp",
+          "0B7F53:Neugrad.esp",
+          "0B7F77:Neugrad.esp",
+          "0B7F7C:Neugrad.esp",
+          "0B7F7D:Neugrad.esp",
+          "0B7F7E:Neugrad.esp",
+          "0B7F99:Neugrad.esp"
+        ],
         "refs": [
           {
             "desc": "0B7F19:Neugrad.esp",
@@ -4622,18 +4956,39 @@
         "Confirmar hashes/revisão dos plugins no servidor e no cliente.",
         "Aprovar comercialização, nome exibido e preços em Septims/Diademas.",
         "Conferir todas as rotas de acesso no jogo e a coexistência com missões, NPCs e propriedade nativa.",
-        "Homologar fechadura nativa, chave dedicada, persistência e reset dos recipientes.",
+        "Homologar entrada direta, chave vinculada no CORE UI, persistência e reset dos recipientes.",
         "Integrar carteira oficial de Diademas antes de habilitar cash.",
-        "Os recipientes excluídos ficam fora da proteção; decidir remoção, bloqueio ou adaptação antes de vender.",
+        "Os recipientes excluídos da triagem ficam em storageGuards para controle de acesso; resolver respawn/missões e decidir remoção, bloqueio ou adaptação antes de vender.",
         "Resolver o dono nativo da célula: 000DB1:Skyrim.esm."
       ],
       "status": "mapped_pending_official_confirmation",
       "draft": {
         "id": "falcrost-residence",
         "name": "Falcrost Residence",
-        "revision": 1,
+        "revision": 2,
         "forSale": false,
         "prices": {},
+        "interiorCells": [
+          "03A98A:North Keep.esp"
+        ],
+        "interiorPassages": [
+          "072A3B:North Keep.esp",
+          "072A3C:North Keep.esp"
+        ],
+        "storageGuards": [
+          "072A64:North Keep.esp",
+          "072A66:North Keep.esp",
+          "072A67:North Keep.esp",
+          "072A69:North Keep.esp",
+          "072A71:North Keep.esp",
+          "072A78:North Keep.esp",
+          "072A79:North Keep.esp",
+          "072A8B:North Keep.esp",
+          "072AD1:North Keep.esp",
+          "072AD2:North Keep.esp",
+          "072AD4:North Keep.esp",
+          "072ADA:North Keep.esp"
+        ],
         "refs": [
           {
             "desc": "02B5C2:North Keep.esp",
@@ -4765,18 +5120,29 @@
         "Confirmar hashes/revisão dos plugins no servidor e no cliente.",
         "Aprovar comercialização, nome exibido e preços em Septims/Diademas.",
         "Conferir todas as rotas de acesso no jogo e a coexistência com missões, NPCs e propriedade nativa.",
-        "Homologar fechadura nativa, chave dedicada, persistência e reset dos recipientes.",
+        "Homologar entrada direta, chave vinculada no CORE UI, persistência e reset dos recipientes.",
         "Integrar carteira oficial de Diademas antes de habilitar cash.",
         "Nenhum baú fixo convencional sem respawn passou na triagem; selecionar/adaptar armazenamento antes de vender.",
-        "Os recipientes excluídos ficam fora da proteção; decidir remoção, bloqueio ou adaptação antes de vender."
+        "Os recipientes excluídos da triagem ficam em storageGuards para controle de acesso; resolver respawn/missões e decidir remoção, bloqueio ou adaptação antes de vender."
       ],
       "status": "mapped_pending_official_confirmation",
       "draft": {
         "id": "burzag-yomgur-longhouse",
         "name": "Burzag Yomgur Longhouse",
-        "revision": 1,
+        "revision": 2,
         "forSale": false,
         "prices": {},
+        "interiorCells": [
+          "17901B:Vernim Wood.esp"
+        ],
+        "interiorPassages": [],
+        "storageGuards": [
+          "17901F:Vernim Wood.esp",
+          "17905E:Vernim Wood.esp",
+          "17905F:Vernim Wood.esp",
+          "17909D:Vernim Wood.esp",
+          "1790CE:Vernim Wood.esp"
+        ],
         "refs": [
           {
             "desc": "164AC7:Vernim Wood.esp",
@@ -4955,18 +5321,33 @@
         "Confirmar hashes/revisão dos plugins no servidor e no cliente.",
         "Aprovar comercialização, nome exibido e preços em Septims/Diademas.",
         "Conferir todas as rotas de acesso no jogo e a coexistência com missões, NPCs e propriedade nativa.",
-        "Homologar fechadura nativa, chave dedicada, persistência e reset dos recipientes.",
+        "Homologar entrada direta, chave vinculada no CORE UI, persistência e reset dos recipientes.",
         "Integrar carteira oficial de Diademas antes de habilitar cash.",
-        "Os recipientes excluídos ficam fora da proteção; decidir remoção, bloqueio ou adaptação antes de vender.",
+        "Os recipientes excluídos da triagem ficam em storageGuards para controle de acesso; resolver respawn/missões e decidir remoção, bloqueio ou adaptação antes de vender.",
         "Resolver o dono nativo da célula: 000DB1:Skyrim.esm."
       ],
       "status": "mapped_pending_official_confirmation",
       "draft": {
         "id": "frostview-hall",
         "name": "Frostview Hall",
-        "revision": 1,
+        "revision": 2,
         "forSale": false,
         "prices": {},
+        "interiorCells": [
+          "4595D9:The Great City of Winterhold v4.esp"
+        ],
+        "interiorPassages": [],
+        "storageGuards": [
+          "4595F8:The Great City of Winterhold v4.esp",
+          "45960E:The Great City of Winterhold v4.esp",
+          "459639:The Great City of Winterhold v4.esp",
+          "496362:The Great City of Winterhold v4.esp",
+          "49636A:The Great City of Winterhold v4.esp",
+          "49636B:The Great City of Winterhold v4.esp",
+          "496378:The Great City of Winterhold v4.esp",
+          "496391:The Great City of Winterhold v4.esp",
+          "496392:The Great City of Winterhold v4.esp"
+        ],
         "refs": [
           {
             "desc": "4596FE:The Great City of Winterhold v4.esp",

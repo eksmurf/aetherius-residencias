@@ -30,7 +30,7 @@ function harness() {
   });
   const root=body.children[0];
   const offer=()=>window.AetheriusResidences.receive({action:'offer',status:'succeeded',data:{
-    residenceId:'fixture',name:'Casa de teste',revision:1,owned:false,owner:false,forSale:true,locked:true,
+    residenceId:'fixture',name:'Casa de teste',revision:1,accessRevision:1,offerKind:'initial',owned:false,owner:false,forSale:true,locked:true,
     refs:[{kind:'entry'},{kind:'exit'},{kind:'container'}],
     prices:[{currency:'septims',amount:100,available:true},{currency:'diademas',amount:10,available:false}],
   }});
@@ -90,3 +90,5 @@ test('Diademas sem integração permanece desabilitado e perda de foco fecha',()
   h.windowListeners['skymp5-client:browserUnfocused']();
   assert.equal(h.root.hidden,true);
 });
+
+test('compra concluída não mostra reposição nem botão de entrada',()=>{const h=harness();h.offer();h.click('Septims');h.click('Confirmar compra');const sent=h.messages.find(m=>m[0]==='cef::ui:event')[2];h.receive({requestId:sent.requestId,action:'purchase',status:'succeeded',data:{residenceId:'fixture',delivery:'bound',locked:true}});assert.ok(!h.root.querySelectorAll('button').some(b=>/reposi|entrar|chave/i.test(b.textContent)));});

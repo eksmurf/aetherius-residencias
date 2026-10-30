@@ -37,17 +37,17 @@ const cash = {contract:'aetherius-diademas-same-transaction-v1',async debitInTra
   return {accountId:input.accountId,amount:badCashReceipt?input.amount+1:input.amount,currency:'diademas',transactionId:input.idempotencyKey};
 }};
 const store=createStore({db,currencies:createCurrencies(transactionService,cash),maxPerProfile:2});
-function definition(id,start){const desc=n=>`${n.toString(16)}:fixture.esp`;return {id,name:id,revision:1,forSale:true,prices:{septims:100,diademas:10},
+function definition(id,start){const desc=n=>`${n.toString(16)}:fixture.esp`;return {id,name:id,revision:1,forSale:true,interiorCells:[desc(start+100)],interiorPassages:[],storageGuards:[],prices:{septims:100,diademas:10},
   refs:[{desc:desc(start),kind:'entry',partner:desc(start+1)},{desc:desc(start+1),kind:'exit',partner:desc(start)}]};}
-const input = (values={})=>({requestId:randomUUID(),action:'purchase',residenceId:'first',revision:1,currency:'septims',...values});
+const input = (values={})=>({requestId:randomUUID(),action:'purchase',residenceId:'first',revision:1,accessRevision:1,offerKind:'initial',currency:'septims',...values});
 const mutate=(session,request,guard=()=>{})=>store.mutate(session,request,guard,()=>{},true);
 before(async()=>{
   await pool.query(`CREATE SCHEMA ${schema}`);
   await db.query(`CREATE TABLE users(id uuid PRIMARY KEY,profile_id integer UNIQUE,is_banned boolean NOT NULL DEFAULT false);
-    CREATE TABLE characters(id uuid PRIMARY KEY,user_id uuid,status text DEFAULT 'approved',gold integer CHECK(gold>=0));
+    CREATE TABLE characters(id uuid PRIMARY KEY,user_id uuid,status text DEFAULT 'approved',name text DEFAULT 'Pessoa Teste',gold integer CHECK(gold>=0));
     CREATE TABLE gold_transactions(id uuid PRIMARY KEY,character_id uuid,delta integer,idempotency_key text UNIQUE);
     CREATE TABLE test_cash_wallet(account_id uuid PRIMARY KEY,balance integer CHECK(balance>=0));`);
-  const c=await connect();try{await c.query(fs.readFileSync(path.join(__dirname,'../migrations/001_residences.sql'),'utf8'));}finally{c.release();}
+  const c=await connect();try{await c.query(fs.readFileSync(path.join(__dirname,'../migrations/001_residences.sql'),'utf8')+fs.readFileSync(path.join(__dirname,'../migrations/002_household_tax.sql'),'utf8'));}finally{c.release();}
 });
 beforeEach(async()=>{
   unknownCommit=false;badCashReceipt=false;
@@ -102,25 +102,16 @@ test('commit com resposta perdida é consultável e não cobra de novo',async()=
   assert.ok(result.keyId);assert.deepEqual(await mutate(sessions[0],req),result);
   assert.equal((await db.query('SELECT * FROM gold_transactions')).length,1);
 });
-test('reposição revoga a chave antiga sem cobrar outra residência',async()=>{
-  const first=await mutate(sessions[0],input());
-  const next=await mutate(sessions[0],input({action:'reissue',currency:undefined,revision:undefined}));
-  assert.notEqual(first.keyId,next.keyId);
-  await assert.rejects(store.deliver(sessions[0],first.keyId,()=>{throw Error('must not deliver');}),{code:'KEY'});
-  assert.equal((await store.keys(sessions[0].profileId)).length,1);
-  assert.equal((await db.query('SELECT * FROM gold_transactions')).length,1);
+test('chave vinculada só é projetada no inventário pessoal do perfil autorizado',async()=>{
+  await mutate(sessions[0],input());
+  const keys=await store.inventoryKeys(sessions[0]);assert.equal(keys.length,1);assert.equal(keys[0].bound,true);assert.deepEqual(keys[0].actions,[]);
+  for(const context of ['container','trade','loot'])assert.deepEqual(await store.inventoryKeys(sessions[0],context),[]);
+  assert.deepEqual(await store.inventoryKeys(sessions[1]),[]);
+  assert.equal((await store.inventoryKeys(sessions[0]))[0].id,keys[0].id);
 });
-test('entrega com confirmação perdida recupera pelo item já presente',async()=>{
-  const result=await mutate(sessions[0],input());let emitted=0;const items=new Set();
-  const ensure=key=>{if(!items.has(key.id)){items.add(key.id);emitted++;}};
-  unknownCommit=true;
-  await assert.rejects(store.deliver(sessions[0],result.keyId,ensure),{code:'UNKNOWN'});
-  assert.equal(await store.deliver(sessions[0],result.keyId,ensure),'delivered');assert.equal(emitted,1);
-});
-test('outro perfil não altera a fechadura nem recebe a chave',async()=>{
-  const result=await mutate(sessions[0],input());
-  await assert.rejects(mutate(sessions[1],input({action:'lock',locked:false})),{code:'FORBIDDEN'});
-  await assert.rejects(store.deliver(sessions[1],result.keyId,()=>{}),{code:'KEY'});
+test('outro perfil não gerencia a casa',async()=>{
+  await mutate(sessions[0],input());
+  await assert.rejects(mutate(sessions[1],input({action:'public',accessRevision:2,open:true})),{code:'FORBIDDEN'});
 });
 test('catalogar outra casa sobre referência persistida falha; retirada da oferta preserva proteção',async()=>{
   await mutate(sessions[0],input());
@@ -139,4 +130,71 @@ test('reinicialização aceita referências retornadas como JSONB e atualizaçã
   assert.equal(row.revision,2);assert.equal(row.definition.prices.septims,150);
   const changed=definition('first',5);changed.revision=3;
   await assert.rejects(store.installCatalog([changed]),/referências/);
+});
+
+async function manage(action,values={},session=sessions[0]){
+  const row=(await store.snapshot()).find(r=>r.id==='first');
+  return mutate(session,{requestId:randomUUID(),action,residenceId:'first',accessRevision:row.access_revision,...values});
+}
+async function makePerson(profileId,name){const s={profileId,accountId:randomUUID(),characterId:randomUUID()};await db.query('INSERT INTO users(id,profile_id) VALUES($1,$2)',[s.accountId,profileId]);await db.query('INSERT INTO characters(id,user_id,name,gold) VALUES($1,$2,$3,1000)',[s.characterId,s.accountId,name]);return s;}
+test('adição por nome completo cria visitante; homônimos exigem profile_id',async()=>{
+  await mutate(sessions[0],input());const friend=await makePerson(3,'Pessoa Completa');
+  await manage('addMember',{query:'Pessoa Completa'});
+  const members=(await store.properties(sessions[0])).residences[0].members;assert.equal(members[0].profileId,friend.profileId);assert.equal(members[0].family,false);
+  await makePerson(4,'Mesmo Nome');await makePerson(5,'Mesmo Nome');await assert.rejects(manage('addMember',{query:'Mesmo Nome'}),{code:'AMBIGUOUS'});
+  await assert.rejects(manage('addMember',{query:'Não Existe'}),{code:'MEMBER_NOT_FOUND'});
+});
+test('dois familiares; terceiro recusado e remoção revoga chave imediatamente',async()=>{
+  await mutate(sessions[0],input());const members=[];for(let n=3;n<=5;n++){members.push(await makePerson(n,'Pessoa '+n));await manage('addMember',{query:String(n)});}
+  await manage('setFamily',{memberProfileId:3,family:true});await manage('setFamily',{memberProfileId:4,family:true});
+  await assert.rejects(manage('setFamily',{memberProfileId:5,family:true}),{code:'FAMILY_LIMIT'});
+  assert.equal((await store.inventoryKeys(members[0])).length,1);
+  await manage('removeMember',{memberProfileId:3,confirmed:true});assert.equal((await store.inventoryKeys(members[0])).length,0);
+  await manage('setFamily',{memberProfileId:5,family:true});assert.equal((await store.properties(sessions[0])).residences[0].members.filter(m=>m.family).length,2);
+});
+test('anúncio paga vendedor, preserva dinheiro total e remove todas as permissões antigas',async()=>{
+  await mutate(sessions[0],input());const friend=await makePerson(3,'Amigo');await manage('addMember',{query:'3'});await manage('setFamily',{memberProfileId:3,family:true});
+  await manage('listSale',{amount:350});const row=(await store.snapshot()).find(r=>r.id==='first');
+  const request=input({accessRevision:row.access_revision,offerKind:'resale'});const result=await mutate(sessions[1],request);assert.equal(result.amount,350);
+  assert.deepEqual(await mutate(sessions[1],request),result);
+  assert.equal((await db.query('SELECT gold FROM characters WHERE id=$1',[sessions[0].characterId]))[0].gold,1250);
+  assert.equal((await db.query('SELECT gold FROM characters WHERE id=$1',[sessions[1].characterId]))[0].gold,650);
+  assert.equal((await db.query('SELECT * FROM aetherius_residence_members')).length,0);
+  assert.equal((await store.inventoryKeys(sessions[0])).length,0);assert.equal((await store.inventoryKeys(friend)).length,0);
+  assert.equal((await store.inventoryKeys(sessions[1])).length,1);
+});
+test('imposto não aceita antecipação e quitação recupera a mesma chave',async()=>{
+  await mutate(sessions[0],input());const key=(await store.inventoryKeys(sessions[0]))[0].id;
+  let h=(await store.properties(sessions[0])).residences[0];
+  await assert.rejects(manage('payTax',{dueAt:h.tax.dueAt,periods:1}),{code:'TAX_EARLY'});
+  await db.query("UPDATE aetherius_residences SET tax_due_at=now()-interval '7 days 1 minute' WHERE id='first'");
+  h=(await store.properties(sessions[0])).residences[0];assert.equal(h.tax.periods,2);assert.equal(h.tax.suspended,true);assert.equal((await store.inventoryKeys(sessions[0])).length,0);
+  await manage('payTax',{dueAt:h.tax.dueAt,periods:2});assert.equal((await store.inventoryKeys(sessions[0]))[0].id,key);
+  assert.equal((await db.query('SELECT gold FROM characters WHERE id=$1',[sessions[0].characterId]))[0].gold,880);
+});
+test('quitação disputa com recompra e apenas uma pode vencer',async()=>{
+  await mutate(sessions[0],input());await db.query("UPDATE aetherius_residences SET tax_due_at=now()-interval '14 days 1 minute' WHERE id='first'");
+  const h=(await store.properties(sessions[0])).residences[0],row=(await store.snapshot()).find(r=>r.id==='first');
+  const results=await Promise.allSettled([mutate(sessions[0],{requestId:randomUUID(),action:'payTax',residenceId:'first',accessRevision:row.access_revision,dueAt:h.tax.dueAt,periods:3}),mutate(sessions[1],input({accessRevision:row.access_revision,offerKind:'foreclosure'}))]);
+  assert.equal(results.filter(r=>r.status==='fulfilled').length,1);
+  const current=(await store.snapshot()).find(r=>r.id==='first');assert.ok([1,2].includes(current.owner_profile_id));
+});
+test('falha ao creditar vendedor desfaz débito e mantém dono e anúncio',async()=>{
+  await mutate(sessions[0],input());await manage('listSale',{amount:300});
+  await db.query("UPDATE characters SET status='retired' WHERE id=$1",[sessions[0].characterId]);
+  const row=(await store.snapshot()).find(r=>r.id==='first');
+  await assert.rejects(mutate(sessions[1],input({accessRevision:row.access_revision,offerKind:'resale'})),{code:'SELLER'});
+  assert.equal((await db.query('SELECT gold FROM characters WHERE id=$1',[sessions[1].characterId]))[0].gold,1000);
+  const after=(await store.snapshot()).find(r=>r.id==='first');assert.equal(after.owner_profile_id,1);assert.equal(after.listing_price,300);
+});
+test('oferta de revenda vencida não cobra o preço de retomada sem reconfirmar',async()=>{
+  await mutate(sessions[0],input());await manage('listSale',{amount:50});
+  const row=(await store.snapshot()).find(r=>r.id==='first');
+  await db.query("UPDATE aetherius_residences SET tax_due_at=now()-interval '14 days 1 minute' WHERE id='first'");
+  await assert.rejects(mutate(sessions[1],input({accessRevision:row.access_revision,offerKind:'resale'})),{code:'PRICE_CHANGED'});
+  assert.equal((await db.query('SELECT gold FROM characters WHERE id=$1',[sessions[1].characterId]))[0].gold,1000);
+  await mutate(sessions[1],input({accessRevision:row.access_revision,offerKind:'foreclosure'}));
+  assert.equal((await db.query('SELECT gold FROM characters WHERE id=$1',[sessions[0].characterId]))[0].gold,900);
+  assert.equal((await store.inventoryKeys(sessions[0])).length,0);
+  await assert.rejects(manage('payTax',{dueAt:row.tax_due_at,periods:3},sessions[0]),{code:'FORBIDDEN'});
 });

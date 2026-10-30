@@ -1,6 +1,6 @@
 {
-  "version": "0.2.1",
-  "preparedOn": "2026-10-20",
+  "version": "0.3.0",
+  "preparedOn": "2026-10-29",
   "target": "Aetherius official server",
   "upstream": {
     "url": "https://github.com/Alduinak-RP/alduinak",
@@ -72,6 +72,30 @@
       "sha256": "da5c41cf29471142d4259c5cee1c6d564b9779735290d76996e49406f67075cd",
       "role": "received_official_source",
       "verifiedLiveDeployment": false
+    },
+    {
+      "file": "analise-painel-20261009/aetherius-server-main/server/ts/systems/aetheriusInventoryService.ts",
+      "sha256": "c66ce59d8d06d5e08137a82d521a69d5913bd74f566b68083d5afad0bd12a17b",
+      "role": "received_official_core_ui_source",
+      "verifiedLiveDeployment": false
+    },
+    {
+      "file": "analise-painel-20261009/aetherius-server-main/server/ts/systems/aetheriusUiSystem.ts",
+      "sha256": "f8bdf2ce7809a380e0a69a2705b8c2eb7a12b1c5b14b63ff6de10dbe7c4e0ed0",
+      "role": "received_official_core_ui_source",
+      "verifiedLiveDeployment": false
+    },
+    {
+      "file": "painel-integracao-20261013/client-source/ui-core/frontend/shell.js",
+      "sha256": "3166312b72587b6b2f9765612caf08515fbf57c1155173bc4776c2be9735178c",
+      "role": "received_official_core_ui_source",
+      "verifiedLiveDeployment": false
+    },
+    {
+      "file": "painel-integracao-20261013/client-source/ui-core/modules/inventory/inventory-module.js",
+      "sha256": "63a4ff5cd024e95fe7cbbe2f3e9cd1c0c189998859b08088dee7f7cc8bd1d35c",
+      "role": "received_official_core_ui_source",
+      "verifiedLiveDeployment": false
     }
   ],
   "validation": {
@@ -85,13 +109,28 @@
     "deployed": false,
     "draftResidencesMapped": 12,
     "catalogStructureChecked": true,
-    "isolatedUiPreviewChecked": true,
-    "initialStageResidences": 5
+    "isolatedUiPreviewChecked": false,
+    "initialStageResidences": 5,
+    "userReportedPurchaseValidation": {
+      "date": "2026-10-29",
+      "currencies": [
+        "septims",
+        "diademas"
+      ],
+      "installedRevisionVerified": false
+    },
+    "currentUiPreviewChecked": false,
+    "integratorDryRunChecked": true,
+    "previousReleaseUiPreviewChecked": "0.2.0",
+    "javascriptSyntaxCheckedFiles": 19,
+    "preparedTests": 45
   },
   "pending": [
-    "Official Diademas wallet implementation",
-    "Official plugin revision confirmation, approval of the five vanilla pilot residences, storage (especially Hjerim), prices and dedicated key item",
-    "Automated system tests and in-game validation"
+    "Integrate migration 002, CORE UI routing and TypeScript/server/client builds",
+    "Migrate physical legacy keys before opening public access, including offline inventories",
+    "Preserve the official Diademas adapter already validated by the team; its deployed source was not supplied",
+    "Approve interior cells/storage/door records, particularly Hjerim; verify native locks and persistence",
+    "Execute automated suites and official multiplayer acceptance matrix for 0.3.0"
   ],
   "catalogProvenance": "catalogo/PROVENIENCIA-MAPEAMENTO.json",
   "uiReferences": [
@@ -108,5 +147,6 @@
       "honeyside"
     ],
     "deferredResidences": 7
-  }
+  },
+  "rules": "REGRAS-0.3.md"
 }

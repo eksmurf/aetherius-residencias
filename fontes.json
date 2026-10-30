@@ -1,7 +1,7 @@
 {
   "project": "Aetherius Residencias",
   "status": "implementation_package_pending_official_integration_and_validation",
-  "reviewDate": "2026-10-20",
+  "reviewDate": "2026-10-29",
   "timezone": "America/Sao_Paulo",
   "scope": "Implementação para entrega aos superiores; integração e implantação por eles no servidor oficial. Laboratório não autorizado para execução.",
   "upstream": {
@@ -147,7 +147,7 @@
     }
   ],
   "delivery": {
-    "version": "0.2.1",
+    "version": "0.3.0",
     "path": "implementacao",
     "cashWalletIntegrationComplete": false,
     "realKeyConfigured": false,
@@ -162,7 +162,16 @@
         "honeyside"
       ],
       "deferredResidences": 7
-    }
+    },
+    "userReportedPurchaseValidation": {
+      "date": "2026-10-29",
+      "currencies": [
+        "septims",
+        "diademas"
+      ],
+      "installedRevisionVerified": false
+    },
+    "rules": "implementacao/REGRAS-0.3.md"
   },
   "catalogProvenance": "implementacao/catalogo/PROVENIENCIA-MAPEAMENTO.json"
 }

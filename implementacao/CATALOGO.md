@@ -1,32 +1,17 @@
-# Cadastro de residências no mundo oficial
+# Catálogo oficial — 0.3.0
 
-Atualização 0.2.1 de 20/10/2026: a primeira etapa contém somente Breezehome, Vlindrel Hall, Hjerim, Proudspire Manor e Honeyside. O arquivo `catalogo/residences.draft.json` reúne essas cinco casas, separado da configuração ativa e com preços vazios e venda desativada.
+O rascunho inicial continua restrito a Breezehome, Vlindrel Hall, Hjerim, Proudspire Manor e Honeyside. Os sete imóveis de DLC/mods estão em `catalogo/etapas-futuras/`. Configuração ativa vazia e desativada; não importar os rascunhos automaticamente.
 
-O [cadastro auditado](catalogo/README.md) mantém as 12 casas investigadas. Severin Manor e as seis casas de mods estão separadas em `catalogo/etapas-futuras/residences.draft.json`; não importar esses sete imóveis no piloto. Todos exigem confirmação individual. Hjerim depende de seleção ou adaptação de armazenamento persistente antes da venda.
+Cada definição exige:
 
-`server/config/residences.json` começa desativado e sem imóveis. O responsável deve cadastrar as referências efetivas dos plugins oficiais e um item dedicado de chave. Não usar os IDs de teste como endereços reais.
+- `id`, `name`, `revision`, `forSale`, `prices` e `refs`, como na versão anterior.
+- `prices.septims`: valor base obrigatório para ofertar a casa e calcular o imposto, mesmo quando também aceita Diademas. A revenda particular tem preço próprio, persistido pelo módulo; não altera esse valor base.
+- `interiorCells`: descritores das células interiores exclusivas da casa. Não cadastrar áreas compartilhadas. Armazenamentos dinâmicos nessas células recebem proteção.
+- `storageGuards`: todos os recipientes auditados, inclusive os excluídos da triagem de persistência. Eles não ficam liberados a visitantes; isso não remove respawn, dependências de missão ou necessidade de adaptação.
+- `interiorPassages`: portas internas sem teleporte identificadas no levantamento, para circulação/saída. Não cadastrar entradas externas como passagens.
 
-Cada imóvel recebe `id`, `name`, `revision`, `forSale`, `prices` e `refs`. `prices` pode conter `septims` e `diademas`, com valores inteiros positivos independentes. A ausência de uma moeda retira a oferta correspondente. `revision` aumenta quando nome, preços ou oferta mudam. As referências tornam-se imutáveis pelo carregador depois do cadastro.
+As referências de `refs` continuam usando `desc`, `kind` e `partner` recíproco para entrada/saída. O gerador mantém os oito pares e os cinco baús/cofres candidatos do piloto e acrescenta proteção dos 186 recipientes auditados das cinco casas. Hjerim ainda precisa de armazenamento persistente aprovado.
 
-Cada referência possui `desc` no formato `hex-local:plugin.esp` e `kind`: `entry`, `exit` ou `container`. Uma entrada exige `partner`, apontando para sua saída; a saída exige o parceiro recíproco. Cadastrar outro par para cada entrada adicional. Todos os pares e baús da casa usam o mesmo `id` residencial. Nenhuma referência pode pertencer a duas casas.
+A revisão dos rascunhos passou a 2. Na instalação real, usar revisão superior à atualmente persistida e conservar os pares de `refs`; o carregador recusa mudanças nessas referências sem migração específica. Não retirar guardas/células/passagens previamente cadastradas apenas editando configuração: isso exige revisão de migração para evitar exposição de armazenamento ou bloquear saídas.
 
-Um modelo simbólico, deliberadamente não carregável até substituir os valores, é:
-
-```json
-{
-  "id": "residencia-identificador-estavel",
-  "name": "Nome aprovado do imóvel",
-  "revision": 1,
-  "forSale": false,
-  "prices": { "septims": "DEFINIR_INTEIRO", "diademas": "DEFINIR_INTEIRO" },
-  "refs": [
-    { "desc": "ENTRADA:PLUGIN", "kind": "entry", "partner": "SAIDA:PLUGIN" },
-    { "desc": "SAIDA:PLUGIN", "kind": "exit", "partner": "ENTRADA:PLUGIN" },
-    { "desc": "BAU:PLUGIN", "kind": "container" }
-  ]
-}
-```
-
-Conferir os tipos reais das referências, os destinos de teleporte, o lado interno da saída, interiores compartilhados, portas de missão, rotas alternativas e o reset/respawn dos baús. Usar houseCARL e a referência de schema somente com a instância que corresponda aos plugins oficiais. O carregador valida estrutura, unicidade e resolução, mas não certifica que uma porta pertence arquitetonicamente à casa nem que o baú não respawna.
-
-O item `keyDescriptor` deve ser dedicado às residências: o módulo bloqueia depósito/saque desse item base para impedir transferência de chaves nesta versão. Revisar sua existência e sincronização com o cliente. Não inserir uma chave genérica usada por missões apenas porque ela tem aparência adequada.
+`keyDescriptor` agora serve somente para identificar e retirar o item físico dedicado das versões antigas. Novas chaves são vínculos persistentes projetados no inventário pessoal; não exigem novo item ESP. O campo pode ser nulo apenas em instalação nova sem chaves legadas. Comparar os plugins/hashes com a revisão instalada antes de ativar.

@@ -20,7 +20,7 @@ function createHost({ mp, commands, keyDescriptor, maxDistance = 250 }) {
     if (!integer(id, 1, 4294967295) || descriptor(mp.getDescFromId(id)) !== descriptor(desc)) fail('UNAVAILABLE');
     return id;
   }
-  const keyBaseId = resolve(keyDescriptor);
+  const keyBaseId = keyDescriptor ? resolve(keyDescriptor) : null;
   function near(actorId, id) {
     try {
       const a = mp.get(actorId, 'locationalData'), b = mp.get(id, 'locationalData');
@@ -40,22 +40,29 @@ function createHost({ mp, commands, keyDescriptor, maxDistance = 250 }) {
     if (!inv || !Array.isArray(inv.entries)) fail('UNAVAILABLE');
     return inv;
   }
-  function hasKey(expected, key) {
-    if (key.profile_id !== expected.profileId || key.account_id !== expected.accountId || key.delivery_state === 'revoked') return false;
-    return inventory(expected).entries.some(entry => entry.baseId === keyBaseId && entry.name === key.item_name && integer(entry.count));
+  function retireLegacyKeys(expected) {
+    const inv=inventory(expected);
+    const entries=inv.entries.filter(e=>!(keyBaseId!==null && e.baseId===keyBaseId && /^Chave residencial \[AR:[0-9a-f-]{36}\]$/.test(e.name||'')));
+    if(entries.length!==inv.entries.length) mp.set(expected.actorId,'inventory',{...inv,entries});
   }
-  function ensureKey(expected, key) {
-    if (hasKey(expected, key)) return;
-    const inv = inventory(expected);
-    if (inv.entries.length > 20000) fail('UNAVAILABLE');
-    const entries = [...inv.entries, { baseId: keyBaseId, count: 1, name: key.item_name }];
-    mp.set(expected.actorId, 'inventory', { ...inv, entries });
-    if (!hasKey(expected, key)) fail('UNKNOWN');
+  function cellOf(id) {
+    try { return descriptor(mp.get(id,'locationalData')?.cellOrWorldDesc); } catch { return null; }
+  }
+  function storageAt(id) {
+    try {
+      const base=resolve(mp.get(id,'baseDesc'));
+      const type=mp.lookupEspmRecordById(base)?.record?.type;
+      return type ? ['CONT','NPC_'].includes(type) : true;
+    } catch { return true; }
+  }
+  function notify(expected,message) {
+    assertCurrent(expected);
+    mp.set(expected.actorId,'browserModal',{type:'toast',data:{message},sentAt:Date.now()});
   }
   function send(expected, response) {
     assertCurrent(expected);
     mp.sendCustomPacket(expected.userId, JSON.stringify({ customPacketType: 'aetheriusResidences', response }));
   }
-  return { session, assertCurrent, resolve, near, assertNear, hasKey, ensureKey, send, keyBaseId };
+  return { session, assertCurrent, resolve, near, assertNear, retireLegacyKeys, cellOf, storageAt, notify, send, keyBaseId };
 }
 module.exports = { createHost };

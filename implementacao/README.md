@@ -1,75 +1,60 @@
-# Implementação de residências para o servidor oficial
+# Integração oficial — residências 0.3.0
 
-Pacote 0.2.1 atualizado em 20/10/2026 para entrega aos responsáveis pelo Aetherius. Contém a implementação inicial do módulo, migração PostgreSQL, interface, integrador e testes. Usa como contrato os arquivos oficiais recebidos em 09/10 e os pontos de integração do painel de 13/10. O Alduinak permanece referência de comportamento, fixada em `db9933d911eec60092d3646b4ee28dc19f2fe254`; o HEAD remoto foi conferido novamente em 19/10 e continuava nessa revisão.
+Pacote preparado em 29/10/2026. Entregamos código e contratos para a equipe integrar no servidor oficial. Nenhum banco ou processo do servidor foi alterado. O piloto continua sendo as cinco casas vanilla.
 
-**Estado de entrega: código para integração e validação, ainda não homologado.** Não houve instalação, migração, débito ou teste no servidor. Nenhum servidor de laboratório foi iniciado. Os testes executáveis foram incluídos para rodar na infraestrutura dos responsáveis; não há resultado de execução que permita declarar o pacote aprovado.
+## Componentes
 
-`PROVENIENCIA.json` identifica as fontes recebidas e suas revisões/hashes, sem afirmar que são as instaladas. `MANIFESTO-SHA256.json` relaciona os arquivos deste pacote para conferência da entrega. São nove testes unitários de domínio, cinco de interface e onze testes PostgreSQL preparados, todos ainda sem execução.
+- Módulo autoritativo de compra, venda, impostos e permissões por `profile_id` e UUID de conta.
+- Migração PostgreSQL incremental `002_household_tax.sql` após a `001`.
+- Painel de compra por moedas e módulo `properties`, rota `/properties`, slot 9 do CORE UI.
+- Integração do inventário pessoal do CORE UI para apresentar chaves vinculadas, sem item nativo transferível.
+- Gerador de catálogo e evidências preservadas. Todas as referências de armazenamento inspecionadas recebem proteção, sem confundir isso com aprovação de persistência/respawn.
+- Testes de domínio, interface e transações preparados para a infraestrutura oficial.
 
-## O que foi implementado
+Leia [REGRAS-0.3.md](REGRAS-0.3.md) antes da integração. O usuário relatou validação das compras nas duas moedas na instalação oficial; isso fica registrado como relato, sem presumir acesso ao código instalado ou aprovação desta atualização.
 
-- Catálogo restrito, referências únicas e pares completos de entrada/saída. Uma residência agrupa todas as entradas e baús.
-- Compra com saldo de Septims pela interface transacional da economia recebida. Débito, histórico financeiro, dono por `profile_id`/UUID de conta, recibo e emissão da chave são gravados na mesma transação.
-- Caminho de compra em Diademas com adaptador transacional separado. **A integração concreta da carteira de cash está pendente**, porque seu código/contrato não foi fornecido. Sem adaptador, a opção fica indisponível e não há débito.
-- Exclusão mútua para compradores, limite configurável por perfil, pedido idempotente e consulta do resultado depois de perda da resposta.
-- Emissão de chave nomeada no inventário autoritativo; recuperação por ID de emissão, reposição com revogação e posse vinculada ao perfil/conta.
-- Bloqueio de portas trancadas e de ativação/saque/depósito em baús privados. Saída interna liberada, inclusive durante indisponibilidade após inicialização.
-- Interface de oferta, confirmação, escolha da moeda, fechadura, reposição e recuperação. `/casa` consulta uma entrada próxima; tentar abrir uma entrada bloqueada também oferece a consulta.
-- Migração aditiva, configuração inicialmente desativada, integração com backup e testes unitários/PostgreSQL.
+## Atualização pelos responsáveis
 
-## Atualização do cadastro e da interface
-
-A primeira etapa é restrita a **Breezehome, Vlindrel Hall, Hjerim, Proudspire Manor e Honeyside**. O rascunho `catalogo/residences.draft.json` contém somente essas cinco casas: oito pares de portas, 186 recipientes inspecionados e cinco baús/cofres candidatos. Hjerim ainda não tem armazenamento aprovado.
-
-O [mapeamento completo](catalogo/README.md) preserva as 12 casas investigadas. Os sete imóveis de DLC/mods ficam em `catalogo/etapas-futuras/residences.draft.json`, fora do piloto. Nenhum rascunho é carregado automaticamente. Os responsáveis precisam confirmar versões, ocupação, missões, preços e armazenamento antes de importar somente casas vanilla aprovadas.
-
-O painel usa a paleta verde e transparência do painel de administração recebido, com seletores isolados para coexistir com o CORE UI. O nome da casa fica no topo, inclusive nas confirmações; as opções são clicáveis, Fechar fica no rodapé e ESC também fecha. A ponte do cliente ativa foco/cursor ao abrir e o devolve ao jogo ao fechar. Fechar não cancela compra em andamento; respostas atrasadas não reabrem a interface. Homologar foco, ESC e coexistência com os demais menus no cliente distribuído.
-
-## Integração pelos responsáveis
-
-1. Comparar o pacote com a revisão oficial em uso, revisar os arquivos e aplicar `migrations/001_residences.sql` na base PostgreSQL oficial escolhida, com backup. A migração acrescenta tabelas próprias; não cria nem modifica a carteira de cash.
-2. Confirmar que `users` e `characters` estão acessíveis nessa conexão e que `profile_id`, UUIDs, `is_banned` e status do personagem correspondem às interfaces recebidas. Bancos separados para conta e personagem exigem adaptação da autorização; o módulo não adivinha esse vínculo.
-3. Na infraestrutura de desenvolvimento oficial, conferir a integração sem alterar arquivos:
+1. Em manutenção, fazer backup do banco e do estado dos inventários/changeforms. Comparar a revisão oficial com as fontes recebidas descritas em `PROVENIENCIA.json`.
+2. Aplicar `001_residences.sql` se ainda não existir e depois `002_household_tax.sql`, na mesma base da economia oficial. A segunda migração preserva recibos históricos, amplia chaves por beneficiário e acrescenta membros, impostos e venda. Não faz débito.
+3. Atualizar cada definição aprovada com `interiorCells`, `storageGuards` e `interiorPassages`. Aumentar sua revisão acima da revisão instalada. Os rascunhos estão em revisão 2, mas a equipe deve usar uma revisão maior se já houver outra em produção. Não importar imóveis de DLC/mods no piloto.
+4. Confirmar preço base em Septims para toda casa, inclusive casas que também aceitam Diademas. Esse valor define o imposto. Na primeira inicialização desta atualização, propriedades legadas sem vencimento passam a ter sete dias até a primeira cobrança; não há cobrança retroativa baseada em datas desconhecidas.
+5. Preservar o adaptador concreto de Diademas já validado pela equipe. O integrador não sobrescreve `official-diademas.cjs`, que não está no pacote. O exemplo de contrato continua sendo somente referência.
+6. Conferir as alterações preparadas, sem escrever:
 
    ```sh
-   node integrate.cjs --server=/caminho/aetherius-server/server --client=/caminho/aetherius-client/client
+   node integrate.cjs --server=/caminho/oficial/server --client=/caminho/oficial/client
    ```
 
-4. Aplicar com os mesmos caminhos e `--apply`. O integrador copia o módulo/interface, acrescenta inicialização no gamemode, conecta os pacotes e foco no `BridgeService.ts` e inclui CSS/JS em `index.html`. Faz backup dos arquivos substituídos, preserva configuração existente e recusa âncoras ambíguas. Não aplica SQL, não inicia processos e não compila o cliente.
-5. Integrar a carteira de Diademas conforme [CONTRATO-DIADEMAS.md](CONTRATO-DIADEMAS.md). Não copiar o exemplo para produção como se já fosse a integração.
-6. Preencher `server/config/residences.json` com o item de chave e o catálogo real, conforme [CATALOGO.md](CATALOGO.md). O padrão `maxPerProfile: 1` é configurável e não está ativado enquanto o módulo estiver desativado. `allowProfiles` não vazio restringe a interface de operação ao piloto; lista vazia abre o fluxo a todos os perfis autenticados quando habilitado.
-7. Compilar o cliente pelo processo oficial e distribuir o JavaScript compilado, o `index.html` efetivamente carregado pelo Meridian/CEF e a pasta `residences`. Confirmar o caminho real da página antes de copiar; alterar um HTML não usado pelo cliente não instala a interface.
-8. Rodar os testes e a matriz no servidor com contas/imóveis restritos. Somente depois habilitar compras públicas. A configuração ativa continua vazia. O rascunho inicial em `catalogo/residences.draft.json` contém apenas as cinco casas vanilla, ainda sem aprovação para venda. Conferir as pendências antes de importar qualquer definição; não importar o arquivo de `etapas-futuras/`.
+7. Aplicar com os mesmos parâmetros e `--apply`. O integrador guarda backup, preserva a configuração existente e recusa âncoras ausentes/ambíguas. Atualiza o módulo CommonJS, compra CEF, CORE UI Propriedades, roteamento TypeScript e projeção do inventário. Não executa SQL, builds ou inicialização.
+8. Compilar **servidor TypeScript e cliente**, distribuir `ui-core/frontend/modules/properties`, o HTML efetivamente usado pelo CORE UI e a interface de compra. Confirmar que não há outro adapter registrado como `properties` ou carregado pelo manifesto. Fazer reinício controlado para retirar o antigo `/casa` e evitar handlers legados.
+9. Antes de abrir aos jogadores, retirar as chaves físicas antigas dos inventários persistidos e quaisquer cópias históricas. Manter `keyDescriptor` com o item dedicado antigo durante a migração: o módulo retira entradas com esse base e o marcador residencial ao consultar o inventário pessoal ou interagir com referências protegidas. A retirada do item legado não apaga a posse ou a chave vinculada no banco. Não afirmar migração completa só com essa limpeza sob demanda; confirmar os personagens offline e as rotas nativas de inventário.
+10. Executar os testes abaixo, compilar e homologar com múltiplos jogadores. Somente então habilitar o piloto. O pacote mantém `enabled:false`, `purchasesEnabled:false` e catálogo ativo vazio. Nesta entrega, `maxPerProfile` deve permanecer 1; cadastro de pessoas tem limite técnico de 50 por casa, com apenas dois familiares.
 
-## Inicialização e proteção
-
-O módulo precisa ser instalado após os handlers existentes e antes de abrir o servidor aos jogadores. Habilitá-lo começa com bloqueio temporário de ativações e transferências de inventário enquanto carrega catálogo e estado. **Se a inicialização falhar, esses bloqueios permanecem até corrigir e reiniciar.** Ativar pela primeira vez em manutenção, após migração/configuração e validação. O log identifica a falha; não continuar a abertura pública nesse estado.
-
-Depois da carga, a proteção se limita às referências residenciais e ao transporte de chaves residenciais. O cache expira em cinco segundos e falha de leitura bloqueia os objetos protegidos. Uma conexão dedicada com trava PostgreSQL impede dois processos deste módulo na mesma base. Não reatribuir os hooks depois da instalação. A política de saída livre pressupõe que os pares e o lado interior foram corretamente cadastrados.
-
-O módulo mantém as referências persistidas mesmo quando uma oferta sai do arquivo de configuração. Mudanças de referências existentes são recusadas e exigem migração específica. Preços/oferta podem mudar com aumento de revisão; o cliente precisa reconfirmar preço novo. Não alterar proprietário, fechaduras ou chaves por SQL enquanto o serviço estiver aberto.
-
-## Limites da chave e dos baús
-
-A chave usa o item configurado, um nome único associado à emissão persistida e a validação independente de perfil/conta. Não é uma credencial transferível: uma pessoa que copie o nome ou carregue a chave de outra conta não obtém acesso. Nesta versão, mover o item base escolhido por operações de baú é bloqueado; escolher um item dedicado, sem uso compartilhado com outras mecânicas. O próprio dono pode solicitar reposição, que invalida as anteriores e tranca a residência.
-
-A confirmação de `mp.set(inventory)` é uma leitura imediata do estado do servidor, não uma garantia de flush físico do changeform antes de uma queda da máquina. A emissão pendente é recuperável pelo mesmo ID; uma chave já marcada como entregue e perdida após falha de persistência pode ser reposta com revogação. Homologar nome, persistência, reset e reconciliação no build oficial. Não há cópias para terceiros, venda de imóvel ou abandono no pacote inicial.
-
-O inventário dos baús continua sendo o nativo. O módulo valida autorização nos eventos de ativação, depósito e saque; não cria uma segunda tabela de itens. A integridade de itens com dados extras, respawn e persistência depende de homologação do runtime e de cada baú cadastrado. O bloqueio é de acesso no servidor; esta versão não adiciona uma aparência de fechadura por Papyrus.
-
-## Testes para executar na infraestrutura oficial
+## Testes preparados
 
 ```sh
 npm install --ignore-scripts --no-audit --no-fund
 npm test
-# Definir RESIDENCES_TEST_DATABASE_URL numa base exclusiva residence_test_...
+# Base exclusiva residence_test_..., nunca o banco de produção:
 npm run test:postgres
 ```
 
-O teste PostgreSQL recusa `DATABASE_URL` de produção, exige nome de banco começando por `residence_test` e cria/remove apenas um schema aleatório próprio nessa base. A carteira fictícia existe somente nesse schema de teste. O modelo `ci/residences.yml` pode ser colocado em `.github/workflows` no repositório de entrega, com este pacote na raiz; para subpasta, ajustar o diretório dos passos. O arquivo não foi publicado nem executado.
+A suíte PostgreSQL usa `RESIDENCES_TEST_DATABASE_URL`, recusa nome de banco fora de `residence_test...` e trabalha em schema isolado. Ela inclui compra concorrente, falha/rollback, recibos repetidos, chave vinculada, nomes ambíguos, limite familiar, revogação, venda com crédito e disputa entre quitação e recompra. As suítes estão preparadas, ainda sem resultado de execução desta versão.
 
-Os testes cobrem disputa por compra, repetição, adulteração, fundos, rollback após débito, contrato cash, resultado incerto do commit, revogação e entrega recuperável. A matriz de jogo do planejamento continua obrigatória, particularmente dois clientes, múltiplas portas, baús, crash/reconexão e mudança de personagem.
+No jogo, verificar: entrada direta E; foco e ESC; abertura somente pelo TAB; chaves no inventário pessoal e ausentes em baús, saque, menus nativos e trade; familiar offline/online; terceiro familiar bloqueado; remoção enquanto um baú está aberto; porta pública sem direito a armazenamentos; bloqueio exatamente nos vencimentos; pagamento sem antecipação; perda de resposta; vendedor offline; compra concorrente com quitação; troca de personagem; reinício; respawn e conteúdo dos baús; passagem interna e saída sempre livres.
 
-## Desativação e retorno
+## Regras de segurança e persistência
 
-Para interromper novas compras, usar `purchasesEnabled: false` e reiniciar de forma controlada mantendo o módulo de acesso ativo. Não desabilitar/remover o módulo inteiro após vender imóveis: isso retiraria a proteção. Restaurar arquivos não estorna dinheiro nem remove propriedade. Manter tabelas, chaves, acesso e recibos até uma migração de retorno revisada. Nenhuma coluna legada de moradia é convertida automaticamente.
+- Posse e chaves são persistidas no PostgreSQL. A chave exibida é uma projeção somente de leitura do perfil autenticado, não uma credencial copiável. O servidor autoriza pela posse/membro atual, mesmo sem abrir o inventário.
+- Apenas `inventoryKeys(actorId, 'personal')` pode compor INVENTÁRIO do próprio jogador. Outros contextos retornam lista vazia. O futuro trade não deve reutilizar a resposta do inventário pessoal: usar os itens nativos/ledger e nunca serializar itens `residence-key:`. Essas chaves não têm base transferível nem ação de destruir/equipar.
+- O crédito de venda localiza o vendedor pelo `profile_id` e UUID e usa o saldo oficial do personagem que publicou o anúncio. Se o personagem não estiver mais aprovado ou o vínculo não existir, a transação inteira falha. Não escolhe arbitrariamente outro personagem. Conferir reconciliação de saldo no cliente para vendedor offline/online pela economia oficial.
+- Cobrança e transferência de propriedade ficam na mesma transação. Baús continuam nativos: o módulo não copia, esvazia nem cria outra carteira/inventário. Ao mudar o dono, o conteúdo fica na casa e passa a ser acessível pelo comprador.
+- Entradas e transferências validam a permissão atual. Durante mutações o cache de acesso fica indisponível, e só volta após a recarga; nenhum recibo de sucesso é emitido antes dessa etapa. Falhas de acesso bloqueiam armazenamentos, mantendo as saídas internas livres.
+- `storageGuards` protege os recipientes auditados. Armazenamentos dinâmicos na célula recebem a mesma regra; tipos não identificados são bloqueados para visitantes. `interiorPassages` identifica portas internas para permitir circulação/saída. Não cadastrar células compartilhadas sem revisar esse alcance.
+- Esta proteção não corrige respawn, scripts de missões ou reset de baús. Hjerim ainda depende de armazenamento persistente aprovado. Guardar referências é diferente de homologá-las.
+- Não desabilitar o módulo inteiro depois de vender casas: isso retira a proteção. Para interromper vendas, usar `purchasesEnabled:false` e manter o gerenciamento/acesso. Toda atualização exige migração e reinício controlados; rollback precisa considerar os novos estados de chaves e os recibos já gravados.
+
+## Limites da conferência desta entrega
+
+Foram conferidas sintaxe, estrutura do catálogo e as âncoras do integrador por execução sem `--apply` nas fontes recebidas. Não foram aplicadas alterações às fontes oficiais recebidas nem executados servidor, banco ou suíte de homologação. A revisão remota instalada, sincronização do cliente, migração de chaves antigas e funcionamento em jogo precisam ser comprovados pelos responsáveis.

@@ -1,5 +1,16 @@
 # Alterações
 
+## 0.3.0 — 29/10/2026
+
+- Chaves vinculadas ao perfil, projetadas apenas no inventário pessoal do CORE UI. Removida a emissão física e a reposição manual; a migração preserva as identidades de chaves existentes.
+- Pós-compra exclusivamente em TAB → Propriedades. Donos e membros autorizados entram com E, sem botão intermediário; imóveis privados mostram mensagem a terceiros.
+- Visitantes por nome completo/profile_id, até dois familiares, chave para familiares, confirmação de remoção e revogação imediata no acesso ao armazenamento. Porta pública só concede entrada.
+- Imposto em Septims: 10% do valor base a cada sete dias, sem antecipação; duas parcelas suspendem acesso e três recolocam o imóvel à compra pelo preço cadastrado. Quitação integral recupera a casa apenas antes de uma nova compra.
+- Venda voluntária por preço inteiro em Septims, crédito ao vendedor conferido por profile_id, transferência de propriedade atômica e exclusão de todos os membros antigos. Os itens guardados permanecem na casa para o comprador.
+- Proteção de todos os recipientes auditados e dos armazenamentos dinâmicos dos interiores cadastrados. Mantido piloto das cinco casas vanilla.
+- Migração incremental 002, integrador com CORE UI/servidor TypeScript, documentação e testes atualizados. Testes executáveis e homologação oficial desta versão permanecem pendentes; nenhuma implantação foi feita.
+
+
 ## 0.2.1 — 20/10/2026
 
 - Primeira etapa restrita a Breezehome, Vlindrel Hall, Hjerim, Proudspire Manor e Honeyside: oito pares de portas e cinco baús/cofres candidatos. Hjerim continua dependendo de armazenamento aprovado.
