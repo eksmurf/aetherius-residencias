@@ -1,6 +1,8 @@
 # Residências do Aetherius — pacote 0.3.1
 
-Entrega para integração no **servidor oficial**: [pacote ZIP 0.3.1](dist/aetherius-residencias-0.3.1.zip) · [SHA256](dist/aetherius-residencias-0.3.1.zip.sha256) · [instruções de integração](implementacao/README.md).
+Para atualizar a **primeira versão já instalada (0.1.0, informada pelo solicitante)**, seguir o [guia de atualização direta para 0.3.1](implementacao/ATUALIZACAO-0.1-PARA-0.3.1.md). A revisão efetiva do processo e as adaptações oficiais devem ser conferidas pela equipe. [Pacote com guia e conferência](dist/aetherius-residencias-0.3.1-guia-atualizacao-1.zip) · [SHA256](dist/aetherius-residencias-0.3.1-guia-atualizacao-1.zip.sha256).
+
+Entrega original 0.3.1 para integração no **servidor oficial**: [pacote ZIP 0.3.1](dist/aetherius-residencias-0.3.1.zip) · [SHA256](dist/aetherius-residencias-0.3.1.zip.sha256) · [instruções de integração](implementacao/README.md).
 
 A primeira etapa permanece restrita a **Breezehome, Vlindrel Hall, Hjerim, Proudspire Manor e Honeyside**. DLC e mods continuam em [etapas futuras](implementacao/catalogo/etapas-futuras/README.md). Nenhuma venda foi ativada por esta entrega.
 

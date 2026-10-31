@@ -1,5 +1,6 @@
 {
   "version": "0.3.1",
+  "documentationRevision": "upgrade-guide-1",
   "date": "2026-10-31",
   "algorithm": "SHA256",
   "excludes": [
@@ -7,14 +8,19 @@
   ],
   "files": [
     {
+      "path": "ATUALIZACAO-0.1-PARA-0.3.1.md",
+      "bytes": 20163,
+      "sha256": "bc3531b564ca30a41893ce13ce59faaff5b8dcc18ece6c7545f1e5beb283e898"
+    },
+    {
       "path": "CATALOGO.md",
       "bytes": 2250,
       "sha256": "382410a04d2c56198a4b15f5b8cb2cd787cafa2c16b68f9cc10bbafc5ab4d8c8"
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 4111,
-      "sha256": "ecf9670d0dc3085a44aa645c8842d3868daa75f16030c79a6410d083e7e4d150"
+      "bytes": 4615,
+      "sha256": "1cf123034ffa254509f107ec72459d968714be61be41b1e5c6d6e2eec5ad9e1a"
     },
     {
       "path": "CONTRATO-DIADEMAS.md",
@@ -23,13 +29,13 @@
     },
     {
       "path": "PROVENIENCIA.json",
-      "bytes": 6248,
-      "sha256": "4ef4ab4e2b454f57393d336e685d6fb43a9c824903b509fbdbcf5cae44850029"
+      "bytes": 6725,
+      "sha256": "da9cbf0398cef44af86d6613894ddf5211695c572b35f0b1efc83a0e23904d94"
     },
     {
       "path": "README.md",
-      "bytes": 8284,
-      "sha256": "24215c6a881c1e15b0873206c4b8435d2d6637e195f5415a1efff099757a2815"
+      "bytes": 8787,
+      "sha256": "efcdce729e960a56e59f667fe810001da89044eeabb37e287efae5d490f862ed"
     },
     {
       "path": "REGRAS-0.3.md",
@@ -40,6 +46,21 @@
       "path": "adapters/official-diademas.cjs.example",
       "bytes": 595,
       "sha256": "d44bbc97b981d5970906f2c725560173809ded50a9ed8e62dc5a033d2b218b5c"
+    },
+    {
+      "path": "atualizacao/conferir-banco.sql",
+      "bytes": 2246,
+      "sha256": "1dd8fd42012e0b67732fe1a5cd90a05dd2371e64989912996d84308ba7b9f7a1"
+    },
+    {
+      "path": "atualizacao/conferir-instalacao.cjs",
+      "bytes": 4021,
+      "sha256": "347bc1d7b66759ed9fbddf0b9970eef8a7801eab99115950b80e277c5c78a623"
+    },
+    {
+      "path": "atualizacao/referencias-versoes.json",
+      "bytes": 16307,
+      "sha256": "0de814120d8b84bd67dcc4fc7e51da1a6173b358cf4ea13e5689595d11142ff5"
     },
     {
       "path": "catalogo/IMOVEIS.md",

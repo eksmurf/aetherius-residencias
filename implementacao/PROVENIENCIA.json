@@ -124,7 +124,10 @@
     "previousReleaseUiPreviewChecked": "0.2.0",
     "javascriptSyntaxCheckedFiles": 19,
     "preparedTests": 47,
-    "visitorLimitStaticReview": true
+    "visitorLimitStaticReview": true,
+    "productionInspected": false,
+    "upgradeCollectorSyntaxChecked": true,
+    "upgradeCollectorReadOnlyCheck": "package_source_only"
   },
   "pending": [
     "Integrate migration 002, CORE UI routing and TypeScript/server/client builds",
@@ -149,5 +152,14 @@
     ],
     "deferredResidences": 7
   },
-  "rules": "REGRAS-0.3.md"
+  "rules": "REGRAS-0.3.md",
+  "documentationRevision": "upgrade-guide-1",
+  "userReportedInstalledRelease": {
+    "date": "2026-10-31",
+    "version": "0.1.0",
+    "statement": "A primeira versão que nós criamos é a que está instalada.",
+    "basis": "user_confirmation",
+    "runtimeRevisionVerified": false
+  },
+  "updateGuide": "ATUALIZACAO-0.1-PARA-0.3.1.md"
 }

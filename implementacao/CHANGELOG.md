@@ -1,5 +1,12 @@
 # Alterações
 
+## Guia de atualização 1 — 31/10/2026
+
+- Confirmação do solicitante: primeira entrega 0.1.0 instalada; revisão do processo não inspecionada remotamente.
+- Guia direto 0.1.0 → 0.3.1, com conferência, preservação de adaptações, migração 002, chaves físicas, janela de manutenção e recuperação.
+- Coletor de hashes e SQL somente de leitura para os responsáveis; não executam implantação.
+- ZIP adicional com o mesmo runtime 0.3.1 e os novos materiais, preservando o ZIP original.
+
 ## 0.3.1 — 31/10/2026
 
 - Máximo de 5 visitantes cadastrados por casa, incluindo até 2 familiares e excluindo o proprietário.
