@@ -1,6 +1,6 @@
-# Residências do Aetherius — pacote 0.3.0
+# Residências do Aetherius — pacote 0.3.1
 
-Entrega para integração no **servidor oficial**: [pacote ZIP 0.3.0](dist/aetherius-residencias-0.3.0.zip) · [SHA256](dist/aetherius-residencias-0.3.0.zip.sha256) · [instruções de integração](implementacao/README.md).
+Entrega para integração no **servidor oficial**: [pacote ZIP 0.3.1](dist/aetherius-residencias-0.3.1.zip) · [SHA256](dist/aetherius-residencias-0.3.1.zip.sha256) · [instruções de integração](implementacao/README.md).
 
 A primeira etapa permanece restrita a **Breezehome, Vlindrel Hall, Hjerim, Proudspire Manor e Honeyside**. DLC e mods continuam em [etapas futuras](implementacao/catalogo/etapas-futuras/README.md). Nenhuma venda foi ativada por esta entrega.
 
@@ -8,6 +8,7 @@ A primeira etapa permanece restrita a **Breezehome, Vlindrel Hall, Hjerim, Proud
 
 - **Chave pessoal vinculada ao perfil:** aparece em INVENTÁRIO do CORE UI, categoria Chaves, sem ações de movimentação. Não é inserida no inventário nativo transferível; portanto não compõe baús, saque ou comércio. Não há reposição manual. Suspensão por impostos ou revogação de permissões retira a projeção da chave.
 - **Entrada direta com E:** dono, familiares e visitantes cadastrados entram quando autorizados; não existe botão “Entrar”. Imóvel privado não abre painel de compra para terceiros; mostra “Residência privada”. Imóveis anunciados ou retomados mostram a oferta aos compradores.
+- **Até 5 visitantes cadastrados:** familiares contam nas cinco vagas, com no máximo dois familiares; o dono não conta. Remover alguém libera uma vaga.
 - **TAB → Propriedades:** único ponto de entrada do gerenciamento. Exibe impostos, acesso público, visitantes, familiares e anúncio de venda. O comando `/casa` foi retirado.
 - **Até dois familiares:** recebem chave e acesso aos armazenamentos. Visitantes cadastrados entram sem acesso aos recipientes. A porta pública permite entrada de terceiros, sem acesso a armazenamento.
 - **Remoção com confirmação:** corta imediatamente os direitos no servidor. Quem já está dentro continua podendo sair. A revisão de permissões também impede alterações feitas por uma tela antiga.
@@ -30,7 +31,7 @@ O imposto é sempre em Septims, inclusive quando a aquisição original foi em D
 
 O usuário informou que a compra por Septims e Diademas foi validada no servidor. Esse relato não comprova qual revisão está instalada e não equivale a homologar esta atualização. O adaptador de cash usado pela equipe precisa ser preservado na integração; a cópia recebida aqui ainda não o contém.
 
-A versão 0.3.0 foi preparada a partir das fontes recebidas: conferência de sintaxe, estrutura do catálogo, preparação do integrador sem aplicar alterações e integridade do pacote. Os testes automatizados incluídos e a homologação desta versão devem ser executados pela equipe na infraestrutura oficial. Não houve acesso remoto, implantação, início de servidor local, migração de banco ou movimentação de saldos.
+A versão 0.3.1 foi preparada a partir das fontes recebidas: conferência de sintaxe, estrutura do catálogo, preparação do integrador sem aplicar alterações e integridade do pacote. Os testes automatizados incluídos e a homologação desta versão devem ser executados pela equipe na infraestrutura oficial. Não houve acesso remoto, implantação, início de servidor local, migração de banco ou movimentação de saldos.
 
 A atualização requer a migração `002_household_tax.sql`, configuração do catálogo com proteção dos interiores, build do servidor TypeScript e distribuição do cliente/CORE UI. É uma atualização conjunta; não basta substituir o JavaScript do painel.
 

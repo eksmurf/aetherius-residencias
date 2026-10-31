@@ -1,7 +1,7 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),vm=require('node:vm'),fs=require('node:fs'),path=require('node:path');
 const {webcrypto}=require('node:crypto');
-async function harness(){
+async function harness(extraMembers=[]){
   let definition;const calls=[];const flush=async()=>{for(let n=0;n<30;n++)await Promise.resolve();};
   const document={activeElement:null,createElement:element};
   function element(tag){return {tag,children:[],dataset:{},textContent:'',disabled:false,classList:{add(){},remove(){}},
@@ -11,6 +11,7 @@ async function harness(){
   const residence={residenceId:'first',name:'Breezehome',accessRevision:3,open:false,listingPrice:null,familyLimit:2,
     tax:{configured:true,periods:1,amount:100,weeklyAmount:100,dueAt:new Date().toISOString(),nextAccrualAt:new Date(Date.now()+86400000).toISOString(),canPay:true,suspended:false,auction:false},
     members:[{profileId:2,name:'Pessoa Dois',family:true},{profileId:3,name:'Pessoa Três',family:true},{profileId:4,name:'Pessoa Quatro',family:false}]};
+  residence.members.push(...extraMembers);
   vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../client/properties/properties.js'),'utf8'),{window:{AetheriusUI:{registerModule:d=>{definition=d;}}},document,crypto:webcrypto,Date,setInterval:()=>1,clearInterval(){}});
   const context={request:async(moduleId,action,input)=>{calls.push({moduleId,action,input});return action==='snapshot'?{ok:true,data:{residences:[residence],serverNow:new Date().toISOString()}}:{ok:true,data:{}};},signal:new AbortController().signal};
   const root=element('main');definition.mount(root,context);await flush();
@@ -18,6 +19,18 @@ async function harness(){
   return{definition,residence,root,calls,flush,click};
 }
 test('pós-compra registra somente Propriedades no slot 9',async()=>{const h=await harness();assert.equal(h.definition.id,'properties');assert.equal(h.definition.rootRoute,'/properties');assert.equal(h.definition.radialSlot,9);assert.equal(h.root.querySelectorAll('h2')[0].textContent,'Breezehome');});
+
+test('cinco cadastros incluindo familiares bloqueiam adição; remover libera vaga',async()=>{
+  const h=await harness([{profileId:5,name:'Pessoa Cinco',family:false},{profileId:6,name:'Pessoa Seis',family:false}]);
+  const add=()=>h.root.querySelectorAll('button').find(n=>n.textContent==='Adicionar visitante');
+  assert.equal(add().disabled,true);
+  const name=h.root.querySelectorAll('input').find(n=>n.placeholder==='Nome completo ou profile_id');
+  assert.equal(name.disabled,true);name.value='7';
+  h.root.querySelectorAll('form')[0].onsubmit({preventDefault(){}});await h.flush();
+  assert.ok(!h.calls.some(c=>c.action==='addMember'));
+  await h.click('Remover');h.residence.members.shift();await h.click('Sim');
+  assert.equal(add().disabled,false);
+});
 test('limite de dois familiares desabilita só as caixas ainda desmarcadas',async()=>{
   const h=await harness(),checks=h.root.querySelectorAll('input').filter(n=>n.type==='checkbox');
   assert.equal(checks[1].disabled,false);assert.equal(checks[2].disabled,false);assert.equal(checks[3].disabled,true);

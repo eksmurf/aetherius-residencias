@@ -138,7 +138,7 @@ function createStore({ db, currencies, maxPerProfile = 1 }) {
           if (target.profile_id===session.profileId) fail('INVALID');
           const [members]=await conn.query('SELECT * FROM aetherius_residence_members WHERE residence_id=$1',[residence.id]);
           if (members.some(m=>m.profile_id===target.profile_id)) fail('CONFLICT');
-          if (members.length>=50) fail('MEMBER_LIMIT');
+          if (members.length>=5) fail('MEMBER_LIMIT');
           await conn.query(`INSERT INTO aetherius_residence_members(residence_id,profile_id,account_id,character_id,display_name)
             VALUES($1,$2,$3,$4,$5)`,[residence.id,target.profile_id,target.account_id,target.character_id,target.name]);
         } else if (['setFamily','removeMember'].includes(input.action)) {
@@ -200,7 +200,7 @@ function createStore({ db, currencies, maxPerProfile = 1 }) {
         }
         const [members]=await conn.query('SELECT profile_id,display_name,family FROM aetherius_residence_members WHERE residence_id=$1 ORDER BY created_at,profile_id',[row.id]);
         result.push({residenceId:row.id,name:row.definition.name,open:!row.locked,accessRevision:row.access_revision,listingPrice:row.listing_price,
-          tax:taxView(row,c=>currencies.available(c)),members:members.map(m=>({profileId:m.profile_id,name:m.display_name.slice(0,48),family:m.family})),familyLimit:2});
+          tax:taxView(row,c=>currencies.available(c)),members:members.map(m=>({profileId:m.profile_id,name:m.display_name.slice(0,48),family:m.family})),memberLimit:5,familyLimit:2});
       }
       return {residences:result,serverNow:new Date().toISOString()};
     });

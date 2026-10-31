@@ -1,4 +1,4 @@
-# Integração oficial — residências 0.3.0
+# Integração oficial — residências 0.3.1
 
 Pacote preparado em 29/10/2026. Entregamos código e contratos para a equipe integrar no servidor oficial. Nenhum banco ou processo do servidor foi alterado. O piloto continua sendo as cinco casas vanilla.
 
@@ -29,7 +29,7 @@ Leia [REGRAS-0.3.md](REGRAS-0.3.md) antes da integração. O usuário relatou va
 7. Aplicar com os mesmos parâmetros e `--apply`. O integrador guarda backup, preserva a configuração existente e recusa âncoras ausentes/ambíguas. Atualiza o módulo CommonJS, compra CEF, CORE UI Propriedades, roteamento TypeScript e projeção do inventário. Não executa SQL, builds ou inicialização.
 8. Compilar **servidor TypeScript e cliente**, distribuir `ui-core/frontend/modules/properties`, o HTML efetivamente usado pelo CORE UI e a interface de compra. Confirmar que não há outro adapter registrado como `properties` ou carregado pelo manifesto. Fazer reinício controlado para retirar o antigo `/casa` e evitar handlers legados.
 9. Antes de abrir aos jogadores, retirar as chaves físicas antigas dos inventários persistidos e quaisquer cópias históricas. Manter `keyDescriptor` com o item dedicado antigo durante a migração: o módulo retira entradas com esse base e o marcador residencial ao consultar o inventário pessoal ou interagir com referências protegidas. A retirada do item legado não apaga a posse ou a chave vinculada no banco. Não afirmar migração completa só com essa limpeza sob demanda; confirmar os personagens offline e as rotas nativas de inventário.
-10. Executar os testes abaixo, compilar e homologar com múltiplos jogadores. Somente então habilitar o piloto. O pacote mantém `enabled:false`, `purchasesEnabled:false` e catálogo ativo vazio. Nesta entrega, `maxPerProfile` deve permanecer 1; cadastro de pessoas tem limite técnico de 50 por casa, com apenas dois familiares.
+10. Executar os testes abaixo, compilar e homologar com múltiplos jogadores. Somente então habilitar o piloto. O pacote mantém `enabled:false`, `purchasesEnabled:false` e catálogo ativo vazio. Nesta entrega, `maxPerProfile` deve permanecer 1; cadastro limitado a 5 visitantes por casa, incluindo até dois familiares; o proprietário não ocupa vaga. Cadastros antigos acima do limite devem ser revisados pela equipe: não há remoção automática, e novas adições ficam bloqueadas até haver vaga.
 
 ## Testes preparados
 

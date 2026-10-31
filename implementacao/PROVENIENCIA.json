@@ -1,6 +1,6 @@
 {
-  "version": "0.3.0",
-  "preparedOn": "2026-10-29",
+  "version": "0.3.1",
+  "preparedOn": "2026-10-31",
   "target": "Aetherius official server",
   "upstream": {
     "url": "https://github.com/Alduinak-RP/alduinak",
@@ -123,14 +123,15 @@
     "integratorDryRunChecked": true,
     "previousReleaseUiPreviewChecked": "0.2.0",
     "javascriptSyntaxCheckedFiles": 19,
-    "preparedTests": 45
+    "preparedTests": 47,
+    "visitorLimitStaticReview": true
   },
   "pending": [
     "Integrate migration 002, CORE UI routing and TypeScript/server/client builds",
     "Migrate physical legacy keys before opening public access, including offline inventories",
     "Preserve the official Diademas adapter already validated by the team; its deployed source was not supplied",
     "Approve interior cells/storage/door records, particularly Hjerim; verify native locks and persistence",
-    "Execute automated suites and official multiplayer acceptance matrix for 0.3.0"
+    "Execute automated suites and official multiplayer acceptance matrix for 0.3.1"
   ],
   "catalogProvenance": "catalogo/PROVENIENCIA-MAPEAMENTO.json",
   "uiReferences": [

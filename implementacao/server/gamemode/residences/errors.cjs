@@ -4,7 +4,7 @@ const messages = {
   TAX_BASE:'Defina o valor base da casa em Septims antes da venda.', TAX_SUSPENDED:'Pague os impostos pendentes para recuperar a chave e o acesso à residência.',
   PRIVATE: 'Residência privada', MEMBER_NOT_FOUND: 'Jogador não encontrado pelo nome completo ou profile_id.',
   AMBIGUOUS: 'Há mais de um perfil com esse nome. Informe o profile_id.', FAMILY_LIMIT: 'Esta residência já possui dois familiares.',
-  MEMBER_LIMIT: 'Limite de 50 pessoas cadastradas nesta residência.',
+  MEMBER_LIMIT: 'Limite de 5 visitantes cadastrados nesta residência, incluindo familiares. Remova alguém para adicionar outra pessoa.',
   STALE: 'As permissões mudaram. Atualize a consulta antes de confirmar.',
   TAX_EARLY: 'O pagamento deste imposto ainda não está disponível.', TAX_CHANGED: 'Este vencimento já foi pago ou foi atualizado.',
   INVALID: 'Pedido inválido.', SESSION: 'A sessão do personagem mudou.',

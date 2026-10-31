@@ -1,4 +1,4 @@
-# Regras de residências 0.3.0 — 29/10/2026
+# Regras de residências 0.3.1 — 31/10/2026
 
 Estas regras substituem o fluxo de reposição manual, trancar/destrancar por botão e painel de proprietário na porta das versões 0.1/0.2.
 
@@ -12,7 +12,7 @@ Dono, familiares e visitantes autorizados entram diretamente ao pressionar E. A 
 
 TAB → Propriedades é o único caminho de interface para gerenciamento. A porta mostra somente compra quando aplicável. Não existe comando ou botão extra para abrir gerenciamento.
 
-O dono informa nome completo (comparação sem diferença entre maiúsculas/minúsculas) ou `profile_id`. O servidor consulta perfis e personagens aprovados. Nome que identificar mais de um perfil exige o ID. A pessoa entra como visitante. Marcar Familiar concede acesso a armazenamentos e chave vinculada. Há no máximo dois familiares; o limite é aplicado no banco sob bloqueio da residência e refletido nas caixas desabilitadas do painel.
+O dono informa nome completo (comparação sem diferença entre maiúsculas/minúsculas) ou `profile_id`. O servidor consulta perfis e personagens aprovados. Nome que identificar mais de um perfil exige o ID. A pessoa entra como visitante. São permitidos até 5 cadastros por residência, incluindo familiares; o proprietário não ocupa vaga. Ao atingir o limite, o formulário fica desabilitado e o servidor rejeita novas inclusões sob bloqueio da residência. Remover alguém libera uma vaga; mudar o papel para Familiar não libera vaga. A porta pública não altera esse limite de cadastros. Cadastros legados acima de cinco exigem revisão da equipe, sem exclusão automática. Marcar Familiar concede acesso a armazenamentos e chave vinculada. Há no máximo dois familiares; o limite é aplicado no banco sob bloqueio da residência e refletido nas caixas desabilitadas do painel.
 
 Desmarcar Familiar mantém a pessoa como visitante e revoga sua chave/acesso aos armazenamentos. Remover exige Sim/Não e retira todo o vínculo. Remoção e venda não expulsam por teleporte quem está dentro; apenas bloqueiam novos acessos a baús e reentrada. Porta pública permite visita, nunca armazenamento.
 

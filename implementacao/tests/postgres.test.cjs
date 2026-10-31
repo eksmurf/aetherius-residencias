@@ -144,6 +144,21 @@ test('adição por nome completo cria visitante; homônimos exigem profile_id',a
   await makePerson(4,'Mesmo Nome');await makePerson(5,'Mesmo Nome');await assert.rejects(manage('addMember',{query:'Mesmo Nome'}),{code:'AMBIGUOUS'});
   await assert.rejects(manage('addMember',{query:'Não Existe'}),{code:'MEMBER_NOT_FOUND'});
 });
+test('cinco cadastros incluindo familiares: sexta pessoa recusada e remoção libera vaga',async()=>{
+  await mutate(sessions[0],input());
+  for(let n=3;n<=8;n++)await makePerson(n,'Pessoa '+n);
+  for(let n=3;n<=7;n++)await manage('addMember',{query:String(n)});
+  await manage('setFamily',{memberProfileId:3,family:true});
+  await manage('setFamily',{memberProfileId:4,family:true});
+  await assert.rejects(manage('addMember',{query:'8'}),{code:'MEMBER_LIMIT'});
+  let h=(await store.properties(sessions[0])).residences[0];
+  assert.equal(h.memberLimit,5);assert.equal(h.members.length,5);
+  await manage('removeMember',{memberProfileId:7,confirmed:true});
+  await manage('addMember',{query:'8'});
+  h=(await store.properties(sessions[0])).residences[0];
+  assert.equal(h.members.length,5);assert.ok(h.members.some(m=>m.profileId===8));
+});
+
 test('dois familiares; terceiro recusado e remoção revoga chave imediatamente',async()=>{
   await mutate(sessions[0],input());const members=[];for(let n=3;n<=5;n++){members.push(await makePerson(n,'Pessoa '+n));await manage('addMember',{query:String(n)});}
   await manage('setFamily',{memberProfileId:3,family:true});await manage('setFamily',{memberProfileId:4,family:true});

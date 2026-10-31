@@ -1,5 +1,11 @@
 # Alterações
 
+## 0.3.1 — 31/10/2026
+
+- Máximo de 5 visitantes cadastrados por casa, incluindo até 2 familiares e excluindo o proprietário.
+- Contador e bloqueio de adição no painel, com validação transacional no servidor. Remoção libera vaga.
+- Dois cenários de regressão adicionados para execução pela equipe; suítes não executadas nesta entrega.
+
 ## 0.3.0 — 29/10/2026
 
 - Chaves vinculadas ao perfil, projetadas apenas no inventário pessoal do CORE UI. Removida a emissão física e a reposição manual; a migração preserva as identidades de chaves existentes.

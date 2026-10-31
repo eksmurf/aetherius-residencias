@@ -5,7 +5,7 @@
   const id=()=>{const bytes=new Uint8Array(16);crypto.getRandomValues(bytes);bytes[6]=(bytes[6]&15)|64;bytes[8]=(bytes[8]&63)|128;const h=[...bytes].map(n=>n.toString(16).padStart(2,'0')).join('');return `${h.slice(0,8)}-${h.slice(8,12)}-${h.slice(12,16)}-${h.slice(16,20)}-${h.slice(20)}`;};
   const date=v=>new Date(v).toLocaleString('pt-BR');
   const money=v=>v.toLocaleString('pt-BR')+' Septims';
-  ui.registerModule({id:'properties',label:'PROPRIEDADES',version:'0.3.0',sdkMin:'1.0.0',sdkMaxExclusive:'2.0.0',rootRoute:'/properties',radialSlot:9,
+  ui.registerModule({id:'properties',label:'PROPRIEDADES',version:'0.3.1',sdkMin:'1.0.0',sdkMaxExclusive:'2.0.0',rootRoute:'/properties',radialSlot:9,
     assets:['modules/properties/properties.js','modules/properties/properties.css'],capabilities:['properties.read','properties.write'],
     mount(container,context){
       container.classList.add('ar-properties');
@@ -65,10 +65,13 @@
           permissions.append(checkbox('Porta aberta ao público',h.open,busy||!!uncertain||t.suspended,open=>mutate('public',{open})));
           permissions.append(el('p','Com a porta aberta, qualquer pessoa pode entrar. Visitantes não acessam os armazenamentos.','arp-muted'));
           const familyCount=h.members.filter(m=>m.family).length;
-          permissions.append(el('h3',`Visitantes e familiares · ${familyCount}/2 familiares`));
+          const memberLimit=5,memberLimitReached=h.members.length>=memberLimit;
+          permissions.append(el('h3',`Visitantes · ${h.members.length}/${memberLimit} cadastrados · ${familyCount}/2 familiares`));
+          permissions.append(el('p','Até 5 visitantes cadastrados, incluindo os familiares. O proprietário não ocupa uma vaga.','arp-muted'));
+          if(memberLimitReached)permissions.append(el('p','Limite de visitantes atingido. Remova alguém para liberar uma vaga.','arp-muted'));
           const form=el('form',undefined,'arp-add');const name=el('input');name.type='text';name.placeholder='Nome completo ou profile_id';name.maxLength=255;name.setAttribute('aria-label','Nome completo ou profile_id');name.required=true;
-          const add=el('button','Adicionar visitante');add.type='submit';name.disabled=add.disabled=busy||!!uncertain||t.suspended;
-          form.onsubmit=e=>{e.preventDefault();if(name.value.trim())mutate('addMember',{query:name.value.trim()});};form.append(name,add);permissions.append(form);
+          const add=el('button','Adicionar visitante');add.type='submit';name.disabled=add.disabled=busy||!!uncertain||t.suspended||memberLimitReached;
+          form.onsubmit=e=>{e.preventDefault();if(!memberLimitReached&&name.value.trim())mutate('addMember',{query:name.value.trim()});};form.append(name,add);permissions.append(form);
           for(const m of h.members){
             const row=el('div',undefined,'arp-member');row.append(el('span',`${m.name} · ${m.profileId}`,'arp-member-name'));
             row.append(checkbox('Familiar',m.family,busy||!!uncertain||t.suspended||(!m.family&&familyCount>=2),family=>mutate('setFamily',{memberProfileId:m.profileId,family})));
