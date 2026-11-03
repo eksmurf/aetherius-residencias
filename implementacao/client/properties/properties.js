@@ -5,7 +5,7 @@
   const id=()=>{const bytes=new Uint8Array(16);crypto.getRandomValues(bytes);bytes[6]=(bytes[6]&15)|64;bytes[8]=(bytes[8]&63)|128;const h=[...bytes].map(n=>n.toString(16).padStart(2,'0')).join('');return `${h.slice(0,8)}-${h.slice(8,12)}-${h.slice(12,16)}-${h.slice(16,20)}-${h.slice(20)}`;};
   const date=v=>new Date(v).toLocaleString('pt-BR');
   const money=v=>v.toLocaleString('pt-BR')+' Septims';
-  ui.registerModule({id:'properties',label:'PROPRIEDADES',version:'0.3.3',sdkMin:'1.0.0',sdkMaxExclusive:'2.0.0',rootRoute:'/properties',radialSlot:9,
+  ui.registerModule({id:'properties',label:'PROPRIEDADES',version:'0.3.4',sdkMin:'1.0.0',sdkMaxExclusive:'2.0.0',rootRoute:'/properties',radialSlot:9,
     assets:['modules/properties/properties.js','modules/properties/properties.css'],capabilities:['properties.read','properties.write'],
     mount(container,context){
       container.classList.add('ar-properties');
@@ -53,12 +53,10 @@
         else{
           const t=h.tax, tax=el('section',undefined,'arp-card');tax.append(el('h3','Imposto residencial'));
           if(t.configured){
-            tax.append(el('p',money(t.periodAmount)+' a cada '+t.periodDays+' dias · 10% do valor base em Septims.'));
-            tax.append(el('p',t.periods?`${t.periods} imposto(s) em aberto · Total: ${money(t.amount)}`:'Nenhum imposto disponível para pagamento.'));
-            const time=el('p',undefined,'arp-time');time.dataset.due=t.periods?t.nextAccrualAt:t.dueAt;tax.append(time);
-            tax.append(el('p',(t.periods?'Próximo acúmulo: ':'Pagamento disponível em: ')+date(t.periods?t.nextAccrualAt:t.dueAt),'arp-muted'));
-            if(t.suspended)tax.append(el('p',t.auction?'A casa voltou à venda pelo preço cadastrado. Quite todos os impostos antes de outra pessoa comprar para recuperar a casa e sua chave. Se houver nova compra, você perde a casa e os itens guardados nela.':'Sua chave e os acessos da residência estão suspensos. Pague os impostos pendentes para recuperar a chave.','arp-warning'));
-            const pay=button('Pagar impostos — '+money(t.amount),()=>{confirm={kind:'tax',houseId:h.residenceId,dueAt:t.dueAt,periods:t.periods,amount:t.amount};render();});pay.className='arp-primary';pay.disabled=!t.canPay||busy||!!uncertain;tax.append(pay);
+            const time=el('p',undefined,'arp-time');time.dataset.due=t.periods?t.nextAccrualAt:t.dueAt;time.setAttribute('aria-label',t.periods?'Tempo até o próximo imposto acumular':'Tempo até o próximo vencimento');tax.append(time);
+            const pay=button((t.advance?'Antecipar pagamento':'Pagar impostos')+' — '+money(t.paymentAmount),()=>{confirm={kind:'tax',houseId:h.residenceId,dueAt:t.dueAt,periods:t.periods,amount:t.paymentAmount,advance:t.advance,periodDays:t.periodDays};render();});pay.className='arp-primary';pay.disabled=!t.canPay||busy||!!uncertain;tax.append(pay);
+            tax.append(el('p','Os impostos acumulam. Na 2ª quinzena sem pagar, todos perdem acesso à casa e aos baús. Na 3ª, a casa volta à venda.','arp-muted arp-tax-note'));
+            if(t.suspended)tax.append(el('p',t.auction?'Casa à venda por falta de pagamento. Quite a dívida antes de outra compra para recuperar a casa e seus itens.':'Acessos suspensos. Quite os impostos para recuperar sua chave.','arp-warning'));
           }else tax.append(el('p','O imposto aguarda configuração da equipe.'));
           container.append(tax);
           const permissions=el('section',undefined,'arp-card');permissions.append(el('h3','Acesso à residência'));
@@ -89,7 +87,8 @@
         if(uncertain){const r=el('section',undefined,'arp-warning');r.append(el('p','Existe uma solicitação com resultado pendente.'),button('Consultar resultado',checkReceipt),button('Reenviar o mesmo pedido',()=>mutate(uncertain.action,{},uncertain.input)));container.append(r);}
         if(notice){const n=el('p',notice,'arp-notice');n.setAttribute('role','status');container.append(n);}
         if(confirm){container.querySelectorAll('button,input,select').forEach(n=>{n.disabled=true;});const modal=el('section',undefined,'arp-confirm');modal.setAttribute('role','alertdialog');modal.setAttribute('aria-modal','true');
-          const title=confirm.kind==='remove'?`Remover ${confirm.name} da residência?`:confirm.kind==='sale'?`Anunciar a casa por ${money(confirm.amount)}?`:`Pagar ${money(confirm.amount)} pelos ${confirm.periods} imposto(s)?`;modal.setAttribute('aria-label',title);modal.append(el('h3',title));
+          const title=confirm.kind==='remove'?`Remover ${confirm.name} da residência?`:confirm.kind==='sale'?`Anunciar a casa por ${money(confirm.amount)}?`:confirm.advance?`Antecipar a próxima parcela por ${money(confirm.amount)}?`:`Pagar ${money(confirm.amount)} pelos ${confirm.periods} imposto(s)?`;modal.setAttribute('aria-label',title);modal.append(el('h3',title));
+          if(confirm.kind==='tax'&&confirm.advance)modal.append(el('p','O próximo vencimento passa para '+date(Date.parse(confirm.dueAt)+confirm.periodDays*86400000)+'.'));
           if(confirm.kind==='remove')modal.append(el('p','O acesso aos baús será revogado imediatamente. A pessoa poderá sair, mas só poderá entrar novamente se for adicionada ou se a porta estiver aberta.'));
           if(confirm.kind==='sale')modal.append(el('p','A venda inclui todos os itens guardados. O pagamento será creditado no saldo oficial do personagem que publicou o anúncio, conferido pelo seu profile_id.'));
           const yes=button('Sim',()=>{const c=confirm;if(c.houseId!==selected)return;return c.kind==='remove'?mutate('removeMember',{memberProfileId:c.profileId,confirmed:true}):c.kind==='sale'?mutate('listSale',{amount:c.amount}):mutate('payTax',{dueAt:c.dueAt,periods:c.periods});});

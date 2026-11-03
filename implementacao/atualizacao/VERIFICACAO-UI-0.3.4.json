@@ -1,0 +1,13 @@
+{
+  "version": "0.3.4",
+  "scope": "fictional UI preview; not economic or database tests",
+  "checked": [
+    "compact_tax_section",
+    "notice_below_button",
+    "advance_and_debt_labels",
+    "cancel_does_not_advance",
+    "simulated_advance_plus_15_days"
+  ],
+  "pageErrors": [],
+  "productionTouched": false
+}

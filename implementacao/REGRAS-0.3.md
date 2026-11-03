@@ -1,4 +1,4 @@
-# Regras de residências 0.3.3 — 03/11/2026
+# Regras de residências 0.3.4 — 03/11/2026
 
 Estas regras substituem o fluxo de reposição manual, trancar/destrancar por botão e painel de proprietário na porta das versões 0.1/0.2.
 
@@ -22,9 +22,9 @@ A periodicidade é de 15 dias completos (360 horas), sem vinculação aos dias 1
 
 O imposto quinzenal é `ceil(valorBaseEmSeptims / 10)`, sempre em Septims. O valor base é fixado na aquisição e corresponde ao preço cadastrado em Septims, independentemente da moeda da compra ou do preço particular de revenda. A fração é arredondada para cima porque a moeda usa unidades inteiras.
 
-O primeiro vencimento ocorre 15 dias após a aquisição. Antes disso não há pagamento. Cada 15 dias completos acrescenta uma parcela. Com uma parcela em aberto há cobrança sem bloqueio; com duas, chave, entradas e armazenamento de dono/familiares/visitantes são suspensos, inclusive porta pública. Com três, a casa volta à compra pelo preço cadastrado. Não existe disputa por lances.
+O primeiro vencimento ocorre 15 dias após a aquisição. Antes disso, o dono pode antecipar a próxima parcela. Cada antecipação debita uma parcela e avança o vencimento existente em 15 dias, sem reiniciar o relógio na data de pagamento. Cada 15 dias completos acrescenta uma parcela. Com uma parcela em aberto há cobrança sem bloqueio; com duas, chave, entradas e armazenamento de dono/familiares/visitantes são suspensos, inclusive porta pública. Com três, a casa volta à compra pelo preço cadastrado. Não existe disputa por lances.
 
-Quitação paga todas as parcelas vencidas de uma só vez e avança o próximo vencimento na mesma sequência quinzenal. Não compra períodos futuros e não reinicia artificialmente o relógio. A dívida continua acumulando após a terceira quinzena. Após suspensão, a quitação devolve as chaves/permissões existentes e fecha a porta pública; o dono pode reabri-la deliberadamente. Um anúncio voluntário anterior é cancelado nessa recuperação.
+Quitação paga todas as parcelas vencidas de uma só vez e avança o próximo vencimento na mesma sequência quinzenal. Com dívida, essa operação não inclui uma parcela futura. Sem dívida, uma nova confirmação permite antecipar uma parcela futura. A contagem continua ancorada no vencimento existente. A dívida continua acumulando após a terceira quinzena. Após suspensão, a quitação devolve as chaves/permissões existentes e fecha a porta pública; o dono pode reabri-la deliberadamente. Um anúncio voluntário anterior é cancelado nessa recuperação.
 
 Até uma nova compra concluir, o antigo dono ainda pode quitar a dívida pelo TAB e recuperar o direito. Quitação e compra concorrentes bloqueiam a mesma linha. Se a compra vencer, o pagamento do antigo dono é recusado sem débito. Ele perde a casa e os itens que permaneceram nela; os vínculos de membros e chaves anteriores são revogados. Na retomada por imposto não há crédito ao antigo dono.
 

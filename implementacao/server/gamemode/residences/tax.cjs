@@ -11,9 +11,11 @@ function taxView(row, available=()=>true, now=Date.now()) {
   if(row.tax_terms.periodDays!==TAX_PERIOD_DAYS) fail('TAX_PERIOD');
   const due=new Date(row.tax_due_at).getTime(),periods=now<due?0:Math.floor((now-due)/TAX_PERIOD_MS)+1;
   const amount=row.tax_terms.amount*periods;
+  const paymentPeriods=Math.max(1,periods),paymentAmount=row.tax_terms.amount*paymentPeriods;
   return {configured:true,dueAt:new Date(due).toISOString(),opensAt:new Date(due).toISOString(),
     periodAmount:row.tax_terms.amount,periodDays:TAX_PERIOD_DAYS,amount,currency:'septims',periods,suspended:periods>=2,auction:periods>=3,
-    canPay:periods>0&&Number.isSafeInteger(amount)&&amount<=2147483647&&available('septims'),
+    advance:periods===0,paymentPeriods,paymentAmount,
+    canPay:Number.isSafeInteger(paymentAmount)&&paymentAmount>0&&paymentAmount<=2147483647&&available('septims'),
     nextAccrualAt:new Date(due+periods*TAX_PERIOD_MS).toISOString(),serverNow:new Date(now).toISOString()};
 }
 function offerKind(row,now=Date.now()) {

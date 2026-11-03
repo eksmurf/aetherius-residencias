@@ -1,4 +1,6 @@
-# Residências do Aetherius — pacote 0.3.3
+# Residências do Aetherius — pacote 0.3.4
+
+**IPTU simplificado e antecipação — 0.3.4:** botão com valor único e aviso curto; antecipar quita uma parcela e avança o vencimento em 15 dias. [Pacote 0.3.4](dist/aetherius-residencias-0.3.4.zip) · [SHA256](dist/aetherius-residencias-0.3.4.zip.sha256) · [guia atual](implementacao/ATUALIZACAO-0.3.4.md).
 
 **IPTU a cada 15 dias — 0.3.3:** primeira parcela em 15 dias, suspensão com duas (30 dias) e retorno à venda com três (45 dias), sem pagamento. Confirmado pelo solicitante: ainda não há IPTU ativo. [Pacote 0.3.3](dist/aetherius-residencias-0.3.3.zip) · [SHA256](dist/aetherius-residencias-0.3.3.zip.sha256) · [guia da atualização](implementacao/ATUALIZACAO-0.3.3.md).
 
@@ -24,14 +26,14 @@ A primeira etapa permanece restrita a **Breezehome, Vlindrel Hall, Hjerim, Proud
 
 | Momento sem pagamento | Resultado |
 |---|---|
-| Antes de 15 dias | Pagamento indisponível |
+| Antes do vencimento | Antecipação de uma parcela disponível |
 | 15 dias | Primeiro imposto disponível: 10% do valor base em Septims |
 | 30 dias | Dois impostos acumulados; chaves, entradas e armazenamento suspensos |
 | 45 dias | Três impostos acumulados; imóvel volta à compra pelo preço cadastrado |
 | Quitação antes de nova compra | Paga toda a dívida e recupera a chave e a casa |
 | Nova compra antes da quitação | Antigo dono perde o imóvel e os itens que permaneceram nele |
 
-O imposto é sempre em Septims, inclusive quando a aquisição original foi em Diademas. Fração de Septim é arredondada para cima. A dívida continua acumulando a cada 15 dias; não é congelada na terceira quinzena. Pagar não permite antecipar o próximo imposto. Na retomada por inadimplência não há pagamento ao antigo dono; na venda voluntária há crédito integral do preço anunciado. [Regras e contratos detalhados](implementacao/REGRAS-0.3.md).
+O imposto é sempre em Septims, inclusive quando a aquisição original foi em Diademas. Fração de Septim é arredondada para cima. A dívida continua acumulando a cada 15 dias; não é congelada na terceira quinzena. Sem dívida, é possível antecipar uma parcela por confirmação; com dívida, o pagamento quita todas as vencidas. Na retomada por inadimplência não há pagamento ao antigo dono; na venda voluntária há crédito integral do preço anunciado. [Regras e contratos detalhados](implementacao/REGRAS-0.3.md).
 
 ## Estado e validação
 

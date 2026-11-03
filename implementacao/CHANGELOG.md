@@ -1,5 +1,11 @@
 # Alterações
 
+## 0.3.4 — 03/11/2026
+
+- Seção de IPTU reduzida a título, contador, botão e aviso sobre acúmulo/bloqueio/retomada.
+- Antecipação de uma parcela antes do vencimento, com confirmação e avanço de 15 dias. Dívida continua sendo quitada integralmente.
+- Servidor valida cotação, debita e grava recibo de modo transacional; cliente usa paymentAmount/advance. Sem nova migração de schema.
+
 ## 0.3.3 — 03/11/2026
 
 - IPTU a cada 15 dias; duas parcelas suspendem aos 30 e três recolocam à venda aos 45 dias sem pagamento. Valor por parcela mantido em 10% da base em Septims.

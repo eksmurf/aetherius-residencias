@@ -159,12 +159,12 @@ function createStore({ db, currencies, maxPerProfile = 1 }) {
           const due=residence.tax_due_at && new Date(residence.tax_due_at).toISOString();
           if (!due || input.dueAt!==due) fail('TAX_CHANGED');
           const bill=taxView(residence,c=>currencies.available(c));
-          if (!bill.canPay) fail('TAX_EARLY');
+          if (!bill.canPay) fail('UNAVAILABLE');
           if(input.periods!==bill.periods) fail('TAX_CHANGED');
-          amount=bill.amount; chargeCurrency='septims';
+          amount=bill.paymentAmount; chargeCurrency='septims';
           walletId=await currencies.debit(conn,{...session,currency:chargeCurrency,amount,purchaseId:operationId,reason:'residence_tax'});
           if(bill.suspended){residence.locked=true;residence.listing_price=null;residence.seller_character_id=null;}
-          residence.tax_due_at=new Date(Date.parse(due)+bill.periods*TAX_PERIOD_MS).toISOString();
+          residence.tax_due_at=new Date(Date.parse(due)+bill.paymentPeriods*TAX_PERIOD_MS).toISOString();
         } else fail('INVALID');
       }
       if (input.action==='purchase'||recipient!==session) {

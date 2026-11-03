@@ -1,5 +1,5 @@
 {
-  "version": "0.3.3",
+  "version": "0.3.4",
   "preparedOn": "2026-11-03",
   "target": "Aetherius official server",
   "upstream": {
@@ -123,20 +123,20 @@
     "integratorDryRunChecked": true,
     "previousReleaseUiPreviewChecked": "0.2.0",
     "javascriptSyntaxCheckedFiles": 20,
-    "preparedTests": 49,
+    "preparedTests": 52,
     "visitorLimitStaticReview": true,
     "productionInspected": false,
     "upgradeCollectorSyntaxChecked": true,
     "upgradeCollectorReadOnlyCheck": "package_source_only",
     "uiPreviewScope": "offline HTML with fictional data; no domain suite, database, game server or live tax validation",
-    "uiPreviewReport": "atualizacao/VERIFICACAO-UI-0.3.3.json"
+    "uiPreviewReport": "atualizacao/VERIFICACAO-UI-0.3.4.json"
   },
   "pending": [
     "Integrate migration 002, CORE UI routing and TypeScript/server/client builds",
     "Migrate physical legacy keys before opening public access, including offline inventories",
     "Preserve the official Diademas adapter already validated by the team; its deployed source was not supplied",
     "Approve interior cells/storage/door records, particularly Hjerim; verify native locks and persistence",
-    "Execute automated suites and official multiplayer acceptance matrix for 0.3.3"
+    "Execute automated suites and official multiplayer acceptance matrix for 0.3.4"
   ],
   "catalogProvenance": "catalogo/PROVENIENCIA-MAPEAMENTO.json",
   "uiReferences": [
@@ -164,7 +164,7 @@
     "basis": "user_confirmation",
     "runtimeRevisionVerified": false
   },
-  "updateGuide": "ATUALIZACAO-0.3.3.md",
+  "updateGuide": "ATUALIZACAO-0.3.4.md",
   "uiUpdateGuide": "ATUALIZACAO-UI-0.3.2.md",
   "taxPolicy": {
     "periodDays": 15,
@@ -173,6 +173,7 @@
     "suspendAtUnpaidPeriods": 2,
     "reofferAtUnpaidPeriods": 3,
     "userConfirmedNoActiveTaxOn": "2026-11-03",
-    "runtimeInspected": false
+    "runtimeInspected": false,
+    "advancePayment": "one next installment per confirmed request; existing due date plus 15 days"
   }
 }

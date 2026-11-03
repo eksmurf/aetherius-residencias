@@ -1,7 +1,7 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),vm=require('node:vm'),fs=require('node:fs'),path=require('node:path');
 const {webcrypto}=require('node:crypto');
-async function harness(extraMembers=[]){
+async function harness(extraMembers=[],taxValues={}){
   let definition;const calls=[];const flush=async()=>{for(let n=0;n<30;n++)await Promise.resolve();};
   const document={activeElement:null,createElement:element};
   function element(tag){return {tag,children:[],dataset:{},textContent:'',disabled:false,classList:{add(){},remove(){}},
@@ -9,8 +9,9 @@ async function harness(extraMembers=[]){
     setAttribute(k,v){this[k]=v;},focus(){document.activeElement=this;},contains(target){return target===this||this.children.some(c=>c.contains(target));},
     querySelectorAll(selector){const match=n=>selector==='[data-due]'?n.dataset.due!==undefined:selector.split(',').includes(n.tag);return this.children.flatMap(c=>[...(match(c)?[c]:[]),...c.querySelectorAll(selector)]);}};}
   const residence={residenceId:'first',name:'Breezehome',accessRevision:3,open:false,listingPrice:null,familyLimit:2,
-    tax:{configured:true,periods:1,amount:100,periodAmount:100,periodDays:15,dueAt:new Date().toISOString(),nextAccrualAt:new Date(Date.now()+86400000).toISOString(),canPay:true,suspended:false,auction:false},
+    tax:{configured:true,periods:1,amount:100,paymentAmount:100,paymentPeriods:1,advance:false,periodAmount:100,periodDays:15,dueAt:new Date().toISOString(),nextAccrualAt:new Date(Date.now()+86400000).toISOString(),canPay:true,suspended:false,auction:false},
     members:[{profileId:2,name:'Pessoa Dois',family:true},{profileId:3,name:'Pessoa Três',family:true},{profileId:4,name:'Pessoa Quatro',family:false}]};
+  Object.assign(residence.tax,taxValues);
   residence.members.push(...extraMembers);
   vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../client/properties/properties.js'),'utf8'),{window:{AetheriusUI:{registerModule:d=>{definition=d;}}},document,crypto:webcrypto,Date,setInterval:()=>1,clearInterval(){}});
   const context={request:async(moduleId,action,input)=>{calls.push({moduleId,action,input});return action==='snapshot'?{ok:true,data:{residences:[residence],serverNow:new Date().toISOString()}}:{ok:true,data:{}};},signal:new AbortController().signal};
@@ -19,6 +20,20 @@ async function harness(extraMembers=[]){
   return{definition,residence,root,calls,flush,click};
 }
 test('pós-compra registra somente Propriedades no slot 9',async()=>{const h=await harness();assert.equal(h.definition.id,'properties');assert.equal(h.definition.rootRoute,'/properties');assert.equal(h.definition.radialSlot,9);assert.equal(h.root.querySelectorAll('h2')[0].textContent,'Breezehome');});
+
+test('IPTU compacto alterna antecipação e dívida, exibe aviso e confirma antes de cobrar',async()=>{
+  for(const periods of [0,1,2]){
+    const amount=Math.max(1,periods)*100;
+    const h=await harness([],{periods,advance:periods===0,amount:periods*100,paymentAmount:amount,paymentPeriods:Math.max(1,periods)});
+    const paragraphs=h.root.querySelectorAll('p').map(n=>n.textContent);
+    assert.ok(paragraphs.some(t=>t.includes('Na 2ª quinzena')&&t.includes('Na 3ª')));
+    assert.ok(!paragraphs.some(t=>t.includes('imposto(s) em aberto')||t.includes('10% do valor base')||t.includes('Próximo acúmulo:')));
+    await h.click((periods===0?'Antecipar pagamento':'Pagar impostos')+' — '+amount+' Septims');
+    assert.ok(!h.calls.some(c=>c.action==='payTax'));await h.click('Sim');
+    const payment=h.calls.find(c=>c.action==='payTax');assert.equal(payment.input.periods,periods);
+    assert.equal(payment.input.dueAt,h.residence.tax.dueAt);
+  }
+});
 
 test('cinco cadastros incluindo familiares bloqueiam adição; remover libera vaga',async()=>{
   const h=await harness([{profileId:5,name:'Pessoa Cinco',family:false},{profileId:6,name:'Pessoa Seis',family:false}]);

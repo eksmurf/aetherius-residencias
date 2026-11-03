@@ -1,5 +1,8 @@
 # Residências 0.3.3 — IPTU a cada 15 dias
 
+> Desde a [0.3.4](ATUALIZACAO-0.3.4.md), é permitido antecipar uma parcela antes do vencimento. O intervalo quinzenal e as regras de inadimplência permanecem; a proibição de antecipação abaixo é histórica.
+
+
 03/11/2026. O solicitante definiu o IPTU quinzenal e confirmou que **ainda não há IPTU ativo no servidor**. A cobrança começa diretamente com a regra nova; não há conversão automática de dívida semanal.
 
 ## Regra vigente

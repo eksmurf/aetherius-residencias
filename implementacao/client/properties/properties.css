@@ -16,6 +16,7 @@
 .ar-properties .arp-card{background:transparent;border:0;border-top:1px solid var(--arp-line);border-radius:0;padding:20px 0;margin:0}
 .ar-properties .arp-card:last-of-type{padding-bottom:0}
 .ar-properties .arp-muted{color:var(--arp-muted);font-size:14px}
+.ar-properties .arp-tax-note{margin:12px 0 0}
 .ar-properties .arp-time{font:500 24px/1.4 Georgia,serif;color:var(--arp-text);font-variant-numeric:tabular-nums}
 .ar-properties button,.ar-properties input[type=text],.ar-properties select{font:inherit;color:var(--arp-secondary);background:rgba(255,255,255,.015);border:1px solid var(--arp-control-line);border-radius:3px;padding:10px 13px;max-width:100%}
 .ar-properties button{cursor:pointer;white-space:normal;overflow-wrap:anywhere;transition:background-color .12s,border-color .12s}
