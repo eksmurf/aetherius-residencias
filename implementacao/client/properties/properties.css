@@ -1,13 +1,41 @@
-.ar-properties{color:#e8e9e2;font:14px/1.5 'Segoe UI',Arial,sans-serif;max-width:850px;margin:auto;position:relative;color-scheme:dark}
-.ar-properties h2{font:700 25px Georgia,serif;color:#51bf8a}.ar-properties h3{font-size:15px;margin:0 0 12px}
-.ar-properties .arp-card{background:rgba(10,14,14,.68);border:1px solid #293c37;border-radius:8px;padding:20px;margin:14px 0}
-.ar-properties .arp-muted{color:#a4b0aa;font-size:12px}.ar-properties .arp-time{font-size:23px;color:#51bf8a}
-.ar-properties button,.ar-properties input[type=text],.ar-properties select{font:inherit;color:inherit;background:rgba(16,24,24,.35);border:1px solid #416a59;border-radius:5px;padding:10px 13px}
-.ar-properties button{cursor:pointer}.ar-properties button:hover:not(:disabled){background:rgba(81,191,138,.18)}
-.ar-properties button:disabled,.ar-properties .is-disabled{opacity:.4;cursor:not-allowed}.ar-properties :focus-visible{outline:2px solid #51bf8a;outline-offset:3px}
-.ar-properties .arp-check{display:flex;align-items:center;gap:9px;white-space:nowrap}.ar-properties input[type=checkbox]{accent-color:#51bf8a;width:17px;height:17px;cursor:pointer}
-.ar-properties .arp-add{display:flex;gap:10px;margin:14px 0}.ar-properties .arp-add input{flex:1;min-width:0}
-.ar-properties .arp-member{display:flex;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid #293c37}.ar-properties .arp-member-name{flex:1;overflow-wrap:anywhere;min-width:0}.ar-properties .arp-remove{margin-left:auto}
-.ar-properties .arp-warning,.ar-properties .arp-notice{background:rgba(81,191,138,.08);border-left:3px solid #51bf8a;padding:14px}
-.ar-properties .arp-confirm{position:sticky;bottom:15px;padding:24px;background:rgba(10,14,14,.97);border:1px solid #51bf8a;box-shadow:0 0 0 100vmax rgba(0,0,0,.4);z-index:5;border-radius:8px}.ar-properties .arp-confirm button{margin-right:12px}
-@media(max-width:560px){.ar-properties .arp-add{flex-wrap:wrap}.ar-properties .arp-member{gap:8px;flex-wrap:wrap}.ar-properties .arp-member-name{flex-basis:100%}}
+/* Classes / estudo UI/UX de 03/11/2026. Tokens restritos a este módulo. */
+.ar-properties {
+  --arp-surface:rgba(0,0,0,.73); --arp-raised:#101010;
+  --arp-line:rgba(255,255,255,.11); --arp-control-line:rgba(255,255,255,.22);
+  --arp-text:#f0f1f1; --arp-secondary:#d4d8db; --arp-muted:#b7bec2;
+  --arp-accent:#69cf99; --arp-action:#4fc787; --arp-warning:#c4b374; --arp-danger:#d98a7c;
+  color:var(--arp-text); background:var(--arp-surface);
+  font:16px/1.7 'Segoe UI',Arial,sans-serif;
+  max-width:850px; margin:auto; padding:24px; position:relative; color-scheme:dark;
+  border:0; border-radius:4px; box-shadow:0 22px 60px rgba(0,0,0,.32);
+}
+.ar-properties *{box-sizing:border-box}
+.ar-properties h2{font:500 28px/1.3 Georgia,serif;color:var(--arp-text);margin:0 0 20px;overflow-wrap:anywhere}
+.ar-properties h3{font-size:16px;font-weight:500;line-height:1.5;margin:0 0 12px;color:var(--arp-text)}
+.ar-properties p{margin:0 0 12px}
+.ar-properties .arp-card{background:transparent;border:0;border-top:1px solid var(--arp-line);border-radius:0;padding:20px 0;margin:0}
+.ar-properties .arp-card:last-of-type{padding-bottom:0}
+.ar-properties .arp-muted{color:var(--arp-muted);font-size:14px}
+.ar-properties .arp-time{font:500 24px/1.4 Georgia,serif;color:var(--arp-text);font-variant-numeric:tabular-nums}
+.ar-properties button,.ar-properties input[type=text],.ar-properties select{font:inherit;color:var(--arp-secondary);background:rgba(255,255,255,.015);border:1px solid var(--arp-control-line);border-radius:3px;padding:10px 13px;max-width:100%}
+.ar-properties button{cursor:pointer;white-space:normal;overflow-wrap:anywhere;transition:background-color .12s,border-color .12s}
+.ar-properties button:hover:not(:disabled){background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.4);color:var(--arp-text)}
+.ar-properties button:disabled{opacity:.4;cursor:not-allowed}
+.ar-properties .is-disabled{opacity:.4;cursor:not-allowed}
+.ar-properties .is-disabled input{cursor:not-allowed}
+.ar-properties :focus-visible{outline:2px solid var(--arp-accent);outline-offset:3px}
+.ar-properties .arp-check{display:flex;align-items:center;gap:9px}
+.ar-properties input[type=checkbox]{accent-color:var(--arp-accent);width:18px;height:18px;flex-shrink:0;cursor:pointer}
+.ar-properties .arp-add{display:flex;gap:10px;margin:14px 0;flex-wrap:wrap}
+.ar-properties .arp-add input{flex:1 1 200px;min-width:0}
+.ar-properties input::placeholder{color:var(--arp-muted);opacity:1}
+.ar-properties .arp-member{display:flex;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid var(--arp-line)}
+.ar-properties .arp-member-name{flex:1;overflow-wrap:anywhere;min-width:0}
+.ar-properties .arp-remove{margin-left:auto;color:var(--arp-danger)}
+.ar-properties .arp-warning,.ar-properties .arp-notice{background:rgba(255,255,255,.025);color:var(--arp-secondary);padding:14px;border-left:3px solid var(--arp-warning)}
+.ar-properties .arp-notice{border-left-color:var(--arp-control-line)}
+.ar-properties .arp-confirm{position:sticky;bottom:15px;padding:24px;background:var(--arp-raised);border:1px solid var(--arp-control-line);box-shadow:0 0 0 100vmax rgba(0,0,0,.4);z-index:5;border-radius:4px}
+.ar-properties .arp-confirm button{margin:12px 12px 0 0}
+.ar-properties .arp-confirm button:first-of-type{border-color:var(--arp-accent);color:var(--arp-action)}
+@media(max-width:560px){.ar-properties{padding:16px}.ar-properties .arp-add button{width:100%}.ar-properties .arp-member{gap:8px;flex-wrap:wrap}.ar-properties .arp-member-name{flex-basis:100%}.ar-properties .arp-confirm{padding:16px}}
+@media(prefers-reduced-motion:reduce){.ar-properties button{transition:none}}

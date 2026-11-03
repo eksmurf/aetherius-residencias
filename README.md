@@ -1,4 +1,6 @@
-# Residências do Aetherius — pacote 0.3.1
+# Residências do Aetherius — pacote 0.3.2
+
+**Atualização visual de 03/11/2026:** compra e Propriedades seguem o estudo UI/UX e a referência de Classes: preto translúcido, texto neutro e verde nos estados/ações. [Pacote completo 0.3.2](dist/aetherius-residencias-0.3.2.zip) · [SHA256](dist/aetherius-residencias-0.3.2.zip.sha256) · [guia da atualização visual](implementacao/ATUALIZACAO-UI-0.3.2.md).
 
 Para atualizar a **primeira versão já instalada (0.1.0, informada pelo solicitante)**, seguir o [guia de atualização direta para 0.3.1](implementacao/ATUALIZACAO-0.1-PARA-0.3.1.md). A revisão efetiva do processo e as adaptações oficiais devem ser conferidas pela equipe. [Pacote com guia e conferência](dist/aetherius-residencias-0.3.1-guia-atualizacao-1.zip) · [SHA256](dist/aetherius-residencias-0.3.1-guia-atualizacao-1.zip.sha256).
 

@@ -1,6 +1,6 @@
 {
-  "version": "0.3.1",
-  "preparedOn": "2026-10-31",
+  "version": "0.3.2",
+  "preparedOn": "2026-11-03",
   "target": "Aetherius official server",
   "upstream": {
     "url": "https://github.com/Alduinak-RP/alduinak",
@@ -109,7 +109,7 @@
     "deployed": false,
     "draftResidencesMapped": 12,
     "catalogStructureChecked": true,
-    "isolatedUiPreviewChecked": false,
+    "isolatedUiPreviewChecked": true,
     "initialStageResidences": 5,
     "userReportedPurchaseValidation": {
       "date": "2026-10-29",
@@ -119,27 +119,30 @@
       ],
       "installedRevisionVerified": false
     },
-    "currentUiPreviewChecked": false,
+    "currentUiPreviewChecked": true,
     "integratorDryRunChecked": true,
     "previousReleaseUiPreviewChecked": "0.2.0",
-    "javascriptSyntaxCheckedFiles": 19,
+    "javascriptSyntaxCheckedFiles": 20,
     "preparedTests": 47,
     "visitorLimitStaticReview": true,
     "productionInspected": false,
     "upgradeCollectorSyntaxChecked": true,
-    "upgradeCollectorReadOnlyCheck": "package_source_only"
+    "upgradeCollectorReadOnlyCheck": "package_source_only",
+    "uiPreviewScope": "offline HTML with fictional data; no game server or database",
+    "uiPreviewReport": "atualizacao/VERIFICACAO-UI-0.3.2.json"
   },
   "pending": [
     "Integrate migration 002, CORE UI routing and TypeScript/server/client builds",
     "Migrate physical legacy keys before opening public access, including offline inventories",
     "Preserve the official Diademas adapter already validated by the team; its deployed source was not supplied",
     "Approve interior cells/storage/door records, particularly Hjerim; verify native locks and persistence",
-    "Execute automated suites and official multiplayer acceptance matrix for 0.3.1"
+    "Execute automated suites and official multiplayer acceptance matrix for 0.3.2"
   ],
   "catalogProvenance": "catalogo/PROVENIENCIA-MAPEAMENTO.json",
   "uiReferences": [
     "Received admin-panel/admin.css: green palette, 68% background alpha and serif title",
-    "Received ui-core/PROVENANCE.md: AetheriusUI_Core 665831014f8c10e6b599ae1b29a1f6612522b0f7"
+    "Received ui-core/PROVENANCE.md: AetheriusUI_Core 665831014f8c10e6b599ae1b29a1f6612522b0f7",
+    "UI/UX - Melhorias, projeto de cores v1, 2026-11-03; AetheriusUI_Core ce96e1dc35acd02375e063554402407f471ba453 docs/VISUAL_SYSTEM.md: Classes, black 73%, neutral text, green states"
   ],
   "initialStage": {
     "scope": "vanilla_only",
@@ -161,5 +164,6 @@
     "basis": "user_confirmation",
     "runtimeRevisionVerified": false
   },
-  "updateGuide": "ATUALIZACAO-0.1-PARA-0.3.1.md"
+  "updateGuide": "ATUALIZACAO-0.1-PARA-0.3.1.md",
+  "uiUpdateGuide": "ATUALIZACAO-UI-0.3.2.md"
 }

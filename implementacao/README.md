@@ -1,6 +1,6 @@
-# Integração oficial — residências 0.3.1
+# Integração oficial — residências 0.3.2
 
-Código 0.3.1 preparado em 31/10/2026, com guia incremental acrescentado nesta data. Entregamos código e contratos para a equipe integrar no servidor oficial. Nenhum banco ou processo do servidor foi alterado. O piloto continua sendo as cinco casas vanilla.
+Atualização visual 0.3.2 preparada em 03/11/2026 sobre o backend 0.3.1. Leia [ATUALIZACAO-UI-0.3.2.md](ATUALIZACAO-UI-0.3.2.md) para distinguir a atualização visual da migração completa da primeira versão. Entregamos código e contratos para a equipe integrar no servidor oficial. Nenhum banco ou processo do servidor foi alterado. O piloto continua sendo as cinco casas vanilla.
 
 ## Componentes
 

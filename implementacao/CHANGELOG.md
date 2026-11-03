@@ -1,5 +1,11 @@
 # Alterações
 
+## 0.3.2 — 03/11/2026
+
+- Paleta do estudo UI/UX aplicada à compra e às Propriedades: preto translúcido, texto neutro, verde somente em foco/seleção/ações.
+- Corpo de 16 px, secundário de 14 px, divisórias neutras e organização responsiva.
+- Sem alteração da lógica econômica, permissões, migrações ou contratos. Guia visual incremental incluído; não reaplicar SQL em instalação 0.3.1.
+
 ## Guia de atualização 1 — 31/10/2026
 
 - Confirmação do solicitante: primeira entrega 0.1.0 instalada; revisão do processo não inspecionada remotamente.
