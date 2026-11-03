@@ -1,6 +1,6 @@
-# Integração oficial — residências 0.3.4
+# Integração oficial — residências 0.3.5
 
-**Antecipação e painel compacto:** [guia 0.3.4](ATUALIZACAO-0.3.4.md). Atualizar servidor/cliente juntos; pagamento antes do vencimento passa a ser permitido, uma parcela por confirmação.
+**Versão atual 0.3.5:** [guia de atualização](ATUALIZACAO-0.3.5.md). Antecipação removida; botão cinza e desabilitado antes do vencimento e verde quando há dívida. Confirmações em janela centralizada. Atualizar cliente e servidor juntos; preservar vencimentos e recibos existentes.
 
 **IPTU quinzenal:** começar pelo [guia 0.3.3](ATUALIZACAO-0.3.3.md). O ciclo atual é de 15 dias, com suspensão aos 30 e retorno à venda aos 45 dias sem pagamento. Ainda não havia IPTU ativo, conforme confirmação do solicitante em 03/11/2026.
 
@@ -48,7 +48,7 @@ npm run test:postgres
 
 A suíte PostgreSQL usa `RESIDENCES_TEST_DATABASE_URL`, recusa nome de banco fora de `residence_test...` e trabalha em schema isolado. Ela inclui compra concorrente, falha/rollback, recibos repetidos, chave vinculada, nomes ambíguos, limite familiar, revogação, venda com crédito e disputa entre quitação e recompra. As suítes estão preparadas, ainda sem resultado de execução desta versão.
 
-No jogo, verificar: entrada direta E; foco e ESC; abertura somente pelo TAB; chaves no inventário pessoal e ausentes em baús, saque, menus nativos e trade; familiar offline/online; terceiro familiar bloqueado; remoção enquanto um baú está aberto; porta pública sem direito a armazenamentos; bloqueio exatamente nos vencimentos; antecipação de uma parcela e pagamento da dívida integral; perda de resposta; vendedor offline; compra concorrente com quitação; troca de personagem; reinício; respawn e conteúdo dos baús; passagem interna e saída sempre livres.
+No jogo, verificar: entrada direta E; foco e ESC; abertura somente pelo TAB; chaves no inventário pessoal e ausentes em baús, saque, menus nativos e trade; familiar offline/online; terceiro familiar bloqueado; remoção enquanto um baú está aberto; porta pública sem direito a armazenamentos; bloqueio exatamente nos vencimentos; recusa de pagamento antes do vencimento e quitação da dívida integral; perda de resposta; vendedor offline; compra concorrente com quitação; troca de personagem; reinício; respawn e conteúdo dos baús; passagem interna e saída sempre livres.
 
 ## Regras de segurança e persistência
 

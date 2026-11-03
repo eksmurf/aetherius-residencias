@@ -7,6 +7,7 @@ const messages = {
   AMBIGUOUS: 'Há mais de um perfil com esse nome. Informe o profile_id.', FAMILY_LIMIT: 'Esta residência já possui dois familiares.',
   MEMBER_LIMIT: 'Limite de 5 visitantes cadastrados nesta residência, incluindo familiares. Remova alguém para adicionar outra pessoa.',
   STALE: 'As permissões mudaram. Atualize a consulta antes de confirmar.',
+  TAX_EARLY: 'O pagamento será liberado no vencimento do imposto.',
   TAX_CHANGED: 'Este vencimento já foi pago ou foi atualizado.',
   INVALID: 'Pedido inválido.', SESSION: 'A sessão do personagem mudou.',
   UNAVAILABLE: 'Residências temporariamente indisponíveis.', NOT_FOUND: 'Residência não cadastrada.',

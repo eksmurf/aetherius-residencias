@@ -1,5 +1,5 @@
 {
-  "version": "0.3.4",
+  "version": "0.3.5",
   "preparedOn": "2026-11-03",
   "target": "Aetherius official server",
   "upstream": {
@@ -129,14 +129,14 @@
     "upgradeCollectorSyntaxChecked": true,
     "upgradeCollectorReadOnlyCheck": "package_source_only",
     "uiPreviewScope": "offline HTML with fictional data; no domain suite, database, game server or live tax validation",
-    "uiPreviewReport": "atualizacao/VERIFICACAO-UI-0.3.4.json"
+    "uiPreviewReport": "atualizacao/VERIFICACAO-UI-0.3.5.json"
   },
   "pending": [
     "Integrate migration 002, CORE UI routing and TypeScript/server/client builds",
     "Migrate physical legacy keys before opening public access, including offline inventories",
     "Preserve the official Diademas adapter already validated by the team; its deployed source was not supplied",
     "Approve interior cells/storage/door records, particularly Hjerim; verify native locks and persistence",
-    "Execute automated suites and official multiplayer acceptance matrix for 0.3.4"
+    "Execute automated suites and official multiplayer acceptance matrix for 0.3.5"
   ],
   "catalogProvenance": "catalogo/PROVENIENCIA-MAPEAMENTO.json",
   "uiReferences": [
@@ -164,7 +164,7 @@
     "basis": "user_confirmation",
     "runtimeRevisionVerified": false
   },
-  "updateGuide": "ATUALIZACAO-0.3.4.md",
+  "updateGuide": "ATUALIZACAO-0.3.5.md",
   "uiUpdateGuide": "ATUALIZACAO-UI-0.3.2.md",
   "taxPolicy": {
     "periodDays": 15,
@@ -174,6 +174,6 @@
     "reofferAtUnpaidPeriods": 3,
     "userConfirmedNoActiveTaxOn": "2026-11-03",
     "runtimeInspected": false,
-    "advancePayment": "one next installment per confirmed request; existing due date plus 15 days"
+    "advancePayment": "not allowed; payment requires at least one overdue installment"
   }
 }

@@ -1,5 +1,7 @@
 # Residências 0.3.4 — IPTU compacto e antecipação
 
+**Documento histórico:** a [versão 0.3.5](ATUALIZACAO-0.3.5.md) remove a antecipação. O ZIP 0.3.4 preserva a regra descrita abaixo. Usar o pacote e o guia mais recentes.
+
 03/11/2026. Substitui a regra anterior que impedia pagamento antes do vencimento. O intervalo permanece em 15 dias e cada parcela mantém 10% do valor base em Septims.
 
 ## Comportamento

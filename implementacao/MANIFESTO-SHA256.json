@@ -1,5 +1,5 @@
 {
-  "version": "0.3.4",
+  "version": "0.3.5",
   "date": "2026-11-03",
   "algorithm": "SHA256",
   "excludes": [
@@ -18,8 +18,13 @@
     },
     {
       "path": "ATUALIZACAO-0.3.4.md",
-      "bytes": 3935,
-      "sha256": "1a48eb6817e26944378c77f8bc11a26d1a72941047082f9f4819d95dfb6a4392"
+      "bytes": 4110,
+      "sha256": "e5374be91fc1cd01908839d2cca7f6227ae995008f6e3982f3b30e2921448c6c"
+    },
+    {
+      "path": "ATUALIZACAO-0.3.5.md",
+      "bytes": 3515,
+      "sha256": "a5a425df18b149ff7f6b3cbc99bd5d666eac74a6dd38b660153c71e01844ea4c"
     },
     {
       "path": "ATUALIZACAO-UI-0.3.2.md",
@@ -33,8 +38,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 5970,
-      "sha256": "915fb083f98a146e7f416c7fa822cd9a16e6ee592540c3d736c55ef5512c84a1"
+      "bytes": 6414,
+      "sha256": "1d53b447014f275a9e35d364ebffeb5a7ef060f8899f8b0328c71fbd601635bc"
     },
     {
       "path": "CONTRATO-DIADEMAS.md",
@@ -43,18 +48,18 @@
     },
     {
       "path": "PROVENIENCIA.json",
-      "bytes": 7470,
-      "sha256": "575536727134fd61ecb3f44762fde826fd37d1f8df1d7798a5d6be47dc192373"
+      "bytes": 7458,
+      "sha256": "c1192c7f8113b59be95669cee532d01532654c58bed6db42a7160bef9d0fb1a6"
     },
     {
       "path": "README.md",
-      "bytes": 9389,
-      "sha256": "de53eb4954198d5b4eaaf70ae7c822a62e9763acab599c1ccdd7e88731d5e889"
+      "bytes": 9501,
+      "sha256": "251b8df8ec120dcd95672445e8da00d15e7fc52405554860569c7f6be896167b"
     },
     {
       "path": "REGRAS-0.3.md",
-      "bytes": 5828,
-      "sha256": "ff51b090022f2bddfe911cd2718eaa0f9568b9f305469ca5d0e58da63909ee26"
+      "bytes": 5658,
+      "sha256": "83e11833821a19053f800d07b76956e6f18e00521661d60cd2ccfe74931fc125"
     },
     {
       "path": "adapters/official-diademas.cjs.example",
@@ -77,6 +82,11 @@
       "sha256": "96e0269fefc0c284e8ce7d48aa7fafeb7b802410813d1dec997672455d5f1eff"
     },
     {
+      "path": "atualizacao/VERIFICACAO-UI-0.3.5.json",
+      "bytes": 556,
+      "sha256": "41d36660eb0d7186d884d350c88643d3cdf0c7f96fa034612751256342aa0920"
+    },
+    {
       "path": "atualizacao/conferir-banco.sql",
       "bytes": 2246,
       "sha256": "1dd8fd42012e0b67732fe1a5cd90a05dd2371e64989912996d84308ba7b9f7a1"
@@ -88,8 +98,8 @@
     },
     {
       "path": "atualizacao/referencias-versoes.json",
-      "bytes": 27837,
-      "sha256": "ce21c46c3e0b57425f93e7df45b88aabf8671fc50c159b68c02d765be5321063"
+      "bytes": 31693,
+      "sha256": "372a8a1947a4b31db03e84fb9558ebf437683a86d6ac545e13324413aa77f693"
     },
     {
       "path": "catalogo/IMOVEIS.md",
@@ -203,13 +213,13 @@
     },
     {
       "path": "client/properties/properties.css",
-      "bytes": 4494,
-      "sha256": "ed20c20cbc11e0a1e19588ec39bd5ba3f9fdf1ef0ec9d3583d424005d4c7b6b5"
+      "bytes": 5830,
+      "sha256": "9489cd3495de17791c05cdb0040464822f7eb4223b32b694254416c73683730c"
     },
     {
       "path": "client/properties/properties.js",
-      "bytes": 12054,
-      "sha256": "3de6ad58919348d60bea6a2d4a127c69fbcb565769ec49fa0e7731d0b3cfddf8"
+      "bytes": 12888,
+      "sha256": "96ee08174fe055ff4fa67274fc1080d20842e9736b444f66487c432b60b2fa61"
     },
     {
       "path": "client/residences/app.js",
@@ -244,7 +254,7 @@
     {
       "path": "package.json",
       "bytes": 389,
-      "sha256": "0dd4e787381a997658b7a1dcd15a85c737324d1e28e3a872d6f652d1da642051"
+      "sha256": "86e3fd31b7a4ebb55facd9ce10cbecf0f6f3ada0eca27e9f8cdbe3d62921608d"
     },
     {
       "path": "server/config/residences.json",
@@ -268,8 +278,8 @@
     },
     {
       "path": "server/gamemode/residences/errors.cjs",
-      "bytes": 2296,
-      "sha256": "14a1182eaaa6146995e46880b9a9e4c87c92afab60e31a8623afc155788e6fe0"
+      "bytes": 2365,
+      "sha256": "349e969247d048b59f49e53a62709282edac31199db74c6e388c7bc7be52f654"
     },
     {
       "path": "server/gamemode/residences/host.cjs",
@@ -283,33 +293,33 @@
     },
     {
       "path": "server/gamemode/residences/service.cjs",
-      "bytes": 5929,
-      "sha256": "8233d34c10fc84fc557076b4716f851ca98038d68278ab647a326c657c8bb22c"
+      "bytes": 5927,
+      "sha256": "8c5ca6b51b15ad918aa7161676a391e2b98424f442d021806898a782281232bc"
     },
     {
       "path": "server/gamemode/residences/store.cjs",
-      "bytes": 17269,
-      "sha256": "baac06788cd8cec550f98827564304c113ae60f0131087060b1e9c849681a1e0"
+      "bytes": 17317,
+      "sha256": "ab559d2d39cb4ed2a854bb0faec58af8b1c6f2fd6420eb26b6a21e9db24fce1b"
     },
     {
       "path": "server/gamemode/residences/tax.cjs",
-      "bytes": 1669,
-      "sha256": "af792f0a00dc159f305359fab178097ed84f696df97fd5d39e0620b313925f6b"
+      "bytes": 1622,
+      "sha256": "d91a4fca58481395735c46f738aa168afae4891beb8c7b462ebe914362774649"
     },
     {
       "path": "tests/permissions-tax.test.cjs",
-      "bytes": 6323,
-      "sha256": "984806fa88f0c95c1dc8612652d6cc4101e0defc0a2a387b3fe01b656c128e06"
+      "bytes": 6317,
+      "sha256": "c4d7bf04db9e464d17fe4fd71e3f5acf7a22bb3c1e06230d16b70c5065a415d8"
     },
     {
       "path": "tests/postgres.test.cjs",
-      "bytes": 19540,
-      "sha256": "8093546968c5d64f537f09a698fffb5491cf2e0d593e5e00275329972db3f4f0"
+      "bytes": 19202,
+      "sha256": "fb4f98b1ea2c543a13812a245faabf9cdb4d0c102c6efe98ebc096fc2ae34714"
     },
     {
       "path": "tests/properties-ui.test.cjs",
-      "bytes": 5986,
-      "sha256": "f5ac9c56cdd8963da3a22992fa87ab021f056f5920ee24c09a5fe6e88a1b1098"
+      "bytes": 6254,
+      "sha256": "aa47a8aa827b2973b11f54a5ec999c649bb62373ed08f1e57ede033c0f28db54"
     },
     {
       "path": "tests/ui.test.cjs",

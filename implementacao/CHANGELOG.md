@@ -1,5 +1,11 @@
 # Alterações
 
+## 0.3.5 — 03/11/2026
+
+- Removida a antecipação: botão permanece visível em cinza e desabilitado antes do vencimento; com dívida, texto e borda ficam verdes e o pagamento é liberado. Servidor recusa pedidos anteriores ao vencimento.
+- Confirmação em janela centralizada, com nome da casa, parcelas e total em destaque; Cancelar/Confirmar pagamento, ESC e navegação pelo teclado.
+- Descrições redundantes de visitantes removidas.
+
 ## 0.3.4 — 03/11/2026
 
 - Seção de IPTU reduzida a título, contador, botão e aviso sobre acúmulo/bloqueio/retomada.

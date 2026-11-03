@@ -6,10 +6,10 @@ const {authorizeReference}=require('../server/gamemode/residences/access.cjs');
 const {request,createService}=require('../server/gamemode/residences/service.cjs');
 const start=Date.parse('2026-10-29T00:00:00.000Z');
 const row={owner_profile_id:1,owner_account_id:'owner',locked:true,tax_due_at:new Date(start+TAX_PERIOD_MS).toISOString(),tax_terms:terms(1000),members:[{profile_id:2,account_id:'family',family:true},{profile_id:3,account_id:'visitor',family:false}]};
-test('dívida vence aos 15 dias; antecipação disponível antes; 30 suspende e 45 recoloca à venda',()=>{
+test('pagamento libera aos 15 dias; 30 suspende e 45 recoloca à venda',()=>{
   assert.equal(TAX_PERIOD_MS,15*24*60*60*1000);
   const cases=[[0,0,false,false],[TAX_PERIOD_MS-1,0,false,false],[7*86400000,0,false,false],[14*86400000,0,false,false],[TAX_PERIOD_MS,1,false,false],[2*TAX_PERIOD_MS-1,1,false,false],[2*TAX_PERIOD_MS,2,true,false],[3*TAX_PERIOD_MS-1,2,true,false],[3*TAX_PERIOD_MS,3,true,true],[4*TAX_PERIOD_MS,4,true,true]];
-  for(const [elapsed,periods,suspended,auction]of cases){const t=taxView(row,()=>true,start+elapsed);assert.equal(t.periods,periods);assert.equal(t.suspended,suspended);assert.equal(t.auction,auction);assert.equal(t.canPay,true);assert.equal(t.advance,periods===0);assert.equal(t.paymentAmount,Math.max(1,periods)*100);assert.equal(t.paymentPeriods,Math.max(1,periods));assert.equal(t.amount,periods*100);}
+  for(const [elapsed,periods,suspended,auction]of cases){const t=taxView(row,()=>true,start+elapsed);assert.equal(t.periods,periods);assert.equal(t.suspended,suspended);assert.equal(t.auction,auction);assert.equal(t.canPay,periods>0);assert.equal(t.advance,false);assert.equal(t.paymentAmount,periods*100);assert.equal(t.paymentPeriods,periods);assert.equal(t.amount,periods*100);}
 });
 test('imposto usa valor base em Septims e arredonda para unidade inteira',()=>{
   assert.deepEqual(terms(1001),{amount:101,currency:'septims',periodDays:15,basePrice:1001});assert.throws(()=>terms(null),{code:'TAX_BASE'});
@@ -19,9 +19,10 @@ test('IPTU semanal inesperado exige reconciliação, sem reinterpretar a dívida
   assert.throws(()=>taxView({...row,tax_terms:{...row.tax_terms,periodDays:7}}),{code:'TAX_PERIOD'});
 });
 
-test('pedido de antecipação aceita zero vencidas e rejeita contagem negativa',()=>{
+test('pedido de imposto exige ao menos uma parcela vencida',()=>{
   const input={version:1,requestId:randomUUID(),action:'payTax',residenceId:'first',accessRevision:1,dueAt:new Date(start+TAX_PERIOD_MS).toISOString(),periods:0};
-  assert.equal(request(input).periods,0);
+  assert.throws(()=>request(input),{code:'INVALID'});
+  assert.equal(request({...input,periods:1}).periods,1);
   assert.throws(()=>request({...input,periods:-1}),{code:'INVALID'});
 });
 test('data retornada pelo PostgreSQL preserva milissegundos no pedido de quitação',()=>{

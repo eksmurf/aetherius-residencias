@@ -22,7 +22,7 @@ function request(raw) {
   if(raw.action==='setFamily'&&typeof raw.family!=='boolean') fail('INVALID');
   if(raw.action==='removeMember'&&raw.confirmed!==true) fail('INVALID');
   if(raw.action==='status'&&!uuid(raw.operationRequestId)) fail('INVALID');
-  if(raw.action==='payTax'&&(!integer(raw.periods,0)||typeof raw.dueAt!=='string'||!Number.isFinite(Date.parse(raw.dueAt)))) fail('INVALID');
+  if(raw.action==='payTax'&&(!integer(raw.periods)||typeof raw.dueAt!=='string'||!Number.isFinite(Date.parse(raw.dueAt)))) fail('INVALID');
   return raw;
 }
 function createService({store,host,currencies,state,purchasesEnabled,allowProfiles=[]}) {

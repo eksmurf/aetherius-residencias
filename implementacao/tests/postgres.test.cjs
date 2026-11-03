@@ -193,27 +193,23 @@ test('casa legada sem IPTU inicia em 15 dias e reinício preserva o vencimento',
   assert.equal((await db.query('SELECT * FROM gold_transactions')).length,1);
 });
 
-test('antecipação quita uma parcela, mantém chave e avança 15 dias sem duplicar débito',async()=>{
+test('pagamento antes do vencimento não debita nem altera prazo ou chave',async()=>{
   await mutate(sessions[0],input());const key=(await store.inventoryKeys(sessions[0]))[0].id;
   const h=(await store.properties(sessions[0])).residences[0];
-  assert.equal(h.tax.periods,0);assert.equal(h.tax.amount,0);assert.equal(h.tax.paymentAmount,10);
-  assert.equal(h.tax.advance,true);assert.equal(h.tax.canPay,true);
-  const req={requestId:randomUUID(),action:'payTax',residenceId:'first',accessRevision:h.accessRevision,dueAt:h.tax.dueAt,periods:0};
-  const receipt=await mutate(sessions[0],req);
-  assert.deepEqual(await mutate(sessions[0],req),receipt);
+  assert.equal(h.tax.periods,0);assert.equal(h.tax.paymentAmount,0);assert.equal(h.tax.canPay,false);
+  for(const periods of [0,1])await assert.rejects(manage('payTax',{dueAt:h.tax.dueAt,periods}),{code:'TAX_EARLY'});
   const renewed=(await store.properties(sessions[0])).residences[0];
-  assert.equal(Date.parse(renewed.tax.dueAt)-Date.parse(h.tax.dueAt),15*86400000);
-  assert.equal((await db.query('SELECT gold FROM characters WHERE id=$1',[sessions[0].characterId]))[0].gold,890);
-  assert.equal((await db.query('SELECT * FROM aetherius_residence_tax_receipts')).length,1);
+  assert.equal(renewed.tax.dueAt,h.tax.dueAt);
+  assert.equal((await db.query('SELECT gold FROM characters WHERE id=$1',[sessions[0].characterId]))[0].gold,900);
+  assert.equal((await db.query('SELECT * FROM aetherius_residence_tax_receipts')).length,0);
   assert.equal((await store.inventoryKeys(sessions[0]))[0].id,key);
-  await assert.rejects(manage('payTax',{dueAt:h.tax.dueAt,periods:0}),{code:'TAX_CHANGED'});
 });
 
 test('cotação vencida é recusada e quitação recupera a mesma chave',async()=>{
   await mutate(sessions[0],input());const key=(await store.inventoryKeys(sessions[0]))[0].id;
   let h=(await store.properties(sessions[0])).residences[0];
   assert.equal(h.tax.periodDays,15);assert.equal(h.tax.periodAmount,10);
-  await assert.rejects(manage('payTax',{dueAt:h.tax.dueAt,periods:1}),{code:'TAX_CHANGED'});
+  await assert.rejects(manage('payTax',{dueAt:h.tax.dueAt,periods:1}),{code:'TAX_EARLY'});
   await db.query("UPDATE aetherius_residences SET tax_due_at=now()-interval '15 days 1 minute' WHERE id='first'");
   h=(await store.properties(sessions[0])).residences[0];assert.equal(h.tax.periods,2);assert.equal(h.tax.suspended,true);assert.equal((await store.inventoryKeys(sessions[0])).length,0);
   await manage('payTax',{dueAt:h.tax.dueAt,periods:2});assert.equal((await store.inventoryKeys(sessions[0]))[0].id,key);

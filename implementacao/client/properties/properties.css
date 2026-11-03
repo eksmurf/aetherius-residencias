@@ -36,14 +36,25 @@
 .ar-properties .arp-add input[type=text]{color:var(--arp-secondary)}
 .ar-properties .arp-add input::placeholder{color:var(--arp-muted)}
 .ar-properties .arp-primary:hover:not(:disabled),.ar-properties .arp-add button:hover:not(:disabled){color:var(--arp-accent);background:rgba(255,255,255,.04);border-color:rgba(105,207,153,.55)}
+.ar-properties .arp-primary:disabled{color:var(--arp-muted);border-color:var(--arp-control-line);box-shadow:none;opacity:.65}
 .ar-properties .arp-add input:disabled{opacity:.4;cursor:not-allowed}
 .ar-properties .arp-member{display:flex;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid var(--arp-line)}
 .ar-properties .arp-member-name{flex:1;overflow-wrap:anywhere;min-width:0}
 .ar-properties .arp-remove{margin-left:auto;color:var(--arp-danger)}
 .ar-properties .arp-warning,.ar-properties .arp-notice{background:rgba(255,255,255,.025);color:var(--arp-secondary);padding:14px;border-left:3px solid var(--arp-warning)}
 .ar-properties .arp-notice{border-left-color:var(--arp-control-line)}
-.ar-properties .arp-confirm{position:sticky;bottom:15px;padding:24px;background:var(--arp-raised);border:1px solid var(--arp-control-line);box-shadow:0 0 0 100vmax rgba(0,0,0,.4);z-index:5;border-radius:4px}
+.ar-properties .arp-confirm-overlay{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(0,0,0,.55);overscroll-behavior:contain}
+.ar-properties .arp-confirm{width:440px;max-width:100%;max-height:calc(100vh - 32px);overflow-y:auto;overscroll-behavior:contain;padding:24px;background:var(--arp-raised);border:1px solid var(--arp-control-line);box-shadow:0 18px 60px rgba(0,0,0,.5);border-radius:4px}
 .ar-properties .arp-confirm button{margin:12px 12px 0 0}
-.ar-properties .arp-confirm button:first-of-type{border-color:var(--arp-accent);color:var(--arp-action)}
+.ar-properties .arp-confirm>button:first-of-type{border-color:var(--arp-accent);color:var(--arp-action)}
+.ar-properties .arp-confirm-tax{padding:28px;border-top-color:rgba(105,207,153,.55)}
+.ar-properties .arp-confirm-tax .arp-confirm-house{margin:0 0 6px;color:var(--arp-muted);font-size:14px;overflow-wrap:anywhere}
+.ar-properties .arp-confirm-tax h3{font:500 26px/1.3 Georgia,serif;margin:0 0 8px}
+.ar-properties .arp-confirm-tax .arp-confirm-detail{color:var(--arp-secondary);margin:0;font-size:14px}
+.ar-properties .arp-confirm-total{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 16px;margin:24px 0;padding:18px 0;border-block:1px solid var(--arp-line)}
+.ar-properties .arp-confirm-total span{color:var(--arp-muted);font-size:14px}
+.ar-properties .arp-confirm-total strong{font:500 24px/1.4 Georgia,serif;color:var(--arp-text);font-variant-numeric:tabular-nums}
+.ar-properties .arp-confirm-actions{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:10px}
+.ar-properties .arp-confirm-actions button{margin:0}
 @media(max-width:560px){.ar-properties{padding:16px}.ar-properties .arp-add button{width:100%}.ar-properties .arp-member{gap:8px;flex-wrap:wrap}.ar-properties .arp-member-name{flex-basis:100%}.ar-properties .arp-confirm{padding:16px}}
 @media(prefers-reduced-motion:reduce){.ar-properties button{transition:none}}

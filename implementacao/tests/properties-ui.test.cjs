@@ -21,15 +21,17 @@ async function harness(extraMembers=[],taxValues={}){
 }
 test('pós-compra registra somente Propriedades no slot 9',async()=>{const h=await harness();assert.equal(h.definition.id,'properties');assert.equal(h.definition.rootRoute,'/properties');assert.equal(h.definition.radialSlot,9);assert.equal(h.root.querySelectorAll('h2')[0].textContent,'Breezehome');});
 
-test('IPTU compacto alterna antecipação e dívida, exibe aviso e confirma antes de cobrar',async()=>{
+test('IPTU mantém botão desabilitado antes do vencimento e confirma antes de cobrar',async()=>{
   for(const periods of [0,1,2]){
-    const amount=Math.max(1,periods)*100;
-    const h=await harness([],{periods,advance:periods===0,amount:periods*100,paymentAmount:amount,paymentPeriods:Math.max(1,periods)});
+    const amount=periods*100;
+    const h=await harness([],{periods,advance:false,amount,paymentAmount:amount,paymentPeriods:periods,canPay:periods>0});
     const paragraphs=h.root.querySelectorAll('p').map(n=>n.textContent);
     assert.ok(paragraphs.some(t=>t.includes('Na 2ª quinzena')&&t.includes('Na 3ª')));
     assert.ok(!paragraphs.some(t=>t.includes('imposto(s) em aberto')||t.includes('10% do valor base')||t.includes('Próximo acúmulo:')));
-    await h.click((periods===0?'Antecipar pagamento':'Pagar impostos')+' — '+amount+' Septims');
-    assert.ok(!h.calls.some(c=>c.action==='payTax'));await h.click('Sim');
+    assert.ok(!h.root.querySelectorAll('button').some(n=>n.textContent.includes('Antecipar')));
+    if(!periods){const pay=h.root.querySelectorAll('button').find(n=>n.textContent==='Pagar impostos — 100 Septims');assert.ok(pay);assert.equal(pay.disabled,true);assert.ok(!h.calls.some(c=>c.action==='payTax'));continue;}
+    await h.click('Pagar impostos — '+amount+' Septims');
+    assert.ok(!h.calls.some(c=>c.action==='payTax'));await h.click('Confirmar pagamento');
     const payment=h.calls.find(c=>c.action==='payTax');assert.equal(payment.input.periods,periods);
     assert.equal(payment.input.dueAt,h.residence.tax.dueAt);
   }

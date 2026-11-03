@@ -3,9 +3,8 @@
   const ui=window.AetheriusUI;
   if(!ui) throw Error('Propriedades exige Aetherius UI Core.');
   const id=()=>{const bytes=new Uint8Array(16);crypto.getRandomValues(bytes);bytes[6]=(bytes[6]&15)|64;bytes[8]=(bytes[8]&63)|128;const h=[...bytes].map(n=>n.toString(16).padStart(2,'0')).join('');return `${h.slice(0,8)}-${h.slice(8,12)}-${h.slice(12,16)}-${h.slice(16,20)}-${h.slice(20)}`;};
-  const date=v=>new Date(v).toLocaleString('pt-BR');
   const money=v=>v.toLocaleString('pt-BR')+' Septims';
-  ui.registerModule({id:'properties',label:'PROPRIEDADES',version:'0.3.4',sdkMin:'1.0.0',sdkMaxExclusive:'2.0.0',rootRoute:'/properties',radialSlot:9,
+  ui.registerModule({id:'properties',label:'PROPRIEDADES',version:'0.3.5',sdkMin:'1.0.0',sdkMaxExclusive:'2.0.0',rootRoute:'/properties',radialSlot:9,
     assets:['modules/properties/properties.js','modules/properties/properties.css'],capabilities:['properties.read','properties.write'],
     mount(container,context){
       container.classList.add('ar-properties');
@@ -54,18 +53,17 @@
           const t=h.tax, tax=el('section',undefined,'arp-card');tax.append(el('h3','Imposto residencial'));
           if(t.configured){
             const time=el('p',undefined,'arp-time');time.dataset.due=t.periods?t.nextAccrualAt:t.dueAt;time.setAttribute('aria-label',t.periods?'Tempo até o próximo imposto acumular':'Tempo até o próximo vencimento');tax.append(time);
-            const pay=button((t.advance?'Antecipar pagamento':'Pagar impostos')+' — '+money(t.paymentAmount),()=>{confirm={kind:'tax',houseId:h.residenceId,dueAt:t.dueAt,periods:t.periods,amount:t.paymentAmount,advance:t.advance,periodDays:t.periodDays};render();});pay.className='arp-primary';pay.disabled=!t.canPay||busy||!!uncertain;tax.append(pay);
+            const pay=button('Pagar impostos — '+money(t.periods>0?t.amount:t.periodAmount),()=>{confirm={kind:'tax',houseId:h.residenceId,dueAt:t.dueAt,periods:t.periods,amount:t.amount};render();});pay.className='arp-primary';pay.disabled=t.periods===0||!t.canPay||busy||!!uncertain;tax.append(pay);
             tax.append(el('p','Os impostos acumulam. Na 2ª quinzena sem pagar, todos perdem acesso à casa e aos baús. Na 3ª, a casa volta à venda.','arp-muted arp-tax-note'));
             if(t.suspended)tax.append(el('p',t.auction?'Casa à venda por falta de pagamento. Quite a dívida antes de outra compra para recuperar a casa e seus itens.':'Acessos suspensos. Quite os impostos para recuperar sua chave.','arp-warning'));
           }else tax.append(el('p','O imposto aguarda configuração da equipe.'));
           container.append(tax);
           const permissions=el('section',undefined,'arp-card');permissions.append(el('h3','Acesso à residência'));
           permissions.append(checkbox('Porta aberta ao público',h.open,busy||!!uncertain||t.suspended,open=>mutate('public',{open})));
-          permissions.append(el('p','Com a porta aberta, qualquer pessoa pode entrar. Visitantes não acessam os armazenamentos.','arp-muted'));
+          permissions.append(el('p','Com a porta aberta, qualquer pessoa pode entrar.','arp-muted'));
           const familyCount=h.members.filter(m=>m.family).length;
           const memberLimit=5,memberLimitReached=h.members.length>=memberLimit;
           permissions.append(el('h3',`Visitantes · ${h.members.length}/${memberLimit} cadastrados · ${familyCount}/2 familiares`));
-          permissions.append(el('p','Até 5 visitantes cadastrados, incluindo os familiares. O proprietário não ocupa uma vaga.','arp-muted'));
           if(memberLimitReached)permissions.append(el('p','Limite de visitantes atingido. Remova alguém para liberar uma vaga.','arp-muted'));
           const form=el('form',undefined,'arp-add');const name=el('input');name.type='text';name.placeholder='Nome completo ou profile_id';name.maxLength=255;name.setAttribute('aria-label','Nome completo ou profile_id');name.required=true;
           const add=el('button','Adicionar visitante');add.type='submit';name.disabled=add.disabled=busy||!!uncertain||t.suspended||memberLimitReached;
@@ -86,13 +84,19 @@
         }
         if(uncertain){const r=el('section',undefined,'arp-warning');r.append(el('p','Existe uma solicitação com resultado pendente.'),button('Consultar resultado',checkReceipt),button('Reenviar o mesmo pedido',()=>mutate(uncertain.action,{},uncertain.input)));container.append(r);}
         if(notice){const n=el('p',notice,'arp-notice');n.setAttribute('role','status');container.append(n);}
-        if(confirm){container.querySelectorAll('button,input,select').forEach(n=>{n.disabled=true;});const modal=el('section',undefined,'arp-confirm');modal.setAttribute('role','alertdialog');modal.setAttribute('aria-modal','true');
-          const title=confirm.kind==='remove'?`Remover ${confirm.name} da residência?`:confirm.kind==='sale'?`Anunciar a casa por ${money(confirm.amount)}?`:confirm.advance?`Antecipar a próxima parcela por ${money(confirm.amount)}?`:`Pagar ${money(confirm.amount)} pelos ${confirm.periods} imposto(s)?`;modal.setAttribute('aria-label',title);modal.append(el('h3',title));
-          if(confirm.kind==='tax'&&confirm.advance)modal.append(el('p','O próximo vencimento passa para '+date(Date.parse(confirm.dueAt)+confirm.periodDays*86400000)+'.'));
+        if(confirm){container.querySelectorAll('button,input,select').forEach(n=>{n.disabled=true;});const overlay=el('div',undefined,'arp-confirm-overlay'),modal=el('section',undefined,'arp-confirm');modal.setAttribute('role','alertdialog');modal.setAttribute('aria-modal','true');
+          const isTax=confirm.kind==='tax';
+          const title=confirm.kind==='remove'?`Remover ${confirm.name} da residência?`:confirm.kind==='sale'?`Anunciar a casa por ${money(confirm.amount)}?`:'Pagar impostos';modal.setAttribute('aria-label',title);
+          if(isTax){modal.classList.add('arp-confirm-tax');modal.append(el('p',h.name,'arp-confirm-house'));}
+          modal.append(el('h3',title));
+          if(isTax){modal.append(el('p',confirm.periods===1?'1 parcela vencida':`${confirm.periods} parcelas vencidas`,'arp-confirm-detail'));const total=el('div',undefined,'arp-confirm-total');total.append(el('span','Total a pagar'),el('strong',money(confirm.amount)));modal.append(total);}
           if(confirm.kind==='remove')modal.append(el('p','O acesso aos baús será revogado imediatamente. A pessoa poderá sair, mas só poderá entrar novamente se for adicionada ou se a porta estiver aberta.'));
           if(confirm.kind==='sale')modal.append(el('p','A venda inclui todos os itens guardados. O pagamento será creditado no saldo oficial do personagem que publicou o anúncio, conferido pelo seu profile_id.'));
-          const yes=button('Sim',()=>{const c=confirm;if(c.houseId!==selected)return;return c.kind==='remove'?mutate('removeMember',{memberProfileId:c.profileId,confirmed:true}):c.kind==='sale'?mutate('listSale',{amount:c.amount}):mutate('payTax',{dueAt:c.dueAt,periods:c.periods});});
-          modal.append(yes,button('Não',()=>{confirm=null;render();}));container.append(modal);yes.focus();
+          const yes=button(isTax?'Confirmar pagamento':'Sim',()=>{const c=confirm;if(c.houseId!==selected)return;return c.kind==='remove'?mutate('removeMember',{memberProfileId:c.profileId,confirmed:true}):c.kind==='sale'?mutate('listSale',{amount:c.amount}):mutate('payTax',{dueAt:c.dueAt,periods:c.periods});});
+          const cancel=()=>{const previous=confirm;confirm=null;render();const buttons=[...container.querySelectorAll('button')];const target=previous.kind==='tax'?buttons.find(n=>/^Pagar impostos/.test(n.textContent)):previous.kind==='sale'?buttons.find(n=>/^(Anunciar venda|Alterar anúncio)$/.test(n.textContent)):buttons.filter(n=>n.textContent==='Remover')[house().members.findIndex(m=>m.profileId===previous.profileId)];target?.focus();};
+          const no=button(isTax?'Cancelar':'Não',cancel);if(isTax){yes.className='arp-primary';const actions=el('div',undefined,'arp-confirm-actions');actions.append(no,yes);modal.append(actions);}else modal.append(yes,no);overlay.append(modal);container.append(overlay);
+          overlay.onkeydown=e=>{if(e.key==='Escape'){e.preventDefault();e.stopPropagation();cancel();}else if(e.key==='Tab'){e.preventDefault();(document.activeElement===yes?no:yes).focus();}};
+          overlay.onwheel=e=>{if(!modal.contains(e.target))e.preventDefault();};yes.focus();
         }
         if(busy)container.querySelectorAll('button,input,select').forEach(n=>{n.disabled=true;});
         tick();

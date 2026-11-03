@@ -1,0 +1,22 @@
+{
+  "version": "0.3.5",
+  "checkedOn": "2026-11-03",
+  "scope": "fictional UI preview; not economic or database tests",
+  "checked": [
+    "disabled_gray_payment_before_due",
+    "green_payment_and_overdue_totals",
+    "no_prepayment",
+    "compact_centered_dialog",
+    "house_installments_total_summary",
+    "cancel_escape_and_keyboard_focus",
+    "simulated_payment",
+    "tax_removal_sale_confirmations",
+    "redundant_visitor_descriptions_removed"
+  ],
+  "viewportWidths": [
+    360,
+    1200
+  ],
+  "pageErrors": [],
+  "productionTouched": false
+}

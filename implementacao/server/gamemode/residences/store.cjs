@@ -159,6 +159,7 @@ function createStore({ db, currencies, maxPerProfile = 1 }) {
           const due=residence.tax_due_at && new Date(residence.tax_due_at).toISOString();
           if (!due || input.dueAt!==due) fail('TAX_CHANGED');
           const bill=taxView(residence,c=>currencies.available(c));
+          if (!bill.periods) fail('TAX_EARLY');
           if (!bill.canPay) fail('UNAVAILABLE');
           if(input.periods!==bill.periods) fail('TAX_CHANGED');
           amount=bill.paymentAmount; chargeCurrency='septims';
