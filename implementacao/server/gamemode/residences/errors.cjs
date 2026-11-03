@@ -1,6 +1,7 @@
 'use strict';
 const messages = {
   SELLER:'Não foi possível creditar o saldo oficial do vendedor. A compra não foi concluída.',
+  TAX_PERIOD:'Há um IPTU de periodicidade anterior registrado. A equipe deve reconciliar os vencimentos antes de iniciar a cobrança quinzenal.',
   TAX_BASE:'Defina o valor base da casa em Septims antes da venda.', TAX_SUSPENDED:'Pague os impostos pendentes para recuperar a chave e o acesso à residência.',
   PRIVATE: 'Residência privada', MEMBER_NOT_FOUND: 'Jogador não encontrado pelo nome completo ou profile_id.',
   AMBIGUOUS: 'Há mais de um perfil com esse nome. Informe o profile_id.', FAMILY_LIMIT: 'Esta residência já possui dois familiares.',

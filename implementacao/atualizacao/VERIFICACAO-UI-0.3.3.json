@@ -1,0 +1,18 @@
+{
+  "version": "0.3.3",
+  "scope": "offline UI preview with fictional data, not server tax tests",
+  "renderedTaxPeriodDays": 15,
+  "scenarioLabels": [
+    "Antes de 15 dias",
+    "15 dias · liberado",
+    "30 dias · acesso suspenso",
+    "45 dias · volta à venda"
+  ],
+  "checked": [
+    "tax_controls_0_1_2_3_installments",
+    "member_controls_suspended_at_2",
+    "render_15_day_label"
+  ],
+  "pageErrors": [],
+  "productionTouched": false
+}

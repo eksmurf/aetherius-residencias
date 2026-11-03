@@ -29,6 +29,13 @@
 .ar-properties .arp-add{display:flex;gap:10px;margin:14px 0;flex-wrap:wrap}
 .ar-properties .arp-add input{flex:1 1 200px;min-width:0}
 .ar-properties input::placeholder{color:var(--arp-muted);opacity:1}
+/* Destaque suave das ações/campos, conforme referência de Moderação. */
+.ar-properties .arp-primary,.ar-properties .arp-add button,.ar-properties .arp-add input[type=text]{color:var(--arp-accent);background:rgba(255,255,255,.015);border-color:rgba(105,207,153,.3);box-shadow:inset 0 1px 0 rgba(105,207,153,.65)}
+.ar-properties .arp-primary,.ar-properties .arp-add button{font-weight:500}
+.ar-properties .arp-add input[type=text]{color:var(--arp-secondary)}
+.ar-properties .arp-add input::placeholder{color:var(--arp-muted)}
+.ar-properties .arp-primary:hover:not(:disabled),.ar-properties .arp-add button:hover:not(:disabled){color:var(--arp-accent);background:rgba(255,255,255,.04);border-color:rgba(105,207,153,.55)}
+.ar-properties .arp-add input:disabled{opacity:.4;cursor:not-allowed}
 .ar-properties .arp-member{display:flex;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid var(--arp-line)}
 .ar-properties .arp-member-name{flex:1;overflow-wrap:anywhere;min-width:0}
 .ar-properties .arp-remove{margin-left:auto;color:var(--arp-danger)}

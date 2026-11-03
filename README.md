@@ -1,4 +1,6 @@
-# Residências do Aetherius — pacote 0.3.2
+# Residências do Aetherius — pacote 0.3.3
+
+**IPTU a cada 15 dias — 0.3.3:** primeira parcela em 15 dias, suspensão com duas (30 dias) e retorno à venda com três (45 dias), sem pagamento. Confirmado pelo solicitante: ainda não há IPTU ativo. [Pacote 0.3.3](dist/aetherius-residencias-0.3.3.zip) · [SHA256](dist/aetherius-residencias-0.3.3.zip.sha256) · [guia da atualização](implementacao/ATUALIZACAO-0.3.3.md).
 
 **Atualização visual de 03/11/2026:** compra e Propriedades seguem o estudo UI/UX e a referência de Classes: preto translúcido, texto neutro e verde nos estados/ações. [Pacote completo 0.3.2](dist/aetherius-residencias-0.3.2.zip) · [SHA256](dist/aetherius-residencias-0.3.2.zip.sha256) · [guia da atualização visual](implementacao/ATUALIZACAO-UI-0.3.2.md).
 
@@ -8,7 +10,7 @@ Entrega original 0.3.1 para integração no **servidor oficial**: [pacote ZIP 0.
 
 A primeira etapa permanece restrita a **Breezehome, Vlindrel Hall, Hjerim, Proudspire Manor e Honeyside**. DLC e mods continuam em [etapas futuras](implementacao/catalogo/etapas-futuras/README.md). Nenhuma venda foi ativada por esta entrega.
 
-## Fluxo atualizado em 29/10/2026
+## Fluxo atualizado em 03/11/2026
 
 - **Chave pessoal vinculada ao perfil:** aparece em INVENTÁRIO do CORE UI, categoria Chaves, sem ações de movimentação. Não é inserida no inventário nativo transferível; portanto não compõe baús, saque ou comércio. Não há reposição manual. Suspensão por impostos ou revogação de permissões retira a projeção da chave.
 - **Entrada direta com E:** dono, familiares e visitantes cadastrados entram quando autorizados; não existe botão “Entrar”. Imóvel privado não abre painel de compra para terceiros; mostra “Residência privada”. Imóveis anunciados ou retomados mostram a oferta aos compradores.
@@ -22,14 +24,14 @@ A primeira etapa permanece restrita a **Breezehome, Vlindrel Hall, Hjerim, Proud
 
 | Momento sem pagamento | Resultado |
 |---|---|
-| Antes de 7 dias | Pagamento indisponível |
-| 7 dias | Primeiro imposto disponível: 10% do valor base em Septims |
-| 14 dias | Dois impostos acumulados; chaves, entradas e armazenamento suspensos |
-| 21 dias | Três impostos acumulados; imóvel volta à compra pelo preço cadastrado |
+| Antes de 15 dias | Pagamento indisponível |
+| 15 dias | Primeiro imposto disponível: 10% do valor base em Septims |
+| 30 dias | Dois impostos acumulados; chaves, entradas e armazenamento suspensos |
+| 45 dias | Três impostos acumulados; imóvel volta à compra pelo preço cadastrado |
 | Quitação antes de nova compra | Paga toda a dívida e recupera a chave e a casa |
 | Nova compra antes da quitação | Antigo dono perde o imóvel e os itens que permaneceram nele |
 
-O imposto é sempre em Septims, inclusive quando a aquisição original foi em Diademas. Fração de Septim é arredondada para cima. A dívida continua acumulando a cada sete dias; não é congelada na terceira semana. Pagar não permite antecipar o próximo imposto. Na retomada por inadimplência não há pagamento ao antigo dono; na venda voluntária há crédito integral do preço anunciado. [Regras e contratos detalhados](implementacao/REGRAS-0.3.md).
+O imposto é sempre em Septims, inclusive quando a aquisição original foi em Diademas. Fração de Septim é arredondada para cima. A dívida continua acumulando a cada 15 dias; não é congelada na terceira quinzena. Pagar não permite antecipar o próximo imposto. Na retomada por inadimplência não há pagamento ao antigo dono; na venda voluntária há crédito integral do preço anunciado. [Regras e contratos detalhados](implementacao/REGRAS-0.3.md).
 
 ## Estado e validação
 

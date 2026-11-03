@@ -1,4 +1,4 @@
-# Regras de residências 0.3.1 — 31/10/2026
+# Regras de residências 0.3.3 — 03/11/2026
 
 Estas regras substituem o fluxo de reposição manual, trancar/destrancar por botão e painel de proprietário na porta das versões 0.1/0.2.
 
@@ -18,11 +18,13 @@ Desmarcar Familiar mantém a pessoa como visitante e revoga sua chave/acesso aos
 
 ## Impostos
 
-O imposto semanal é `ceil(valorBaseEmSeptims / 10)`, sempre em Septims. O valor base é fixado na aquisição e corresponde ao preço cadastrado em Septims, independentemente da moeda da compra ou do preço particular de revenda. A fração é arredondada para cima porque a moeda usa unidades inteiras.
+A periodicidade é de 15 dias completos (360 horas), sem vinculação aos dias 1 e 15 do mês. Duas parcelas correspondem a 30 dias e três a 45 dias sem pagamento desde o início do ciclo.
 
-O primeiro vencimento ocorre sete dias após a aquisição. Antes disso não há pagamento. Cada sete dias completos acrescenta uma parcela. Com uma parcela em aberto há cobrança sem bloqueio; com duas, chave, entradas e armazenamento de dono/familiares/visitantes são suspensos, inclusive porta pública. Com três, a casa volta à compra pelo preço cadastrado. Não existe disputa por lances.
+O imposto quinzenal é `ceil(valorBaseEmSeptims / 10)`, sempre em Septims. O valor base é fixado na aquisição e corresponde ao preço cadastrado em Septims, independentemente da moeda da compra ou do preço particular de revenda. A fração é arredondada para cima porque a moeda usa unidades inteiras.
 
-Quitação paga todas as parcelas vencidas de uma só vez e avança o próximo vencimento na mesma sequência semanal. Não compra períodos futuros e não reinicia artificialmente o relógio. A dívida continua acumulando após a terceira semana. Após suspensão, a quitação devolve as chaves/permissões existentes e fecha a porta pública; o dono pode reabri-la deliberadamente. Um anúncio voluntário anterior é cancelado nessa recuperação.
+O primeiro vencimento ocorre 15 dias após a aquisição. Antes disso não há pagamento. Cada 15 dias completos acrescenta uma parcela. Com uma parcela em aberto há cobrança sem bloqueio; com duas, chave, entradas e armazenamento de dono/familiares/visitantes são suspensos, inclusive porta pública. Com três, a casa volta à compra pelo preço cadastrado. Não existe disputa por lances.
+
+Quitação paga todas as parcelas vencidas de uma só vez e avança o próximo vencimento na mesma sequência quinzenal. Não compra períodos futuros e não reinicia artificialmente o relógio. A dívida continua acumulando após a terceira quinzena. Após suspensão, a quitação devolve as chaves/permissões existentes e fecha a porta pública; o dono pode reabri-la deliberadamente. Um anúncio voluntário anterior é cancelado nessa recuperação.
 
 Até uma nova compra concluir, o antigo dono ainda pode quitar a dívida pelo TAB e recuperar o direito. Quitação e compra concorrentes bloqueiam a mesma linha. Se a compra vencer, o pagamento do antigo dono é recusado sem débito. Ele perde a casa e os itens que permaneceram nela; os vínculos de membros e chaves anteriores são revogados. Na retomada por imposto não há crédito ao antigo dono.
 
@@ -36,4 +38,4 @@ Concluída a venda: anúncio retirado, porta pública fechada, todos os membros 
 
 ## Exemplo
 
-Casa com valor base de 25.000 Septims: imposto semanal de 2.500. No 7º dia deve 2.500; no 14º, 5.000 e perde acesso; no 21º, 7.500 e o imóvel volta à oferta. Se quitar antes de outra compra, recupera a mesma chave. Se a casa for vendida voluntariamente por 40.000, o vendedor recebe 40.000; o imposto do novo dono continua baseado no valor cadastrado de 25.000.
+Casa com valor base de 25.000 Septims: imposto quinzenal de 2.500. No 15º dia deve 2.500; no 30º, 5.000 e perde acesso; no 45º, 7.500 e o imóvel volta à oferta. Se quitar antes de outra compra, recupera a mesma chave. Se a casa for vendida voluntariamente por 40.000, o vendedor recebe 40.000; o imposto do novo dono continua baseado no valor cadastrado de 25.000.

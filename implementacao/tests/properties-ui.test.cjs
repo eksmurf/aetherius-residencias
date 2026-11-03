@@ -9,7 +9,7 @@ async function harness(extraMembers=[]){
     setAttribute(k,v){this[k]=v;},focus(){document.activeElement=this;},contains(target){return target===this||this.children.some(c=>c.contains(target));},
     querySelectorAll(selector){const match=n=>selector==='[data-due]'?n.dataset.due!==undefined:selector.split(',').includes(n.tag);return this.children.flatMap(c=>[...(match(c)?[c]:[]),...c.querySelectorAll(selector)]);}};}
   const residence={residenceId:'first',name:'Breezehome',accessRevision:3,open:false,listingPrice:null,familyLimit:2,
-    tax:{configured:true,periods:1,amount:100,weeklyAmount:100,dueAt:new Date().toISOString(),nextAccrualAt:new Date(Date.now()+86400000).toISOString(),canPay:true,suspended:false,auction:false},
+    tax:{configured:true,periods:1,amount:100,periodAmount:100,periodDays:15,dueAt:new Date().toISOString(),nextAccrualAt:new Date(Date.now()+86400000).toISOString(),canPay:true,suspended:false,auction:false},
     members:[{profileId:2,name:'Pessoa Dois',family:true},{profileId:3,name:'Pessoa Três',family:true},{profileId:4,name:'Pessoa Quatro',family:false}]};
   residence.members.push(...extraMembers);
   vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../client/properties/properties.js'),'utf8'),{window:{AetheriusUI:{registerModule:d=>{definition=d;}}},document,crypto:webcrypto,Date,setInterval:()=>1,clearInterval(){}});

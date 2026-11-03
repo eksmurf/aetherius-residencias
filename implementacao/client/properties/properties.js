@@ -5,7 +5,7 @@
   const id=()=>{const bytes=new Uint8Array(16);crypto.getRandomValues(bytes);bytes[6]=(bytes[6]&15)|64;bytes[8]=(bytes[8]&63)|128;const h=[...bytes].map(n=>n.toString(16).padStart(2,'0')).join('');return `${h.slice(0,8)}-${h.slice(8,12)}-${h.slice(12,16)}-${h.slice(16,20)}-${h.slice(20)}`;};
   const date=v=>new Date(v).toLocaleString('pt-BR');
   const money=v=>v.toLocaleString('pt-BR')+' Septims';
-  ui.registerModule({id:'properties',label:'PROPRIEDADES',version:'0.3.2',sdkMin:'1.0.0',sdkMaxExclusive:'2.0.0',rootRoute:'/properties',radialSlot:9,
+  ui.registerModule({id:'properties',label:'PROPRIEDADES',version:'0.3.3',sdkMin:'1.0.0',sdkMaxExclusive:'2.0.0',rootRoute:'/properties',radialSlot:9,
     assets:['modules/properties/properties.js','modules/properties/properties.css'],capabilities:['properties.read','properties.write'],
     mount(container,context){
       container.classList.add('ar-properties');
@@ -53,12 +53,12 @@
         else{
           const t=h.tax, tax=el('section',undefined,'arp-card');tax.append(el('h3','Imposto residencial'));
           if(t.configured){
-            tax.append(el('p',money(t.weeklyAmount)+' a cada 7 dias · 10% do valor base em Septims.'));
+            tax.append(el('p',money(t.periodAmount)+' a cada '+t.periodDays+' dias · 10% do valor base em Septims.'));
             tax.append(el('p',t.periods?`${t.periods} imposto(s) em aberto · Total: ${money(t.amount)}`:'Nenhum imposto disponível para pagamento.'));
             const time=el('p',undefined,'arp-time');time.dataset.due=t.periods?t.nextAccrualAt:t.dueAt;tax.append(time);
             tax.append(el('p',(t.periods?'Próximo acúmulo: ':'Pagamento disponível em: ')+date(t.periods?t.nextAccrualAt:t.dueAt),'arp-muted'));
             if(t.suspended)tax.append(el('p',t.auction?'A casa voltou à venda pelo preço cadastrado. Quite todos os impostos antes de outra pessoa comprar para recuperar a casa e sua chave. Se houver nova compra, você perde a casa e os itens guardados nela.':'Sua chave e os acessos da residência estão suspensos. Pague os impostos pendentes para recuperar a chave.','arp-warning'));
-            const pay=button('Pagar impostos — '+money(t.amount),()=>{confirm={kind:'tax',houseId:h.residenceId,dueAt:t.dueAt,periods:t.periods,amount:t.amount};render();});pay.disabled=!t.canPay||busy||!!uncertain;tax.append(pay);
+            const pay=button('Pagar impostos — '+money(t.amount),()=>{confirm={kind:'tax',houseId:h.residenceId,dueAt:t.dueAt,periods:t.periods,amount:t.amount};render();});pay.className='arp-primary';pay.disabled=!t.canPay||busy||!!uncertain;tax.append(pay);
           }else tax.append(el('p','O imposto aguarda configuração da equipe.'));
           container.append(tax);
           const permissions=el('section',undefined,'arp-card');permissions.append(el('h3','Acesso à residência'));

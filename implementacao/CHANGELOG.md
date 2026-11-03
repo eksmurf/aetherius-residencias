@@ -1,5 +1,12 @@
 # Alterações
 
+## 0.3.3 — 03/11/2026
+
+- IPTU a cada 15 dias; duas parcelas suspendem aos 30 e três recolocam à venda aos 45 dias sem pagamento. Valor por parcela mantido em 10% da base em Septims.
+- Solicitante confirmou ausência de IPTU ativo: casas legadas iniciam direto com 15 dias, sem conversão de dívidas semanais.
+- DTO com periodAmount/periodDays; atualização conjunta de servidor e cliente. Sem nova migração de schema.
+- Bordas/letras verdes em ações, interior neutro; campos com texto branco/cinza, conforme revisão visual aprovada.
+
 ## 0.3.2 — 03/11/2026
 
 - Paleta do estudo UI/UX aplicada à compra e às Propriedades: preto translúcido, texto neutro, verde somente em foco/seleção/ações.

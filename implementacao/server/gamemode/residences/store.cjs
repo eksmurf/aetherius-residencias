@@ -1,7 +1,7 @@
 'use strict';
 const { randomUUID, createHash } = require('node:crypto');
 const { fail } = require('./errors.cjs');
-const { terms, taxView, offerKind, WEEK } = require('./tax.cjs');
+const { terms, taxView, offerKind, TAX_PERIOD_DAYS, TAX_PERIOD_MS } = require('./tax.cjs');
 const { validateCatalog } = require('./catalog.cjs');
 const payloadHash = value => createHash('sha256').update(JSON.stringify(value)).digest('hex');
 // JSONB does not preserve object member order. Compare explicit values instead.
@@ -36,6 +36,8 @@ function createStore({ db, currencies, maxPerProfile = 1 }) {
     await transact(async conn => {
       await conn.query('SELECT pg_advisory_xact_lock(174622,0)');
       const [existing] = await conn.query('SELECT * FROM aetherius_residences ORDER BY id FOR UPDATE');
+      // No IPTU was active when the 15-day rule was approved. Never reinterpret a weekly debt silently.
+      for(const row of existing) if(row.owner_profile_id!==null && row.tax_due_at && row.tax_terms?.periodDays!==TAX_PERIOD_DAYS) fail('TAX_PERIOD');
       for (const definition of definitions) {
         const previous = existing.find(row => row.id === definition.id);
         if (previous && previous.definition_hash !== definition.hash && definition.revision <= previous.revision) fail('PRICE_CHANGED');
@@ -58,7 +60,7 @@ function createStore({ db, currencies, maxPerProfile = 1 }) {
         }
       }
       const [legacy]=await conn.query('SELECT * FROM aetherius_residences WHERE owner_profile_id IS NOT NULL AND tax_due_at IS NULL FOR UPDATE');
-      for(const row of legacy) await conn.query("UPDATE aetherius_residences SET tax_due_at=now()+interval '7 days',tax_terms=$2::jsonb WHERE id=$1",[row.id,JSON.stringify(terms(row.definition.prices.septims))]);
+      for(const row of legacy) await conn.query("UPDATE aetherius_residences SET tax_due_at=now()+($3::int * interval '24 hours'),tax_terms=$2::jsonb WHERE id=$1",[row.id,JSON.stringify(terms(row.definition.prices.septims)),TAX_PERIOD_DAYS]);
       for (const row of existing) if (!definitions.some(d => d.id === row.id)) {
         await conn.query('UPDATE aetherius_residences SET for_sale=false WHERE id=$1', [row.id]);
       }
@@ -115,7 +117,7 @@ function createStore({ db, currencies, maxPerProfile = 1 }) {
         residence.owner_profile_id = session.profileId;
         residence.owner_account_id = session.accountId;
         residence.locked = true;
-        residence.tax_terms=taxTerms; residence.tax_due_at=new Date(Date.now()+WEEK).toISOString();
+        residence.tax_terms=taxTerms; residence.tax_due_at=new Date(Date.now()+TAX_PERIOD_MS).toISOString();
       } else {
         if (residence.owner_profile_id !== session.profileId || residence.owner_account_id !== session.accountId) fail('FORBIDDEN');
         if (input.accessRevision !== residence.access_revision) fail('STALE');
@@ -162,7 +164,7 @@ function createStore({ db, currencies, maxPerProfile = 1 }) {
           amount=bill.amount; chargeCurrency='septims';
           walletId=await currencies.debit(conn,{...session,currency:chargeCurrency,amount,purchaseId:operationId,reason:'residence_tax'});
           if(bill.suspended){residence.locked=true;residence.listing_price=null;residence.seller_character_id=null;}
-          residence.tax_due_at=new Date(Date.parse(due)+bill.periods*WEEK).toISOString();
+          residence.tax_due_at=new Date(Date.parse(due)+bill.periods*TAX_PERIOD_MS).toISOString();
         } else fail('INVALID');
       }
       if (input.action==='purchase'||recipient!==session) {
@@ -195,7 +197,7 @@ function createStore({ db, currencies, maxPerProfile = 1 }) {
       const result=[];
       for(const row of owned){
         if(!row.tax_due_at){
-          row.tax_terms=terms(row.definition.prices.septims);row.tax_due_at=new Date(Date.now()+WEEK).toISOString();
+          row.tax_terms=terms(row.definition.prices.septims);row.tax_due_at=new Date(Date.now()+TAX_PERIOD_MS).toISOString();
           await conn.query('UPDATE aetherius_residences SET tax_due_at=$2,tax_terms=$3::jsonb WHERE id=$1',[row.id,row.tax_due_at,JSON.stringify(row.tax_terms)]);
         }
         const [members]=await conn.query('SELECT profile_id,display_name,family FROM aetherius_residence_members WHERE residence_id=$1 ORDER BY created_at,profile_id',[row.id]);

@@ -178,17 +178,35 @@ test('anúncio paga vendedor, preserva dinheiro total e remove todas as permiss�
   assert.equal((await store.inventoryKeys(sessions[0])).length,0);assert.equal((await store.inventoryKeys(friend)).length,0);
   assert.equal((await store.inventoryKeys(sessions[1])).length,1);
 });
+test('casa legada sem IPTU inicia em 15 dias e reinício preserva o vencimento',async()=>{
+  await mutate(sessions[0],input());const key=(await store.inventoryKeys(sessions[0]))[0].id;
+  await db.query("UPDATE aetherius_residences SET tax_due_at=NULL,tax_terms=NULL WHERE id='first'");
+  await store.installCatalog([definition('first',1),definition('second',3)]);
+  const first=(await store.snapshot()).find(r=>r.id==='first');
+  assert.equal(first.tax_terms.periodDays,15);assert.equal(first.owner_profile_id,1);
+  const timing=await db.query("SELECT abs(extract(epoch FROM (tax_due_at-now()))-15*86400)<5 AS correct FROM aetherius_residences WHERE id='first'");
+  assert.equal(timing[0].correct,true);
+  await store.installCatalog([definition('first',1),definition('second',3)]);
+  const again=(await store.snapshot()).find(r=>r.id==='first');
+  assert.equal(new Date(again.tax_due_at).getTime(),new Date(first.tax_due_at).getTime());
+  assert.equal((await store.inventoryKeys(sessions[0]))[0].id,key);
+  assert.equal((await db.query('SELECT * FROM gold_transactions')).length,1);
+});
+
 test('imposto não aceita antecipação e quitação recupera a mesma chave',async()=>{
   await mutate(sessions[0],input());const key=(await store.inventoryKeys(sessions[0]))[0].id;
   let h=(await store.properties(sessions[0])).residences[0];
+  assert.equal(h.tax.periodDays,15);assert.equal(h.tax.periodAmount,10);
   await assert.rejects(manage('payTax',{dueAt:h.tax.dueAt,periods:1}),{code:'TAX_EARLY'});
-  await db.query("UPDATE aetherius_residences SET tax_due_at=now()-interval '7 days 1 minute' WHERE id='first'");
+  await db.query("UPDATE aetherius_residences SET tax_due_at=now()-interval '15 days 1 minute' WHERE id='first'");
   h=(await store.properties(sessions[0])).residences[0];assert.equal(h.tax.periods,2);assert.equal(h.tax.suspended,true);assert.equal((await store.inventoryKeys(sessions[0])).length,0);
   await manage('payTax',{dueAt:h.tax.dueAt,periods:2});assert.equal((await store.inventoryKeys(sessions[0]))[0].id,key);
+  const renewed=(await store.properties(sessions[0])).residences[0];
+  assert.equal(Date.parse(renewed.tax.dueAt)-Date.parse(h.tax.dueAt),30*86400000);
   assert.equal((await db.query('SELECT gold FROM characters WHERE id=$1',[sessions[0].characterId]))[0].gold,880);
 });
 test('quitação disputa com recompra e apenas uma pode vencer',async()=>{
-  await mutate(sessions[0],input());await db.query("UPDATE aetherius_residences SET tax_due_at=now()-interval '14 days 1 minute' WHERE id='first'");
+  await mutate(sessions[0],input());await db.query("UPDATE aetherius_residences SET tax_due_at=now()-interval '30 days 1 minute' WHERE id='first'");
   const h=(await store.properties(sessions[0])).residences[0],row=(await store.snapshot()).find(r=>r.id==='first');
   const results=await Promise.allSettled([mutate(sessions[0],{requestId:randomUUID(),action:'payTax',residenceId:'first',accessRevision:row.access_revision,dueAt:h.tax.dueAt,periods:3}),mutate(sessions[1],input({accessRevision:row.access_revision,offerKind:'foreclosure'}))]);
   assert.equal(results.filter(r=>r.status==='fulfilled').length,1);
@@ -205,7 +223,7 @@ test('falha ao creditar vendedor desfaz débito e mantém dono e anúncio',async
 test('oferta de revenda vencida não cobra o preço de retomada sem reconfirmar',async()=>{
   await mutate(sessions[0],input());await manage('listSale',{amount:50});
   const row=(await store.snapshot()).find(r=>r.id==='first');
-  await db.query("UPDATE aetherius_residences SET tax_due_at=now()-interval '14 days 1 minute' WHERE id='first'");
+  await db.query("UPDATE aetherius_residences SET tax_due_at=now()-interval '30 days 1 minute' WHERE id='first'");
   await assert.rejects(mutate(sessions[1],input({accessRevision:row.access_revision,offerKind:'resale'})),{code:'PRICE_CHANGED'});
   assert.equal((await db.query('SELECT gold FROM characters WHERE id=$1',[sessions[1].characterId]))[0].gold,1000);
   await mutate(sessions[1],input({accessRevision:row.access_revision,offerKind:'foreclosure'}));

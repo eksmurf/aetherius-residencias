@@ -1,4 +1,6 @@
-# Integração oficial — residências 0.3.2
+# Integração oficial — residências 0.3.3
+
+**IPTU quinzenal:** começar pelo [guia 0.3.3](ATUALIZACAO-0.3.3.md). O ciclo atual é de 15 dias, com suspensão aos 30 e retorno à venda aos 45 dias sem pagamento. Ainda não havia IPTU ativo, conforme confirmação do solicitante em 03/11/2026.
 
 Atualização visual 0.3.2 preparada em 03/11/2026 sobre o backend 0.3.1. Leia [ATUALIZACAO-UI-0.3.2.md](ATUALIZACAO-UI-0.3.2.md) para distinguir a atualização visual da migração completa da primeira versão. Entregamos código e contratos para a equipe integrar no servidor oficial. Nenhum banco ou processo do servidor foi alterado. O piloto continua sendo as cinco casas vanilla.
 
@@ -20,7 +22,7 @@ Leia [REGRAS-0.3.md](REGRAS-0.3.md) antes da integração. O usuário relatou va
 1. Em manutenção, fazer backup do banco e do estado dos inventários/changeforms. Comparar a revisão oficial com as fontes recebidas descritas em `PROVENIENCIA.json`.
 2. Em instalação nova, aplicar `001_residences.sql` e depois `002_household_tax.sql`. Na atualização da 0.1.0 já instalada, conferir a `001` existente e aplicar somente a `002`, na mesma base da economia oficial. A segunda migração preserva recibos históricos, amplia chaves por beneficiário e acrescenta membros, impostos e venda. Não faz débito.
 3. Atualizar cada definição aprovada com `interiorCells`, `storageGuards` e `interiorPassages`. Aumentar sua revisão acima da revisão instalada. Os rascunhos estão em revisão 2, mas a equipe deve usar uma revisão maior se já houver outra em produção. Não importar imóveis de DLC/mods no piloto.
-4. Confirmar preço base em Septims para toda casa, inclusive casas que também aceitam Diademas. Esse valor define o imposto. Na primeira inicialização desta atualização, propriedades legadas sem vencimento passam a ter sete dias até a primeira cobrança; não há cobrança retroativa baseada em datas desconhecidas.
+4. Confirmar preço base em Septims para toda casa, inclusive casas que também aceitam Diademas. Esse valor define o imposto. Na primeira inicialização desta atualização, propriedades legadas sem vencimento passam a ter 15 dias até a primeira cobrança; não há cobrança retroativa baseada em datas desconhecidas.
 5. Preservar o adaptador concreto de Diademas já validado pela equipe. O integrador não sobrescreve `official-diademas.cjs`, que não está no pacote. O exemplo de contrato continua sendo somente referência.
 6. Conferir as alterações preparadas, sem escrever:
 

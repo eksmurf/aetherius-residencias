@@ -371,7 +371,7 @@
     },
     {
       "version": "0.3.2",
-      "commit": null,
+      "commit": "d0607a265b845a096d995abac4aab5c6ae600748",
       "files": [
         {
           "side": "client",
@@ -453,6 +453,91 @@
         }
       ],
       "source": "Arquivos da entrega 0.3.2; consultar histórico Git para o commit de publicação."
+    },
+    {
+      "version": "0.3.3",
+      "commit": null,
+      "files": [
+        {
+          "side": "client",
+          "path": "ui-core/frontend/modules/properties/properties.css",
+          "sha256": "4ce6a8dca921a9f50ac74ab05968ef97aa017b69e332c88917d5f4bd60d7b465",
+          "lfSha256": "18344b997bb8d0eee05d24d4766012c90d6293f0b536f3c18c2cae0eebb15079"
+        },
+        {
+          "side": "client",
+          "path": "ui-core/frontend/modules/properties/properties.js",
+          "sha256": "1947543210e592f42f28802da53cfb67d61dd911cbad2e85ef39c84657f9d517",
+          "lfSha256": "1947543210e592f42f28802da53cfb67d61dd911cbad2e85ef39c84657f9d517"
+        },
+        {
+          "side": "client",
+          "path": "residences/app.js",
+          "sha256": "f982b7f5a592536ddd89be46bd74bb36a0c99da271854bf6ba8f5643dc11eb08",
+          "lfSha256": "f982b7f5a592536ddd89be46bd74bb36a0c99da271854bf6ba8f5643dc11eb08"
+        },
+        {
+          "side": "client",
+          "path": "residences/style.css",
+          "sha256": "c41ba44046ad429f5e58860df6d75faa4e2a16eb57583df1a9f23770f7ddb563",
+          "lfSha256": "c41ba44046ad429f5e58860df6d75faa4e2a16eb57583df1a9f23770f7ddb563"
+        },
+        {
+          "side": "server",
+          "path": "gamemode/residences/access.cjs",
+          "sha256": "c842b85c7868232f339795e8f5fa533ef5ff43895f2e5667841a43d5d57a7f09",
+          "lfSha256": "c842b85c7868232f339795e8f5fa533ef5ff43895f2e5667841a43d5d57a7f09"
+        },
+        {
+          "side": "server",
+          "path": "gamemode/residences/catalog.cjs",
+          "sha256": "9a4c6cc4cba8df734186527eb5e8fe2c171f4ce6254d9e84d2e0d46d7f905e2d",
+          "lfSha256": "9a4c6cc4cba8df734186527eb5e8fe2c171f4ce6254d9e84d2e0d46d7f905e2d"
+        },
+        {
+          "side": "server",
+          "path": "gamemode/residences/currencies.cjs",
+          "sha256": "94f9cf86ec9ab67c694f7adcb9c018e0e7f5ce9a46dbceb5c12f8daca9ae7983",
+          "lfSha256": "94f9cf86ec9ab67c694f7adcb9c018e0e7f5ce9a46dbceb5c12f8daca9ae7983"
+        },
+        {
+          "side": "server",
+          "path": "gamemode/residences/errors.cjs",
+          "sha256": "50a564d7bd28b6944ec8799ed72240d1c47dbaf4b7d25b17d00a602b94c842f2",
+          "lfSha256": "50a564d7bd28b6944ec8799ed72240d1c47dbaf4b7d25b17d00a602b94c842f2"
+        },
+        {
+          "side": "server",
+          "path": "gamemode/residences/host.cjs",
+          "sha256": "8d234e67cb7a85c9cf7aae0833a6235f7183b6bcab26d148f2f5b4e8c3b3724d",
+          "lfSha256": "8d234e67cb7a85c9cf7aae0833a6235f7183b6bcab26d148f2f5b4e8c3b3724d"
+        },
+        {
+          "side": "server",
+          "path": "gamemode/residences/install.cjs",
+          "sha256": "3f256588e4d71ccd2f80a63855d26247602753565b8a222b044ba633258367d4",
+          "lfSha256": "3f256588e4d71ccd2f80a63855d26247602753565b8a222b044ba633258367d4"
+        },
+        {
+          "side": "server",
+          "path": "gamemode/residences/service.cjs",
+          "sha256": "8c5ca6b51b15ad918aa7161676a391e2b98424f442d021806898a782281232bc",
+          "lfSha256": "93f76f18b24c077ba8d811f06074d1b07dad79e9b6228425487730b3dc792e07"
+        },
+        {
+          "side": "server",
+          "path": "gamemode/residences/store.cjs",
+          "sha256": "7d66740590288b2f9207da8d88982ee5892b6ecf170ef1359d1e9546f2d05c85",
+          "lfSha256": "7d66740590288b2f9207da8d88982ee5892b6ecf170ef1359d1e9546f2d05c85"
+        },
+        {
+          "side": "server",
+          "path": "gamemode/residences/tax.cjs",
+          "sha256": "ade907a99d3892699f8ebdd666bd6a1ae2bcf4a940498284aa106aa55fc94412",
+          "lfSha256": "ade907a99d3892699f8ebdd666bd6a1ae2bcf4a940498284aa106aa55fc94412"
+        }
+      ],
+      "source": "Arquivos da entrega 0.3.3; consultar histórico Git para o commit de publicação."
     }
   ]
 }

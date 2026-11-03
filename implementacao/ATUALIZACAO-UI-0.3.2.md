@@ -1,5 +1,8 @@
 # Atualização visual das residências 0.3.2
 
+> Atualização vigente: [0.3.3 — IPTU a cada 15 dias](ATUALIZACAO-0.3.3.md). As datas semanais e o destino de versão abaixo são históricos; seguir o novo guia ao integrar o pacote atual.
+
+
 03/11/2026. Aplicação do estudo do chat **UI/UX - Melhorias**, projeto de padronização de cores v1, aos painéis de compra e TAB → Propriedades. Referência principal: Classes, conforme [VISUAL_SYSTEM.md da Core UI](https://github.com/pablo-rodrigues1/AetheriusUI_Core/blob/ce96e1dc35acd02375e063554402407f471ba453/docs/VISUAL_SYSTEM.md).
 
 ## O que muda

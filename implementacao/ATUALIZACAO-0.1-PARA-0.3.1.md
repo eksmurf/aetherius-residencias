@@ -1,5 +1,8 @@
 # Atualização das residências de 0.1.0 para 0.3.1
 
+> Atualização vigente: [0.3.3 — IPTU a cada 15 dias](ATUALIZACAO-0.3.3.md). As datas semanais e o destino de versão abaixo são históricos; seguir o novo guia ao integrar o pacote atual.
+
+
 Guia para os responsáveis pela integração e operação do servidor oficial Aetherius. Atualizado em 31/10/2026. **A versão instalada é a primeira entrega, 0.1.0, conforme confirmação do solicitante nesta data.** Ainda é necessário conferir os arquivos efetivamente carregados, as adaptações da equipe e o estado do banco. Não houve inspeção remota do processo em produção.
 
 O destino é o código 0.3.1, publicado no commit `e054d900d7170b27d443ab160c078ca6b6f88c6c`. Esta revisão documental acrescenta o guia e ferramentas de conferência, sem alterar esse runtime. O ZIP `aetherius-residencias-0.3.1-guia-atualizacao-1.zip` inclui esses materiais; o ZIP 0.3.1 original permanece preservado.
