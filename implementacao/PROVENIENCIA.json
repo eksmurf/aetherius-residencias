@@ -1,5 +1,5 @@
 {
-  "version": "0.3.5",
+  "version": "0.3.6",
   "preparedOn": "2026-11-03",
   "target": "Aetherius official server",
   "upstream": {
@@ -121,7 +121,7 @@
     },
     "currentUiPreviewChecked": true,
     "integratorDryRunChecked": true,
-    "previousReleaseUiPreviewChecked": "0.2.0",
+    "previousReleaseUiPreviewChecked": "0.3.5",
     "javascriptSyntaxCheckedFiles": 20,
     "preparedTests": 52,
     "visitorLimitStaticReview": true,
@@ -129,14 +129,14 @@
     "upgradeCollectorSyntaxChecked": true,
     "upgradeCollectorReadOnlyCheck": "package_source_only",
     "uiPreviewScope": "offline HTML with fictional data; no domain suite, database, game server or live tax validation",
-    "uiPreviewReport": "atualizacao/VERIFICACAO-UI-0.3.5.json"
+    "uiPreviewReport": "atualizacao/VERIFICACAO-UI-0.3.6.json"
   },
   "pending": [
     "Integrate migration 002, CORE UI routing and TypeScript/server/client builds",
     "Migrate physical legacy keys before opening public access, including offline inventories",
     "Preserve the official Diademas adapter already validated by the team; its deployed source was not supplied",
     "Approve interior cells/storage/door records, particularly Hjerim; verify native locks and persistence",
-    "Execute automated suites and official multiplayer acceptance matrix for 0.3.5"
+    "Execute automated suites and official multiplayer acceptance matrix for 0.3.6"
   ],
   "catalogProvenance": "catalogo/PROVENIENCIA-MAPEAMENTO.json",
   "uiReferences": [
@@ -164,8 +164,8 @@
     "basis": "user_confirmation",
     "runtimeRevisionVerified": false
   },
-  "updateGuide": "ATUALIZACAO-0.3.5.md",
-  "uiUpdateGuide": "ATUALIZACAO-UI-0.3.2.md",
+  "updateGuide": "ATUALIZACAO-0.3.6.md",
+  "uiUpdateGuide": "ATUALIZACAO-0.3.6.md",
   "taxPolicy": {
     "periodDays": 15,
     "ratePercent": 10,

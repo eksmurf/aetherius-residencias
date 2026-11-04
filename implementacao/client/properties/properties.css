@@ -1,4 +1,26 @@
 /* Classes / estudo UI/UX de 03/11/2026. Tokens restritos a este módulo. */
+/* O CORE fornece o cabeçalho, a área de montagem e o botão de fechar. */
+#aetherius-shell.ar-properties-open,
+#aetherius-shell.ar-properties-open .workspace-view,
+#aetherius-shell.ar-properties-open .workspace-frame,
+#aetherius-shell.ar-properties-open .module-content {
+  background:transparent;
+  border:0;
+  box-shadow:none;
+}
+#aetherius-shell.ar-properties-open .world-shade,
+#aetherius-shell.ar-properties-open::before,
+#aetherius-shell.ar-properties-open .workspace-topline,
+#aetherius-shell.ar-properties-open .workspace-rule,
+#aetherius-shell.ar-properties-open .workspace-footer,
+#aetherius-shell.ar-properties-open .shell-footer {display:none}
+#aetherius-shell.ar-properties-open .workspace-view {inset:calc(4.3vh + 74px) 16px 3vh;animation:none}
+#aetherius-shell.ar-properties-open .module-content {
+  display:flex; flex-direction:column; align-self:center;
+  width:100%; max-width:850px; min-height:0; padding:0; overflow-y:auto;
+}
+#aetherius-shell.ar-properties-open .module-mount.ar-properties {width:100%;flex:none;letter-spacing:normal}
+
 .ar-properties {
   --arp-surface:rgba(0,0,0,.73); --arp-raised:#101010;
   --arp-line:rgba(255,255,255,.11); --arp-control-line:rgba(255,255,255,.22);
@@ -43,7 +65,7 @@
 .ar-properties .arp-remove{margin-left:auto;color:var(--arp-danger)}
 .ar-properties .arp-warning,.ar-properties .arp-notice{background:rgba(255,255,255,.025);color:var(--arp-secondary);padding:14px;border-left:3px solid var(--arp-warning)}
 .ar-properties .arp-notice{border-left-color:var(--arp-control-line)}
-.ar-properties .arp-confirm-overlay{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(0,0,0,.55);overscroll-behavior:contain}
+.ar-properties .arp-confirm-overlay{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:16px;background:transparent;overscroll-behavior:contain}
 .ar-properties .arp-confirm{width:440px;max-width:100%;max-height:calc(100vh - 32px);overflow-y:auto;overscroll-behavior:contain;padding:24px;background:var(--arp-raised);border:1px solid var(--arp-control-line);box-shadow:0 18px 60px rgba(0,0,0,.5);border-radius:4px}
 .ar-properties .arp-confirm button{margin:12px 12px 0 0}
 .ar-properties .arp-confirm>button:first-of-type{border-color:var(--arp-accent);color:var(--arp-action)}

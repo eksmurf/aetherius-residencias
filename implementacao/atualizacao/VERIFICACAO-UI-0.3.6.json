@@ -1,0 +1,16 @@
+{
+  "version": "0.3.6",
+  "scope": "browser preview with the received CORE theme and fictional offers",
+  "checked": [
+    "transparent_workspace_and_visible_header",
+    "restore_core_theme_on_exit",
+    "resale_offer_and_confirmation",
+    "back_and_close",
+    "desktop_and_narrow_layout"
+  ],
+  "viewportWidths": [
+    1920,
+    360
+  ],
+  "productionTouched": false
+}

@@ -66,12 +66,13 @@
     } else if (offer && view === 'purchase' && selectedPrice) {
       body.append(node('p', 'Confirmar compra', 'ar-subtitle'));
       body.append(node('p', `${selectedPrice.amount.toLocaleString('pt-BR')} ${labels[selectedPrice.currency]}`, 'ar-total'));
-      body.append(node('p', 'A residência ficará registrada no seu perfil. Sua chave será vinculada ao perfil e aparecerá no inventário pessoal.', 'ar-muted'));
+      body.append(node('p', 'Você receberá a chave no inventário pessoal.', 'ar-muted'));
+      if (offer.offerKind === 'resale') body.append(node('p', 'Os itens guardados na residência também serão seus.', 'ar-muted'));
       if (selectedPrice.currency === 'diademas') body.append(node('p', 'Será usado o saldo de Diademas já existente na sua conta.', 'ar-muted'));
       body.append(button('Confirmar compra', () => send({ action:'purchase', residenceId:offer.residenceId, revision:offer.revision, accessRevision:offer.accessRevision, offerKind:offer.offerKind, currency:selectedPrice.currency }), 'ar-primary'));
       body.append(button('Voltar', () => navigate('offer')));
     } else if (offer) {
-      body.append(node('p', offer.owned ? (offer.owner ? 'Esta residência pertence ao seu perfil.' : 'Residência já adquirida.') : 'Residência disponível para consulta.', 'ar-subtitle'));
+      body.append(node('p', offer.owned ? (offer.owner ? 'Esta residência pertence ao seu perfil.' : 'Residência já adquirida.') : (offer.offerKind === 'resale' ? 'À venda pelo proprietário' : 'Residência disponível para compra'), 'ar-subtitle'));
       body.append(node('p', `${offer.refs.filter(r => r.kind === 'entry').length} entrada(s) · ${offer.refs.filter(r => r.kind === 'container').length} baú(s) privado(s)`, 'ar-muted'));
       if (offer.owner) {
         body.append(node('p', 'Compra concluída. Sua chave está no inventário pessoal. Consulte a residência em TAB → Propriedades.', 'ar-muted'));

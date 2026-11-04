@@ -1,6 +1,8 @@
-# Integração oficial — residências 0.3.5
+# Integração oficial — residências 0.3.6
 
-**Versão atual 0.3.5:** [guia de atualização](ATUALIZACAO-0.3.5.md). Antecipação removida; botão cinza e desabilitado antes do vencimento e verde quando há dívida. Confirmações em janela centralizada. Atualizar cliente e servidor juntos; preservar vencimentos e recibos existentes.
+**Versão 0.3.6.** [Integração do painel e da compra](ATUALIZACAO-0.3.6.md).
+
+**Versão 0.3.5:** [guia de atualização](ATUALIZACAO-0.3.5.md). Antecipação removida; botão cinza e desabilitado antes do vencimento e verde quando há dívida. Confirmações em janela centralizada. Atualizar cliente e servidor juntos; preservar vencimentos e recibos existentes.
 
 **IPTU quinzenal:** começar pelo [guia 0.3.3](ATUALIZACAO-0.3.3.md). O ciclo atual é de 15 dias, com suspensão aos 30 e retorno à venda aos 45 dias sem pagamento. Ainda não havia IPTU ativo, conforme confirmação do solicitante em 03/11/2026.
 

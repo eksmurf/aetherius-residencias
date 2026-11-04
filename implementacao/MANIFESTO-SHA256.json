@@ -1,5 +1,5 @@
 {
-  "version": "0.3.5",
+  "version": "0.3.6",
   "date": "2026-11-03",
   "algorithm": "SHA256",
   "excludes": [
@@ -27,6 +27,11 @@
       "sha256": "a5a425df18b149ff7f6b3cbc99bd5d666eac74a6dd38b660153c71e01844ea4c"
     },
     {
+      "path": "ATUALIZACAO-0.3.6.md",
+      "bytes": 1233,
+      "sha256": "f4cfd6d0e750817f4292a13abd1057dad045cfec8de7affb6ca27c6cee24b1f6"
+    },
+    {
       "path": "ATUALIZACAO-UI-0.3.2.md",
       "bytes": 5644,
       "sha256": "c5f787154cc7faf6c1cfb08a8445e7d94997c2b0bb90f4f59bdcb0d392aeee1b"
@@ -38,8 +43,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 6414,
-      "sha256": "1d53b447014f275a9e35d364ebffeb5a7ef060f8899f8b0328c71fbd601635bc"
+      "bytes": 6666,
+      "sha256": "df8f4ee8122a68ba0df3a1a32f3d931acd2d3128ca3e628ff892958ea5802a1f"
     },
     {
       "path": "CONTRATO-DIADEMAS.md",
@@ -48,13 +53,13 @@
     },
     {
       "path": "PROVENIENCIA.json",
-      "bytes": 7458,
-      "sha256": "c1192c7f8113b59be95669cee532d01532654c58bed6db42a7160bef9d0fb1a6"
+      "bytes": 7455,
+      "sha256": "8d1875c76c9019a3be6914b5c13982cc61873c693f90e564117cd29d8506dbcb"
     },
     {
       "path": "README.md",
-      "bytes": 9501,
-      "sha256": "251b8df8ec120dcd95672445e8da00d15e7fc52405554860569c7f6be896167b"
+      "bytes": 9575,
+      "sha256": "c036ac22f06731e9e439a38af38356859d1f248556a16324b3a55c4e02de56fe"
     },
     {
       "path": "REGRAS-0.3.md",
@@ -87,6 +92,11 @@
       "sha256": "41d36660eb0d7186d884d350c88643d3cdf0c7f96fa034612751256342aa0920"
     },
     {
+      "path": "atualizacao/VERIFICACAO-UI-0.3.6.json",
+      "bytes": 373,
+      "sha256": "5c05a0bbd620fbe91c029924bf7021f0dd8e2f0ecc1c79ed2ae21fe1ab521235"
+    },
+    {
       "path": "atualizacao/conferir-banco.sql",
       "bytes": 2246,
       "sha256": "1dd8fd42012e0b67732fe1a5cd90a05dd2371e64989912996d84308ba7b9f7a1"
@@ -98,8 +108,8 @@
     },
     {
       "path": "atualizacao/referencias-versoes.json",
-      "bytes": 31693,
-      "sha256": "372a8a1947a4b31db03e84fb9558ebf437683a86d6ac545e13324413aa77f693"
+      "bytes": 35549,
+      "sha256": "cf550511f6d858235df02948e33d12b5d2ca2c223f9546e34e4593b391292f43"
     },
     {
       "path": "catalogo/IMOVEIS.md",
@@ -213,23 +223,23 @@
     },
     {
       "path": "client/properties/properties.css",
-      "bytes": 5830,
-      "sha256": "9489cd3495de17791c05cdb0040464822f7eb4223b32b694254416c73683730c"
+      "bytes": 6884,
+      "sha256": "d1827d3dd8a5094f761d90517b1b1ce86425eb8a69b3885862c4dd29917b63c1"
     },
     {
       "path": "client/properties/properties.js",
-      "bytes": 12888,
-      "sha256": "96ee08174fe055ff4fa67274fc1080d20842e9736b444f66487c432b60b2fa61"
+      "bytes": 13064,
+      "sha256": "2d77ae6a4bda8266a75b34f9f199518713555a546c5a5d80b75d7c0082f322d5"
     },
     {
       "path": "client/residences/app.js",
-      "bytes": 7637,
-      "sha256": "f982b7f5a592536ddd89be46bd74bb36a0c99da271854bf6ba8f5643dc11eb08"
+      "bytes": 7760,
+      "sha256": "32774f3ae72f05ce8b8ab33faf45990f6e030eaca419301cc586c4c840d31bb9"
     },
     {
       "path": "client/residences/style.css",
-      "bytes": 3936,
-      "sha256": "c41ba44046ad429f5e58860df6d75faa4e2a16eb57583df1a9f23770f7ddb563"
+      "bytes": 4211,
+      "sha256": "af6a4194426cfe928548c18768b7f5e5563ff39c816059a37461c36e69fff4a6"
     },
     {
       "path": "core-patches.cjs",
@@ -254,7 +264,7 @@
     {
       "path": "package.json",
       "bytes": 389,
-      "sha256": "86e3fd31b7a4ebb55facd9ce10cbecf0f6f3ada0eca27e9f8cdbe3d62921608d"
+      "sha256": "a0b087718f6e6446b2bae675975cb7fa1044ddf48a217cad94e1508cd691f5f9"
     },
     {
       "path": "server/config/residences.json",

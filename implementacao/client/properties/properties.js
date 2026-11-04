@@ -4,10 +4,12 @@
   if(!ui) throw Error('Propriedades exige Aetherius UI Core.');
   const id=()=>{const bytes=new Uint8Array(16);crypto.getRandomValues(bytes);bytes[6]=(bytes[6]&15)|64;bytes[8]=(bytes[8]&63)|128;const h=[...bytes].map(n=>n.toString(16).padStart(2,'0')).join('');return `${h.slice(0,8)}-${h.slice(8,12)}-${h.slice(12,16)}-${h.slice(16,20)}-${h.slice(20)}`;};
   const money=v=>v.toLocaleString('pt-BR')+' Septims';
-  ui.registerModule({id:'properties',label:'PROPRIEDADES',version:'0.3.5',sdkMin:'1.0.0',sdkMaxExclusive:'2.0.0',rootRoute:'/properties',radialSlot:9,
+  ui.registerModule({id:'properties',label:'PROPRIEDADES',version:'0.3.6',sdkMin:'1.0.0',sdkMaxExclusive:'2.0.0',rootRoute:'/properties',radialSlot:9,
     assets:['modules/properties/properties.js','modules/properties/properties.css'],capabilities:['properties.read','properties.write'],
     mount(container,context){
       container.classList.add('ar-properties');
+      const shell = container.closest?.('#aetherius-shell');
+      shell?.classList.add('ar-properties-open');
       let houses=[],selected=null,busy=false,disposed=false,notice='',confirm=null,uncertain=null,serverOffset=0;
       const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
       const button=(text,fn)=>{const n=el('button',text);n.type='button';n.onclick=fn;return n;};
@@ -103,7 +105,7 @@
       }
       function tick(){for(const n of container.querySelectorAll('[data-due]')){const seconds=Math.max(0,Math.ceil((Date.parse(n.dataset.due)-Date.now()-serverOffset)/1000));n.textContent=`${Math.floor(seconds/86400)}d ${Math.floor(seconds%86400/3600)}h ${Math.floor(seconds%3600/60)}min`;}}
       const clock=setInterval(tick,1000),poll=setInterval(()=>{const editing=document.activeElement?.tagName==='INPUT'&&container.contains(document.activeElement);if(!confirm&&!uncertain&&!editing)void refresh();},15000);
-      const cleanup=()=>{disposed=true;clearInterval(clock);clearInterval(poll);container.classList.remove('ar-properties');};
+      const cleanup=()=>{if(disposed)return;disposed=true;shell?.classList.remove('ar-properties-open');clearInterval(clock);clearInterval(poll);container.classList.remove('ar-properties');};
       context.signal.addEventListener('abort',cleanup,{once:true});void refresh();return{unmount:cleanup};
     }
   });

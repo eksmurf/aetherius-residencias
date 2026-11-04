@@ -1,5 +1,10 @@
 # Alterações
 
+## 0.3.6 — 03/11/2026
+
+- Propriedades abre sobre o jogo com o cabeçalho do CORE e o painel central.
+- Oferta e confirmação de compra ganham texto maior e ações verdes. A confirmação de revenda identifica a transferência dos itens guardados.
+
 ## 0.3.5 — 03/11/2026
 
 - Removida a antecipação: botão permanece visível em cinza e desabilitado antes do vencimento; com dívida, texto e borda ficam verdes e o pagamento é liberado. Servidor recusa pedidos anteriores ao vencimento.

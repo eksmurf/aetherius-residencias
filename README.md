@@ -1,6 +1,8 @@
-# Residências do Aetherius — pacote 0.3.5
+# Residências do Aetherius — pacote 0.3.6
 
-**Painel revisado e pagamento no vencimento — 0.3.5:** botão cinza antes do vencimento, verde quando liberado, confirmação centralizada e sem antecipação. [Pacote 0.3.5](dist/aetherius-residencias-0.3.5.zip) · [SHA256](dist/aetherius-residencias-0.3.5.zip.sha256) · [guia atual](implementacao/ATUALIZACAO-0.3.5.md).
+**Propriedades e compra de residências — 0.3.6.** Fundo transparente ao redor do painel e telas de compra maiores. [Baixar pacote](dist/aetherius-residencias-0.3.6.zip) · [SHA256](dist/aetherius-residencias-0.3.6.zip.sha256) · [Guia de atualização](implementacao/ATUALIZACAO-0.3.6.md).
+
+**Painel revisado e pagamento no vencimento — 0.3.5:** botão cinza antes do vencimento, verde quando liberado, confirmação centralizada e sem antecipação. [Pacote 0.3.5](dist/aetherius-residencias-0.3.5.zip) · [SHA256](dist/aetherius-residencias-0.3.5.zip.sha256) · [guia da 0.3.5](implementacao/ATUALIZACAO-0.3.5.md).
 
 **IPTU simplificado e antecipação — 0.3.4:** botão com valor único e aviso curto; antecipar quita uma parcela e avança o vencimento em 15 dias. [Pacote 0.3.4](dist/aetherius-residencias-0.3.4.zip) · [SHA256](dist/aetherius-residencias-0.3.4.zip.sha256) · [guia histórico](implementacao/ATUALIZACAO-0.3.4.md).
 
