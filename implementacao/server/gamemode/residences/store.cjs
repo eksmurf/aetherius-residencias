@@ -3,11 +3,12 @@ const { randomUUID, createHash } = require('node:crypto');
 const { fail } = require('./errors.cjs');
 const { terms, taxView, offerKind, TAX_PERIOD_DAYS, TAX_PERIOD_MS } = require('./tax.cjs');
 const { validateCatalog } = require('./catalog.cjs');
+const { createCityTaxes } = require('./city-taxes.cjs');
 const payloadHash = value => createHash('sha256').update(JSON.stringify(value)).digest('hex');
 // JSONB does not preserve object member order. Compare explicit values instead.
 const referenceSignature = refs => JSON.stringify(refs.map(ref => [ref.desc, ref.kind, ref.partner ?? null])
   .sort((a, b) => a[0].localeCompare(b[0])));
-function createStore({ db, currencies, maxPerProfile = 1 }) {
+function createStore({ db, currencies, cities = null, maxPerProfile = 1 }) {
   async function transact(work) {
     const conn = await db.getConnection();
     let committing = false;
@@ -66,7 +67,11 @@ function createStore({ db, currencies, maxPerProfile = 1 }) {
       }
     });
   }
-  const snapshot = () => db.query(`SELECT r.*, COALESCE((SELECT jsonb_agg(m) FROM aetherius_residence_members m WHERE m.residence_id=r.id),'[]'::jsonb) AS members FROM aetherius_residences r ORDER BY id`);
+  const cityTaxes = createCityTaxes({ transact, authorize, cities });
+  const snapshot = () => db.query(`SELECT r.*, COALESCE((SELECT jsonb_agg(m) FROM aetherius_residence_members m WHERE m.residence_id=r.id),'[]'::jsonb) AS members,
+    EXISTS(SELECT 1 FROM aetherius_residence_tax_collections t WHERE t.residence_id=r.id
+      AND t.collected_operation_id IS NULL AND t.city_id=r.tax_city_id) AS collection_pending
+    FROM aetherius_residences r ORDER BY id`);
   const keys = profileId => db.query("SELECT * FROM aetherius_residence_keys WHERE profile_id=$1 AND delivery_state <> 'revoked'", [profileId]);
   async function status(session, requestId) {
     return transact(async conn => {
@@ -183,7 +188,10 @@ function createStore({ db, currencies, maxPerProfile = 1 }) {
       if (key) await conn.query(`INSERT INTO aetherius_residence_keys
         (id,residence_id,operation_id,profile_id,account_id,character_id,generation,item_name,delivery_state)
         VALUES($1,$2,$3,$4,$5,$6,$7,$8,'bound')`, [key.id,residence.id,operationId,recipient.profileId,recipient.accountId,recipient.characterId,key.generation,key.name]);
-      if(input.action==='payTax') await conn.query('INSERT INTO aetherius_residence_tax_receipts(residence_id,due_at,operation_id) VALUES($1,$2,$3)',[residence.id,input.dueAt,operationId]);
+      if(input.action==='payTax') {
+        await conn.query('INSERT INTO aetherius_residence_tax_receipts(residence_id,due_at,operation_id) VALUES($1,$2,$3)',[residence.id,input.dueAt,operationId]);
+        await cityTaxes.recordPayment(conn, residence, operationId, amount);
+      }
       await conn.query(`UPDATE aetherius_residences SET owner_profile_id=$2,owner_account_id=$3,
         locked=$4,generation=$5,tax_due_at=$6,tax_terms=$7::jsonb,access_revision=$8,listing_price=$9,seller_character_id=$10,updated_at=now() WHERE id=$1`,
       [residence.id,residence.owner_profile_id,residence.owner_account_id,residence.locked,residence.generation,residence.tax_due_at||null,JSON.stringify(residence.tax_terms||null),residence.access_revision,residence.listing_price||null,residence.seller_character_id||null]);
@@ -224,6 +232,6 @@ function createStore({ db, currencies, maxPerProfile = 1 }) {
     });
   }
 
-  return { installCatalog, snapshot, keys, status, mutate, properties, inventoryKeys };
+  return { installCatalog, snapshot, keys, status, mutate, properties, inventoryKeys, cityTaxes };
 }
 module.exports = { createStore };

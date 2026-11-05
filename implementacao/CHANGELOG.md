@@ -1,5 +1,13 @@
 # Alterações
 
+## 0.4.0 — 05/11/2026
+
+- Quitação de IPTU gera pendência de recolhimento na mesma transação do débito.
+- Vínculo casa/cidade administrado pela ponte do Jarl, com autorização municipal, revisão concorrente e recibos idempotentes.
+- Coleta na porta por responsável autorizado, com verificação de distância e crédito transacional no adaptador da cidade.
+- Pagamentos sem cidade aguardam vínculo. Pendências sobrevivem à venda e bloqueiam mudança de destino até recolhimento.
+- Migração 003 e contrato de integração municipal. Suítes de domínio/PostgreSQL preparadas para homologação oficial.
+
 ## 0.3.6 — 03/11/2026
 
 - Propriedades abre sobre o jogo com o cabeçalho do CORE e o painel central.

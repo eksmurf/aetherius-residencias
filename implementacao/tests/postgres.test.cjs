@@ -14,7 +14,7 @@ if (!url || !/^residence_test(?:_|$)/.test(new URL(url).pathname.slice(1))) {
 }
 const schema = `residence_test_${randomUUID().replace(/-/g,'')}`;
 const pool = new Pool({ connectionString:url, max:8 });
-let unknownCommit = false, badCashReceipt = false;
+let unknownCommit = false, badCashReceipt = false, cityCreditFailure = false, badCityReceipt = false;
 const sessions = [1,2].map(profileId=>({profileId,accountId:randomUUID(),characterId:randomUUID()}));
 async function connect() { const client=await pool.connect(); await client.query(`SET search_path TO ${schema}`); return client; }
 const db = {
@@ -36,7 +36,30 @@ const cash = {contract:'aetherius-diademas-same-transaction-v1',async debitInTra
   if(!rows.length)fail('FUNDS');
   return {accountId:input.accountId,amount:badCashReceipt?input.amount+1:input.amount,currency:'diademas',transactionId:input.idempotencyKey};
 }};
-const store=createStore({db,currencies:createCurrencies(transactionService,cash),maxPerProfile:2});
+// Municipal tables below are fixtures, not a second production treasury.
+const cities = {
+  contract: 'aetherius-residence-city-taxes-v1',
+  async authorizeInTransaction(conn, {session, permission, cityId, toCityId}) {
+    const ids = [...new Set([cityId, toCityId].filter(Boolean))];
+    if (!ids.length) ids.push('unassigned');
+    for (const city of ids) {
+      const [grants] = await conn.query('SELECT 1 FROM test_city_grants WHERE profile_id=$1 AND account_id=$2 AND city_id=$3 AND permission=$4 FOR SHARE',
+        [session.profileId, session.accountId, city, permission]);
+      if (!grants.length) return false;
+      if (city !== 'unassigned') {
+        const [found] = await conn.query('SELECT 1 FROM test_city_treasury WHERE city_id=$1 FOR SHARE', [city]);
+        if (!found.length) return false;
+      }
+    }
+    return true;
+  },
+  async creditInTransaction(conn, input) {
+    await conn.query('UPDATE test_city_treasury SET balance=balance+$2 WHERE city_id=$1', [input.cityId,input.amount]);
+    if (cityCreditFailure) throw Error('simulated municipal credit failure');
+    return {cityId:input.cityId,currency:'septims',amount:badCityReceipt ? input.amount+1 : input.amount,transactionId:input.operationId};
+  },
+};
+const store=createStore({db,currencies:createCurrencies(transactionService,cash),cities,maxPerProfile:2});
 function definition(id,start){const desc=n=>`${n.toString(16)}:fixture.esp`;return {id,name:id,revision:1,forSale:true,interiorCells:[desc(start+100)],interiorPassages:[],storageGuards:[],prices:{septims:100,diademas:10},
   refs:[{desc:desc(start),kind:'entry',partner:desc(start+1)},{desc:desc(start+1),kind:'exit',partner:desc(start)}]};}
 const input = (values={})=>({requestId:randomUUID(),action:'purchase',residenceId:'first',revision:1,accessRevision:1,offerKind:'initial',currency:'septims',...values});
@@ -46,18 +69,21 @@ before(async()=>{
   await db.query(`CREATE TABLE users(id uuid PRIMARY KEY,profile_id integer UNIQUE,is_banned boolean NOT NULL DEFAULT false);
     CREATE TABLE characters(id uuid PRIMARY KEY,user_id uuid,status text DEFAULT 'approved',name text DEFAULT 'Pessoa Teste',gold integer CHECK(gold>=0));
     CREATE TABLE gold_transactions(id uuid PRIMARY KEY,character_id uuid,delta integer,idempotency_key text UNIQUE);
-    CREATE TABLE test_cash_wallet(account_id uuid PRIMARY KEY,balance integer CHECK(balance>=0));`);
-  const c=await connect();try{await c.query(fs.readFileSync(path.join(__dirname,'../migrations/001_residences.sql'),'utf8')+fs.readFileSync(path.join(__dirname,'../migrations/002_household_tax.sql'),'utf8'));}finally{c.release();}
+    CREATE TABLE test_cash_wallet(account_id uuid PRIMARY KEY,balance integer CHECK(balance>=0));
+    CREATE TABLE test_city_treasury(city_id varchar(64) PRIMARY KEY,balance bigint NOT NULL DEFAULT 0);
+    CREATE TABLE test_city_grants(profile_id integer,account_id uuid,city_id varchar(64),permission text,PRIMARY KEY(profile_id,city_id,permission));`);
+  const c=await connect();try{await c.query(fs.readFileSync(path.join(__dirname,'../migrations/001_residences.sql'),'utf8')+fs.readFileSync(path.join(__dirname,'../migrations/002_household_tax.sql'),'utf8')+fs.readFileSync(path.join(__dirname,'../migrations/003_city_tax_collection.sql'),'utf8'));}finally{c.release();}
 });
 beforeEach(async()=>{
-  unknownCommit=false;badCashReceipt=false;
-  await db.query('TRUNCATE aetherius_residence_keys,aetherius_residence_operations,aetherius_residence_refs,aetherius_residences,characters,users,gold_transactions,test_cash_wallet CASCADE');
+  unknownCommit=false;badCashReceipt=false;cityCreditFailure=false;badCityReceipt=false;
+  await db.query('TRUNCATE aetherius_residence_keys,aetherius_residence_operations,aetherius_residence_refs,aetherius_residences,characters,users,gold_transactions,test_cash_wallet,test_city_treasury,test_city_grants,aetherius_residence_city_operations CASCADE');
   for(const s of sessions){
     await db.query('INSERT INTO users(id,profile_id) VALUES($1,$2)',[s.accountId,s.profileId]);
     await db.query('INSERT INTO characters(id,user_id,gold) VALUES($1,$2,1000)',[s.characterId,s.accountId]);
     await db.query('INSERT INTO test_cash_wallet(account_id,balance) VALUES($1,100)',[s.accountId]);
   }
   await store.installCatalog([definition('first',1),definition('second',3)]);
+  await db.query("INSERT INTO test_city_treasury(city_id) VALUES ('whiterun'),('solitude')");
 });
 after(async()=>{try{await pool.query(`DROP SCHEMA IF EXISTS ${schema} CASCADE`);}finally{await pool.end();}});
 test('dois compradores: exatamente um dono e um débito',async()=>{
@@ -242,4 +268,159 @@ test('oferta de revenda vencida não cobra o preço de retomada sem reconfirmar'
   assert.equal((await db.query('SELECT gold FROM characters WHERE id=$1',[sessions[0].characterId]))[0].gold,900);
   assert.equal((await store.inventoryKeys(sessions[0])).length,0);
   await assert.rejects(manage('payTax',{dueAt:row.tax_due_at,periods:3},sessions[0]),{code:'FORBIDDEN'});
+});
+
+async function cityGrant(session, cityId, permission) {
+  await db.query('INSERT INTO test_city_grants(profile_id,account_id,city_id,permission) VALUES($1,$2,$3,$4) ON CONFLICT DO NOTHING',
+    [session.profileId,session.accountId,cityId,permission]);
+}
+function linkInput(cityId, bindingRevision = 0) {
+  return {requestId:randomUUID(),residenceId:'first',cityId,bindingRevision};
+}
+function collectionInput() {
+  return {requestId:randomUUID(),residenceId:'first',door:'1:fixture.esp'};
+}
+const noGuard = () => {};
+async function paidTax() {
+  await db.query("UPDATE aetherius_residences SET tax_due_at=now()-interval '15 days 1 minute' WHERE id='first'");
+  const house=(await store.properties(sessions[0])).residences[0];
+  return manage('payTax',{dueAt:house.tax.dueAt,periods:2});
+}
+async function linkedCollectionSetup() {
+  await mutate(sessions[0],input());
+  await cityGrant(sessions[1],'whiterun','residence.linkCity');
+  await cityGrant(sessions[1],'whiterun','residence.collectTax');
+  await store.cityTaxes.link(sessions[1],linkInput('whiterun'),noGuard);
+  return paidTax();
+}
+
+test('IPTU sem cidade quita a dívida e conserva o valor pendente até vínculo e coleta',async()=>{
+  await mutate(sessions[0],input());
+  const payment=await paidTax();
+  const house=(await store.properties(sessions[0])).residences[0];
+  assert.equal(house.tax.periods,0);
+  assert.equal((await store.inventoryKeys(sessions[0])).length,1);
+  let pending=(await db.query('SELECT * FROM aetherius_residence_tax_collections'))[0];
+  assert.equal(pending.payment_operation_id,payment.operationId);
+  assert.equal(pending.amount,20);assert.equal(pending.city_id,null);
+  assert.equal((await db.query("SELECT balance FROM test_city_treasury WHERE city_id='whiterun'"))[0].balance,'0');
+  await assert.rejects(store.cityTaxes.collect(sessions[1],collectionInput(),noGuard),{code:'CITY_UNASSIGNED'});
+  await cityGrant(sessions[1],'whiterun','residence.linkCity');
+  await store.cityTaxes.link(sessions[1],linkInput('whiterun'),noGuard);
+  pending=(await db.query('SELECT * FROM aetherius_residence_tax_collections'))[0];
+  assert.equal(pending.city_id,'whiterun');assert.equal(pending.collected_operation_id,null);
+  await cityGrant(sessions[1],'whiterun','residence.collectTax');
+  const result=await store.cityTaxes.collect(sessions[1],collectionInput(),noGuard);
+  assert.equal(result.amount,20);
+  assert.equal((await db.query("SELECT balance FROM test_city_treasury WHERE city_id='whiterun'"))[0].balance,'20');
+  assert.equal((await store.properties(sessions[0])).residences[0].tax.dueAt,house.tax.dueAt);
+  assert.equal((await db.query('SELECT gold FROM characters WHERE id=$1',[sessions[1].characterId]))[0].gold,1000);
+});
+
+test('coleta sem permissão ou fora da porta é recusada e não cria direitos na casa',async()=>{
+  await linkedCollectionSetup();
+  await assert.rejects(store.cityTaxes.collect(sessions[0],collectionInput(),noGuard),{code:'FORBIDDEN'});
+  await assert.rejects(store.cityTaxes.collect(sessions[1],collectionInput(),()=>fail('DISTANCE')),{code:'DISTANCE'});
+  assert.equal((await db.query("SELECT balance FROM test_city_treasury WHERE city_id='whiterun'"))[0].balance,'0');
+  await store.cityTaxes.collect(sessions[1],collectionInput(),noGuard);
+  assert.equal((await store.inventoryKeys(sessions[1])).length,0);
+  assert.equal((await db.query('SELECT * FROM aetherius_residence_members')).length,0);
+});
+
+test('duas coletas concorrentes creditam a cidade uma única vez',async()=>{
+  await linkedCollectionSetup();
+  await cityGrant(sessions[0],'whiterun','residence.collectTax');
+  const results=await Promise.allSettled(sessions.map(session=>store.cityTaxes.collect(session,collectionInput(),noGuard)));
+  assert.equal(results.filter(result=>result.status==='fulfilled').length,1);
+  assert.equal((await db.query("SELECT balance FROM test_city_treasury WHERE city_id='whiterun'"))[0].balance,'20');
+  assert.equal((await db.query("SELECT * FROM aetherius_residence_city_operations WHERE action='collectTax'")).length,1);
+});
+
+test('coleta repetida e resposta perdida retornam o recibo sem novo crédito',async()=>{
+  await linkedCollectionSetup();const request=collectionInput();unknownCommit=true;
+  await assert.rejects(store.cityTaxes.collect(sessions[1],request,noGuard),{code:'UNKNOWN'});
+  const result=await store.cityTaxes.collect(sessions[1],request,noGuard);
+  assert.equal(result.amount,20);
+  assert.deepEqual(await store.cityTaxes.collect(sessions[1],request,noGuard),result);
+  assert.equal((await db.query("SELECT balance FROM test_city_treasury WHERE city_id='whiterun'"))[0].balance,'20');
+});
+
+test('falha ou recibo municipal incorreto reverte o crédito e conserva o recolhimento pendente',async()=>{
+  await linkedCollectionSetup();cityCreditFailure=true;
+  await assert.rejects(store.cityTaxes.collect(sessions[1],collectionInput(),noGuard));
+  cityCreditFailure=false;badCityReceipt=true;
+  await assert.rejects(store.cityTaxes.collect(sessions[1],collectionInput(),noGuard),{code:'CITY_CREDIT'});
+  assert.equal((await db.query("SELECT balance FROM test_city_treasury WHERE city_id='whiterun'"))[0].balance,'0');
+  assert.equal((await db.query('SELECT collected_operation_id FROM aetherius_residence_tax_collections'))[0].collected_operation_id,null);
+  badCityReceipt=false;
+  await store.cityTaxes.collect(sessions[1],collectionInput(),noGuard);
+  assert.equal((await db.query("SELECT balance FROM test_city_treasury WHERE city_id='whiterun'"))[0].balance,'20');
+});
+
+test('vínculo exige autorização, revisão atual e quitação da coleta antes de trocar cidade',async()=>{
+  await mutate(sessions[0],input());
+  await assert.rejects(store.cityTaxes.link(sessions[0],linkInput('whiterun'),noGuard),{code:'FORBIDDEN'});
+  await cityGrant(sessions[1],'whiterun','residence.linkCity');
+  await cityGrant(sessions[1],'solitude','residence.linkCity');
+  const request=linkInput('whiterun');
+  const result=await store.cityTaxes.link(sessions[1],request,noGuard);
+  assert.deepEqual(await store.cityTaxes.link(sessions[1],request,noGuard),result);
+  await assert.rejects(store.cityTaxes.link(sessions[1],linkInput('solitude'),noGuard),{code:'CITY_CHANGED'});
+  await paidTax();
+  await assert.rejects(store.cityTaxes.link(sessions[1],linkInput('solitude',1),noGuard),{code:'CITY_PENDING'});
+  await cityGrant(sessions[1],'whiterun','residence.collectTax');
+  await store.cityTaxes.collect(sessions[1],collectionInput(),noGuard);
+  await store.cityTaxes.link(sessions[1],linkInput('solitude',1),noGuard);
+  assert.equal((await store.snapshot())[0].tax_city_id,'solitude');
+});
+
+test('pagamento repetido cria uma única pendência de recolhimento',async()=>{
+  await mutate(sessions[0],input());
+  await db.query("UPDATE aetherius_residences SET tax_due_at=now()-interval '1 minute' WHERE id='first'");
+  const house=(await store.properties(sessions[0])).residences[0];
+  const request={requestId:randomUUID(),action:'payTax',residenceId:'first',accessRevision:house.accessRevision,dueAt:house.tax.dueAt,periods:1};
+  const paid=await mutate(sessions[0],request);
+  assert.deepEqual(await mutate(sessions[0],request),paid);
+  assert.equal((await db.query('SELECT * FROM aetherius_residence_tax_collections')).length,1);
+});
+
+test('venda da casa preserva impostos pagos aguardando recolhimento',async()=>{
+  await linkedCollectionSetup();await manage('listSale',{amount:100});
+  const row=(await store.snapshot()).find(r=>r.id==='first');
+  await mutate(sessions[1],input({accessRevision:row.access_revision,offerKind:'resale'}));
+  const result=await store.cityTaxes.collect(sessions[1],collectionInput(),noGuard);
+  assert.equal(result.amount,20);
+  assert.equal((await store.properties(sessions[1])).residences[0].tax.periods,0);
+});
+
+test('ausência do adaptador municipal permite pagar e preserva a pendência',async()=>{
+  const standalone=createStore({db,currencies:createCurrencies(transactionService,cash)});
+  await mutate(sessions[0],input());
+  await db.query("UPDATE aetherius_residences SET tax_due_at=now()-interval '1 minute' WHERE id='first'");
+  const house=(await standalone.properties(sessions[0])).residences[0];
+  await standalone.mutate(sessions[0],{requestId:randomUUID(),action:'payTax',residenceId:'first',accessRevision:house.accessRevision,dueAt:house.tax.dueAt,periods:1},noGuard,noGuard,true);
+  assert.equal((await db.query('SELECT * FROM aetherius_residence_tax_collections')).length,1);
+  await assert.rejects(standalone.cityTaxes.link(sessions[1],linkInput('whiterun'),noGuard),{code:'CITY_UNAVAILABLE'});
+});
+
+test('troca de sessão após crédito municipal reverte crédito e recolhimento',async()=>{
+  await linkedCollectionSetup();let checks=0;
+  await assert.rejects(store.cityTaxes.collect(sessions[1],collectionInput(),()=>{if(++checks===2)fail('SESSION');}),{code:'SESSION'});
+  assert.equal((await db.query("SELECT balance FROM test_city_treasury WHERE city_id='whiterun'"))[0].balance,'0');
+  assert.equal((await db.query('SELECT collected_operation_id FROM aetherius_residence_tax_collections'))[0].collected_operation_id,null);
+});
+
+test('falha ao registrar pendência reverte débito e quitação do morador',async()=>{
+  await mutate(sessions[0],input());
+  await db.query("UPDATE aetherius_residences SET tax_due_at=now()-interval '1 minute' WHERE id='first'");
+  const before=(await store.properties(sessions[0])).residences[0];
+  await db.query('ALTER TABLE aetherius_residence_tax_collections ADD CONSTRAINT fixture_reject_payment CHECK (amount < 5)');
+  try {
+    await assert.rejects(manage('payTax',{dueAt:before.tax.dueAt,periods:1}));
+    assert.equal((await db.query('SELECT gold FROM characters WHERE id=$1',[sessions[0].characterId]))[0].gold,900);
+    assert.equal((await store.properties(sessions[0])).residences[0].tax.dueAt,before.tax.dueAt);
+    assert.equal((await db.query('SELECT * FROM aetherius_residence_tax_receipts')).length,0);
+  } finally {
+    await db.query('ALTER TABLE aetherius_residence_tax_collections DROP CONSTRAINT fixture_reject_payment');
+  }
 });

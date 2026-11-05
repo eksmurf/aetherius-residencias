@@ -1,4 +1,6 @@
-# Integração oficial — residências 0.3.6
+# Integração oficial — residências 0.4.0
+
+**Versão 0.4.0.** Aplicar a [migração de recolhimento](ATUALIZACAO-0.4.0.md) e fornecer o [adaptador municipal](INTEGRACAO-JARL.md). A quitação pode ocorrer antes da configuração da cidade e o valor fica pendente de recolhimento.
 
 **Versão 0.3.6.** [Integração do painel e da compra](ATUALIZACAO-0.3.6.md).
 
@@ -11,7 +13,7 @@ Atualização visual 0.3.2 preparada em 03/11/2026 sobre o backend 0.3.1. Leia [
 ## Componentes
 
 - Módulo autoritativo de compra, venda, impostos e permissões por `profile_id` e UUID de conta.
-- Migração PostgreSQL incremental `002_household_tax.sql` após a `001`.
+- Migrações PostgreSQL incrementais `002_household_tax.sql` e `003_city_tax_collection.sql` após a `001`.
 - Painel de compra por moedas e módulo `properties`, rota `/properties`, slot 9 do CORE UI.
 - Integração do inventário pessoal do CORE UI para apresentar chaves vinculadas, sem item nativo transferível.
 - Gerador de catálogo e evidências preservadas. Todas as referências de armazenamento inspecionadas recebem proteção, sem confundir isso com aprovação de persistência/respawn.
@@ -24,7 +26,7 @@ Leia [REGRAS-0.3.md](REGRAS-0.3.md) antes da integração. O usuário relatou va
 **Para a instalação existente 0.1.0, seguir primeiro [ATUALIZACAO-0.1-PARA-0.3.1.md](ATUALIZACAO-0.1-PARA-0.3.1.md).** O guia cobre identificação, preservação das adaptações oficiais, manutenção, migração, builds conjuntos, chaves antigas e recuperação. Não reaplicar a `001` se já estiver instalada e nunca reaplicá-la depois da `002`.
 
 1. Em manutenção, fazer backup do banco e do estado dos inventários/changeforms. Comparar a revisão oficial com as fontes recebidas descritas em `PROVENIENCIA.json`.
-2. Em instalação nova, aplicar `001_residences.sql` e depois `002_household_tax.sql`. Na atualização da 0.1.0 já instalada, conferir a `001` existente e aplicar somente a `002`, na mesma base da economia oficial. A segunda migração preserva recibos históricos, amplia chaves por beneficiário e acrescenta membros, impostos e venda. Não faz débito.
+2. Em instalação nova, aplicar `001_residences.sql` e depois `002_household_tax.sql` e `003_city_tax_collection.sql`. Na atualização da 0.1.0 já instalada, conferir a `001` existente e aplicar `002` e `003`, na mesma base da economia oficial. A segunda migração preserva recibos históricos, amplia chaves por beneficiário e acrescenta membros, impostos e venda. Não faz débito.
 3. Atualizar cada definição aprovada com `interiorCells`, `storageGuards` e `interiorPassages`. Aumentar sua revisão acima da revisão instalada. Os rascunhos estão em revisão 2, mas a equipe deve usar uma revisão maior se já houver outra em produção. Não importar imóveis de DLC/mods no piloto.
 4. Confirmar preço base em Septims para toda casa, inclusive casas que também aceitam Diademas. Esse valor define o imposto. Na primeira inicialização desta atualização, propriedades legadas sem vencimento passam a ter 15 dias até a primeira cobrança; não há cobrança retroativa baseada em datas desconhecidas.
 5. Preservar o adaptador concreto de Diademas já validado pela equipe. O integrador não sobrescreve `official-diademas.cjs`, que não está no pacote. O exemplo de contrato continua sendo somente referência.

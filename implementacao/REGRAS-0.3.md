@@ -1,4 +1,4 @@
-# Regras de residências 0.3.5 — 03/11/2026
+# Regras de residências 0.4.0 — 03/11/2026
 
 Estas regras substituem o fluxo de reposição manual, trancar/destrancar por botão e painel de proprietário na porta das versões 0.1/0.2.
 
@@ -39,3 +39,7 @@ Concluída a venda: anúncio retirado, porta pública fechada, todos os membros 
 ## Exemplo
 
 Casa com valor base de 25.000 Septims: imposto quinzenal de 2.500. No 15º dia deve 2.500; no 30º, 5.000 e perde acesso; no 45º, 7.500 e o imóvel volta à oferta. Se quitar antes de outra compra, recupera a mesma chave. Se a casa for vendida voluntariamente por 40.000, o vendedor recebe 40.000; o imposto do novo dono continua baseado no valor cadastrado de 25.000.
+
+## Recolhimento municipal
+
+O IPTU pago quita a dívida imediatamente e gera uma pendência de arrecadação. Casas sem cidade aceitam pagamento. O vínculo administrado pelo Jarl atribui as pendências ainda sem destino. O responsável municipal autorizado recolhe na porta e o crédito entra na tesouraria da cidade na mesma transação que registra a coleta. Trocar ou remover uma cidade exige recolher as pendências já destinadas a ela. A venda da casa preserva os pagamentos aguardando recolhimento. [Contrato e permissões](INTEGRACAO-JARL.md).

@@ -1,5 +1,11 @@
 'use strict';
 const messages = {
+  CITY_UNAVAILABLE: 'A integração da cidade está indisponível. Os impostos pagos aguardam recolhimento.',
+  CITY_UNASSIGNED: 'Esta residência aguarda vínculo com uma cidade.',
+  CITY_CHANGED: 'O vínculo municipal mudou. Consulte a residência novamente.',
+  CITY_PENDING: 'Recolha os impostos destinados à cidade atual antes de alterar o vínculo.',
+  CITY_EMPTY: 'Não há impostos pagos disponíveis para recolher.',
+  CITY_CREDIT: 'Não foi possível creditar a arrecadação na cidade. O valor continua pendente.',
   SELLER:'Não foi possível creditar o saldo oficial do vendedor. A compra não foi concluída.',
   TAX_PERIOD:'Há um IPTU de periodicidade anterior registrado. A equipe deve reconciliar os vencimentos antes de iniciar a cobrança quinzenal.',
   TAX_BASE:'Defina o valor base da casa em Septims antes da venda.', TAX_SUSPENDED:'Pague os impostos pendentes para recuperar a chave e o acesso à residência.',

@@ -24,9 +24,11 @@ async function install({ mp, gamemodeDir, configPath = path.resolve(gamemodeDir,
   const transactionService = require(path.join(gamemodeDir, 'core/transaction-service.js'));
   const adapterPath = path.join(__dirname, 'official-diademas.cjs');
   const diademas = fs.existsSync(adapterPath) ? require(adapterPath) : null;
+  const cityAdapterPath = path.join(__dirname, 'official-cities.cjs');
+  const cities = fs.existsSync(cityAdapterPath) ? require(cityAdapterPath) : null;
   const currencies = createCurrencies(transactionService, diademas);
   const host = createHost({ mp, commands, keyDescriptor: config.keyDescriptor, maxDistance: config.maxDistance });
-  const store = createStore({ db, currencies, maxPerProfile: config.maxPerProfile });
+  const store = createStore({ db, currencies, cities, maxPerProfile: config.maxPerProfile });
   const lease = await db.getConnection();
   let closed = false, healthy = false, writes = 0, refreshedAt = 0, refreshing = null, rows = new Map(), refs = new Map(), cells = new Map();
   const hooks = [];
@@ -104,11 +106,21 @@ async function install({ mp, gamemodeDir, configPath = path.resolve(gamemodeDir,
           const owner=row.owner_profile_id===session.profileId&&row.owner_account_id===session.accountId;
           const listed=row.owner_profile_id!==null&&offerKind(row)!==null;
           const member=row.members?.some(m=>m.profile_id===session.profileId&&m.account_id===session.accountId);
-          if(!owner&&(row.owner_profile_id===null||(listed&&(!member||taxView(row).auction)))){
-            void service.receive(actorId,{version:1,requestId:randomUUID(),action:'offer',residenceId:row.id});return false;
-          }
-          if(!owner)host.notify(session,'Residência privada');
-          else if(!allowed)host.notify(session,'Consulte os impostos da residência em TAB → Propriedades.');
+          const showOffer = !owner && (row.owner_profile_id===null || (listed && (!member || taxView(row).auction)));
+          const normalInteraction = () => {
+            host.assertCurrent(session);
+            if (showOffer) {
+              void service.receive(actorId,{version:1,requestId:randomUUID(),action:'offer',residenceId:row.id});
+            } else if (!allowed) {
+              host.notify(session, owner ? 'Consulte os impostos da residência em TAB → Propriedades.' : 'Residência privada');
+            }
+          };
+          if (store.cityTaxes.enabled && row.collection_pending) {
+            void service.collectAtDoor(actorId, row.id, ref.desc).then(collected => {
+              if (!collected) normalInteraction();
+            }).catch(() => {});
+          } else normalInteraction();
+          if (showOffer) return false;
         }catch{return false;}
       }
       return allowed;
@@ -134,6 +146,7 @@ async function install({ mp, gamemodeDir, configPath = path.resolve(gamemodeDir,
     const bridge={
       healthy:api.healthy,
       request:(actorId,action,payload)=>service.core(actorId,action,payload),
+      cityRequest:(actorId,action,payload)=>service.city(actorId,action,payload),
       async inventoryKeys(actorId,context='personal'){
         if(!state.available()) fail('UNAVAILABLE');
         const session=host.session(actorId);host.retireLegacyKeys(session);

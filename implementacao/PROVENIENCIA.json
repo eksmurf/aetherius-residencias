@@ -1,6 +1,6 @@
 {
-  "version": "0.3.6",
-  "preparedOn": "2026-11-03",
+  "version": "0.4.0",
+  "preparedOn": "2026-11-05",
   "target": "Aetherius official server",
   "upstream": {
     "url": "https://github.com/Alduinak-RP/alduinak",
@@ -96,6 +96,18 @@
       "sha256": "63a4ff5cd024e95fe7cbbe2f3e9cd1c0c189998859b08088dee7f7cc8bd1d35c",
       "role": "received_official_core_ui_source",
       "verifiedLiveDeployment": false
+    },
+    {
+      "file": "analise-painel-20261009/aetherius-server-main/server/gamemode/governance-service.js",
+      "sha256": "37bfbac226cc4724caffc77784717d11c5bc1ce5c63c9abbf5170641bd328914",
+      "role": "received_city_integration_reference",
+      "verifiedLiveDeployment": false
+    },
+    {
+      "file": "analise-painel-20261009/aetherius-server-main/server/gamemode/market-stalls-service.js",
+      "sha256": "f002c05f76bf6b9898d26f62e650a760801414ab4794b4a7ac7fa982a00479cf",
+      "role": "received_city_integration_reference",
+      "verifiedLiveDeployment": false
     }
   ],
   "validation": {
@@ -119,24 +131,28 @@
       ],
       "installedRevisionVerified": false
     },
-    "currentUiPreviewChecked": true,
+    "currentUiPreviewChecked": false,
     "integratorDryRunChecked": true,
-    "previousReleaseUiPreviewChecked": "0.3.5",
-    "javascriptSyntaxCheckedFiles": 20,
-    "preparedTests": 52,
+    "previousReleaseUiPreviewChecked": "0.3.6",
+    "javascriptSyntaxCheckedFiles": 21,
+    "preparedTests": 66,
     "visitorLimitStaticReview": true,
     "productionInspected": false,
     "upgradeCollectorSyntaxChecked": true,
     "upgradeCollectorReadOnlyCheck": "package_source_only",
     "uiPreviewScope": "offline HTML with fictional data; no domain suite, database, game server or live tax validation",
-    "uiPreviewReport": "atualizacao/VERIFICACAO-UI-0.3.6.json"
+    "uiPreviewReport": "atualizacao/VERIFICACAO-UI-0.3.6.json",
+    "cityAdapterSupplied": false,
+    "cityCollectionTestsExecuted": false
   },
   "pending": [
-    "Integrate migration 002, CORE UI routing and TypeScript/server/client builds",
+    "Integrate migrations 002 and 003, CORE UI routing and TypeScript/server/client builds",
     "Migrate physical legacy keys before opening public access, including offline inventories",
     "Preserve the official Diademas adapter already validated by the team; its deployed source was not supplied",
     "Approve interior cells/storage/door records, particularly Hjerim; verify native locks and persistence",
-    "Execute automated suites and official multiplayer acceptance matrix for 0.3.6"
+    "Execute automated suites and official multiplayer acceptance matrix for 0.4.0",
+    "Provide official-cities.cjs with municipal permissions and same-transaction treasury credit",
+    "Reconcile historical IPTU receipts before importing old collection liabilities"
   ],
   "catalogProvenance": "catalogo/PROVENIENCIA-MAPEAMENTO.json",
   "uiReferences": [
@@ -164,7 +180,7 @@
     "basis": "user_confirmation",
     "runtimeRevisionVerified": false
   },
-  "updateGuide": "ATUALIZACAO-0.3.6.md",
+  "updateGuide": "ATUALIZACAO-0.4.0.md",
   "uiUpdateGuide": "ATUALIZACAO-0.3.6.md",
   "taxPolicy": {
     "periodDays": 15,
@@ -175,5 +191,13 @@
     "userConfirmedNoActiveTaxOn": "2026-11-03",
     "runtimeInspected": false,
     "advancePayment": "not allowed; payment requires at least one overdue installment"
+  },
+  "cityCollection": {
+    "contract": "aetherius-residence-city-taxes-v1",
+    "integrationGuide": "INTEGRACAO-JARL.md",
+    "bindingOwner": "city backend / Jarl panel",
+    "creditDestination": "official municipal treasury adapter",
+    "unassignedPayments": "pending until binding",
+    "historicalPayments": "require official reconciliation before import"
   }
 }

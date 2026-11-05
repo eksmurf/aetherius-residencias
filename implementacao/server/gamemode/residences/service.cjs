@@ -1,6 +1,8 @@
 'use strict';
 const { messages, fail, uuid, integer } = require('./errors.cjs');
 const { offerKind } = require('./tax.cjs');
+const { randomUUID } = require('node:crypto');
+const { cityRequest } = require('./city-taxes.cjs');
 const management=['public','addMember','setFamily','removeMember','payTax','listSale','cancelSale'];
 function request(raw) {
   if(!raw||typeof raw!=='object'||JSON.stringify(raw).length>2048||raw.version!==1||!uuid(raw.requestId)) fail('INVALID');
@@ -70,6 +72,60 @@ function createService({store,host,currencies,state,purchasesEnabled,allowProfil
       response={requestId:uuid(raw?.requestId)?raw.requestId:null,action:raw?.action,status:code==='UNKNOWN'?'unknown':'rejected',code,message:messages[code]};}
     try{host.send(session,response);}catch{}
   }
-  return {handle,receive,core};
+  async function city(actorId, action, payload) {
+    let session;
+    try {
+      cityRequest(action, payload);
+      session = host.session(actorId);
+      if (!state.available()) fail('UNAVAILABLE');
+      if (allowProfiles.length && !allowProfiles.includes(session.profileId)) fail('FORBIDDEN');
+      if (pending.has(session.profileId)) fail('BUSY');
+      pending.add(session.profileId);
+      try {
+        const guard = () => host.assertCurrent(session);
+        if (action === 'inspectResidence') {
+          return { ok: true, data: await store.cityTaxes.inspect(session, payload, guard) };
+        }
+        state.invalidate();
+        try {
+          const data = await store.cityTaxes.link(session, payload, guard);
+          host.assertCurrent(session);
+          return { ok: true, data };
+        } finally { await state.finishMutation(); }
+      } finally { pending.delete(session.profileId); }
+    } catch (error) {
+      const code = Object.hasOwn(messages, error.code) ? error.code : 'UNAVAILABLE';
+      return { ok: false, error: { code, message: messages[code] }, uncertain: ['UNKNOWN','UNAVAILABLE','BUSY'].includes(code) };
+    }
+  }
+
+  async function collectAtDoor(actorId, residenceId, door) {
+    const session = host.session(actorId);
+    if (!state.available() || !store.cityTaxes.enabled) return false;
+    if (allowProfiles.length && !allowProfiles.includes(session.profileId)) return false;
+    if (pending.has(session.profileId)) return true;
+    pending.add(session.profileId);
+    try {
+      const input = { requestId: randomUUID(), residenceId, door };
+      host.assertAtEntry(session, state.get(residenceId), door);
+      const guard = row => {
+        host.assertCurrent(session);
+        if (!row.definition.refs.some(ref => ref.kind === 'entry' && ref.desc === door)) fail('DISTANCE');
+      };
+      // This method is called only by the server activation hook. Capture proximity before
+      // awaiting SQL, so a permitted native door teleport does not cancel a valid interaction.
+      // Collection changes the pending cache, but never grants entry or storage permission.
+      const result = await store.cityTaxes.collect(session, input, guard);
+      await state.refresh(true);
+      try { host.notify(session, `${result.amount.toLocaleString('pt-BR')} Septims recolhidos para a cidade.`); } catch { }
+      return true;
+    } catch (error) {
+      if (['FORBIDDEN','CITY_EMPTY','CITY_UNASSIGNED'].includes(error.code)) return false;
+      const code = Object.hasOwn(messages, error.code) ? error.code : 'UNAVAILABLE';
+      try { host.notify(session, messages[code]); } catch { }
+      return true;
+    } finally { pending.delete(session.profileId); }
+  }
+  return {handle,receive,core,city,collectAtDoor};
 }
 module.exports={createService,request};

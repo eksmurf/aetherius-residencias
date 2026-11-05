@@ -1,4 +1,6 @@
-# Residências do Aetherius — pacote 0.3.6
+# Residências do Aetherius — pacote 0.4.0
+
+**Recolhimento municipal do IPTU — 0.4.0:** pagamento gera uma pendência de arrecadação, vínculo pelo backend do Jarl e recolhimento na porta por responsável autorizado. [Pacote 0.4.0](dist/aetherius-residencias-0.4.0.zip) · [SHA256](dist/aetherius-residencias-0.4.0.zip.sha256) · [Atualização](implementacao/ATUALIZACAO-0.4.0.md) · [Contrato do Jarl](implementacao/INTEGRACAO-JARL.md). A equipe precisa conectar o adaptador municipal e homologar o fluxo.
 
 **Propriedades e compra de residências — 0.3.6.** Fundo transparente ao redor do painel e telas de compra maiores. [Baixar pacote](dist/aetherius-residencias-0.3.6.zip) · [SHA256](dist/aetherius-residencias-0.3.6.zip.sha256) · [Guia de atualização](implementacao/ATUALIZACAO-0.3.6.md).
 

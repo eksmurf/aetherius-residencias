@@ -4,6 +4,8 @@ const {randomUUID}=require('node:crypto');
 const {taxView,terms,offerKind,TAX_PERIOD_MS}=require('../server/gamemode/residences/tax.cjs');
 const {authorizeReference}=require('../server/gamemode/residences/access.cjs');
 const {request,createService}=require('../server/gamemode/residences/service.cjs');
+const {cityRequest,createCityTaxes}=require('../server/gamemode/residences/city-taxes.cjs');
+const {createHost}=require('../server/gamemode/residences/host.cjs');
 const start=Date.parse('2026-10-29T00:00:00.000Z');
 const row={owner_profile_id:1,owner_account_id:'owner',locked:true,tax_due_at:new Date(start+TAX_PERIOD_MS).toISOString(),tax_terms:terms(1000),members:[{profile_id:2,account_id:'family',family:true},{profile_id:3,account_id:'visitor',family:false}]};
 test('pagamento libera aos 15 dias; 30 suspende e 45 recoloca à venda',()=>{
@@ -67,4 +69,50 @@ test('canal de compra não abre gerenciamento e imóvel privado não envia ofert
   await assert.rejects(service.handle(1,{version:1,requestId:randomUUID(),action:'properties'}),{code:'FORBIDDEN'});
   await service.receive(1,{version:1,requestId:randomUUID(),action:'offer',residenceId:'first'});
   assert.deepEqual(notices,['Residência privada']);assert.ok(!packets.some(p=>p.action==='offer'&&p.status==='succeeded'));
+});
+
+test('vínculo municipal exige payload próprio e não pode ser enviado pelo painel de residências',()=>{
+  const payload={requestId:randomUUID(),residenceId:'first',cityId:'whiterun',bindingRevision:0};
+  assert.equal(cityRequest('linkCity',payload).cityId,'whiterun');
+  assert.throws(()=>cityRequest('linkCity',{...payload,collectorProfileId:1}),{code:'INVALID'});
+  assert.throws(()=>cityRequest('linkCity',{...payload,cityId:''}),{code:'INVALID'});
+  assert.throws(()=>cityRequest('linkCity',{...payload,bindingRevision:-1}),{code:'INVALID'});
+  assert.throws(()=>request({...payload,version:1,action:'linkCity'}),{code:'INVALID'});
+  assert.throws(()=>request({version:1,requestId:randomUUID(),action:'collectTax',residenceId:'first'}),{code:'INVALID'});
+  assert.equal(createCityTaxes({}).enabled,false);
+  assert.throws(()=>createCityTaxes({cities:{contract:'other'}}));
+});
+
+test('coleta exige proximidade da porta de entrada exata e a sessão atual',()=>{
+  const identity={profile_id:1,userId:10},character={profileId:1,accountId:randomUUID(),characterId:randomUUID()};
+  let distance=250,current=true;
+  const descriptions={1:'1:fixture.esp',2:'2:fixture.esp'};
+  const mp={aetheriusOfficialIdentity:{session:()=>identity,isCurrent:()=>current},
+    getIdFromDesc:desc=>Number(Object.keys(descriptions).find(id=>descriptions[id]===desc)),
+    getDescFromId:id=>descriptions[id],
+    get:id=>({cellOrWorldDesc:'a:fixture.esp',pos:id===10?[distance,0,0]:[0,0,0]})};
+  const host=createHost({mp,commands:{getActiveCharacterData:()=>character}});
+  const session=host.session(10),residence={definition:{refs:[{kind:'entry',desc:'1:fixture.esp'},{kind:'exit',desc:'2:fixture.esp'}]}};
+  host.assertAtEntry(session,residence,'1:fixture.esp');
+  assert.throws(()=>host.assertAtEntry(session,residence,'2:fixture.esp'),{code:'DISTANCE'});
+  distance=251;
+  assert.throws(()=>host.assertAtEntry(session,residence,'1:fixture.esp'),{code:'DISTANCE'});
+  current=false;
+  assert.throws(()=>host.assertAtEntry(session,residence,'1:fixture.esp'),{code:'SESSION'});
+});
+
+test('ativação captura proximidade antes do SQL e permite atravessar uma porta autorizada',async()=>{
+  let nearby=true,collections=0;
+  const notices=[],session={profileId:9},residence={definition:{refs:[{kind:'entry',desc:'1:fixture.esp'}]}};
+  const service=createService({
+    store:{cityTaxes:{enabled:true,async collect(_session,_input,guard){
+      collections++;nearby=false;guard(residence);return{amount:20};
+    }}},
+    host:{session:()=>session,assertCurrent(){},assertAtEntry(){if(!nearby)throw Object.assign(new Error('distance'),{code:'DISTANCE'});},notify:(_session,message)=>notices.push(message)},
+    state:{available:()=>true,get:()=>residence,refresh:async()=>{}},
+  });
+  assert.equal(await service.collectAtDoor(9,'first','1:fixture.esp'),true);
+  assert.equal(collections,1);assert.match(notices[0],/20 Septims/);
+  await service.collectAtDoor(9,'first','1:fixture.esp');
+  assert.equal(collections,1);
 });

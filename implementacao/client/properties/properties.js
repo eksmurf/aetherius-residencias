@@ -4,7 +4,7 @@
   if(!ui) throw Error('Propriedades exige Aetherius UI Core.');
   const id=()=>{const bytes=new Uint8Array(16);crypto.getRandomValues(bytes);bytes[6]=(bytes[6]&15)|64;bytes[8]=(bytes[8]&63)|128;const h=[...bytes].map(n=>n.toString(16).padStart(2,'0')).join('');return `${h.slice(0,8)}-${h.slice(8,12)}-${h.slice(12,16)}-${h.slice(16,20)}-${h.slice(20)}`;};
   const money=v=>v.toLocaleString('pt-BR')+' Septims';
-  ui.registerModule({id:'properties',label:'PROPRIEDADES',version:'0.3.6',sdkMin:'1.0.0',sdkMaxExclusive:'2.0.0',rootRoute:'/properties',radialSlot:9,
+  ui.registerModule({id:'properties',label:'PROPRIEDADES',version:'0.4.0',sdkMin:'1.0.0',sdkMaxExclusive:'2.0.0',rootRoute:'/properties',radialSlot:9,
     assets:['modules/properties/properties.js','modules/properties/properties.css'],capabilities:['properties.read','properties.write'],
     mount(container,context){
       container.classList.add('ar-properties');

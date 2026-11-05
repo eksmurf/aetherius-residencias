@@ -34,6 +34,11 @@ function createHost({ mp, commands, keyDescriptor, maxDistance = 250 }) {
     assertCurrent(expected);
     if (!residence.definition.refs.some(ref => ref.kind !== 'container' && near(expected.actorId, resolve(ref.desc)))) fail('DISTANCE');
   }
+  function assertAtEntry(expected, residence, door) {
+    assertCurrent(expected);
+    const entry = residence.definition.refs.find(ref => ref.kind === 'entry' && ref.desc === door);
+    if (!entry || !near(expected.actorId, resolve(entry.desc))) fail('DISTANCE');
+  }
   function inventory(expected) {
     assertCurrent(expected);
     const inv = mp.get(expected.actorId, 'inventory');
@@ -63,6 +68,6 @@ function createHost({ mp, commands, keyDescriptor, maxDistance = 250 }) {
     assertCurrent(expected);
     mp.sendCustomPacket(expected.userId, JSON.stringify({ customPacketType: 'aetheriusResidences', response }));
   }
-  return { session, assertCurrent, resolve, near, assertNear, retireLegacyKeys, cellOf, storageAt, notify, send, keyBaseId };
+  return { session, assertCurrent, resolve, near, assertNear, assertAtEntry, retireLegacyKeys, cellOf, storageAt, notify, send, keyBaseId };
 }
 module.exports = { createHost };

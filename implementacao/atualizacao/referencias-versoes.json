@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedOn": "2026-11-03",
+  "generatedOn": "2026-11-05",
   "purpose": "Published source fingerprints; not deployment evidence",
   "releases": [
     {
@@ -711,7 +711,7 @@
     },
     {
       "version": "0.3.6",
-      "commit": null,
+      "commit": "02612ed18f6c9708e1e7e7884a264583e7208421",
       "files": [
         {
           "side": "client",
@@ -793,6 +793,97 @@
         }
       ],
       "source": "Arquivos da entrega 0.3.6. Consultar histórico Git para o commit de publicação."
+    },
+    {
+      "version": "0.4.0",
+      "commit": null,
+      "files": [
+        {
+          "side": "client",
+          "path": "ui-core/frontend/modules/properties/properties.css",
+          "sha256": "d1827d3dd8a5094f761d90517b1b1ce86425eb8a69b3885862c4dd29917b63c1",
+          "lfSha256": "bb8b6d646f366cc701c22a987a46803191f4b0dc4a3b2ed6f877526c8ab876ba"
+        },
+        {
+          "side": "client",
+          "path": "ui-core/frontend/modules/properties/properties.js",
+          "sha256": "c3b71fefbbfb91743c873af400a2296cee1c8f6da7aa44d0af5147996e103460",
+          "lfSha256": "c3b71fefbbfb91743c873af400a2296cee1c8f6da7aa44d0af5147996e103460"
+        },
+        {
+          "side": "client",
+          "path": "residences/app.js",
+          "sha256": "32774f3ae72f05ce8b8ab33faf45990f6e030eaca419301cc586c4c840d31bb9",
+          "lfSha256": "32774f3ae72f05ce8b8ab33faf45990f6e030eaca419301cc586c4c840d31bb9"
+        },
+        {
+          "side": "client",
+          "path": "residences/style.css",
+          "sha256": "af6a4194426cfe928548c18768b7f5e5563ff39c816059a37461c36e69fff4a6",
+          "lfSha256": "af6a4194426cfe928548c18768b7f5e5563ff39c816059a37461c36e69fff4a6"
+        },
+        {
+          "side": "server",
+          "path": "gamemode/residences/access.cjs",
+          "sha256": "c842b85c7868232f339795e8f5fa533ef5ff43895f2e5667841a43d5d57a7f09",
+          "lfSha256": "c842b85c7868232f339795e8f5fa533ef5ff43895f2e5667841a43d5d57a7f09"
+        },
+        {
+          "side": "server",
+          "path": "gamemode/residences/catalog.cjs",
+          "sha256": "9a4c6cc4cba8df734186527eb5e8fe2c171f4ce6254d9e84d2e0d46d7f905e2d",
+          "lfSha256": "9a4c6cc4cba8df734186527eb5e8fe2c171f4ce6254d9e84d2e0d46d7f905e2d"
+        },
+        {
+          "side": "server",
+          "path": "gamemode/residences/currencies.cjs",
+          "sha256": "94f9cf86ec9ab67c694f7adcb9c018e0e7f5ce9a46dbceb5c12f8daca9ae7983",
+          "lfSha256": "94f9cf86ec9ab67c694f7adcb9c018e0e7f5ce9a46dbceb5c12f8daca9ae7983"
+        },
+        {
+          "side": "server",
+          "path": "gamemode/residences/errors.cjs",
+          "sha256": "e5bb4b1c0832c6235efff32a5d52ad93a8d57db96821cb02a97a917431e036f9",
+          "lfSha256": "e5bb4b1c0832c6235efff32a5d52ad93a8d57db96821cb02a97a917431e036f9"
+        },
+        {
+          "side": "server",
+          "path": "gamemode/residences/host.cjs",
+          "sha256": "c46bc5850624fe8d5016295341466a4cc413ed466442a7a217b25886e52824cb",
+          "lfSha256": "c46bc5850624fe8d5016295341466a4cc413ed466442a7a217b25886e52824cb"
+        },
+        {
+          "side": "server",
+          "path": "gamemode/residences/install.cjs",
+          "sha256": "a23e092415cafd950bf41f4b65f6d56cd697d4b71575db0ccc023c346fce5482",
+          "lfSha256": "a23e092415cafd950bf41f4b65f6d56cd697d4b71575db0ccc023c346fce5482"
+        },
+        {
+          "side": "server",
+          "path": "gamemode/residences/service.cjs",
+          "sha256": "331452fe1683238fab4a32870faddf3c3fb7b794d8bf1c8d68ca518fa18b1636",
+          "lfSha256": "a30eb8dc36f373edbdf63cec353c0aff2d52b7580c2b584ba64e6a07cccd7a34"
+        },
+        {
+          "side": "server",
+          "path": "gamemode/residences/store.cjs",
+          "sha256": "f30c61b018d7f9b931cfe952a496c54470198cb80633ded2c3cf9d0acb5a2f15",
+          "lfSha256": "f30c61b018d7f9b931cfe952a496c54470198cb80633ded2c3cf9d0acb5a2f15"
+        },
+        {
+          "side": "server",
+          "path": "gamemode/residences/tax.cjs",
+          "sha256": "d91a4fca58481395735c46f738aa168afae4891beb8c7b462ebe914362774649",
+          "lfSha256": "d91a4fca58481395735c46f738aa168afae4891beb8c7b462ebe914362774649"
+        },
+        {
+          "side": "server",
+          "path": "gamemode/residences/city-taxes.cjs",
+          "sha256": "6c756e357fc4dd5a70c04cc0f803204348c87cc70479b0e7101b5d034254a646",
+          "lfSha256": "6c756e357fc4dd5a70c04cc0f803204348c87cc70479b0e7101b5d034254a646"
+        }
+      ],
+      "source": "Arquivos da entrega 0.4.0. Consultar histórico Git para o commit de publicação."
     }
   ]
 }
