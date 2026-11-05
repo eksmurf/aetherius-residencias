@@ -7,6 +7,11 @@
   ],
   "files": [
     {
+      "path": "adapters/official-diademas.cjs.example",
+      "bytes": 595,
+      "sha256": "d44bbc97b981d5970906f2c725560173809ded50a9ed8e62dc5a033d2b218b5c"
+    },
+    {
       "path": "ATUALIZACAO-0.1-PARA-0.3.1.md",
       "bytes": 20358,
       "sha256": "39a3a6889f7010641fe5eea5e5d9fb49207b6734195984d60d3d85ced601f984"
@@ -42,44 +47,19 @@
       "sha256": "c5f787154cc7faf6c1cfb08a8445e7d94997c2b0bb90f4f59bdcb0d392aeee1b"
     },
     {
-      "path": "CATALOGO.md",
-      "bytes": 2250,
-      "sha256": "382410a04d2c56198a4b15f5b8cb2cd787cafa2c16b68f9cc10bbafc5ab4d8c8"
+      "path": "atualizacao/conferir-banco.sql",
+      "bytes": 2246,
+      "sha256": "1dd8fd42012e0b67732fe1a5cd90a05dd2371e64989912996d84308ba7b9f7a1"
     },
     {
-      "path": "CHANGELOG.md",
-      "bytes": 7286,
-      "sha256": "fe8b055b5697db47f167334b8012daba1543b2e8395cc478363341ae8057cfb8"
+      "path": "atualizacao/conferir-instalacao.cjs",
+      "bytes": 4021,
+      "sha256": "347bc1d7b66759ed9fbddf0b9970eef8a7801eab99115950b80e277c5c78a623"
     },
     {
-      "path": "CONTRATO-DIADEMAS.md",
-      "bytes": 2759,
-      "sha256": "d9a597e19ee92b31f1875f9bfd1e85abba8da4c76421f51ade5738eedcb6dee8"
-    },
-    {
-      "path": "INTEGRACAO-JARL.md",
-      "bytes": 6896,
-      "sha256": "bd749e3800500d54c7f25b5873e09fc2bcf6b5af8c0d84e4d051fe494706f2a4"
-    },
-    {
-      "path": "PROVENIENCIA.json",
-      "bytes": 8671,
-      "sha256": "5938627c95fcf812a86e84a4a42a352d8d19e91e839fa12518839ca6be977525"
-    },
-    {
-      "path": "README.md",
-      "bytes": 9877,
-      "sha256": "29a4191eae2132e656fcdbce0905804caeb48fe18d14dd9ef6c62541b7f108b7"
-    },
-    {
-      "path": "REGRAS-0.3.md",
-      "bytes": 6211,
-      "sha256": "375334c6e460458c068019acfc7ab92103b7f0b0689bbb0176f4f5a60f941b85"
-    },
-    {
-      "path": "adapters/official-diademas.cjs.example",
-      "bytes": 595,
-      "sha256": "d44bbc97b981d5970906f2c725560173809ded50a9ed8e62dc5a033d2b218b5c"
+      "path": "atualizacao/referencias-versoes.json",
+      "bytes": 39687,
+      "sha256": "0db18e991360c5825f95337216400d6833c8907d1fa83ec8263871d5c035873e"
     },
     {
       "path": "atualizacao/VERIFICACAO-UI-0.3.2.json",
@@ -107,34 +87,9 @@
       "sha256": "5c05a0bbd620fbe91c029924bf7021f0dd8e2f0ecc1c79ed2ae21fe1ab521235"
     },
     {
-      "path": "atualizacao/conferir-banco.sql",
-      "bytes": 2246,
-      "sha256": "1dd8fd42012e0b67732fe1a5cd90a05dd2371e64989912996d84308ba7b9f7a1"
-    },
-    {
-      "path": "atualizacao/conferir-instalacao.cjs",
-      "bytes": 4021,
-      "sha256": "347bc1d7b66759ed9fbddf0b9970eef8a7801eab99115950b80e277c5c78a623"
-    },
-    {
-      "path": "atualizacao/referencias-versoes.json",
-      "bytes": 39687,
-      "sha256": "0db18e991360c5825f95337216400d6833c8907d1fa83ec8263871d5c035873e"
-    },
-    {
-      "path": "catalogo/IMOVEIS.md",
-      "bytes": 2731,
-      "sha256": "cb493b6fd61de0e3ba984113e9b368deba66ce5e2e9f801ebdd0a0ae4696d493"
-    },
-    {
-      "path": "catalogo/PROVENIENCIA-MAPEAMENTO.json",
-      "bytes": 15539,
-      "sha256": "10fbf911b9b1ca18225eb0964d8c68b7747095824c8069a10bf5c8bec78cabd0"
-    },
-    {
-      "path": "catalogo/README.md",
-      "bytes": 5878,
-      "sha256": "4c7bce32f64db158ca03de667eccc18b12c574a3fe500a7c4579ac6a71312f35"
+      "path": "CATALOGO.md",
+      "bytes": 2250,
+      "sha256": "382410a04d2c56198a4b15f5b8cb2cd787cafa2c16b68f9cc10bbafc5ab4d8c8"
     },
     {
       "path": "catalogo/build-catalog.cjs",
@@ -217,6 +172,21 @@
       "sha256": "bad4ab3976adf48ac9f0a17ef8f9d06d89267496cc89789e8b16a527525ab75c"
     },
     {
+      "path": "catalogo/IMOVEIS.md",
+      "bytes": 2731,
+      "sha256": "cb493b6fd61de0e3ba984113e9b368deba66ce5e2e9f801ebdd0a0ae4696d493"
+    },
+    {
+      "path": "catalogo/PROVENIENCIA-MAPEAMENTO.json",
+      "bytes": 15539,
+      "sha256": "10fbf911b9b1ca18225eb0964d8c68b7747095824c8069a10bf5c8bec78cabd0"
+    },
+    {
+      "path": "catalogo/README.md",
+      "bytes": 5878,
+      "sha256": "4c7bce32f64db158ca03de667eccc18b12c574a3fe500a7c4579ac6a71312f35"
+    },
+    {
       "path": "catalogo/residences.draft.json",
       "bytes": 9378,
       "sha256": "d1facd25c42ed4c4555dc88b225095bce6ee8d643ba26050144794f026df66aa"
@@ -225,6 +195,11 @@
       "path": "catalogo/resumo.json",
       "bytes": 721,
       "sha256": "28b63804f0dbf1d4e44d1388f88d0886c6301755eeccbc94d800dd912b9181a7"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 7286,
+      "sha256": "fe8b055b5697db47f167334b8012daba1543b2e8395cc478363341ae8057cfb8"
     },
     {
       "path": "ci/residences.yml",
@@ -252,9 +227,24 @@
       "sha256": "af6a4194426cfe928548c18768b7f5e5563ff39c816059a37461c36e69fff4a6"
     },
     {
+      "path": "CONTRATO-DIADEMAS.md",
+      "bytes": 2759,
+      "sha256": "d9a597e19ee92b31f1875f9bfd1e85abba8da4c76421f51ade5738eedcb6dee8"
+    },
+    {
       "path": "core-patches.cjs",
       "bytes": 3373,
       "sha256": "3c8f00de84ba185e89e2fcefe7e60cd2e6f4e8873cae40304041bedf29ee06e6"
+    },
+    {
+      "path": "GUIA-JARL.md",
+      "bytes": 12217,
+      "sha256": "87b0daca132248064f59735b97686b01f9af6b062dd3a9a90d7eead3f74eddd1"
+    },
+    {
+      "path": "INTEGRACAO-JARL.md",
+      "bytes": 7022,
+      "sha256": "8e0fa0544065adcfb54fe17f3af6bd0d06eb15d21ab09e5ec12613de7633bcff"
     },
     {
       "path": "integrate.cjs",
@@ -280,6 +270,21 @@
       "path": "package.json",
       "bytes": 389,
       "sha256": "95e21769e1ab95bec226edc0a0e8d5600d20ad8f7456953dde17e2907063f4b6"
+    },
+    {
+      "path": "PROVENIENCIA.json",
+      "bytes": 8671,
+      "sha256": "5938627c95fcf812a86e84a4a42a352d8d19e91e839fa12518839ca6be977525"
+    },
+    {
+      "path": "README.md",
+      "bytes": 10028,
+      "sha256": "2a25e7ca4d0d2a93893f63d6aea96380636a54dad654a4e94f6214bb78c80bbc"
+    },
+    {
+      "path": "REGRAS-0.3.md",
+      "bytes": 6211,
+      "sha256": "375334c6e460458c068019acfc7ab92103b7f0b0689bbb0176f4f5a60f941b85"
     },
     {
       "path": "server/config/residences.json",
@@ -361,5 +366,6 @@
       "bytes": 4765,
       "sha256": "eb7c55e1cf3f4b3c8a84584a89e803b0c31a003b0da2bd6a3e8cd2f771a6645b"
     }
-  ]
+  ],
+  "documentationRevision": "guia-jarl-1"
 }

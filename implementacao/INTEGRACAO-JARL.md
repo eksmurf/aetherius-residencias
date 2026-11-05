@@ -1,5 +1,7 @@
 # Integração das residências com a cidade
 
+Para a sequência de implantação, exemplos de chamadas e testes de aceite, seguir o [guia prático do Jarl](GUIA-JARL.md).
+
 O backend municipal administra a associação entre casa e cidade. O módulo de residências registra os pagamentos e, na interação com uma porta de entrada cadastrada, recolhe os valores para a cidade mediante autorização municipal. O painel do Jarl pode ser conectado posteriormente.
 
 ## Pagamento e recolhimento

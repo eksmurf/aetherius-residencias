@@ -1,5 +1,7 @@
 # Integração oficial — residências 0.4.0
 
+**Comece pelo [guia prático do Jarl](GUIA-JARL.md)** para conectar a cidade, autorizar o responsável e homologar pagamento e recolhimento na porta.
+
 **Versão 0.4.0.** Aplicar a [migração de recolhimento](ATUALIZACAO-0.4.0.md) e fornecer o [adaptador municipal](INTEGRACAO-JARL.md). A quitação pode ocorrer antes da configuração da cidade e o valor fica pendente de recolhimento.
 
 **Versão 0.3.6.** [Integração do painel e da compra](ATUALIZACAO-0.3.6.md).
