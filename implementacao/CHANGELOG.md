@@ -1,3 +1,10 @@
+# 0.5.0 — 10/11/2026
+
+- Venda instantânea: retorno de 40%, retenção de IPTU limitada ao retorno, excedente encerrado com auditoria, duas confirmações e dez segundos no servidor.
+- Visita de 60 segundos para ofertas sem dono, controlador persistente e contrato de proteção/retorno; adaptador nativo ainda requerido.
+- Ficha revisável por S+, comparação da revisão na compra e levantamento de candidatos das cinco casas.
+- Delta para cadastro/IPTU3, migração 006, testes SQL em memória e guias. Recursos novos desabilitados para homologação.
+
 # Alterações
 
 ## 0.4.0 — 05/11/2026

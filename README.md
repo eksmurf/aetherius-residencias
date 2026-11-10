@@ -1,4 +1,6 @@
-# Residências do Aetherius — pacote 0.4.0
+# Residências do Aetherius — pacote 0.5.0
+
+**0.5.0 — extensões residenciais:** venda instantânea com retorno de **40%**, IPTU descontado até zerar o ganho, visita de um minuto para ofertas sem proprietário e ficha de características. [Guia de atualização](implementacao/ATUALIZACAO-0.5.0.md) · [Contratos pendentes do runtime](implementacao/CONTRATO-EXTENSOES.md) · [Mapeamento e pendências](implementacao/catalogo/FICHAS-20261110.md) · [Validação](implementacao/VALIDACAO-0.5.0.md) · [Pacote](dist/aetherius-residencias-0.5.0.zip). Venda instantânea e visita ficam desabilitadas até conectar e homologar o adaptador oficial.
 
 **Guia para a equipe do Jarl:** [passo a passo de integração e homologação](implementacao/GUIA-JARL.md). [Pacote 0.4.0 com o guia](dist/aetherius-residencias-0.4.0-guia-jarl-1.zip) · [SHA256](dist/aetherius-residencias-0.4.0-guia-jarl-1.zip.sha256). Revisão de documentação; o runtime permanece o mesmo da 0.4.0 original.
 

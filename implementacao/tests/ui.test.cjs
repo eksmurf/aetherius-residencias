@@ -24,7 +24,7 @@ function harness() {
     addEventListener(name,fn){windowListeners[name]=fn;}};
   const document={body,createElement:element,addEventListener(name,fn){listeners[name]=fn;}};
   vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../client/residences/app.js'),'utf8'),{
-    window,document,crypto:webcrypto,Uint8Array,
+    window,document,crypto:webcrypto,Uint8Array,Date,setInterval:()=>1,
     setTimeout(fn){const id=++nextTimer;timers.set(id,fn);return id;},
     clearTimeout(id){timers.delete(id);},
   });

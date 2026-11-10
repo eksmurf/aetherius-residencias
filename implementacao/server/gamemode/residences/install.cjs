@@ -28,7 +28,9 @@ async function install({ mp, gamemodeDir, configPath = path.resolve(gamemodeDir,
   const cities = fs.existsSync(cityAdapterPath) ? require(cityAdapterPath) : null;
   const currencies = createCurrencies(transactionService, diademas);
   const host = createHost({ mp, commands, keyDescriptor: config.keyDescriptor, maxDistance: config.maxDistance });
-  const store = createStore({ db, currencies, cities, maxPerProfile: config.maxPerProfile });
+  const extensionPath=path.join(__dirname,'official-extensions.cjs');
+  const runtime=fs.existsSync(extensionPath)?require(extensionPath):null;
+  const store = createStore({ db, currencies, cities, maxPerProfile: config.maxPerProfile, runtime, features:config.extensions||{} });
   const lease = await db.getConnection();
   let closed = false, healthy = false, writes = 0, refreshedAt = 0, refreshing = null, rows = new Map(), refs = new Map(), cells = new Map();
   const hooks = [];
@@ -65,6 +67,7 @@ async function install({ mp, gamemodeDir, configPath = path.resolve(gamemodeDir,
         try { await refreshing; } finally { refreshing = null; }
       },
     };
+    await store.tours.recover();
     await store.installCatalog(config.residences);
     await state.refresh();
     const service = createService({ store, host, currencies, state, purchasesEnabled: config.purchasesEnabled, allowProfiles: config.allowProfiles });
@@ -133,7 +136,7 @@ async function install({ mp, gamemodeDir, configPath = path.resolve(gamemodeDir,
       if (event.type !== 'residences:request') return false;
       await service.receive(actorId, event.data); return true;
     });
-    timer = setInterval(() => { state.refresh().catch(() => { healthy = false; }); }, 1500);
+    timer = setInterval(() => { state.refresh().catch(() => { healthy = false; }); store.tours.step().catch(() => { healthy = false; }); }, 1500);
     timer.unref?.();
     const api = { service, healthy: () => healthy && Date.now() - refreshedAt <= 5000,
       async close() {
@@ -145,6 +148,14 @@ async function install({ mp, gamemodeDir, configPath = path.resolve(gamemodeDir,
       } };
     const bridge={
       healthy:api.healthy,
+      async reviewAmenities(actorId,payload){
+        const session=host.session(actorId);state.invalidate();
+        try{return await store.extensions.review(session,payload,()=>host.assertCurrent(session));}finally{await state.finishMutation();}
+      },
+      async reviewAcquisition(actorId,payload){
+        const session=host.session(actorId);state.invalidate();
+        try{return await store.extensions.reviewAcquisition(session,payload,()=>host.assertCurrent(session));}finally{await state.finishMutation();}
+      },
       request:(actorId,action,payload)=>service.core(actorId,action,payload),
       cityRequest:(actorId,action,payload)=>service.city(actorId,action,payload),
       async inventoryKeys(actorId,context='personal'){

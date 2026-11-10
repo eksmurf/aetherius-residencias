@@ -1,4 +1,5 @@
 node_modules/
+.build-0.5/
 .env
 .env.*
 !.env.example

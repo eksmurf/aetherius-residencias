@@ -10,6 +10,7 @@ const phasePath = path.join(serverRoot,'gamemode/phase0-basic.js');
 const bridgePath = path.join(clientRoot,'src/services/services/BridgeService.ts');
 const htmlPath = path.join(clientRoot,'index.html');
 for (const file of [phasePath,bridgePath,htmlPath]) if (!fs.existsSync(file)) throw Error(`Fonte oficial não encontrada: ${file}`);
+if(fs.existsSync(path.join(serverRoot,'gamemode/residences/door-registration.cjs')))throw Error('Cadastro pela porta/IPTU detectado. Use o delta IPTU3 e o guia ATUALIZACAO-0.5.0.md; não substitua os módulos integrados pelo pacote base.');
 const changes = [];
 function prepare(file, content) {
   if (!fs.existsSync(file) || fs.readFileSync(file,'utf8').replace(/\r\n/g,'\n') !== content.replace(/\r\n/g,'\n')) changes.push({file,content});

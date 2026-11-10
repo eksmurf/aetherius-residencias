@@ -1,16 +1,11 @@
 {
-  "version": "0.4.0",
-  "date": "2026-11-05",
+  "version": "0.5.0",
+  "date": "2026-11-10",
   "algorithm": "SHA256",
   "excludes": [
     "MANIFESTO-SHA256.json"
   ],
   "files": [
-    {
-      "path": "adapters/official-diademas.cjs.example",
-      "bytes": 595,
-      "sha256": "d44bbc97b981d5970906f2c725560173809ded50a9ed8e62dc5a033d2b218b5c"
-    },
     {
       "path": "ATUALIZACAO-0.1-PARA-0.3.1.md",
       "bytes": 20358,
@@ -42,24 +37,69 @@
       "sha256": "a5344d4e613bbbfedadffcc75def3103c23c153ecc1e159b14279ffba2ab387d"
     },
     {
+      "path": "ATUALIZACAO-0.5.0.md",
+      "bytes": 10215,
+      "sha256": "b9fb848d7757fbeca58c588e8728a2930fa8c379a0a19b0a4917928fad7498f5"
+    },
+    {
       "path": "ATUALIZACAO-UI-0.3.2.md",
       "bytes": 5644,
       "sha256": "c5f787154cc7faf6c1cfb08a8445e7d94997c2b0bb90f4f59bdcb0d392aeee1b"
     },
     {
-      "path": "atualizacao/conferir-banco.sql",
-      "bytes": 2246,
-      "sha256": "1dd8fd42012e0b67732fe1a5cd90a05dd2371e64989912996d84308ba7b9f7a1"
+      "path": "CATALOGO.md",
+      "bytes": 2250,
+      "sha256": "382410a04d2c56198a4b15f5b8cb2cd787cafa2c16b68f9cc10bbafc5ab4d8c8"
     },
     {
-      "path": "atualizacao/conferir-instalacao.cjs",
-      "bytes": 4021,
-      "sha256": "347bc1d7b66759ed9fbddf0b9970eef8a7801eab99115950b80e277c5c78a623"
+      "path": "CHANGELOG.md",
+      "bytes": 7845,
+      "sha256": "75e2768464738b822f1df22936a7bbdc71f9884e191852524ee6707d5a5b75df"
     },
     {
-      "path": "atualizacao/referencias-versoes.json",
-      "bytes": 39687,
-      "sha256": "0db18e991360c5825f95337216400d6833c8907d1fa83ec8263871d5c035873e"
+      "path": "CONTRATO-DIADEMAS.md",
+      "bytes": 2759,
+      "sha256": "d9a597e19ee92b31f1875f9bfd1e85abba8da4c76421f51ade5738eedcb6dee8"
+    },
+    {
+      "path": "CONTRATO-EXTENSOES.md",
+      "bytes": 6149,
+      "sha256": "5c99584f8653eee8ef818d45fd214afb94a054640555a976a62b602e6ed46c4d"
+    },
+    {
+      "path": "GUIA-JARL.md",
+      "bytes": 12217,
+      "sha256": "87b0daca132248064f59735b97686b01f9af6b062dd3a9a90d7eead3f74eddd1"
+    },
+    {
+      "path": "INTEGRACAO-JARL.md",
+      "bytes": 7022,
+      "sha256": "8e0fa0544065adcfb54fe17f3af6bd0d06eb15d21ab09e5ec12613de7633bcff"
+    },
+    {
+      "path": "PROVENIENCIA.json",
+      "bytes": 10186,
+      "sha256": "b391220667593090869ce294e4db883d343d5cad60211d5a3a0cb1134aca61ea"
+    },
+    {
+      "path": "README.md",
+      "bytes": 10262,
+      "sha256": "fef047ffb2842af2f85471c9f594892d14596b463ec469c7f8d08aeec7b29a7c"
+    },
+    {
+      "path": "REGRAS-0.3.md",
+      "bytes": 6211,
+      "sha256": "375334c6e460458c068019acfc7ab92103b7f0b0689bbb0176f4f5a60f941b85"
+    },
+    {
+      "path": "VALIDACAO-0.5.0.md",
+      "bytes": 3502,
+      "sha256": "61329c9233a0696e3586aad53295b8b294226a3fdbce9855e719d75c61e1dd5c"
+    },
+    {
+      "path": "adapters/official-diademas.cjs.example",
+      "bytes": 595,
+      "sha256": "d44bbc97b981d5970906f2c725560173809ded50a9ed8e62dc5a033d2b218b5c"
     },
     {
       "path": "atualizacao/VERIFICACAO-UI-0.3.2.json",
@@ -87,9 +127,39 @@
       "sha256": "5c05a0bbd620fbe91c029924bf7021f0dd8e2f0ecc1c79ed2ae21fe1ab521235"
     },
     {
-      "path": "CATALOGO.md",
-      "bytes": 2250,
-      "sha256": "382410a04d2c56198a4b15f5b8cb2cd787cafa2c16b68f9cc10bbafc5ab4d8c8"
+      "path": "atualizacao/conferir-banco.sql",
+      "bytes": 2246,
+      "sha256": "1dd8fd42012e0b67732fe1a5cd90a05dd2371e64989912996d84308ba7b9f7a1"
+    },
+    {
+      "path": "atualizacao/conferir-instalacao.cjs",
+      "bytes": 4021,
+      "sha256": "347bc1d7b66759ed9fbddf0b9970eef8a7801eab99115950b80e277c5c78a623"
+    },
+    {
+      "path": "atualizacao/referencias-versoes.json",
+      "bytes": 39687,
+      "sha256": "0db18e991360c5825f95337216400d6833c8907d1fa83ec8263871d5c035873e"
+    },
+    {
+      "path": "catalogo/FICHAS-20261110.md",
+      "bytes": 3914,
+      "sha256": "5d3b435be45a2d63c2bc3ea153dd1f4b48b1e99f3eb151c3f30a950b1891eb8e"
+    },
+    {
+      "path": "catalogo/IMOVEIS.md",
+      "bytes": 2731,
+      "sha256": "cb493b6fd61de0e3ba984113e9b368deba66ce5e2e9f801ebdd0a0ae4696d493"
+    },
+    {
+      "path": "catalogo/PROVENIENCIA-MAPEAMENTO.json",
+      "bytes": 15539,
+      "sha256": "10fbf911b9b1ca18225eb0964d8c68b7747095824c8069a10bf5c8bec78cabd0"
+    },
+    {
+      "path": "catalogo/README.md",
+      "bytes": 5878,
+      "sha256": "4c7bce32f64db158ca03de667eccc18b12c574a3fe500a7c4579ac6a71312f35"
     },
     {
       "path": "catalogo/build-catalog.cjs",
@@ -110,6 +180,31 @@
       "path": "catalogo/etapas-futuras/residences.draft.json",
       "bytes": 7657,
       "sha256": "9a132d0f373b5f4df9657e5452e12312026b2d0e216a56dc25afee229f1642ab"
+    },
+    {
+      "path": "catalogo/evidencias/20261110-bases-equipamentos.jsonl",
+      "bytes": 116109,
+      "sha256": "c6edd79c862d3a90d0b10feb8592d57131ac07ba54867d73baf1e63d9bd2f5d8"
+    },
+    {
+      "path": "catalogo/evidencias/20261110-breezehome-cell.jsonl",
+      "bytes": 6535,
+      "sha256": "2bd7dfd1d67b234b7206df2de3398a192e8414b2d019a848cd79b64d6efd8514"
+    },
+    {
+      "path": "catalogo/evidencias/20261110-ids-equipamentos.txt",
+      "bytes": 1790,
+      "sha256": "1666363bc1b2f16b8c3910413aa49b8cec88f76927ccc14c191ebb4592cb0f6a"
+    },
+    {
+      "path": "catalogo/evidencias/20261110-ids-interiores.txt",
+      "bytes": 108675,
+      "sha256": "e1bfe3f34693b71cc9a6ce91d82c33659503dd4f03cd25d0057d3c4b8899d5f3"
+    },
+    {
+      "path": "catalogo/evidencias/20261110-objetos.jsonl",
+      "bytes": 3281928,
+      "sha256": "df3e21803fa0f349cfdebd26ba22f1ab09762fc9a6bcf125e9535ad102f634f3"
     },
     {
       "path": "catalogo/evidencias/bases-containers.jsonl",
@@ -167,24 +262,14 @@
       "sha256": "04f71a6aaf3e346e24911a265e9506b865c9196f5af93316d7f4a818a073bfd7"
     },
     {
+      "path": "catalogo/fichas-candidatas-20261110.json",
+      "bytes": 121782,
+      "sha256": "e69f1009cde19fec000c068330e43912d64de92a809a70a4fdcb9b81033b240c"
+    },
+    {
       "path": "catalogo/fila-de-mapeamento.json",
       "bytes": 31297,
       "sha256": "bad4ab3976adf48ac9f0a17ef8f9d06d89267496cc89789e8b16a527525ab75c"
-    },
-    {
-      "path": "catalogo/IMOVEIS.md",
-      "bytes": 2731,
-      "sha256": "cb493b6fd61de0e3ba984113e9b368deba66ce5e2e9f801ebdd0a0ae4696d493"
-    },
-    {
-      "path": "catalogo/PROVENIENCIA-MAPEAMENTO.json",
-      "bytes": 15539,
-      "sha256": "10fbf911b9b1ca18225eb0964d8c68b7747095824c8069a10bf5c8bec78cabd0"
-    },
-    {
-      "path": "catalogo/README.md",
-      "bytes": 5878,
-      "sha256": "4c7bce32f64db158ca03de667eccc18b12c574a3fe500a7c4579ac6a71312f35"
     },
     {
       "path": "catalogo/residences.draft.json",
@@ -195,11 +280,6 @@
       "path": "catalogo/resumo.json",
       "bytes": 721,
       "sha256": "28b63804f0dbf1d4e44d1388f88d0886c6301755eeccbc94d800dd912b9181a7"
-    },
-    {
-      "path": "CHANGELOG.md",
-      "bytes": 7286,
-      "sha256": "fe8b055b5697db47f167334b8012daba1543b2e8395cc478363341ae8057cfb8"
     },
     {
       "path": "ci/residences.yml",
@@ -213,43 +293,38 @@
     },
     {
       "path": "client/properties/properties.js",
-      "bytes": 13064,
-      "sha256": "c3b71fefbbfb91743c873af400a2296cee1c8f6da7aa44d0af5147996e103460"
+      "bytes": 18268,
+      "sha256": "7626ce44255ba13ff73b934270fa7d321b7a6cc3dca4d438d5b8eeb2c0cfb64e"
     },
     {
       "path": "client/residences/app.js",
-      "bytes": 7760,
-      "sha256": "32774f3ae72f05ce8b8ab33faf45990f6e030eaca419301cc586c4c840d31bb9"
+      "bytes": 10324,
+      "sha256": "c715e3aac5b0281f739e24ccef4b285d334072e328b7d06b8394ab771fda4ece"
     },
     {
       "path": "client/residences/style.css",
-      "bytes": 4211,
-      "sha256": "af6a4194426cfe928548c18768b7f5e5563ff39c816059a37461c36e69fff4a6"
+      "bytes": 4785,
+      "sha256": "444ca4edf676c45666fd9a76ea2e6ab867139bd66336197d88047f8863112151"
     },
     {
-      "path": "CONTRATO-DIADEMAS.md",
-      "bytes": 2759,
-      "sha256": "d9a597e19ee92b31f1875f9bfd1e85abba8da4c76421f51ade5738eedcb6dee8"
+      "path": "compat/IPTU3/manifest.json",
+      "bytes": 2023,
+      "sha256": "95a513aa6fc638326d9c8d669f363de49de683c12e127009809a2f4720529cc3"
+    },
+    {
+      "path": "compat/IPTU3/residencias-0.5.0.patch",
+      "bytes": 42925,
+      "sha256": "69b6c166c26e8166cbf6fe50a2f0146a48174a824c494a835e4deeabb4fb8b24"
     },
     {
       "path": "core-patches.cjs",
-      "bytes": 3373,
-      "sha256": "3c8f00de84ba185e89e2fcefe7e60cd2e6f4e8873cae40304041bedf29ee06e6"
-    },
-    {
-      "path": "GUIA-JARL.md",
-      "bytes": 12217,
-      "sha256": "87b0daca132248064f59735b97686b01f9af6b062dd3a9a90d7eead3f74eddd1"
-    },
-    {
-      "path": "INTEGRACAO-JARL.md",
-      "bytes": 7022,
-      "sha256": "8e0fa0544065adcfb54fe17f3af6bd0d06eb15d21ab09e5ec12613de7633bcff"
+      "bytes": 4129,
+      "sha256": "fefba091dccf647e8a9b39bdccf46afc4ef430bc1ad3aa87d3411ad9a78557b3"
     },
     {
       "path": "integrate.cjs",
-      "bytes": 4558,
-      "sha256": "9c3a85dbde429dc9049bdfc10ac0656530129ef0df2572516121a067786554d4"
+      "bytes": 4799,
+      "sha256": "d6a77a89fb630feeb6c62270d28bb65bd710ffc3742a902477dd38a4deb12597"
     },
     {
       "path": "migrations/001_residences.sql",
@@ -267,34 +342,34 @@
       "sha256": "ca4c804eb11e56ceab264e16601c4be65607c7e73da15c91f2ed6726949ba6a0"
     },
     {
+      "path": "migrations/006_residence_extensions.sql",
+      "bytes": 2152,
+      "sha256": "eaae86f64c5877dbd29901981500c04373573844e3dbcc0821bdf0f8b2f55df6"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 5930,
+      "sha256": "ada714bdbb2520028769e04d1a574b0d1daf31fd364936512169ed98ae9d6264"
+    },
+    {
       "path": "package.json",
-      "bytes": 389,
-      "sha256": "95e21769e1ab95bec226edc0a0e8d5600d20ad8f7456953dde17e2907063f4b6"
-    },
-    {
-      "path": "PROVENIENCIA.json",
-      "bytes": 8671,
-      "sha256": "5938627c95fcf812a86e84a4a42a352d8d19e91e839fa12518839ca6be977525"
-    },
-    {
-      "path": "README.md",
-      "bytes": 10028,
-      "sha256": "2a25e7ca4d0d2a93893f63d6aea96380636a54dad654a4e94f6214bb78c80bbc"
-    },
-    {
-      "path": "REGRAS-0.3.md",
-      "bytes": 6211,
-      "sha256": "375334c6e460458c068019acfc7ab92103b7f0b0689bbb0176f4f5a60f941b85"
+      "bytes": 521,
+      "sha256": "6388a10159e492bc1fe409e4645b0a8fac27b2d8677507c2e3933df7a8a00f46"
     },
     {
       "path": "server/config/residences.json",
-      "bytes": 164,
-      "sha256": "310b67ab3a89f23a44fbd3b4460501db76c5ab9b2d306dc2dc470dd3a5ab6c4a"
+      "bytes": 263,
+      "sha256": "d9e72cfdfb8ddf568db46ab2fc75965cf9020a9a16e63c1f9e319c9c635a590a"
     },
     {
       "path": "server/gamemode/residences/access.cjs",
       "bytes": 780,
       "sha256": "c842b85c7868232f339795e8f5fa533ef5ff43895f2e5667841a43d5d57a7f09"
+    },
+    {
+      "path": "server/gamemode/residences/amenities.cjs",
+      "bytes": 3044,
+      "sha256": "41093107cfab1a493d08b61cf707a94077d0f832ab21c9127a98c17f3635bace"
     },
     {
       "path": "server/gamemode/residences/catalog.cjs",
@@ -313,8 +388,18 @@
     },
     {
       "path": "server/gamemode/residences/errors.cjs",
-      "bytes": 2892,
-      "sha256": "e5bb4b1c0832c6235efff32a5d52ad93a8d57db96821cb02a97a917431e036f9"
+      "bytes": 3622,
+      "sha256": "67cded31b9603fec0bf3b13cbd41c2303b250b9da0c932876f96593f1a79bd90"
+    },
+    {
+      "path": "server/gamemode/residences/estate-policy.cjs",
+      "bytes": 1723,
+      "sha256": "b94da3e09430681a3483d7f16f156a3a913804287d4a13a03bea9ef7daf33afb"
+    },
+    {
+      "path": "server/gamemode/residences/extensions.cjs",
+      "bytes": 13133,
+      "sha256": "0b3da307d7b177f82d0f0aa45ec8d77153a1f22e3f412dc678b9de33d0ab1512"
     },
     {
       "path": "server/gamemode/residences/host.cjs",
@@ -323,23 +408,38 @@
     },
     {
       "path": "server/gamemode/residences/install.cjs",
-      "bytes": 9841,
-      "sha256": "a23e092415cafd950bf41f4b65f6d56cd697d4b71575db0ccc023c346fce5482"
+      "bytes": 10640,
+      "sha256": "cac87d07b8a12a2741368c91cd1f6358b3818f9fe98db787b54b50931d101219"
     },
     {
       "path": "server/gamemode/residences/service.cjs",
-      "bytes": 8752,
-      "sha256": "331452fe1683238fab4a32870faddf3c3fb7b794d8bf1c8d68ca518fa18b1636"
+      "bytes": 10935,
+      "sha256": "55ca5d3c63fb01d26a5b302f0f3758a2336e22ec82191199a7a1fef76caa2a78"
     },
     {
       "path": "server/gamemode/residences/store.cjs",
-      "bytes": 17753,
-      "sha256": "f30c61b018d7f9b931cfe952a496c54470198cb80633ded2c3cf9d0acb5a2f15"
+      "bytes": 18543,
+      "sha256": "118c71b53b1d462a19973170b9c32ff5da54f4a3b94bb4c434281819b750815d"
     },
     {
       "path": "server/gamemode/residences/tax.cjs",
       "bytes": 1622,
       "sha256": "d91a4fca58481395735c46f738aa168afae4891beb8c7b462ebe914362774649"
+    },
+    {
+      "path": "server/gamemode/residences/tours.cjs",
+      "bytes": 5841,
+      "sha256": "7aeb9a83979e24b86e67f9c853a1547610851fe8c1cf983e6cf8049527854982"
+    },
+    {
+      "path": "tests/extensions-sql.test.cjs",
+      "bytes": 9185,
+      "sha256": "872cc0c8b9e97d4d61835b76f9fe645dc913114f3adade0f6456c71a337396b7"
+    },
+    {
+      "path": "tests/extensions.test.cjs",
+      "bytes": 3787,
+      "sha256": "9b3d2e4ac6bd82e3dfac42bef07c5b53a5e973706958ba12fb9041448e8d501d"
     },
     {
       "path": "tests/permissions-tax.test.cjs",
@@ -348,24 +448,28 @@
     },
     {
       "path": "tests/postgres.test.cjs",
-      "bytes": 31127,
-      "sha256": "eb541fd369facfd440d6a76ea6e598535fccee06e7ca5b582630c027a1965e87"
+      "bytes": 31217,
+      "sha256": "6888183b4b5d3a7a97c81fb655abceff86ef2c8b42de480008cb39c57d82e70d"
     },
     {
       "path": "tests/properties-ui.test.cjs",
-      "bytes": 6254,
-      "sha256": "aa47a8aa827b2973b11f54a5ec999c649bb62373ed08f1e57ede033c0f28db54"
+      "bytes": 8123,
+      "sha256": "7c79953044f1c0b8ca657a21c26d72dbd364c45346ac95dd23e379e66f96ad91"
     },
     {
       "path": "tests/ui.test.cjs",
-      "bytes": 5375,
-      "sha256": "b0721cd8b1f6f48bfc9584e8d3d2542f4cd0258a6b34f87395482bd2a42a309c"
+      "bytes": 5398,
+      "sha256": "fd8e0324ee2bb43af240c1ef3b6fd1def5ccd7d12b6185ab9b5ed849fc7c5aea"
     },
     {
       "path": "tests/unit.test.cjs",
       "bytes": 4765,
       "sha256": "eb7c55e1cf3f4b3c8a84584a89e803b0c31a003b0da2bd6a3e8cd2f771a6645b"
+    },
+    {
+      "path": "tools/build-compat-iptu3.cjs",
+      "bytes": 4181,
+      "sha256": "d0d836c317f6f2211807ec37c13e7008ef7b7a760509861863083e14bf80d1eb"
     }
-  ],
-  "documentationRevision": "guia-jarl-1"
+  ]
 }

@@ -1,0 +1,53 @@
+{
+  "version": "0.5.0",
+  "base": "IPTU3 + cadastro 08.6 recebido",
+  "baseResidencesCommit": "b8717d4cbf2cd0431ce9bac944bcd0b5f730c896",
+  "normalization": "UTF-8 CRLF -> LF",
+  "files": [
+    {
+      "path": "server/gamemode/residences/store.cjs",
+      "before": "eb3574d143111149cf24a30d59a33ef510565a18350763065a013182914200e5",
+      "after": "59e16568d12f82bcb54bf1ba22113ce0295aa695ee3421ed6a64a0b9a35f6c39"
+    },
+    {
+      "path": "server/gamemode/residences/install.cjs",
+      "before": "6d0dcd7486743ce5df1edc3a6610f3ca5599d249471711b51bb492a7d5eb461b",
+      "after": "624fb3083c863d2b2f318ed6ba60602c371b315a5bf44126b004797acef9d892"
+    },
+    {
+      "path": "server/gamemode/residences/service.cjs",
+      "before": "a30eb8dc36f373edbdf63cec353c0aff2d52b7580c2b584ba64e6a07cccd7a34",
+      "after": "68bf0a0cd62302493332ee7241136387cd710145b2b376b3182fd373b68dfaff"
+    },
+    {
+      "path": "server/gamemode/residences/errors.cjs",
+      "before": "e5bb4b1c0832c6235efff32a5d52ad93a8d57db96821cb02a97a917431e036f9",
+      "after": "67cded31b9603fec0bf3b13cbd41c2303b250b9da0c932876f96593f1a79bd90"
+    },
+    {
+      "path": "server/gamemode/residences/extensions.cjs",
+      "before": null,
+      "after": "0b3da307d7b177f82d0f0aa45ec8d77153a1f22e3f412dc678b9de33d0ab1512"
+    },
+    {
+      "path": "server/gamemode/residences/estate-policy.cjs",
+      "before": null,
+      "after": "b94da3e09430681a3483d7f16f156a3a913804287d4a13a03bea9ef7daf33afb"
+    },
+    {
+      "path": "server/gamemode/residences/amenities.cjs",
+      "before": null,
+      "after": "41093107cfab1a493d08b61cf707a94077d0f832ab21c9127a98c17f3635bace"
+    },
+    {
+      "path": "server/gamemode/residences/tours.cjs",
+      "before": null,
+      "after": "7aeb9a83979e24b86e67f9c853a1547610851fe8c1cf983e6cf8049527854982"
+    },
+    {
+      "path": "server/gamemode/residences/006_residence_extensions.sql",
+      "before": null,
+      "after": "eaae86f64c5877dbd29901981500c04373573844e3dbcc0821bdf0f8b2f55df6"
+    }
+  ]
+}

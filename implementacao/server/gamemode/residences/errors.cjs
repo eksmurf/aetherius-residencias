@@ -1,5 +1,15 @@
 'use strict';
 const messages = {
+  EXT_UNAVAILABLE:'Função aguardando integração oficial.',
+  INSTANT_INELIGIBLE:'Esta aquisição não permite venda instantânea.',
+  INSTANT_CREDIT:'Não foi possível registrar o crédito oficial da venda.',
+  QUOTE_EXPIRED:'Confirmação expirada ou cancelada. Inicie novamente.',
+  QUOTE_EARLY:'Aguarde os dez segundos antes de confirmar.',
+  AMENITIES:'Características do imóvel em verificação.',
+  AMENITIES_CHANGED:'As características mudaram. Consulte a oferta novamente.',
+  TOUR_INELIGIBLE:'Visita disponível apenas para imóveis à venda sem proprietário.',
+  TOUR_UNSAFE:'Visita indisponível: combate, destino ou proteção não confirmados.',
+  TOUR_RETURN:'Uma visita anterior aguarda retorno seguro.',
   CITY_UNAVAILABLE: 'A integração da cidade está indisponível. Os impostos pagos aguardam recolhimento.',
   CITY_UNASSIGNED: 'Esta residência aguarda vínculo com uma cidade.',
   CITY_CHANGED: 'O vínculo municipal mudou. Consulte a residência novamente.',

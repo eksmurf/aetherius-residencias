@@ -8,6 +8,23 @@
   root.setAttribute('role', 'dialog'); root.setAttribute('aria-modal', 'true');
   root.setAttribute('aria-labelledby', 'ar-house-name');
   document.body.append(root);
+  let tour=null,tourOffset=0;
+  const tourHud=document.createElement('aside');tourHud.id='ar-tour-hud';tourHud.hidden=true;document.body.append(tourHud);
+  function amenities(body){
+    const section=node('section',undefined,'ar-amenities');section.append(node('h3','Características do imóvel'));
+    const items=offer?.amenities?.items||[];
+    if(!items.length)section.append(node('p','Características em verificação.','ar-muted'));
+    for(const item of items){const line=node('p',undefined,'ar-amenity');line.append(node('span',item.label),node('strong',item.count===null?'Em verificação':item.count===0?'Não possui':String(item.count)));section.append(line);
+      const types=Object.entries(item.subtypes||{});if(types.length)section.append(node('p',types.map(([name,count])=>count+' '+name).join(' · '),'ar-muted'));}
+    body.append(section);
+  }
+  function renderTour(){tourHud.replaceChildren();tourHud.hidden=!tour;if(!tour)return;
+    const seconds=Math.max(0,Math.ceil((Date.parse(tour.deadline)-Date.now()-tourOffset)/1000));
+    tourHud.append(node('strong',tour.state==='active'?'Visita experimental · '+String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(seconds%60).padStart(2,'0'):tour.state==='entering'?'Entrando na residência…':'Retornando à entrada…'));
+    if(tour.state==='active'&&seconds<=10)tourHud.append(node('p','A visita está terminando. Você retornará à entrada.'));
+    tourHud.append(node('p','Para sair antes: TAB → Propriedades'),button('Sair da visita',()=>send({action:'tourEnd'})));
+  }
+  setInterval(()=>{renderTour();if(tour&&!pending)send({action:'tourStatus'});},1000);
   const labels = { septims: 'Septims', diademas: 'Diademas' };
   function requestId() {
     const bytes = new Uint8Array(16); crypto.getRandomValues(bytes);
@@ -63,17 +80,22 @@
       body.append(node('p', 'Consultar o resultado não realiza uma nova cobrança.', 'ar-muted'));
       body.append(button('Consultar resultado', () => send({ action:'status', operationRequestId:lastMutation.requestId }), 'ar-primary'));
       body.append(button('Reenviar o mesmo pedido', () => send(lastMutation)));
+    } else if(offer&&view==='tour'){
+      body.append(node('p','Conheça o interior por um minuto. Você não poderá combater, tocar em objetos ou usar armazenamentos e estações. Ao final, retornará à entrada.','ar-muted'));
+      body.append(button('Iniciar visita',()=>send({action:'tourStart',residenceId:offer.residenceId,revision:offer.revision,door:offer.entryDoor}),'ar-primary'),button('Voltar',()=>navigate('offer')));
     } else if (offer && view === 'purchase' && selectedPrice) {
       body.append(node('p', 'Confirmar compra', 'ar-subtitle'));
       body.append(node('p', `${selectedPrice.amount.toLocaleString('pt-BR')} ${labels[selectedPrice.currency]}`, 'ar-total'));
+      amenities(body);
       body.append(node('p', 'Você receberá a chave no inventário pessoal.', 'ar-muted'));
       if (offer.offerKind === 'resale') body.append(node('p', 'Os itens guardados na residência também serão seus.', 'ar-muted'));
       if (selectedPrice.currency === 'diademas') body.append(node('p', 'Será usado o saldo de Diademas já existente na sua conta.', 'ar-muted'));
-      body.append(button('Confirmar compra', () => send({ action:'purchase', residenceId:offer.residenceId, revision:offer.revision, accessRevision:offer.accessRevision, offerKind:offer.offerKind, currency:selectedPrice.currency }), 'ar-primary'));
+      body.append(button('Confirmar compra', () => send({ action:'purchase', residenceId:offer.residenceId, revision:offer.revision, accessRevision:offer.accessRevision, offerKind:offer.offerKind, amenitiesRevision:offer.amenities?.revision??null, currency:selectedPrice.currency }), 'ar-primary'));
       body.append(button('Voltar', () => navigate('offer')));
     } else if (offer) {
       body.append(node('p', offer.owned ? (offer.owner ? 'Esta residência pertence ao seu perfil.' : 'Residência já adquirida.') : (offer.offerKind === 'resale' ? 'À venda pelo proprietário' : 'Residência disponível para compra'), 'ar-subtitle'));
-      body.append(node('p', `${offer.refs.filter(r => r.kind === 'entry').length} entrada(s) · ${offer.refs.filter(r => r.kind === 'container').length} baú(s) privado(s)`, 'ar-muted'));
+      amenities(body);
+      if(!offer.owner){if(offer.tour?.available&&offer.entryDoor)body.append(button('Visitar interior por 1 minuto',()=>navigate('tour')));else if(offer.tour?.reason)body.append(node('p',offer.tour.reason,'ar-muted'));}
       if (offer.owner) {
         body.append(node('p', 'Compra concluída. Sua chave está no inventário pessoal. Consulte a residência em TAB → Propriedades.', 'ar-muted'));
       } else if (offer.forSale) {
@@ -113,6 +135,11 @@
       view = 'offer'; notice = response.message || 'Operação não confirmada.'; render(); return;
     }
     const data = response.data;
+    if(['tourStart','tourStatus','tourEnd'].includes(response.action)){
+      if(response.action==='tourEnd'){if(tour)tour.state='returning';}
+      else {tour=response.action==='tourStatus'?data.tour:data;if(tour?.serverNow)tourOffset=Date.parse(tour.serverNow)-Date.now();}
+      renderTour();if(response.action==='tourStart')close();render();return;
+    }
     if (data.committed === false) { notice = data.message; render(); return; }
     lastMutation = null; view = 'offer';
     if (offer && data.residenceId === offer.residenceId) {

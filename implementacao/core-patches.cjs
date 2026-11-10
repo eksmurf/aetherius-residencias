@@ -18,7 +18,7 @@ module.exports=function({serverRoot,clientRoot,prepare,insertBefore,copyTree}){
     if(!anchor)throw Error('Registro de módulos do CORE UI não encontrado.');
     core=insertBefore(core,anchor,`    // RESIDENCES_PROPERTIES_V3
     this.registerExternalModule("properties", router => {
-      const actions = ["snapshot","public","addMember","setFamily","removeMember","payTax","listSale","cancelSale","status"];
+      const actions = ["snapshot","public","addMember","setFamily","removeMember","payTax","listSale","cancelSale","status","instantQuote","instantArm","instantCancel","instantSell","tourStatus","tourEnd"];
       const disposers = actions.map(action => router.register("properties", action, (context, payload) => {
         const api = (globalThis as any).aetheriusResidencesBridge;
         if (!api?.healthy()) return {ok:false,error:{code:"UNAVAILABLE",message:"Residências temporariamente indisponíveis."}};
@@ -27,6 +27,11 @@ module.exports=function({serverRoot,clientRoot,prepare,insertBefore,copyTree}){
       return () => disposers.forEach(dispose => dispose());
     });
 `);
+  }
+  const oldActions="[\"snapshot\",\"public\",\"addMember\",\"setFamily\",\"removeMember\",\"payTax\",\"listSale\",\"cancelSale\",\"status\"]", newActions="[\"snapshot\",\"public\",\"addMember\",\"setFamily\",\"removeMember\",\"payTax\",\"listSale\",\"cancelSale\",\"status\",\"instantQuote\",\"instantArm\",\"instantCancel\",\"instantSell\",\"tourStatus\",\"tourEnd\"]";
+  if(core.includes('// RESIDENCES_PROPERTIES_V3')&&!core.includes(newActions)){
+    if(core.split(oldActions).length!==2)throw Error('Lista de ações de Propriedades modificada; integrar instantQuote/instantArm/instantCancel/instantSell manualmente.');
+    core=core.replace(oldActions,newActions);
   }
   prepare(coreSystemPath,core);
   let source=fs.readFileSync(inventoryPath,'utf8').replace(/\r\n/g,'\n');

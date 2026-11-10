@@ -3,10 +3,13 @@ const { messages, fail, uuid, integer } = require('./errors.cjs');
 const { offerKind } = require('./tax.cjs');
 const { randomUUID } = require('node:crypto');
 const { cityRequest } = require('./city-taxes.cjs');
+const { publicSheet } = require('./amenities.cjs');
+const instantActions=['instantQuote','instantArm','instantCancel','instantSell'];
+const tourActions=['tourStart','tourStatus','tourEnd'];
 const management=['public','addMember','setFamily','removeMember','payTax','listSale','cancelSale'];
 function request(raw) {
   if(!raw||typeof raw!=='object'||JSON.stringify(raw).length>2048||raw.version!==1||!uuid(raw.requestId)) fail('INVALID');
-  const fields={offer:['residenceId'],purchase:['residenceId','revision','currency','accessRevision','offerKind'],status:['operationRequestId'],properties:[],
+  const fields={instantQuote:['residenceId','accessRevision'],instantArm:['residenceId','quoteId'],instantCancel:['residenceId','quoteId'],instantSell:['residenceId','quoteId','accessRevision'],tourStart:['residenceId','revision','door'],tourStatus:[],tourEnd:[],offer:['residenceId'],purchase:['residenceId','revision','currency','accessRevision','offerKind','amenitiesRevision'],status:['operationRequestId'],properties:[],
     listSale:['residenceId','accessRevision','amount'],cancelSale:['residenceId','accessRevision'],
     public:['residenceId','accessRevision','open'],addMember:['residenceId','accessRevision','query'],
     setFamily:['residenceId','accessRevision','memberProfileId','family'],removeMember:['residenceId','accessRevision','memberProfileId','confirmed'],
@@ -25,6 +28,10 @@ function request(raw) {
   if(raw.action==='removeMember'&&raw.confirmed!==true) fail('INVALID');
   if(raw.action==='status'&&!uuid(raw.operationRequestId)) fail('INVALID');
   if(raw.action==='payTax'&&(!integer(raw.periods)||typeof raw.dueAt!=='string'||!Number.isFinite(Date.parse(raw.dueAt)))) fail('INVALID');
+  if(raw.action==='instantQuote'&&!integer(raw.accessRevision))fail('INVALID');
+  if(['instantArm','instantCancel','instantSell'].includes(raw.action)&&!uuid(raw.quoteId))fail('INVALID');
+  if(raw.action==='tourStart'&&(!integer(raw.revision)||typeof raw.door!=='string'||raw.door.length>160))fail('INVALID');
+  if(raw.action==='purchase'&&raw.amenitiesRevision!=null&&!integer(raw.amenitiesRevision))fail('INVALID');
   return raw;
 }
 function createService({store,host,currencies,state,purchasesEnabled,allowProfiles=[]}) {
@@ -33,7 +40,8 @@ function createService({store,host,currencies,state,purchasesEnabled,allowProfil
     const session=host.session(actorId),input=request(raw);
     if(!state.available()) fail('UNAVAILABLE');
     if(allowProfiles.length&&!allowProfiles.includes(session.profileId)) fail('FORBIDDEN');
-    if((management.includes(input.action)||input.action==='properties')&&channel!=='properties') fail('FORBIDDEN');
+    if((management.includes(input.action)||instantActions.includes(input.action)||input.action==='properties')&&channel!=='properties') fail('FORBIDDEN');
+    if(input.action==='tourStart'&&channel!=='door')fail('FORBIDDEN');
     if(pending.has(session.profileId)) fail('BUSY');
     let bucket=buckets.get(session.identity);
     if(!bucket||Date.now()-bucket.start>10000){bucket={start:Date.now(),count:0};buckets.set(session.identity,bucket);}
@@ -41,15 +49,27 @@ function createService({store,host,currencies,state,purchasesEnabled,allowProfil
     pending.add(session.profileId);
     try {
       host.retireLegacyKeys(session);
-      if(input.action==='properties') {const out=await store.properties(session);host.assertCurrent(session);return out;}
-      if(input.action==='status') return await store.status(session,input.operationRequestId)||{committed:false,message:'Nenhum recibo encontrado. Reenvie o mesmo pedido.'};
+      if(input.action==='properties') {const out=await store.properties(session);out.tour=await store.tours.status(session);host.assertCurrent(session);return out;}
+      if(input.action==='tourStatus')return {tour:await store.tours.status(session)};
+      if(input.action==='tourEnd')return await store.tours.end(session);
+      if(input.action==='status') return await store.status(session,input.operationRequestId)||await store.extensions.status(session,input.operationRequestId)||{committed:false,message:'Nenhum recibo encontrado. Reenvie o mesmo pedido.'};
       const residence=state.get(input.residenceId);
       if(!residence) fail('NOT_FOUND');
       if(input.action==='offer'||input.action==='purchase') host.assertNear(session,residence);
+      if(instantActions.includes(input.action)){
+        const method={instantQuote:'quote',instantArm:'arm',instantCancel:'cancel',instantSell:'sell'}[input.action];
+        state.invalidate();try{return await store.extensions[method](session,input,row=>host.assertCurrent(session));}finally{await state.finishMutation();}
+      }
+      if(input.action==='tourStart'){
+        if(!purchasesEnabled)fail('UNAVAILABLE');
+        host.assertAtEntry(session,residence,input.door);
+        return await store.tours.start(session,input,row=>{host.assertCurrent(session);host.assertAtEntry(session,row,input.door);});
+      }
       if(input.action==='offer') {
         const kind=offerKind(residence),auction=kind==='foreclosure',resale=kind==='resale';
         if(residence.owner_profile_id!==null&&((!auction&&!resale)||residence.owner_profile_id===session.profileId)) fail('PRIVATE');
         return {residenceId:residence.id,name:residence.definition.name,revision:residence.revision,accessRevision:residence.access_revision,owned:false,owner:false,offerKind:kind,
+          amenities:publicSheet(residence),tour:purchasesEnabled?store.extensions.tourView(residence):{available:false,reason:'Visitas indisponíveis enquanto as compras estiverem suspensas.'},entryDoor:residence.definition.refs.find(r=>r.kind==='entry'&&host.near(session.actorId,host.resolve(r.desc)))?.desc,
           forSale:purchasesEnabled&&(residence.for_sale||auction||resale),refs:residence.definition.refs.map(r=>({kind:r.kind})),
           prices:Object.entries(resale?{septims:residence.listing_price}:residence.definition.prices).map(([currency,amount])=>({currency,amount,available:currencies.available(currency)}))};
       }

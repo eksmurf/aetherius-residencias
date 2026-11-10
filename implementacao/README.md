@@ -1,4 +1,6 @@
-# Integração oficial — residências 0.4.0
+# Integração oficial — residências 0.5.0
+
+**Atualização 0.5.0:** seguir [ATUALIZACAO-0.5.0.md](ATUALIZACAO-0.5.0.md), usando o delta IPTU3 em instalações com cadastro pela porta. A migração 006 é obrigatória para este código. [Limites e testes](VALIDACAO-0.5.0.md).
 
 **Comece pelo [guia prático do Jarl](GUIA-JARL.md)** para conectar a cidade, autorizar o responsável e homologar pagamento e recolhimento na porta.
 

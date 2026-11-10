@@ -5,5 +5,10 @@
   "maxDistance": 250,
   "allowProfiles": [],
   "keyDescriptor": null,
-  "residences": []
+  "residences": [],
+  "extensions": {
+    "instantSale": false,
+    "tours": false,
+    "requireAmenities": false
+  }
 }

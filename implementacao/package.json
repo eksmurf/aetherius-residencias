@@ -1,15 +1,17 @@
 {
   "name": "aetherius-residences",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "private": true,
   "engines": {
     "node": ">=22"
   },
   "scripts": {
-    "test": "node --test tests/unit.test.cjs tests/ui.test.cjs tests/permissions-tax.test.cjs tests/properties-ui.test.cjs",
-    "test:postgres": "node --test --test-concurrency=1 tests/postgres.test.cjs"
+    "test": "node --test tests/unit.test.cjs tests/ui.test.cjs tests/permissions-tax.test.cjs tests/properties-ui.test.cjs tests/extensions.test.cjs",
+    "test:postgres": "node --test --test-concurrency=1 tests/postgres.test.cjs",
+    "test:extensions": "node --test tests/extensions-sql.test.cjs"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "0.3.10",
     "pg": "8.13.1"
   }
 }

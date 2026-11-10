@@ -39,3 +39,5 @@
   #aetherius-residences .ar-header, #aetherius-residences .ar-body, #aetherius-residences .ar-footer { padding-left:18px; padding-right:18px; }
 }
 @media(prefers-reduced-motion:reduce){#aetherius-residences button{transition:none}}
+
+.ar-amenities{margin:20px 0}.ar-amenities h3{font:inherit;font-weight:600}.ar-amenity{display:flex;justify-content:space-between;gap:24px;font-size:16px}.ar-amenity strong{color:#d5dbd8;font-weight:400;text-align:right}#ar-tour-hud{position:fixed;top:8%;left:50%;transform:translateX(-50%);background:rgba(12,14,13,.86);border:1px solid #549775;color:#eee;padding:16px 22px;font:17px sans-serif;z-index:10000}#ar-tour-hud[hidden]{display:none}#ar-tour-hud button{display:block;background:transparent;color:#71d5a4;border:1px solid #549775;padding:8px 14px;margin-top:10px}

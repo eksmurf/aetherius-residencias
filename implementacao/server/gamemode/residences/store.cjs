@@ -4,11 +4,15 @@ const { fail } = require('./errors.cjs');
 const { terms, taxView, offerKind, TAX_PERIOD_DAYS, TAX_PERIOD_MS } = require('./tax.cjs');
 const { validateCatalog } = require('./catalog.cjs');
 const { createCityTaxes } = require('./city-taxes.cjs');
+const { createExtensions } = require('./extensions.cjs');
+const { createTours } = require('./tours.cjs');
+const { acquisition } = require('./estate-policy.cjs');
+const { publicSheet } = require('./amenities.cjs');
 const payloadHash = value => createHash('sha256').update(JSON.stringify(value)).digest('hex');
 // JSONB does not preserve object member order. Compare explicit values instead.
 const referenceSignature = refs => JSON.stringify(refs.map(ref => [ref.desc, ref.kind, ref.partner ?? null])
   .sort((a, b) => a[0].localeCompare(b[0])));
-function createStore({ db, currencies, cities = null, maxPerProfile = 1 }) {
+function createStore({ db, currencies, cities = null, maxPerProfile = 1, runtime = null, features = {} }) {
   async function transact(work) {
     const conn = await db.getConnection();
     let committing = false;
@@ -68,6 +72,8 @@ function createStore({ db, currencies, cities = null, maxPerProfile = 1 }) {
     });
   }
   const cityTaxes = createCityTaxes({ transact, authorize, cities });
+  const extensions = createExtensions({transact,authorize,cityTaxes,runtime,features});
+  const tours = createTours({transact,authorize,extensions});
   const snapshot = () => db.query(`SELECT r.*, COALESCE((SELECT jsonb_agg(m) FROM aetherius_residence_members m WHERE m.residence_id=r.id),'[]'::jsonb) AS members,
     EXISTS(SELECT 1 FROM aetherius_residence_tax_collections t WHERE t.residence_id=r.id
       AND t.collected_operation_id IS NULL AND t.city_id=r.tax_city_id) AS collection_pending
@@ -109,7 +115,10 @@ function createStore({ db, currencies, cities = null, maxPerProfile = 1 }) {
         if (!currencies.available(input.currency)) fail(input.currency === 'diademas' ? 'DIADEMAS_UNAVAILABLE' : 'CURRENCY');
         const [owned] = await conn.query('SELECT count(*) AS total FROM aetherius_residences WHERE owner_profile_id=$1', [session.profileId]);
         if (Number(owned[0].total) >= maxPerProfile) fail('LIMIT');
+        await extensions.beforePurchase(conn,residence,input);
         const taxTerms=terms(residence.definition.prices.septims);
+        const history=acquisition(residence,session,input.currency,amount,taxTerms.basePrice,operationId);
+        await conn.query('UPDATE aetherius_residences SET acquisition_history=$2::jsonb WHERE id=$1',[residence.id,JSON.stringify(history)]);
         chargeCurrency = input.currency;
         walletId = await currencies.debit(conn, { ...session, currency: chargeCurrency, amount, purchaseId: operationId });
         if(resale) await currencies.creditSeller(conn,{amount,profileId:residence.owner_profile_id,accountId:residence.owner_account_id,characterId:residence.seller_character_id,purchaseId:operationId});
@@ -211,7 +220,7 @@ function createStore({ db, currencies, cities = null, maxPerProfile = 1 }) {
         }
         const [members]=await conn.query('SELECT profile_id,display_name,family FROM aetherius_residence_members WHERE residence_id=$1 ORDER BY created_at,profile_id',[row.id]);
         result.push({residenceId:row.id,name:row.definition.name,open:!row.locked,accessRevision:row.access_revision,listingPrice:row.listing_price,
-          tax:taxView(row,c=>currencies.available(c)),members:members.map(m=>({profileId:m.profile_id,name:m.display_name.slice(0,48),family:m.family})),memberLimit:5,familyLimit:2});
+          instantSale:extensions.saleView(row),amenities:publicSheet(row),tax:taxView(row,c=>currencies.available(c)),members:members.map(m=>({profileId:m.profile_id,name:m.display_name.slice(0,48),family:m.family})),memberLimit:5,familyLimit:2});
       }
       return {residences:result,serverNow:new Date().toISOString()};
     });
@@ -232,6 +241,6 @@ function createStore({ db, currencies, cities = null, maxPerProfile = 1 }) {
     });
   }
 
-  return { installCatalog, snapshot, keys, status, mutate, properties, inventoryKeys, cityTaxes };
+  return { installCatalog, snapshot, keys, status, mutate, properties, inventoryKeys, cityTaxes, extensions, tours };
 }
 module.exports = { createStore };

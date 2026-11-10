@@ -72,7 +72,7 @@ before(async()=>{
     CREATE TABLE test_cash_wallet(account_id uuid PRIMARY KEY,balance integer CHECK(balance>=0));
     CREATE TABLE test_city_treasury(city_id varchar(64) PRIMARY KEY,balance bigint NOT NULL DEFAULT 0);
     CREATE TABLE test_city_grants(profile_id integer,account_id uuid,city_id varchar(64),permission text,PRIMARY KEY(profile_id,city_id,permission));`);
-  const c=await connect();try{await c.query(fs.readFileSync(path.join(__dirname,'../migrations/001_residences.sql'),'utf8')+fs.readFileSync(path.join(__dirname,'../migrations/002_household_tax.sql'),'utf8')+fs.readFileSync(path.join(__dirname,'../migrations/003_city_tax_collection.sql'),'utf8'));}finally{c.release();}
+  const c=await connect();try{await c.query(fs.readFileSync(path.join(__dirname,'../migrations/001_residences.sql'),'utf8')+fs.readFileSync(path.join(__dirname,'../migrations/002_household_tax.sql'),'utf8')+fs.readFileSync(path.join(__dirname,'../migrations/003_city_tax_collection.sql'),'utf8')+fs.readFileSync(path.join(__dirname,'../migrations/006_residence_extensions.sql'),'utf8'));}finally{c.release();}
 });
 beforeEach(async()=>{
   unknownCommit=false;badCashReceipt=false;cityCreditFailure=false;badCityReceipt=false;

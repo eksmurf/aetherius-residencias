@@ -1,6 +1,6 @@
 {
-  "version": "0.4.0",
-  "preparedOn": "2026-11-05",
+  "version": "0.5.0",
+  "preparedOn": "2026-11-10",
   "target": "Aetherius official server",
   "upstream": {
     "url": "https://github.com/Alduinak-RP/alduinak",
@@ -117,7 +117,7 @@
     "gameTestsExecuted": false,
     "pollPublished": false,
     "realResidenceCatalogValidated": false,
-    "automatedTestsExecuted": false,
+    "automatedTestsExecuted": true,
     "deployed": false,
     "draftResidencesMapped": 12,
     "catalogStructureChecked": true,
@@ -134,7 +134,7 @@
     "currentUiPreviewChecked": false,
     "integratorDryRunChecked": true,
     "previousReleaseUiPreviewChecked": "0.3.6",
-    "javascriptSyntaxCheckedFiles": 21,
+    "javascriptSyntaxCheckedFiles": 28,
     "preparedTests": 66,
     "visitorLimitStaticReview": true,
     "productionInspected": false,
@@ -143,16 +143,24 @@
     "uiPreviewScope": "offline HTML with fictional data; no domain suite, database, game server or live tax validation",
     "uiPreviewReport": "atualizacao/VERIFICACAO-UI-0.3.6.json",
     "cityAdapterSupplied": false,
-    "cityCollectionTestsExecuted": false
+    "cityCollectionTestsExecuted": true,
+    "cityCollectionTestScope": "PGlite in-memory SQL with received IPTU3 and mocked native treasury; not production",
+    "currentValidationReport": "VALIDACAO-0.5.0.md",
+    "domainUiTestsPassed": 42,
+    "extensionSqlTestsPassed": 8,
+    "composedIptu3SqlTestsPassed": 8,
+    "iptu3RegressionTestsPassed": 1,
+    "externalPostgresqlTestsExecuted": false,
+    "officialExtensionAdapterSupplied": false
   },
   "pending": [
-    "Integrate migrations 002 and 003, CORE UI routing and TypeScript/server/client builds",
-    "Migrate physical legacy keys before opening public access, including offline inventories",
-    "Preserve the official Diademas adapter already validated by the team; its deployed source was not supplied",
-    "Approve interior cells/storage/door records, particularly Hjerim; verify native locks and persistence",
-    "Execute automated suites and official multiplayer acceptance matrix for 0.4.0",
-    "Provide official-cities.cjs with municipal permissions and same-transaction treasury credit",
-    "Reconcile historical IPTU receipts before importing old collection liabilities"
+    "Identify the deployed revision; reconcile and apply the IPTU3-compatible delta and migration 006 without overwriting municipal registration or native adapters",
+    "Implement official-extensions.cjs against verified runtime transfer barriers, native credit reconciliation and complete tour protection/recovery before enabling the two features",
+    "Connect S+ reviewAmenities and reviewAcquisition to the official administration router and validate historical acquisition evidence",
+    "Approve real interior amenities, enabled objects, native access and persistent storage; candidate mapping is not an approved commercial sheet",
+    "Preserve official Diademas and city adapters; no substitute wallet or conversion",
+    "Run external PostgreSQL and official multiplayer/CEF acceptance from ATUALIZACAO-0.5.0.md",
+    "Reconcile historical IPTU receipts and legacy key migration according to the actual installed revision"
   ],
   "catalogProvenance": "catalogo/PROVENIENCIA-MAPEAMENTO.json",
   "uiReferences": [
@@ -172,7 +180,7 @@
     "deferredResidences": 7
   },
   "rules": "REGRAS-0.3.md",
-  "documentationRevision": "upgrade-guide-1",
+  "documentationRevision": "extensions-1",
   "userReportedInstalledRelease": {
     "date": "2026-10-31",
     "version": "0.1.0",
@@ -180,7 +188,7 @@
     "basis": "user_confirmation",
     "runtimeRevisionVerified": false
   },
-  "updateGuide": "ATUALIZACAO-0.4.0.md",
+  "updateGuide": "ATUALIZACAO-0.5.0.md",
   "uiUpdateGuide": "ATUALIZACAO-0.3.6.md",
   "taxPolicy": {
     "periodDays": 15,
@@ -199,5 +207,27 @@
     "creditDestination": "official municipal treasury adapter",
     "unassignedPayments": "pending until binding",
     "historicalPayments": "require official reconciliation before import"
+  },
+  "extensionRules": {
+    "instantSalePercent": 40,
+    "rounding": "floor",
+    "taxDeduction": "min(grossReturn,outstandingTax)",
+    "excessDebt": "audited and extinguished on sale; never additionally debited",
+    "tourSeconds": 60,
+    "tourEligibility": "for sale with no owner, including after instant sale",
+    "adapterContract": "aetherius-residence-extensions-v1",
+    "integrationEnabled": false
+  },
+  "compatibility": {
+    "receivedIptu3": true,
+    "deployedRevisionVerified": false,
+    "delta": "compat/IPTU3/residencias-0.5.0.patch",
+    "manifest": "compat/IPTU3/manifest.json"
+  },
+  "amenitiesEvidence": {
+    "report": "catalogo/FICHAS-20261110.md",
+    "houses": 5,
+    "approvedForCommercialUse": false,
+    "scope": "received historical interior IDs resolved against the available MO2 load order; not a verified production snapshot"
   }
 }

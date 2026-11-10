@@ -1,0 +1,512 @@
+diff --git a/server/gamemode/residences/006_residence_extensions.sql b/server/gamemode/residences/006_residence_extensions.sql
+new file mode 100644
+index 0000000..31d28eb
+--- /dev/null
++++ b/server/gamemode/residences/006_residence_extensions.sql
+@@ -0,0 +1,30 @@
++BEGIN;
++-- 004 and 005 belong to door registration/IPTU3. Existing provenance stays unknown.
++ALTER TABLE aetherius_residences ADD COLUMN IF NOT EXISTS acquisition_history jsonb NOT NULL DEFAULT '{"status":"unknown"}';
++-- Existing rows stay unknown. Only a newly created stable registry starts a new chain.
++ALTER TABLE aetherius_residences ALTER COLUMN acquisition_history SET DEFAULT '{"status":"never","source":"created-after-006"}';
++ALTER TABLE aetherius_residences ADD COLUMN IF NOT EXISTS amenities jsonb;
++CREATE TABLE IF NOT EXISTS aetherius_residence_sale_quotes (
++ id uuid PRIMARY KEY, account_id uuid NOT NULL, profile_id integer NOT NULL,
++ character_id uuid NOT NULL, session_id uuid NOT NULL,
++ residence_id varchar(48) NOT NULL REFERENCES aetherius_residences(id),
++ access_revision integer NOT NULL, revision integer NOT NULL,
++ base integer NOT NULL CHECK(base>0), amount integer NOT NULL CHECK(amount>0), tax jsonb NOT NULL,
++ ready_at timestamptz, expires_at timestamptz NOT NULL, cancelled boolean NOT NULL DEFAULT false,
++ created_at timestamptz NOT NULL DEFAULT now()
++);
++CREATE TABLE IF NOT EXISTS aetherius_residence_extension_operations (
++ id uuid PRIMARY KEY, account_id uuid NOT NULL, profile_id integer NOT NULL, character_id uuid NOT NULL,
++ request_id uuid NOT NULL, residence_id varchar(48) NOT NULL REFERENCES aetherius_residences(id),
++ action text NOT NULL, payload_hash text NOT NULL, result jsonb NOT NULL,
++ created_at timestamptz NOT NULL DEFAULT now(), UNIQUE(account_id,request_id)
++);
++CREATE TABLE IF NOT EXISTS aetherius_residence_tours (
++ id uuid PRIMARY KEY, account_id uuid NOT NULL, profile_id integer NOT NULL, character_id uuid NOT NULL,
++ session_id uuid NOT NULL, residence_id varchar(48) NOT NULL REFERENCES aetherius_residences(id),
++ revision integer NOT NULL, state text NOT NULL CHECK(state IN ('entering','active','returning','closed')),
++ route jsonb NOT NULL, reason text, deadline timestamptz NOT NULL,
++ created_at timestamptz NOT NULL DEFAULT now(), closed_at timestamptz
++);
++CREATE UNIQUE INDEX IF NOT EXISTS aetherius_residence_one_tour ON aetherius_residence_tours(account_id) WHERE state<>'closed';
++COMMIT;
+diff --git a/server/gamemode/residences/amenities.cjs b/server/gamemode/residences/amenities.cjs
+new file mode 100644
+index 0000000..7652dc1
+--- /dev/null
++++ b/server/gamemode/residences/amenities.cjs
+@@ -0,0 +1,35 @@
++'use strict';
++const { fail, integer } = require('./errors.cjs');
++const { descriptor } = require('./catalog.cjs');
++const labels = {storage:'Armazenamentos utilizáveis',bed:'Camas utilizáveis',enchanting:'Mesa de encantamento',alchemy:'Mesa de alquimia',cooking:'Cozinha',oven:'Forno de assar',forge:'Forja',workbench:'Bancada de armaduras',grindstone:'Pedra de amolar',tanning:'Curtume',smelter:'Fundição'};
++function validateSheet(sheet, row) {
++  if(!sheet || !integer(sheet.revision) || sheet.catalogRevision!==row.revision ||
++    !Array.isArray(sheet.cells) || !Array.isArray(sheet.objects) || sheet.objects.length>4096 ||
++    typeof sheet.source!=='string' || !sheet.source.trim() || sheet.source.length>500 ||
++    !Number.isFinite(Date.parse(sheet.verifiedAt)) || !Array.isArray(sheet.complete)) fail('AMENITIES');
++  const cells=sheet.cells.map(descriptor), actual=row.definition.interiorCells;
++  if(cells.length!==actual.length || new Set(cells).size!==cells.length || cells.some(c=>!actual.includes(c))) fail('AMENITIES');
++  if(sheet.complete.some(c=>!Object.hasOwn(labels,c)))fail('AMENITIES');
++  const objects=new Map();
++  for(const raw of sheet.objects){
++    const id=descriptor(raw.id), cell=descriptor(raw.cell);
++    if(objects.has(id)||!cells.includes(cell)||!Array.isArray(raw.functions)||!raw.functions.length||raw.functions.some(f=>!Object.hasOwn(labels,f))||new Set(raw.functions).size!==raw.functions.length||
++      !['usable','unavailable','conditional','unknown'].includes(raw.state)||typeof raw.evidence!=='string'||!raw.evidence.trim()||raw.evidence.length>1000||
++      typeof raw.reason!=='string'||raw.reason.length>500||typeof raw.subtype!=='string'||raw.subtype.length>80) fail('AMENITIES');
++    if(raw.state==='usable' && (raw.present!==true||raw.accessible!==true||raw.functional!==true||
++      (raw.functions.includes('storage')&&raw.persistenceVerified!==true)))fail('AMENITIES');
++    objects.set(id,{...raw,id,cell});
++  }
++  for(const category of sheet.complete) if([...objects.values()].some(o=>o.functions.includes(category)&&['unknown','conditional'].includes(o.state)))fail('AMENITIES');
++  return {...sheet,cells,objects:[...objects.values()]};
++}
++function publicSheet(row){
++  let sheet;try{sheet=validateSheet(row.amenities,row);}catch{return {revision:null,verified:false,items:Object.entries(labels).map(([category,label])=>({category,label,count:null,description:'Em verificação'}))};}
++  const items=Object.entries(labels).map(([category,label])=>{
++    const complete=sheet.complete.includes(category), objects=sheet.objects.filter(o=>o.functions.includes(category)&&o.state==='usable');
++    const subtypes={};for(const o of objects)if(o.subtype)subtypes[o.subtype]=(subtypes[o.subtype]||0)+1;
++    return {category,label,count:complete?objects.length:null,description:complete?(objects.length?'':'Não possui'):'Em verificação',subtypes:complete?subtypes:{}};
++  });
++  return {revision:sheet.revision,verified:items.every(i=>i.count!==null),items};
++}
++module.exports={labels,validateSheet,publicSheet};
+diff --git a/server/gamemode/residences/errors.cjs b/server/gamemode/residences/errors.cjs
+index 78dfd8d..03794ff 100644
+--- a/server/gamemode/residences/errors.cjs
++++ b/server/gamemode/residences/errors.cjs
+@@ -1,5 +1,15 @@
+ 'use strict';
+ const messages = {
++  EXT_UNAVAILABLE:'Função aguardando integração oficial.',
++  INSTANT_INELIGIBLE:'Esta aquisição não permite venda instantânea.',
++  INSTANT_CREDIT:'Não foi possível registrar o crédito oficial da venda.',
++  QUOTE_EXPIRED:'Confirmação expirada ou cancelada. Inicie novamente.',
++  QUOTE_EARLY:'Aguarde os dez segundos antes de confirmar.',
++  AMENITIES:'Características do imóvel em verificação.',
++  AMENITIES_CHANGED:'As características mudaram. Consulte a oferta novamente.',
++  TOUR_INELIGIBLE:'Visita disponível apenas para imóveis à venda sem proprietário.',
++  TOUR_UNSAFE:'Visita indisponível: combate, destino ou proteção não confirmados.',
++  TOUR_RETURN:'Uma visita anterior aguarda retorno seguro.',
+   CITY_UNAVAILABLE: 'A integração da cidade está indisponível. Os impostos pagos aguardam recolhimento.',
+   CITY_UNASSIGNED: 'Esta residência aguarda vínculo com uma cidade.',
+   CITY_CHANGED: 'O vínculo municipal mudou. Consulte a residência novamente.',
+diff --git a/server/gamemode/residences/estate-policy.cjs b/server/gamemode/residences/estate-policy.cjs
+new file mode 100644
+index 0000000..2e23f8b
+--- /dev/null
++++ b/server/gamemode/residences/estate-policy.cjs
+@@ -0,0 +1,19 @@
++'use strict';
++const {taxView}=require('./tax.cjs');
++function instantOffer(row){
++  const h=row.acquisition_history;
++  if(!h || h.status!=='acquired' || h.chain!=='septims' || h.currency!=='septims')return {eligible:false,reason:h?.currency==='diademas'||h?.chain==='diademas'?'Casas adquiridas com Diademas não têm venda instantânea.':'Origem da aquisição em verificação.'};
++  if(h.profileId!==row.owner_profile_id || h.accountId!==row.owner_account_id || !Number.isSafeInteger(h.base)||h.base<1||h.base>2147483647)return {eligible:false,reason:'Base da aquisição em verificação.'};
++  const tax=taxView(row);
++  if(!tax.configured||!Number.isSafeInteger(tax.amount))return {eligible:false,reason:'Imposto em verificação.'};
++  const amount=Number(BigInt(h.base)*40n/100n);
++  if(!amount)return {eligible:false,reason:'O valor base não permite retorno inteiro positivo.'};
++  return {eligible:true,base:h.base,amount,net:Math.max(0,amount-tax.amount),taxWithheld:Math.min(amount,tax.amount),taxWaived:Math.max(0,tax.amount-amount),taxAmount:tax.amount,taxPeriods:tax.periods,dueAt:tax.dueAt,loss:h.base-amount,rounding:h.base%5!==0,currency:'septims'};
++}
++function acquisition(row,session,currency,paid,base,operationId){
++  const previous=row.acquisition_history;
++  const chain=currency==='diademas'||previous?.chain==='diademas'?'diademas':previous?.status==='never'||previous?.chain==='septims'?'septims':'unknown';
++  return {status:'acquired',chain,currency,paid,base,operationId,profileId:session.profileId,accountId:session.accountId,characterId:session.characterId};
++}
++function tourEligible(row){return row.owner_profile_id===null&&row.for_sale===true;}
++module.exports={instantOffer,acquisition,tourEligible};
+diff --git a/server/gamemode/residences/extensions.cjs b/server/gamemode/residences/extensions.cjs
+new file mode 100644
+index 0000000..472224c
+--- /dev/null
++++ b/server/gamemode/residences/extensions.cjs
+@@ -0,0 +1,129 @@
++'use strict';
++const {randomUUID,createHash}=require('node:crypto');
++const {fail,uuid,integer}=require('./errors.cjs');
++const {instantOffer,tourEligible}=require('./estate-policy.cjs');
++const {publicSheet,validateSheet}=require('./amenities.cjs');
++const CONTRACT='aetherius-residence-extensions-v1';
++function createExtensions({transact,authorize,cityTaxes,runtime=null,features={}}){
++  if(runtime && runtime.contract!==CONTRACT)throw Error('Contrato de extensões residenciais incompatível.');
++  const sessions=new WeakMap();
++  const sessionId=s=>{if(!sessions.has(s.identity))sessions.set(s.identity,randomUUID());return sessions.get(s.identity);};
++  const saleAvailable=()=>features.instantSale===true&&typeof runtime?.withTransferBarrier==='function'&&typeof runtime?.creditInstantSaleInTransaction==='function';
++  const toursAvailable=()=>features.tours===true&&typeof runtime?.prepareTour==='function'&&typeof runtime?.protectTour==='function'&&typeof runtime?.enterTour==='function'&&typeof runtime?.observeTour==='function'&&typeof runtime?.returnTour==='function'&&typeof runtime?.releaseTour==='function';
++  async function rowLock(conn,id){const [rows]=await conn.query('SELECT * FROM aetherius_residences WHERE id=$1 FOR UPDATE',[id]);if(!rows.length)fail('NOT_FOUND');return rows[0];}
++  async function owned(conn,s,id,guard){await authorize(conn,s);const row=await rowLock(conn,id);guard(row);if(row.owner_profile_id!==s.profileId||row.owner_account_id!==s.accountId)fail('FORBIDDEN');return row;}
++  function saleView(row){return saleAvailable()?instantOffer(row):{eligible:false,reason:'Venda instantânea aguardando integração oficial.'};}
++  function tourView(row){return {available:toursAvailable()&&tourEligible(row),reason:row.owner_profile_id!==null?'Imóvel em revenda. Combine uma visita com o proprietário.':!tourEligible(row)?'Imóvel indisponível para visita.':'Visita aguardando validação do interior e da proteção no servidor.'};}
++  async function quote(s,input,guard){
++    if(!saleAvailable())fail('EXT_UNAVAILABLE');
++    return transact(async conn=>{
++      const row=await owned(conn,s,input.residenceId,guard), offer=instantOffer(row);
++      if(!offer.eligible)fail('INSTANT_INELIGIBLE');
++      if(row.access_revision!==input.accessRevision)fail('STALE');
++      const id=randomUUID();
++      await conn.query(`INSERT INTO aetherius_residence_sale_quotes(id,account_id,profile_id,character_id,session_id,residence_id,access_revision,revision,base,amount,tax,expires_at)
++        VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11::jsonb,clock_timestamp()+interval '2 minutes')`,[id,s.accountId,s.profileId,s.characterId,sessionId(s),row.id,row.access_revision,row.revision,offer.base,offer.amount,JSON.stringify({amount:offer.taxAmount,periods:offer.taxPeriods,dueAt:offer.dueAt})]);
++      guard(row);return {...offer,quoteId:id,residenceId:row.id,name:row.definition.name,expiresInSeconds:120};
++    });
++  }
++  async function getQuote(conn,s,input,row){
++    const [rows]=await conn.query('SELECT *,clock_timestamp() AS server_now FROM aetherius_residence_sale_quotes WHERE id=$1 FOR UPDATE',[input.quoteId]);const q=rows[0];
++    if(!q||q.cancelled||q.account_id!==s.accountId||q.profile_id!==s.profileId||q.character_id!==s.characterId||q.session_id!==sessionId(s)||q.residence_id!==row.id||new Date(q.expires_at).getTime()<=new Date(q.server_now).getTime())fail('QUOTE_EXPIRED');
++    const offer=instantOffer(row);
++    if(!offer.eligible||q.revision!==row.revision||q.access_revision!==row.access_revision||q.base!==offer.base||q.amount!==offer.amount||q.tax.amount!==offer.taxAmount||q.tax.periods!==offer.taxPeriods||q.tax.dueAt!==offer.dueAt)fail('STALE');
++    return q;
++  }
++  async function arm(s,input,guard){
++    if(!saleAvailable())fail('EXT_UNAVAILABLE');
++    return transact(async conn=>{
++      const row=await owned(conn,s,input.residenceId,guard);await getQuote(conn,s,input,row);
++      // Repeated delivery preserves the original deadline; client still displays ten full seconds.
++      const [rows]=await conn.query(`UPDATE aetherius_residence_sale_quotes SET ready_at=COALESCE(ready_at,clock_timestamp()+interval '10 seconds') WHERE id=$1 RETURNING ready_at,expires_at`,[input.quoteId]);
++      guard(row);return {quoteId:input.quoteId,readyAt:rows[0].ready_at,expiresAt:rows[0].expires_at,waitSeconds:10};
++    });
++  }
++  async function cancel(s,input){return transact(async conn=>{await authorize(conn,s);await conn.query('UPDATE aetherius_residence_sale_quotes SET cancelled=true WHERE id=$1 AND account_id=$2 AND session_id=$3',[input.quoteId,s.accountId,sessionId(s)]);return {cancelled:true};});}
++  async function status(s,requestId){return transact(async conn=>{await authorize(conn,s);const [rows]=await conn.query('SELECT result FROM aetherius_residence_extension_operations WHERE account_id=$1 AND profile_id=$2 AND request_id=$3',[s.accountId,s.profileId,requestId]);return rows[0]?.result||null;});}
++  async function sell(s,input,guard){
++    if(!saleAvailable())fail('EXT_UNAVAILABLE');
++    // The official barrier drains storage writes and survives uncertain SQL/native outcomes.
++    return runtime.withTransferBarrier({session:s,residenceId:input.residenceId,requestId:input.requestId},()=>transact(async conn=>{
++      await conn.query('SELECT pg_advisory_xact_lock(174623,$1)',[s.profileId]);await authorize(conn,s);
++      const hash=createHash('sha256').update(JSON.stringify([input.residenceId,input.quoteId])).digest('hex');
++      const [old]=await conn.query('SELECT * FROM aetherius_residence_extension_operations WHERE account_id=$1 AND request_id=$2',[s.accountId,input.requestId]);
++      if(old.length){if(old[0].profile_id!==s.profileId||old[0].payload_hash!==hash)fail('CONFLICT');return old[0].result;}
++      const row=await owned(conn,s,input.residenceId,guard),q=await getQuote(conn,s,input,row);
++      if(!q.ready_at||new Date(q.server_now).getTime()<new Date(q.ready_at).getTime())fail('QUOTE_EARLY');
++      const id=randomUUID(),withheld=Math.min(q.amount,q.tax.amount),net=q.amount-withheld,result={operationId:id,residenceId:row.id,action:'instantSell',amount:net,gross:q.amount,taxAmount:q.tax.amount,taxWithheld:withheld,taxWaived:Math.max(0,q.tax.amount-withheld),base:q.base,loss:q.base-q.amount,currency:'septims',ownerProfileId:null};
++      if(net>0){
++        const receipt=await runtime.creditInstantSaleInTransaction(conn,{...s,operationId:id,idempotencyKey:`residence-instant:${id}`,residenceId:row.id,amount:net,currency:'septims',reason:'residence_instant_sale'});
++        if(!receipt||receipt.amount!==net||receipt.currency!=='septims'||receipt.accountId!==s.accountId||receipt.characterId!==s.characterId||typeof receipt.transactionId!=='string'||!receipt.transactionId)fail('INSTANT_CREDIT');
++        result.transactionId=receipt.transactionId;
++      }
++      if(q.tax.amount>0){
++        const taxId=randomUUID();
++        await conn.query(`INSERT INTO aetherius_residence_operations(id,profile_id,account_id,character_id,request_id,action,residence_id,payload_hash,currency,amount,result)
++          VALUES($1,$2,$3,$4,$5,'payTax',$6,$7,'septims',$8,$9::jsonb)`,[taxId,s.profileId,s.accountId,s.characterId,randomUUID(),row.id,hash,withheld,JSON.stringify({operationId:taxId,source:'instant-sale-proceeds',saleOperationId:id,amount:withheld,originalDebt:q.tax.amount,waived:Math.max(0,q.tax.amount-withheld)})]);
++        await conn.query('INSERT INTO aetherius_residence_tax_receipts(residence_id,due_at,operation_id) VALUES($1,$2,$3)',[row.id,q.tax.dueAt,taxId]);
++        await cityTaxes.recordPayment(conn,row,taxId,withheld);
++        result.taxOperationId=taxId;
++      }
++      await conn.query('DELETE FROM aetherius_residence_members WHERE residence_id=$1',[row.id]);
++      await conn.query("UPDATE aetherius_residence_keys SET delivery_state='revoked' WHERE residence_id=$1",[row.id]);
++      await conn.query(`UPDATE aetherius_residences SET owner_profile_id=NULL,owner_account_id=NULL,locked=true,generation=generation+1,access_revision=access_revision+1,
++        for_sale=true,listing_price=NULL,seller_character_id=NULL,tax_due_at=NULL,tax_terms=NULL,updated_at=now() WHERE id=$1`,[row.id]);
++      await conn.query('UPDATE aetherius_residence_sale_quotes SET cancelled=true WHERE residence_id=$1',[row.id]);
++      await conn.query(`INSERT INTO aetherius_residence_extension_operations(id,account_id,profile_id,character_id,request_id,residence_id,action,payload_hash,result)
++        VALUES($1,$2,$3,$4,$5,$6,'instantSell',$7,$8::jsonb)`,[id,s.accountId,s.profileId,s.characterId,input.requestId,row.id,hash,JSON.stringify({...result,acquisition:row.acquisition_history})]);
++      guard(row);return result;
++    }));
++  }
++  async function review(s,input,guard){
++    if(!uuid(input.requestId)||typeof input.residenceId!=='string'||input.residenceId.length>48)fail('INVALID');
++    return transact(async conn=>{
++      await authorize(conn,s);
++      const [staff]=await conn.query("SELECT id FROM users WHERE id=$1 AND role='superadmin' AND is_banned IS FALSE FOR SHARE",[s.accountId]);if(!staff.length)fail('FORBIDDEN');
++      const row=await rowLock(conn,input.residenceId);guard(row);
++      const current=row.amenities?.revision||0;
++      if(input.expectedRevision!==current||input.sheet?.revision!==current+1)fail('STALE');
++      const sheet=validateSheet(input.sheet,row);
++      await conn.query('UPDATE aetherius_residences SET amenities=$2::jsonb WHERE id=$1',[row.id,JSON.stringify(sheet)]);
++      await conn.query(`INSERT INTO aetherius_residence_extension_operations(id,account_id,profile_id,character_id,request_id,residence_id,action,payload_hash,result)
++        VALUES($1,$2,$3,$4,$5,$6,'reviewAmenities',$7,$8::jsonb)`,[randomUUID(),s.accountId,s.profileId,s.characterId,input.requestId,row.id,createHash('sha256').update(JSON.stringify(sheet)).digest('hex'),JSON.stringify({revision:sheet.revision,source:sheet.source,sheet})]);
++      guard(row);return publicSheet({...row,amenities:sheet});
++    });
++  }
++  async function beforePurchase(conn,row,input){
++    const sheet=publicSheet(row);
++    if(features.requireAmenities===true && !sheet.verified)fail('AMENITIES');
++    if((input.amenitiesRevision??null)!==sheet.revision)fail('AMENITIES_CHANGED');
++    const [tours]=await conn.query("SELECT id FROM aetherius_residence_tours WHERE residence_id=$1 AND state<>'closed'",[row.id]);
++    if(tours.length){
++      if(typeof runtime?.revokeToursBeforeTransfer!=='function')fail('EXT_UNAVAILABLE');
++      // Returns only after interaction guards are installed. Rollback may end a tour, never sell a house.
++      await runtime.revokeToursBeforeTransfer(tours.map(t=>t.id));
++      await conn.query("UPDATE aetherius_residence_tours SET state='returning',reason='purchase' WHERE residence_id=$1 AND state<>'closed'",[row.id]);
++    }
++  }
++  async function reviewAcquisition(s,input,guard){
++    if(!uuid(input.requestId)||!uuid(input.purchaseId)||!integer(input.basePrice)||!integer(input.accessRevision)||
++      !['septims','diademas'].includes(input.chain)||typeof input.evidence!=='string'||input.evidence.trim().length<20||input.evidence.length>2000)fail('INVALID');
++    return transact(async conn=>{
++      await authorize(conn,s);
++      const [staff]=await conn.query("SELECT id FROM users WHERE id=$1 AND role='superadmin' AND is_banned IS FALSE FOR SHARE",[s.accountId]);if(!staff.length)fail('FORBIDDEN');
++      const row=await rowLock(conn,input.residenceId);guard(row);
++      if(row.access_revision!==input.accessRevision||row.tax_terms?.basePrice!==input.basePrice)fail('STALE');
++      const [purchases]=await conn.query("SELECT * FROM aetherius_residence_operations WHERE residence_id=$1 AND action='purchase' ORDER BY created_at DESC,id DESC",[row.id]);
++      const last=purchases[0];
++      if(!last||last.id!==input.purchaseId||last.profile_id!==row.owner_profile_id||last.account_id!==row.owner_account_id||
++        (input.chain==='septims'&&purchases.some(p=>p.currency!=='septims')))fail('INSTANT_INELIGIBLE');
++      const history={status:'acquired',chain:input.chain,currency:last.currency,paid:last.amount,base:input.basePrice,operationId:last.id,profileId:last.profile_id,accountId:last.account_id,characterId:last.character_id,reviewedBy:s.profileId,evidence:input.evidence};
++      await conn.query('UPDATE aetherius_residences SET acquisition_history=$2::jsonb,access_revision=access_revision+1 WHERE id=$1',[row.id,JSON.stringify(history)]);
++      await conn.query(`INSERT INTO aetherius_residence_extension_operations(id,account_id,profile_id,character_id,request_id,residence_id,action,payload_hash,result)
++        VALUES($1,$2,$3,$4,$5,$6,'reviewAcquisition',$7,$8::jsonb)`,[randomUUID(),s.accountId,s.profileId,s.characterId,input.requestId,row.id,createHash('sha256').update(JSON.stringify(history)).digest('hex'),JSON.stringify({previous:row.acquisition_history,history})]);
++      guard(row);return {reviewed:true,residenceId:row.id};
++    });
++  }
++  return {quote,arm,cancel,sell,status,review,reviewAcquisition,beforePurchase,saleView,tourView,sessionId,toursAvailable,runtime};
++}
++module.exports={createExtensions,CONTRACT};
+diff --git a/server/gamemode/residences/install.cjs b/server/gamemode/residences/install.cjs
+index e11a76a..58cbb8e 100644
+--- a/server/gamemode/residences/install.cjs
++++ b/server/gamemode/residences/install.cjs
+@@ -28,7 +28,9 @@ async function install({ mp, gamemodeDir, configPath = path.resolve(gamemodeDir,
+   const cities = fs.existsSync(cityAdapterPath) ? require(cityAdapterPath) : null;
+   const currencies = createCurrencies(transactionService, diademas);
+   const host = createHost({ mp, commands, keyDescriptor: config.keyDescriptor, maxDistance: config.maxDistance });
+-  const store = createStore({ db, currencies, cities, maxPerProfile: config.maxPerProfile });
++  const extensionPath=path.join(__dirname,'official-extensions.cjs');
++  const runtime=fs.existsSync(extensionPath)?require(extensionPath):null;
++  const store = createStore({ db, currencies, cities, maxPerProfile: config.maxPerProfile, runtime, features:config.extensions||{} });
+   const lease = await db.getConnection();
+   let closed = false, healthy = false, writes = 0, refreshedAt = 0, refreshing = null, rows = new Map(), refs = new Map(), cells = new Map();
+   const hooks = [];
+@@ -66,6 +68,7 @@ async function install({ mp, gamemodeDir, configPath = path.resolve(gamemodeDir,
+         try { await refreshing; } finally { refreshing = null; }
+       },
+     };
++    await store.tours.recover();
+     await store.installCatalog(config.residences);
+     await state.refresh();
+     const service = createService({ store, host, currencies, state, purchasesEnabled: config.purchasesEnabled, allowProfiles: config.allowProfiles });
+@@ -136,7 +139,7 @@ async function install({ mp, gamemodeDir, configPath = path.resolve(gamemodeDir,
+       if (event.type !== 'residences:request') return false;
+       await service.receive(actorId, event.data); return true;
+     });
+-    timer = setInterval(() => { state.refresh().catch(() => { healthy = false; }); }, 1500);
++    timer = setInterval(() => { state.refresh().catch(() => { healthy = false; }); store.tours.step().catch(() => { healthy = false; }); }, 1500);
+     timer.unref?.();
+     const api = { service, doorRegistration, healthy: () => healthy && Date.now() - refreshedAt <= 5000,
+       async close() {
+@@ -148,6 +151,14 @@ async function install({ mp, gamemodeDir, configPath = path.resolve(gamemodeDir,
+       } };
+     const bridge={
+       healthy:api.healthy,
++      async reviewAmenities(actorId,payload){
++        const session=host.session(actorId);state.invalidate();
++        try{return await store.extensions.review(session,payload,()=>host.assertCurrent(session));}finally{await state.finishMutation();}
++      },
++      async reviewAcquisition(actorId,payload){
++        const session=host.session(actorId);state.invalidate();
++        try{return await store.extensions.reviewAcquisition(session,payload,()=>host.assertCurrent(session));}finally{await state.finishMutation();}
++      },
+       request:(actorId,action,payload)=>service.core(actorId,action,payload),
+       cityRequest:(actorId,action,payload)=>service.city(actorId,action,payload),
+       async inventoryKeys(actorId,context='personal'){
+diff --git a/server/gamemode/residences/service.cjs b/server/gamemode/residences/service.cjs
+index 30927cb..e2b32bf 100644
+--- a/server/gamemode/residences/service.cjs
++++ b/server/gamemode/residences/service.cjs
+@@ -3,10 +3,13 @@ const { messages, fail, uuid, integer } = require('./errors.cjs');
+ const { offerKind } = require('./tax.cjs');
+ const { randomUUID } = require('node:crypto');
+ const { cityRequest } = require('./city-taxes.cjs');
++const { publicSheet } = require('./amenities.cjs');
++const instantActions=['instantQuote','instantArm','instantCancel','instantSell'];
++const tourActions=['tourStart','tourStatus','tourEnd'];
+ const management=['public','addMember','setFamily','removeMember','payTax','listSale','cancelSale'];
+ function request(raw) {
+   if(!raw||typeof raw!=='object'||JSON.stringify(raw).length>2048||raw.version!==1||!uuid(raw.requestId)) fail('INVALID');
+-  const fields={offer:['residenceId'],purchase:['residenceId','revision','currency','accessRevision','offerKind'],status:['operationRequestId'],properties:[],
++  const fields={instantQuote:['residenceId','accessRevision'],instantArm:['residenceId','quoteId'],instantCancel:['residenceId','quoteId'],instantSell:['residenceId','quoteId','accessRevision'],tourStart:['residenceId','revision','door'],tourStatus:[],tourEnd:[],offer:['residenceId'],purchase:['residenceId','revision','currency','accessRevision','offerKind','amenitiesRevision'],status:['operationRequestId'],properties:[],
+     listSale:['residenceId','accessRevision','amount'],cancelSale:['residenceId','accessRevision'],
+     public:['residenceId','accessRevision','open'],addMember:['residenceId','accessRevision','query'],
+     setFamily:['residenceId','accessRevision','memberProfileId','family'],removeMember:['residenceId','accessRevision','memberProfileId','confirmed'],
+@@ -25,6 +28,10 @@ function request(raw) {
+   if(raw.action==='removeMember'&&raw.confirmed!==true) fail('INVALID');
+   if(raw.action==='status'&&!uuid(raw.operationRequestId)) fail('INVALID');
+   if(raw.action==='payTax'&&(!integer(raw.periods)||typeof raw.dueAt!=='string'||!Number.isFinite(Date.parse(raw.dueAt)))) fail('INVALID');
++  if(raw.action==='instantQuote'&&!integer(raw.accessRevision))fail('INVALID');
++  if(['instantArm','instantCancel','instantSell'].includes(raw.action)&&!uuid(raw.quoteId))fail('INVALID');
++  if(raw.action==='tourStart'&&(!integer(raw.revision)||typeof raw.door!=='string'||raw.door.length>160))fail('INVALID');
++  if(raw.action==='purchase'&&raw.amenitiesRevision!=null&&!integer(raw.amenitiesRevision))fail('INVALID');
+   return raw;
+ }
+ function createService({store,host,currencies,state,purchasesEnabled,allowProfiles=[]}) {
+@@ -33,7 +40,8 @@ function createService({store,host,currencies,state,purchasesEnabled,allowProfil
+     const session=host.session(actorId),input=request(raw);
+     if(!state.available()) fail('UNAVAILABLE');
+     if(allowProfiles.length&&!allowProfiles.includes(session.profileId)) fail('FORBIDDEN');
+-    if((management.includes(input.action)||input.action==='properties')&&channel!=='properties') fail('FORBIDDEN');
++    if((management.includes(input.action)||instantActions.includes(input.action)||input.action==='properties')&&channel!=='properties') fail('FORBIDDEN');
++    if(input.action==='tourStart'&&channel!=='door')fail('FORBIDDEN');
+     if(pending.has(session.profileId)) fail('BUSY');
+     let bucket=buckets.get(session.identity);
+     if(!bucket||Date.now()-bucket.start>10000){bucket={start:Date.now(),count:0};buckets.set(session.identity,bucket);}
+@@ -41,15 +49,27 @@ function createService({store,host,currencies,state,purchasesEnabled,allowProfil
+     pending.add(session.profileId);
+     try {
+       host.retireLegacyKeys(session);
+-      if(input.action==='properties') {const out=await store.properties(session);host.assertCurrent(session);return out;}
+-      if(input.action==='status') return await store.status(session,input.operationRequestId)||{committed:false,message:'Nenhum recibo encontrado. Reenvie o mesmo pedido.'};
++      if(input.action==='properties') {const out=await store.properties(session);out.tour=await store.tours.status(session);host.assertCurrent(session);return out;}
++      if(input.action==='tourStatus')return {tour:await store.tours.status(session)};
++      if(input.action==='tourEnd')return await store.tours.end(session);
++      if(input.action==='status') return await store.status(session,input.operationRequestId)||await store.extensions.status(session,input.operationRequestId)||{committed:false,message:'Nenhum recibo encontrado. Reenvie o mesmo pedido.'};
+       const residence=state.get(input.residenceId);
+       if(!residence) fail('NOT_FOUND');
+       if(input.action==='offer'||input.action==='purchase') host.assertNear(session,residence);
++      if(instantActions.includes(input.action)){
++        const method={instantQuote:'quote',instantArm:'arm',instantCancel:'cancel',instantSell:'sell'}[input.action];
++        state.invalidate();try{return await store.extensions[method](session,input,row=>host.assertCurrent(session));}finally{await state.finishMutation();}
++      }
++      if(input.action==='tourStart'){
++        if(!purchasesEnabled)fail('UNAVAILABLE');
++        host.assertAtEntry(session,residence,input.door);
++        return await store.tours.start(session,input,row=>{host.assertCurrent(session);host.assertAtEntry(session,row,input.door);});
++      }
+       if(input.action==='offer') {
+         const kind=offerKind(residence),auction=kind==='foreclosure',resale=kind==='resale';
+         if(residence.owner_profile_id!==null&&((!auction&&!resale)||residence.owner_profile_id===session.profileId)) fail('PRIVATE');
+         return {residenceId:residence.id,name:residence.definition.name,revision:residence.revision,accessRevision:residence.access_revision,owned:false,owner:false,offerKind:kind,
++          amenities:publicSheet(residence),tour:purchasesEnabled?store.extensions.tourView(residence):{available:false,reason:'Visitas indisponíveis enquanto as compras estiverem suspensas.'},entryDoor:residence.definition.refs.find(r=>r.kind==='entry'&&host.near(session.actorId,host.resolve(r.desc)))?.desc,
+           forSale:purchasesEnabled&&(residence.for_sale||auction||resale),refs:residence.definition.refs.map(r=>({kind:r.kind})),
+           prices:Object.entries(resale?{septims:residence.listing_price}:residence.definition.prices).map(([currency,amount])=>({currency,amount,available:currencies.available(currency)}))};
+       }
+diff --git a/server/gamemode/residences/store.cjs b/server/gamemode/residences/store.cjs
+index c33bc15..f17553d 100644
+--- a/server/gamemode/residences/store.cjs
++++ b/server/gamemode/residences/store.cjs
+@@ -4,11 +4,15 @@ const { fail } = require('./errors.cjs');
+ const { terms, taxView, offerKind, TAX_PERIOD_DAYS, TAX_PERIOD_MS } = require('./tax.cjs');
+ const { validateCatalog } = require('./catalog.cjs');
+ const { createCityTaxes } = require('./city-taxes.cjs');
++const { createExtensions } = require('./extensions.cjs');
++const { createTours } = require('./tours.cjs');
++const { acquisition } = require('./estate-policy.cjs');
++const { publicSheet } = require('./amenities.cjs');
+ const payloadHash = value => createHash('sha256').update(JSON.stringify(value)).digest('hex');
+ // JSONB does not preserve object member order. Compare explicit values instead.
+ const referenceSignature = refs => JSON.stringify(refs.map(ref => [ref.desc, ref.kind, ref.partner ?? null])
+   .sort((a, b) => a[0].localeCompare(b[0])));
+-function createStore({ db, currencies, cities = null, maxPerProfile = 1 }) {
++function createStore({ db, currencies, cities = null, maxPerProfile = 1, runtime = null, features = {} }) {
+   async function transact(work) {
+     const conn = await db.getConnection();
+     let committing = false;
+@@ -74,6 +78,8 @@ function createStore({ db, currencies, cities = null, maxPerProfile = 1 }) {
+     });
+   }
+   const cityTaxes = createCityTaxes({ transact, authorize, cities });
++  const extensions = createExtensions({transact,authorize,cityTaxes,runtime,features});
++  const tours = createTours({transact,authorize,extensions});
+   const snapshot = () => db.query(`SELECT r.*, COALESCE((SELECT jsonb_agg(m) FROM aetherius_residence_members m WHERE m.residence_id=r.id),'[]'::jsonb) AS members,
+     EXISTS(SELECT 1 FROM aetherius_residence_tax_collections t WHERE t.residence_id=r.id
+       AND t.collected_operation_id IS NULL AND t.city_id=r.tax_city_id) AS collection_pending
+@@ -115,7 +121,10 @@ function createStore({ db, currencies, cities = null, maxPerProfile = 1 }) {
+         if (!currencies.available(input.currency)) fail(input.currency === 'diademas' ? 'DIADEMAS_UNAVAILABLE' : 'CURRENCY');
+         const [owned] = await conn.query('SELECT count(*) AS total FROM aetherius_residences WHERE owner_profile_id=$1', [session.profileId]);
+         if (Number(owned[0].total) >= maxPerProfile) fail('LIMIT');
++        await extensions.beforePurchase(conn,residence,input);
+         const taxTerms=terms(residence.definition.prices.septims);
++        const history=acquisition(residence,session,input.currency,amount,taxTerms.basePrice,operationId);
++        await conn.query('UPDATE aetherius_residences SET acquisition_history=$2::jsonb WHERE id=$1',[residence.id,JSON.stringify(history)]);
+         chargeCurrency = input.currency;
+         walletId = await currencies.debit(conn, { ...session, currency: chargeCurrency, amount, purchaseId: operationId });
+         if(resale) await currencies.creditSeller(conn,{amount,profileId:residence.owner_profile_id,accountId:residence.owner_account_id,characterId:residence.seller_character_id,purchaseId:operationId});
+@@ -222,7 +231,7 @@ function createStore({ db, currencies, cities = null, maxPerProfile = 1 }) {
+         }
+         const [members]=await conn.query('SELECT profile_id,display_name,family FROM aetherius_residence_members WHERE residence_id=$1 ORDER BY created_at,profile_id',[row.id]);
+         result.push({residenceId:row.id,name:row.definition.name,open:!row.locked,accessRevision:row.access_revision,listingPrice:row.listing_price,
+-          tax:taxView(row,c=>currencies.available(c)),members:members.map(m=>({profileId:m.profile_id,name:m.display_name.slice(0,48),family:m.family})),memberLimit:5,familyLimit:2});
++          instantSale:extensions.saleView(row),amenities:publicSheet(row),tax:taxView(row,c=>currencies.available(c)),members:members.map(m=>({profileId:m.profile_id,name:m.display_name.slice(0,48),family:m.family})),memberLimit:5,familyLimit:2});
+       }
+       return {residences:result,serverNow:new Date().toISOString()};
+     });
+@@ -300,6 +309,6 @@ function createStore({ db, currencies, cities = null, maxPerProfile = 1 }) {
+       return result;
+     });
+   }
+-  return { assignDoorCity, installCatalog, snapshot, keys, status, mutate, properties, inventoryKeys, cityTaxes, registrationStatus, registerDoor };
++  return { assignDoorCity, installCatalog, snapshot, keys, status, mutate, properties, inventoryKeys, cityTaxes, registrationStatus, registerDoor, extensions, tours };
+ }
+ module.exports = { createStore };
+diff --git a/server/gamemode/residences/tours.cjs b/server/gamemode/residences/tours.cjs
+new file mode 100644
+index 0000000..2e4c9ee
+--- /dev/null
++++ b/server/gamemode/residences/tours.cjs
+@@ -0,0 +1,74 @@
++'use strict';
++const {randomUUID}=require('node:crypto');
++const {fail}=require('./errors.cjs');
++const {tourEligible}=require('./estate-policy.cjs');
++// All motor calls below are a new explicit adapter contract, not assumed native APIs.
++function createTours({transact,authorize,extensions}){
++  const runtime=extensions.runtime;
++  let busy=false;
++  async function start(s,input,guard){
++    if(!extensions.toursAvailable())fail('EXT_UNAVAILABLE');
++    const tour=await transact(async conn=>{
++      await conn.query('SELECT pg_advisory_xact_lock(174623,$1)',[s.profileId]);await authorize(conn,s);
++      const [rows]=await conn.query('SELECT * FROM aetherius_residences WHERE id=$1 FOR UPDATE',[input.residenceId]);const row=rows[0];
++      if(!row)fail('NOT_FOUND');guard(row);
++      const [old]=await conn.query("SELECT * FROM aetherius_residence_tours WHERE account_id=$1 AND state<>'closed'",[s.accountId]);
++      if(old.length){if(old[0].session_id!==extensions.sessionId(s))fail('TOUR_RETURN');return old[0];}
++      if(!tourEligible(row)||row.revision!==input.revision)fail('TOUR_INELIGIBLE');
++      const route=await runtime.prepareTour({session:s,residence:row,door:input.door});
++      if(!route||route.alive!==true||route.inCombat!==false||route.verified!==true||!route.returnPoint||!route.destination||!row.definition.interiorCells.includes(route.cell))fail('TOUR_UNSAFE');
++      guard(row);
++      const [created]=await conn.query(`INSERT INTO aetherius_residence_tours(id,account_id,profile_id,character_id,session_id,residence_id,revision,state,route,deadline)
++        VALUES($1,$2,$3,$4,$5,$6,$7,'entering',$8::jsonb,clock_timestamp()+interval '20 seconds') RETURNING *`,[randomUUID(),s.accountId,s.profileId,s.characterId,extensions.sessionId(s),row.id,row.revision,JSON.stringify(route)]);
++      // Protection must be active before any teleport. It is retained until verified return.
++      await runtime.protectTour(created[0]);guard(row);return created[0];
++    });
++    // Delivery is idempotent by tour.id; deadline is never renewed by retry.
++    if(tour.state==='entering')try{await runtime.enterTour(tour);}catch{await markReturn(tour.id,'entry-failed');}
++    return view(tour);
++  }
++  const view=t=>t?{tourId:t.id,residenceId:t.residence_id,state:t.state,deadline:t.deadline,serverNow:new Date().toISOString()}:null;
++  async function status(s){return transact(async conn=>{await authorize(conn,s);const [rows]=await conn.query("SELECT * FROM aetherius_residence_tours WHERE account_id=$1 AND character_id=$2 AND state<>'closed'",[s.accountId,s.characterId]);return view(rows[0]);});}
++  async function end(s){return transact(async conn=>{await authorize(conn,s);await conn.query("UPDATE aetherius_residence_tours SET state='returning',reason='exit' WHERE account_id=$1 AND character_id=$2 AND state<>'closed'",[s.accountId,s.characterId]);return {returning:true};});}
++  async function markReturn(id,reason){return transact(conn=>conn.query("UPDATE aetherius_residence_tours SET state='returning',reason=$2 WHERE id=$1 AND state<>'closed'",[id,reason]));}
++  async function recover(){
++    await transact(conn=>conn.query("UPDATE aetherius_residence_tours SET state='returning',reason='restart' WHERE state<>'closed'"));
++    await step();
++  }
++  async function step(){
++    if(busy)return;busy=true;
++    try{
++      const tours=await transact(async conn=>{const [rows]=await conn.query("SELECT * FROM aetherius_residence_tours WHERE state<>'closed' ORDER BY created_at");return rows;});
++      if(tours.length&&['protectTour','observeTour','returnTour','releaseTour'].some(method=>typeof runtime?.[method]!=='function'))fail('TOUR_RETURN');
++      for(const tour of tours){
++        try{
++          await runtime.protectTour(tour);
++          const observed=await runtime.observeTour(tour);
++          if(!observed||observed.connected!==true||observed.sameSession!==true||observed.alive!==true||observed.inCombat!==false||observed.inside===false||Date.now()>=new Date(tour.deadline).getTime()){
++            await markReturn(tour.id,'expired-or-unsafe');tour.state='returning';
++          }
++          if(tour.state==='entering'&&observed?.arrived===true){
++            await transact(async conn=>{
++              // Match lock order with purchases: residence first. Recheck eligibility on arrival.
++              const [rows]=await conn.query('SELECT * FROM aetherius_residences WHERE id=$1 FOR UPDATE',[tour.residence_id]);
++              if(!rows[0]||!tourEligible(rows[0])||rows[0].revision!==tour.revision){await conn.query("UPDATE aetherius_residence_tours SET state='returning',reason='changed' WHERE id=$1 AND state<>'closed'",[tour.id]);return;}
++              await conn.query("UPDATE aetherius_residence_tours SET state='active',deadline=clock_timestamp()+interval '60 seconds' WHERE id=$1 AND state='entering' AND deadline>clock_timestamp()",[tour.id]);
++            });
++          }
++          // Reload: a purchase may have revoked the session while observation was in flight.
++          const current=await transact(async conn=>{const [r]=await conn.query('SELECT * FROM aetherius_residence_tours WHERE id=$1',[tour.id]);return r[0];});
++          if(current.state==='returning'){
++            const result=await runtime.returnTour(current);
++            // Offline/dead actors remain pending until the official login/respawn path confirms safety.
++            if(result?.safe===true){
++              await runtime.releaseTour(current);
++              await transact(conn=>conn.query("UPDATE aetherius_residence_tours SET state='closed',closed_at=clock_timestamp() WHERE id=$1 AND state='returning'",[tour.id]));
++            }
++          }
++        }catch{ /* durable row + adapter guard retain recovery; next worker pass retries */ }
++      }
++    }finally{busy=false;}
++  }
++  return {start,status,end,step,recover};
++}
++module.exports={createTours};
