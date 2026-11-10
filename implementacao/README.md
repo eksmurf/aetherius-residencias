@@ -1,4 +1,6 @@
-# Integração oficial — residências 0.5.0
+# Integração oficial — residências 0.5.1
+
+**Atualização 0.5.1:** [guia da ficha simplificada](ATUALIZACAO-0.5.1.md). Para uma instalação 0.5.0 já integrada, atualizar somente o asset de compra; não reaplicar migrações ou substituir os adaptadores.
 
 **Atualização 0.5.0:** seguir [ATUALIZACAO-0.5.0.md](ATUALIZACAO-0.5.0.md), usando o delta IPTU3 em instalações com cadastro pela porta. A migração 006 é obrigatória para este código. [Limites e testes](VALIDACAO-0.5.0.md).
 

@@ -10,7 +10,7 @@ Entrega de desenvolvimento de 10/11/2026 para integração pelos superiores. Nã
 - Casas adquiridas com Diademas e cadeias de origem não comprovadas não têm venda instantânea. A cadeia de Diademas não é convertida em elegível por uma revenda particular em Septims.
 - Os itens permanecem na casa. Proprietário, familiares e visitantes perdem os direitos; quem estiver dentro pode sair. A casa volta à oferta sem proprietário e preserva cidade e arrecadação já pendente.
 - **Visita experimental de 60 segundos para uma oferta sem proprietário**, inclusive após venda instantânea. Se existe proprietário, orientar tour combinado com ele. Esta decisão substitui a restrição anterior de “nunca comprada”. O minuto começa na chegada confirmada pelo servidor.
-- A ficha apresenta armazenamentos, camas e atividades disponíveis antes de comprar, inclusive na revenda. Quantidade desconhecida aparece como **Em verificação**, nunca como zero.
+- A ficha apresenta apenas armazenamentos, camas e atividades com quantidade positiva confirmada, inclusive na revenda e na confirmação da compra. Categorias ausentes ou ainda não verificadas ficam ocultas; sem nenhuma característica confirmada, a seção inteira fica oculta. O backend continua distinguindo ausência de falta de verificação para a revisão da equipe.
 
 | Base da casa | Retorno bruto | IPTU vencido | Retido para a cidade | Recebido pelo vendedor | Excedente encerrado |
 |---|---|---|---|---|---|

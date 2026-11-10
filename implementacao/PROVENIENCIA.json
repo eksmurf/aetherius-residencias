@@ -1,5 +1,5 @@
 {
-  "version": "0.5.0",
+  "version": "0.5.1",
   "preparedOn": "2026-11-10",
   "target": "Aetherius official server",
   "upstream": {
@@ -151,7 +151,15 @@
     "composedIptu3SqlTestsPassed": 8,
     "iptu3RegressionTestsPassed": 1,
     "externalPostgresqlTestsExecuted": false,
-    "officialExtensionAdapterSupplied": false
+    "officialExtensionAdapterSupplied": false,
+    "patchValidation": {
+      "version": "0.5.1",
+      "purchaseUiTestsPassed": 6,
+      "browserPreviewChecked": true,
+      "scope": "mock data browser preview; positive amenities visible, zero/unknown hidden; not official CEF",
+      "guide": "ATUALIZACAO-0.5.1.md"
+    },
+    "previousBackendValidationVersion": "0.5.0"
   },
   "pending": [
     "Identify the deployed revision; reconcile and apply the IPTU3-compatible delta and migration 006 without overwriting municipal registration or native adapters",
@@ -180,7 +188,7 @@
     "deferredResidences": 7
   },
   "rules": "REGRAS-0.3.md",
-  "documentationRevision": "extensions-1",
+  "documentationRevision": "amenities-visible-only-1",
   "userReportedInstalledRelease": {
     "date": "2026-10-31",
     "version": "0.1.0",
@@ -188,7 +196,7 @@
     "basis": "user_confirmation",
     "runtimeRevisionVerified": false
   },
-  "updateGuide": "ATUALIZACAO-0.5.0.md",
+  "updateGuide": "ATUALIZACAO-0.5.1.md",
   "uiUpdateGuide": "ATUALIZACAO-0.3.6.md",
   "taxPolicy": {
     "periodDays": 15,

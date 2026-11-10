@@ -1,5 +1,5 @@
 {
-  "version": "0.5.0",
+  "version": "0.5.1",
   "date": "2026-11-10",
   "algorithm": "SHA256",
   "excludes": [
@@ -38,8 +38,13 @@
     },
     {
       "path": "ATUALIZACAO-0.5.0.md",
-      "bytes": 10215,
-      "sha256": "b9fb848d7757fbeca58c588e8728a2930fa8c379a0a19b0a4917928fad7498f5"
+      "bytes": 10407,
+      "sha256": "bb7cdc02ab1ed2f77548b25ebed8983281370ad6d15a3ee99fae8cf6c4d395d3"
+    },
+    {
+      "path": "ATUALIZACAO-0.5.1.md",
+      "bytes": 2997,
+      "sha256": "ff77afd4eeb19abc16c088f92d35eb34f87e3f683b2b7f352d3efc47cadceecd"
     },
     {
       "path": "ATUALIZACAO-UI-0.3.2.md",
@@ -53,8 +58,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 7845,
-      "sha256": "75e2768464738b822f1df22936a7bbdc71f9884e191852524ee6707d5a5b75df"
+      "bytes": 8063,
+      "sha256": "0a3306f279daca991ab6693880747d0be48f9be3b4f8939d4b1116fef3df4519"
     },
     {
       "path": "CONTRATO-DIADEMAS.md",
@@ -78,13 +83,13 @@
     },
     {
       "path": "PROVENIENCIA.json",
-      "bytes": 10186,
-      "sha256": "b391220667593090869ce294e4db883d343d5cad60211d5a3a0cb1134aca61ea"
+      "bytes": 10525,
+      "sha256": "cde0769a25107b760e51c2d8687d52337156228708783f679d24f4b9ba306d20"
     },
     {
       "path": "README.md",
-      "bytes": 10262,
-      "sha256": "fef047ffb2842af2f85471c9f594892d14596b463ec469c7f8d08aeec7b29a7c"
+      "bytes": 10477,
+      "sha256": "8b7d304d854deaf7ce52cc5cf406d1c01b4dd607b22d528e1501645968fa83aa"
     },
     {
       "path": "REGRAS-0.3.md",
@@ -298,8 +303,8 @@
     },
     {
       "path": "client/residences/app.js",
-      "bytes": 10324,
-      "sha256": "c715e3aac5b0281f739e24ccef4b285d334072e328b7d06b8394ab771fda4ece"
+      "bytes": 10311,
+      "sha256": "e1f45db55b65053bfb6304b87c7f6281c450e7248d57d515a3cbbf1bc9f5f9e9"
     },
     {
       "path": "client/residences/style.css",
@@ -349,12 +354,12 @@
     {
       "path": "package-lock.json",
       "bytes": 5930,
-      "sha256": "ada714bdbb2520028769e04d1a574b0d1daf31fd364936512169ed98ae9d6264"
+      "sha256": "ab596f1387c52899e71da021134badc24d7e2d44b47999a0ef95253e6b1fca03"
     },
     {
       "path": "package.json",
       "bytes": 521,
-      "sha256": "6388a10159e492bc1fe409e4645b0a8fac27b2d8677507c2e3933df7a8a00f46"
+      "sha256": "05d2c77089545ba6c46e8ac51e23ee6c73ec6dbc41faf7dddb1f7a534e88e401"
     },
     {
       "path": "server/config/residences.json",

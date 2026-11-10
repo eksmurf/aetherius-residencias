@@ -1,3 +1,7 @@
+# 0.5.1 — 10/11/2026
+
+- Ficha do comprador exibe somente características confirmadas com quantidade positiva. Categorias ausentes/pendentes e seções vazias ficam ocultas, tanto na oferta quanto na confirmação.
+
 # 0.5.0 — 10/11/2026
 
 - Venda instantânea: retorno de 40%, retenção de IPTU limitada ao retorno, excedente encerrado com auditoria, duas confirmações e dez segundos no servidor.

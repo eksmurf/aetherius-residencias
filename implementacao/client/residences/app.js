@@ -11,11 +11,11 @@
   let tour=null,tourOffset=0;
   const tourHud=document.createElement('aside');tourHud.id='ar-tour-hud';tourHud.hidden=true;document.body.append(tourHud);
   function amenities(body){
+    const items=(offer?.amenities?.items||[]).filter(item=>Number.isSafeInteger(item.count)&&item.count>0);
+    if(!items.length)return;
     const section=node('section',undefined,'ar-amenities');section.append(node('h3','Características do imóvel'));
-    const items=offer?.amenities?.items||[];
-    if(!items.length)section.append(node('p','Características em verificação.','ar-muted'));
-    for(const item of items){const line=node('p',undefined,'ar-amenity');line.append(node('span',item.label),node('strong',item.count===null?'Em verificação':item.count===0?'Não possui':String(item.count)));section.append(line);
-      const types=Object.entries(item.subtypes||{});if(types.length)section.append(node('p',types.map(([name,count])=>count+' '+name).join(' · '),'ar-muted'));}
+    for(const item of items){const line=node('p',undefined,'ar-amenity');line.append(node('span',item.label),node('strong',String(item.count)));section.append(line);
+      const types=Object.entries(item.subtypes||{}).filter(([,count])=>Number.isSafeInteger(count)&&count>0);if(types.length)section.append(node('p',types.map(([name,count])=>count+' '+name).join(' · '),'ar-muted'));}
     body.append(section);
   }
   function renderTour(){tourHud.replaceChildren();tourHud.hidden=!tour;if(!tour)return;
