@@ -135,7 +135,9 @@ function createStore({ db, currencies, cities = null, maxPerProfile = 1, runtime
       } else {
         if (residence.owner_profile_id !== session.profileId || residence.owner_account_id !== session.accountId) fail('FORBIDDEN');
         if (input.accessRevision !== residence.access_revision) fail('STALE');
-        if(input.action!=='payTax' && taxView(residence).suspended) fail('TAX_SUSPENDED');
+        const currentTax=taxView(residence);
+        if(input.action==='listSale' && (!currentTax.configured||currentTax.periods!==0)) fail('TAX_UNPAID');
+        if(input.action!=='payTax' && currentTax.suspended) fail('TAX_SUSPENDED');
         if(input.action==='listSale') {
           residence.listing_price=input.amount;residence.seller_character_id=session.characterId;
         } else if(input.action==='cancelSale') {

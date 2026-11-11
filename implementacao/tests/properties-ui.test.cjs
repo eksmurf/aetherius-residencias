@@ -62,9 +62,19 @@ test('remover exige confirmação e envia perfil correto',async()=>{
   await h.click('Remover');await h.click('Sim');const c=h.calls.find(c=>c.action==='removeMember');assert.equal(c.input.confirmed,true);assert.equal(c.input.memberProfileId,2);
 });
 test('anunciar usa inteiro em Septims, com confirmação antes de enviar',async()=>{
-  const h=await harness();const price=h.root.querySelectorAll('input').find(n=>n.placeholder==='Valor em Septims');price.value='25000';
+  const h=await harness([],{periods:0,amount:0});const price=h.root.querySelectorAll('input').find(n=>n.placeholder==='Valor em Septims');price.value='25000';
   const form=h.root.querySelectorAll('form').find(n=>n.children.includes(price));form.onsubmit({preventDefault(){}});await h.flush();assert.ok(!h.calls.some(c=>c.action==='listSale'));
   await h.click('Sim');assert.equal(h.calls.find(c=>c.action==='listSale').input.amount,25000);
+});
+
+test('primeiro imposto vencido bloqueia anúncio inclusive submissão direta e quitação libera',async()=>{
+  const h=await harness();
+  const price=h.root.querySelectorAll('input').find(n=>n.placeholder==='Valor em Septims');
+  assert.equal(price.disabled,true);assert.equal(h.root.querySelectorAll('button').find(n=>n.textContent==='Anunciar venda').disabled,true);
+  price.value='25000';h.root.querySelectorAll('form').find(n=>n.children.includes(price)).onsubmit({preventDefault(){}});await h.flush();
+  assert.ok(!h.calls.some(c=>c.action==='listSale'));assert.ok(!h.root.querySelectorAll('button').some(n=>n.textContent==='Sim'));
+  await h.click('Pagar impostos — 100 Septims');h.residence.tax.periods=0;h.residence.tax.amount=0;await h.click('Confirmar pagamento');
+  assert.equal(h.root.querySelectorAll('button').find(n=>n.textContent==='Anunciar venda').disabled,false);
 });
 
 test('venda instantânea exige as duas telas, dez segundos completos e cancelamento',async()=>{

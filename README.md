@@ -1,4 +1,6 @@
-# Residências do Aetherius — pacote 0.5.1
+# Residências do Aetherius — pacote 0.5.2
+
+**0.5.2 — anúncio manual com IPTU quitado:** qualquer parcela vencida bloqueia novo anúncio e suspende ofertas manuais existentes. A retomada automática com três parcelas e o desconto de dívida na venda instantânea permanecem. [Pacote](dist/aetherius-residencias-0.5.2.zip) · [Guia de atualização](implementacao/ATUALIZACAO-0.5.2.md). Requer atualização conjunta do backend e do painel, sem migração SQL nova.
 
 **0.5.1 — ficha simplificada:** apenas características confirmadas e presentes aparecem na compra e na revenda. Sem mensagens de ausência/verificação ou seções vazias. [Pacote completo](dist/aetherius-residencias-0.5.1.zip) · [SHA256](dist/aetherius-residencias-0.5.1.zip.sha256) · [Guia de atualização](implementacao/ATUALIZACAO-0.5.1.md). Atualização de interface; o backend e seus contratos permanecem os da 0.5.0.
 

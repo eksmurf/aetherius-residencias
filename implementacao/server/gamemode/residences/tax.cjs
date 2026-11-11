@@ -22,7 +22,7 @@ function offerKind(row,now=Date.now()) {
   if(row.owner_profile_id===null)return 'initial';
   const tax=taxView(row,()=>true,now);
   if(tax.auction)return 'foreclosure';
-  if(!tax.suspended&&Number.isInteger(row.listing_price)&&row.listing_price>0)return 'resale';
+  if(tax.configured&&tax.periods===0&&Number.isInteger(row.listing_price)&&row.listing_price>0)return 'resale';
   return null;
 }
 module.exports={terms,taxView,offerKind,TAX_PERIOD_DAYS,TAX_PERIOD_MS};

@@ -4,7 +4,7 @@
   if(!ui) throw Error('Propriedades exige Aetherius UI Core.');
   const id=()=>{const bytes=new Uint8Array(16);crypto.getRandomValues(bytes);bytes[6]=(bytes[6]&15)|64;bytes[8]=(bytes[8]&63)|128;const h=[...bytes].map(n=>n.toString(16).padStart(2,'0')).join('');return `${h.slice(0,8)}-${h.slice(8,12)}-${h.slice(12,16)}-${h.slice(16,20)}-${h.slice(20)}`;};
   const money=v=>v.toLocaleString('pt-BR')+' Septims';
-  ui.registerModule({id:'properties',label:'PROPRIEDADES',version:'0.5.0',sdkMin:'1.0.0',sdkMaxExclusive:'2.0.0',rootRoute:'/properties',radialSlot:9,
+  ui.registerModule({id:'properties',label:'PROPRIEDADES',version:'0.5.2',sdkMin:'1.0.0',sdkMaxExclusive:'2.0.0',rootRoute:'/properties',radialSlot:9,
     assets:['modules/properties/properties.js','modules/properties/properties.css'],capabilities:['properties.read','properties.write'],
     mount(container,context){
       container.classList.add('ar-properties');
@@ -119,11 +119,13 @@
           permissions.append(el('p','Familiares recebem chave pessoal e acessam os armazenamentos. Visitantes cadastrados podem entrar com a porta fechada, mas não podem abrir baús.','arp-muted'));
           container.append(permissions);
           const sale=el('section',undefined,'arp-card');sale.append(el('h3','Venda da residência'));
+          const canList=t.configured&&t.periods===0;
+          if(!canList)sale.append(el('p',t.configured?'Quite todos os impostos vencidos para anunciar a casa.':'O anúncio aguarda a configuração do imposto.','arp-muted'));
           sale.append(el('p','Você mantém o uso da casa enquanto ela estiver anunciada e os impostos estiverem regulares. Ao concluir a venda, todos os itens guardados ficam com o comprador. Seu acesso e os de familiares e visitantes serão encerrados.','arp-muted'));
-          if(h.listingPrice){sale.append(el('p','Anunciada por '+money(h.listingPrice)));const cancel=button('Cancelar anúncio',()=>mutate('cancelSale',{}));cancel.disabled=busy||!!uncertain||t.suspended;sale.append(cancel);}
+          if(h.listingPrice){sale.append(el('p',(canList?'Anunciada por ':'Anúncio suspenso · ')+money(h.listingPrice)));const cancel=button('Cancelar anúncio',()=>mutate('cancelSale',{}));cancel.disabled=busy||!!uncertain||t.suspended;sale.append(cancel);}
           const saleForm=el('form',undefined,'arp-add'),price=el('input');price.type='text';price.inputMode='numeric';price.pattern='[0-9]+';price.maxLength=10;price.required=true;price.placeholder='Valor em Septims';price.setAttribute('aria-label','Preço de venda em Septims');
-          const advertise=el('button',h.listingPrice?'Alterar anúncio':'Anunciar venda');advertise.type='submit';price.disabled=advertise.disabled=busy||!!uncertain||t.suspended;
-          saleForm.onsubmit=e=>{e.preventDefault();const amount=Number(price.value);if(!/^[0-9]+$/.test(price.value)||!Number.isSafeInteger(amount)||amount<1||amount>2147483647){notice='Informe um valor inteiro positivo em Septims.';render();return;}confirm={kind:'sale',houseId:h.residenceId,amount};render();};saleForm.append(price,advertise);sale.append(saleForm);container.append(sale);
+          const advertise=el('button',h.listingPrice?'Alterar anúncio':'Anunciar venda');advertise.type='submit';price.disabled=advertise.disabled=busy||!!uncertain||!canList;
+          saleForm.onsubmit=e=>{e.preventDefault();if(!canList||busy||uncertain)return;const amount=Number(price.value);if(!/^[0-9]+$/.test(price.value)||!Number.isSafeInteger(amount)||amount<1||amount>2147483647){notice='Informe um valor inteiro positivo em Septims.';render();return;}confirm={kind:'sale',houseId:h.residenceId,amount};render();};saleForm.append(price,advertise);sale.append(saleForm);container.append(sale);
           const instant=button('Vender instantaneamente',beginInstant);instant.className='arp-primary';instant.disabled=busy||!!uncertain||!h.instantSale?.eligible;sale.append(instant);
           sale.append(el('p',h.instantSale?.eligible?'Receba 40% do valor base, com desconto do IPTU até zerar os ganhos.':h.instantSale?.reason||'Venda instantânea aguardando integração.','arp-muted'));
         }

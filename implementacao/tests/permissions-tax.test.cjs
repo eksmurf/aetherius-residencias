@@ -30,8 +30,8 @@ test('pedido de imposto exige ao menos uma parcela vencida',()=>{
 test('data retornada pelo PostgreSQL preserva milissegundos no pedido de quitação',()=>{
   const due=new Date('2026-11-05T12:34:56.789Z');assert.equal(taxView({...row,tax_due_at:due},()=>true,due.getTime()).dueAt,due.toISOString());
 });
-test('anúncio voluntário suspende aos 30 dias e vira oferta de retomada aos 45',()=>{
-  const listed={...row,listing_price:2500};assert.equal(offerKind(listed,start+TAX_PERIOD_MS),'resale');assert.equal(offerKind(listed,start+2*TAX_PERIOD_MS),null);assert.equal(offerKind(listed,start+3*TAX_PERIOD_MS),'foreclosure');
+test('anúncio voluntário suspende no primeiro vencimento e vira retomada aos 45 dias',()=>{
+  const listed={...row,listing_price:2500};assert.equal(offerKind(listed,start+TAX_PERIOD_MS-1),'resale');assert.equal(offerKind(listed,start+TAX_PERIOD_MS),null);assert.equal(offerKind(listed,start+2*TAX_PERIOD_MS),null);assert.equal(offerKind(listed,start+3*TAX_PERIOD_MS),'foreclosure');
 });
 test('dono, familiar e visitante entram diretamente; apenas dono e familiar usam armazenamento',()=>{
   const current={...row,tax_due_at:new Date(Date.now()+TAX_PERIOD_MS).toISOString()};

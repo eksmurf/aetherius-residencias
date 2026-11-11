@@ -32,6 +32,21 @@ test('extensões: SQL transacional, imposto retido, visita e recuperação',asyn
   const row=async()=>(await sql('SELECT * FROM aetherius_residences'))[0];
   const buy=async()=>{const r=await row();return store.mutate(s,{action:'purchase',requestId:randomUUID(),residenceId:'fixture',revision:1,accessRevision:r.access_revision,offerKind:'initial',currency:'septims'},guard,guard,true);};
   await pg.query("UPDATE aetherius_residences SET acquisition_history=$1",[JSON.stringify({status:'never',evidence:'fixture'})]);await buy();
+  await t.test('anúncio requer IPTU quitado; vencimento bloqueia compra antiga sem debitar e quitação libera',async()=>{
+    const manage=async(action,extra={})=>store.mutate(s,{action,requestId:randomUUID(),residenceId:'fixture',accessRevision:(await row()).access_revision,...extra},guard,guard,true);
+    await manage('listSale',{amount:120000});
+    await pg.exec("UPDATE aetherius_residences SET tax_due_at=clock_timestamp()-interval '1 second'");
+    await assert.rejects(manage('listSale',{amount:130000}),{code:'TAX_UNPAID'});
+    assert.equal((await row()).listing_price,120000);
+    const before=(await sql('SELECT gold FROM characters WHERE id=$1',[other.characterId]))[0].gold;
+    await assert.rejects(store.mutate(other,{action:'purchase',requestId:randomUUID(),residenceId:'fixture',revision:1,accessRevision:(await row()).access_revision,offerKind:'resale',currency:'septims'},guard,guard,true),{code:'PRICE_CHANGED'});
+    assert.equal((await sql('SELECT gold FROM characters WHERE id=$1',[other.characterId]))[0].gold,before);
+    const bill=(await store.properties(s)).residences[0].tax;
+    await manage('payTax',{dueAt:bill.dueAt,periods:bill.periods});await manage('listSale',{amount:130000});
+    assert.equal((await row()).listing_price,130000);await manage('cancelSale');
+    // Keep the following independent receipt scenarios isolated from this tax payment.
+    await pg.exec('DELETE FROM aetherius_residence_tax_collections');
+  });
   const makeQuote=async()=>store.extensions.quote(s,{residenceId:'fixture',accessRevision:(await row()).access_revision},guard);
   const input=q=>({requestId:randomUUID(),residenceId:'fixture',quoteId:q.quoteId});
   const ready=async q=>{await store.extensions.arm(s,input(q),guard);await pg.query("UPDATE aetherius_residence_sale_quotes SET ready_at=clock_timestamp()-interval '1 second' WHERE id=$1",[q.quoteId]);};

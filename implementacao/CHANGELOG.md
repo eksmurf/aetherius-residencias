@@ -1,3 +1,10 @@
+# 0.5.2 — 11/11/2026
+
+- Anúncio manual exige IPTU quitado, com bloqueio no painel e na transação do servidor.
+- Primeiro vencimento suspende anúncio existente e impede concluir uma oferta antiga sem debitar o comprador.
+- Mantidas a retomada automática com três parcelas e a venda instantânea com retenção de dívida.
+- Guia e deltas incremental/completo para a composição com IPTU3.
+
 # 0.5.1 — 10/11/2026
 
 - Ficha do comprador exibe somente características confirmadas com quantidade positiva. Categorias ausentes/pendentes e seções vazias ficam ocultas, tanto na oferta quanto na confirmação.

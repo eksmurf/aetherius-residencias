@@ -1,4 +1,6 @@
-# Integração oficial — residências 0.5.1
+# Integração oficial — residências 0.5.2
+
+**Atualização 0.5.2:** [anúncio manual exige IPTU quitado](ATUALIZACAO-0.5.2.md). Atualizar backend e painel; usar o delta incremental para 0.5.0/0.5.1 ou o delta completo para IPTU3 anterior. Sem nova migração SQL.
 
 **Atualização 0.5.1:** [guia da ficha simplificada](ATUALIZACAO-0.5.1.md). Para uma instalação 0.5.0 já integrada, atualizar somente o asset de compra; não reaplicar migrações ou substituir os adaptadores.
 

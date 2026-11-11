@@ -24,6 +24,7 @@ const messages = {
   MEMBER_LIMIT: 'Limite de 5 visitantes cadastrados nesta residência, incluindo familiares. Remova alguém para adicionar outra pessoa.',
   STALE: 'As permissões mudaram. Atualize a consulta antes de confirmar.',
   TAX_EARLY: 'O pagamento será liberado no vencimento do imposto.',
+  TAX_UNPAID: 'Quite todos os impostos vencidos antes de anunciar a residência.',
   TAX_CHANGED: 'Este vencimento já foi pago ou foi atualizado.',
   INVALID: 'Pedido inválido.', SESSION: 'A sessão do personagem mudou.',
   UNAVAILABLE: 'Residências temporariamente indisponíveis.', NOT_FOUND: 'Residência não cadastrada.',

@@ -1,0 +1,40 @@
+diff --git a/server/gamemode/residences/errors.cjs b/server/gamemode/residences/errors.cjs
+index 03794ff..20a0d41 100644
+--- a/server/gamemode/residences/errors.cjs
++++ b/server/gamemode/residences/errors.cjs
+@@ -24,6 +24,7 @@ const messages = {
+   MEMBER_LIMIT: 'Limite de 5 visitantes cadastrados nesta residência, incluindo familiares. Remova alguém para adicionar outra pessoa.',
+   STALE: 'As permissões mudaram. Atualize a consulta antes de confirmar.',
+   TAX_EARLY: 'O pagamento será liberado no vencimento do imposto.',
++  TAX_UNPAID: 'Quite todos os impostos vencidos antes de anunciar a residência.',
+   TAX_CHANGED: 'Este vencimento já foi pago ou foi atualizado.',
+   INVALID: 'Pedido inválido.', SESSION: 'A sessão do personagem mudou.',
+   UNAVAILABLE: 'Residências temporariamente indisponíveis.', NOT_FOUND: 'Residência não cadastrada.',
+diff --git a/server/gamemode/residences/store.cjs b/server/gamemode/residences/store.cjs
+index 4108bfc..4fc5fbd 100644
+--- a/server/gamemode/residences/store.cjs
++++ b/server/gamemode/residences/store.cjs
+@@ -135,7 +135,9 @@ function createStore({ db, currencies, cities = null, maxPerProfile = 1, runtime
+       } else {
+         if (residence.owner_profile_id !== session.profileId || residence.owner_account_id !== session.accountId) fail('FORBIDDEN');
+         if (input.accessRevision !== residence.access_revision) fail('STALE');
+-        if(input.action!=='payTax' && taxView(residence).suspended) fail('TAX_SUSPENDED');
++        const currentTax=taxView(residence);
++        if(input.action==='listSale' && (!currentTax.configured||currentTax.periods!==0)) fail('TAX_UNPAID');
++        if(input.action!=='payTax' && currentTax.suspended) fail('TAX_SUSPENDED');
+         if(input.action==='listSale') {
+           residence.listing_price=input.amount;residence.seller_character_id=session.characterId;
+         } else if(input.action==='cancelSale') {
+diff --git a/server/gamemode/residences/tax.cjs b/server/gamemode/residences/tax.cjs
+index b2f3a08..b9c7a85 100644
+--- a/server/gamemode/residences/tax.cjs
++++ b/server/gamemode/residences/tax.cjs
+@@ -22,7 +22,7 @@ function offerKind(row,now=Date.now()) {
+   if(row.owner_profile_id===null)return 'initial';
+   const tax=taxView(row,()=>true,now);
+   if(tax.auction)return 'foreclosure';
+-  if(!tax.suspended&&Number.isInteger(row.listing_price)&&row.listing_price>0)return 'resale';
++  if(tax.configured&&tax.periods===0&&Number.isInteger(row.listing_price)&&row.listing_price>0)return 'resale';
+   return null;
+ }
+ module.exports={terms,taxView,offerKind,TAX_PERIOD_DAYS,TAX_PERIOD_MS};

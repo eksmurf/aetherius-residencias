@@ -1,6 +1,6 @@
 {
-  "version": "0.5.1",
-  "preparedOn": "2026-11-10",
+  "version": "0.5.2",
+  "preparedOn": "2026-11-11",
   "target": "Aetherius official server",
   "upstream": {
     "url": "https://github.com/Alduinak-RP/alduinak",
@@ -146,18 +146,19 @@
     "cityCollectionTestsExecuted": true,
     "cityCollectionTestScope": "PGlite in-memory SQL with received IPTU3 and mocked native treasury; not production",
     "currentValidationReport": "VALIDACAO-0.5.0.md",
-    "domainUiTestsPassed": 42,
-    "extensionSqlTestsPassed": 8,
-    "composedIptu3SqlTestsPassed": 8,
+    "domainUiTestsPassed": 43,
+    "extensionSqlTestsPassed": 9,
+    "composedIptu3SqlTestsPassed": 9,
     "iptu3RegressionTestsPassed": 1,
     "externalPostgresqlTestsExecuted": false,
     "officialExtensionAdapterSupplied": false,
     "patchValidation": {
-      "version": "0.5.1",
-      "purchaseUiTestsPassed": 6,
-      "browserPreviewChecked": true,
-      "scope": "mock data browser preview; positive amenities visible, zero/unknown hidden; not official CEF",
-      "guide": "ATUALIZACAO-0.5.1.md"
+      "version": "0.5.2",
+      "domainUiTestsPassed": 43,
+      "sqlTestsPassed": 9,
+      "composedIptu3SqlTestsPassed": 9,
+      "scope": "DOM and in-memory SQL fixtures; no production access",
+      "guide": "ATUALIZACAO-0.5.2.md"
     },
     "previousBackendValidationVersion": "0.5.0"
   },
@@ -188,7 +189,7 @@
     "deferredResidences": 7
   },
   "rules": "REGRAS-0.3.md",
-  "documentationRevision": "amenities-visible-only-1",
+  "documentationRevision": "manual-sale-tax-cleared-1",
   "userReportedInstalledRelease": {
     "date": "2026-10-31",
     "version": "0.1.0",
@@ -196,7 +197,7 @@
     "basis": "user_confirmation",
     "runtimeRevisionVerified": false
   },
-  "updateGuide": "ATUALIZACAO-0.5.1.md",
+  "updateGuide": "ATUALIZACAO-0.5.2.md",
   "uiUpdateGuide": "ATUALIZACAO-0.3.6.md",
   "taxPolicy": {
     "periodDays": 15,
@@ -224,13 +225,15 @@
     "tourSeconds": 60,
     "tourEligibility": "for sale with no owner, including after instant sale",
     "adapterContract": "aetherius-residence-extensions-v1",
-    "integrationEnabled": false
+    "integrationEnabled": false,
+    "manualSale": "requires configured tax and zero overdue installments; existing listings suspended from first overdue installment"
   },
   "compatibility": {
     "receivedIptu3": true,
     "deployedRevisionVerified": false,
-    "delta": "compat/IPTU3/residencias-0.5.0.patch",
-    "manifest": "compat/IPTU3/manifest.json"
+    "delta": "compat/IPTU3-0.5.2/residencias-0.5.2.patch",
+    "manifest": "compat/IPTU3-0.5.2/manifest.json",
+    "incrementalDelta": "compat/0.5.1-para-0.5.2.patch"
   },
   "amenitiesEvidence": {
     "report": "catalogo/FICHAS-20261110.md",
