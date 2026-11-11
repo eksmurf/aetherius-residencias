@@ -1,4 +1,6 @@
-# Residências do Aetherius — pacote 0.5.2
+# Residências do Aetherius — pacote 0.5.3
+
+**0.5.3 — cancelamento definitivo:** o primeiro IPTU vencido cancela o anúncio manual, inclusive offline. Quitar a dívida não reativa o anúncio; o proprietário precisa anunciar novamente. [Pacote](dist/aetherius-residencias-0.5.3.zip) · [Guia de atualização](implementacao/ATUALIZACAO-0.5.3.md). Atualizar backend e painel, sem nova migração SQL.
 
 **0.5.2 — anúncio manual com IPTU quitado:** qualquer parcela vencida bloqueia novo anúncio e suspende ofertas manuais existentes. A retomada automática com três parcelas e o desconto de dívida na venda instantânea permanecem. [Pacote](dist/aetherius-residencias-0.5.2.zip) · [Guia de atualização](implementacao/ATUALIZACAO-0.5.2.md). Requer atualização conjunta do backend e do painel, sem migração SQL nova.
 

@@ -30,7 +30,7 @@ Até uma nova compra concluir, o antigo dono ainda pode quitar a dívida pelo TA
 
 ## Venda voluntária
 
-O dono informa preço inteiro positivo em Septims e confirma que a venda inclui os itens guardados. Criar ou alterar anúncio exige todos os impostos vencidos quitados (regra da 0.5.2). O primeiro vencimento suspende ofertas manuais existentes; com três parcelas, vale a retomada automática pelo preço cadastrado. O acesso à casa e aos armazenamentos continua seguindo a suspensão por duas parcelas. A venda instantânea permanece separada, com desconto da dívida no retorno de 40%.
+O dono informa preço inteiro positivo em Septims e confirma que a venda inclui os itens guardados. Criar ou alterar anúncio exige todos os impostos vencidos quitados (regra da 0.5.2). O primeiro vencimento cancela definitivamente ofertas manuais existentes; quitar exige criar um novo anúncio (regra da 0.5.3); com três parcelas, vale a retomada automática pelo preço cadastrado. O acesso à casa e aos armazenamentos continua seguindo a suspensão por duas parcelas. A venda instantânea permanece separada, com desconto da dívida no retorno de 40%.
 
 A compra confere oferta, preço, revisão, saldo e limite de propriedades; debita comprador, credita vendedor e muda a posse em uma única transação. O comprador não escolhe o destinatário. O vínculo do vendedor é resolvido pelo `profile_id`/UUID e o saldo creditado é o do personagem que publicou o anúncio, na economia oficial. Não há comissão ou conversão de moedas nesta versão.
 

@@ -1,4 +1,6 @@
-# Integração oficial — residências 0.5.2
+# Integração oficial — residências 0.5.3
+
+**Atualização 0.5.3:** [cancelamento definitivo de anúncio no primeiro vencimento](ATUALIZACAO-0.5.3.md). Substitui a suspensão da 0.5.2. Atualizar backend e painel, sem nova migração SQL.
 
 **Atualização 0.5.2:** [anúncio manual exige IPTU quitado](ATUALIZACAO-0.5.2.md). Atualizar backend e painel; usar o delta incremental para 0.5.0/0.5.1 ou o delta completo para IPTU3 anterior. Sem nova migração SQL.
 

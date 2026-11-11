@@ -1,5 +1,5 @@
 {
-  "version": "0.5.2",
+  "version": "0.5.3",
   "preparedOn": "2026-11-11",
   "target": "Aetherius official server",
   "upstream": {
@@ -153,12 +153,12 @@
     "externalPostgresqlTestsExecuted": false,
     "officialExtensionAdapterSupplied": false,
     "patchValidation": {
-      "version": "0.5.2",
+      "version": "0.5.3",
       "domainUiTestsPassed": 43,
       "sqlTestsPassed": 9,
       "composedIptu3SqlTestsPassed": 9,
       "scope": "DOM and in-memory SQL fixtures; no production access",
-      "guide": "ATUALIZACAO-0.5.2.md"
+      "guide": "ATUALIZACAO-0.5.3.md"
     },
     "previousBackendValidationVersion": "0.5.0"
   },
@@ -189,7 +189,7 @@
     "deferredResidences": 7
   },
   "rules": "REGRAS-0.3.md",
-  "documentationRevision": "manual-sale-tax-cleared-1",
+  "documentationRevision": "manual-sale-tax-cancellation-1",
   "userReportedInstalledRelease": {
     "date": "2026-10-31",
     "version": "0.1.0",
@@ -197,7 +197,7 @@
     "basis": "user_confirmation",
     "runtimeRevisionVerified": false
   },
-  "updateGuide": "ATUALIZACAO-0.5.2.md",
+  "updateGuide": "ATUALIZACAO-0.5.3.md",
   "uiUpdateGuide": "ATUALIZACAO-0.3.6.md",
   "taxPolicy": {
     "periodDays": 15,
@@ -226,14 +226,14 @@
     "tourEligibility": "for sale with no owner, including after instant sale",
     "adapterContract": "aetherius-residence-extensions-v1",
     "integrationEnabled": false,
-    "manualSale": "requires configured tax and zero overdue installments; existing listings suspended from first overdue installment"
+    "manualSale": "requires configured tax and zero overdue installments; existing listings permanently cancelled from first overdue installment; paying never restores a listing"
   },
   "compatibility": {
     "receivedIptu3": true,
     "deployedRevisionVerified": false,
-    "delta": "compat/IPTU3-0.5.2/residencias-0.5.2.patch",
-    "manifest": "compat/IPTU3-0.5.2/manifest.json",
-    "incrementalDelta": "compat/0.5.1-para-0.5.2.patch"
+    "delta": "compat/IPTU3-0.5.3/residencias-0.5.3.patch",
+    "manifest": "compat/IPTU3-0.5.3/manifest.json",
+    "incrementalDelta": "compat/0.5.2-para-0.5.3.patch"
   },
   "amenitiesEvidence": {
     "report": "catalogo/FICHAS-20261110.md",

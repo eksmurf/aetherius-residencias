@@ -1,3 +1,9 @@
+# 0.5.3 — 11/11/2026
+
+- Primeiro IPTU vencido cancela definitivamente o anúncio manual, inclusive com o dono offline e na inicialização.
+- Quitação antes da limpeza periódica também remove o anúncio; pagar não o restaura.
+- Novo anúncio exige impostos quitados e nova confirmação do dono.
+
 # 0.5.2 — 11/11/2026
 
 - Anúncio manual exige IPTU quitado, com bloqueio no painel e na transação do servidor.

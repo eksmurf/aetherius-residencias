@@ -1,0 +1,45 @@
+diff --git a/server/gamemode/residences/store.cjs b/server/gamemode/residences/store.cjs
+index 4fc5fbd..6b70fe9 100644
+--- a/server/gamemode/residences/store.cjs
++++ b/server/gamemode/residences/store.cjs
+@@ -74,10 +74,17 @@ function createStore({ db, currencies, cities = null, maxPerProfile = 1, runtime
+   const cityTaxes = createCityTaxes({ transact, authorize, cities });
+   const extensions = createExtensions({transact,authorize,cityTaxes,runtime,features});
+   const tours = createTours({transact,authorize,extensions});
+-  const snapshot = () => db.query(`SELECT r.*, COALESCE((SELECT jsonb_agg(m) FROM aetherius_residence_members m WHERE m.residence_id=r.id),'[]'::jsonb) AS members,
++  const snapshot = async () => {
++    // Runs on startup and every refresh, including for offline owners. The UPDATE
++    // rechecks its predicate after row-lock waits; clearing is idempotent.
++    await db.query(`UPDATE aetherius_residences SET listing_price=NULL,seller_character_id=NULL,
++      access_revision=access_revision+1,updated_at=clock_timestamp()
++      WHERE owner_profile_id IS NOT NULL AND listing_price IS NOT NULL AND tax_due_at<=clock_timestamp()`);
++    return db.query(`SELECT r.*, COALESCE((SELECT jsonb_agg(m) FROM aetherius_residence_members m WHERE m.residence_id=r.id),'[]'::jsonb) AS members,
+     EXISTS(SELECT 1 FROM aetherius_residence_tax_collections t WHERE t.residence_id=r.id
+       AND t.collected_operation_id IS NULL AND t.city_id=r.tax_city_id) AS collection_pending
+     FROM aetherius_residences r ORDER BY id`);
++  };
+   const keys = profileId => db.query("SELECT * FROM aetherius_residence_keys WHERE profile_id=$1 AND delivery_state <> 'revoked'", [profileId]);
+   async function status(session, requestId) {
+     return transact(async conn => {
+@@ -180,7 +187,9 @@ function createStore({ db, currencies, cities = null, maxPerProfile = 1, runtime
+           if(input.periods!==bill.periods) fail('TAX_CHANGED');
+           amount=bill.paymentAmount; chargeCurrency='septims';
+           walletId=await currencies.debit(conn,{...session,currency:chargeCurrency,amount,purchaseId:operationId,reason:'residence_tax'});
+-          if(bill.suspended){residence.locked=true;residence.listing_price=null;residence.seller_character_id=null;}
++          // Payment may beat the periodic cleanup. Never revive an expired listing.
++          residence.listing_price=null;residence.seller_character_id=null;
++          if(bill.suspended)residence.locked=true;
+           residence.tax_due_at=new Date(Date.parse(due)+bill.paymentPeriods*TAX_PERIOD_MS).toISOString();
+         } else fail('INVALID');
+       }
+@@ -220,6 +229,10 @@ function createStore({ db, currencies, cities = null, maxPerProfile = 1, runtime
+           row.tax_terms=terms(row.definition.prices.septims);row.tax_due_at=new Date(Date.now()+TAX_PERIOD_MS).toISOString();
+           await conn.query('UPDATE aetherius_residences SET tax_due_at=$2,tax_terms=$3::jsonb WHERE id=$1',[row.id,row.tax_due_at,JSON.stringify(row.tax_terms)]);
+         }
++        if(row.listing_price!==null && taxView(row).periods>0){
++          await conn.query('UPDATE aetherius_residences SET listing_price=NULL,seller_character_id=NULL,access_revision=access_revision+1,updated_at=clock_timestamp() WHERE id=$1',[row.id]);
++          row.listing_price=null;row.seller_character_id=null;row.access_revision+=1;
++        }
+         const [members]=await conn.query('SELECT profile_id,display_name,family FROM aetherius_residence_members WHERE residence_id=$1 ORDER BY created_at,profile_id',[row.id]);
+         result.push({residenceId:row.id,name:row.definition.name,open:!row.locked,accessRevision:row.access_revision,listingPrice:row.listing_price,
+           instantSale:extensions.saleView(row),amenities:publicSheet(row),tax:taxView(row,c=>currencies.available(c)),members:members.map(m=>({profileId:m.profile_id,name:m.display_name.slice(0,48),family:m.family})),memberLimit:5,familyLimit:2});

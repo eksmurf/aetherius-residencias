@@ -1,5 +1,5 @@
 {
-  "version": "0.5.2",
+  "version": "0.5.3",
   "date": "2026-11-11",
   "algorithm": "SHA256",
   "excludes": [
@@ -52,6 +52,11 @@
       "sha256": "9051f90e8182fac4bc287468b3edc4a0161784f027d2ad7026ca41f45b6fe568"
     },
     {
+      "path": "ATUALIZACAO-0.5.3.md",
+      "bytes": 3559,
+      "sha256": "84349a2e6a90183b6fdbf7027e11e12fc2008e8a44fe928de0c3a8945c4156d6"
+    },
+    {
       "path": "ATUALIZACAO-UI-0.3.2.md",
       "bytes": 5644,
       "sha256": "c5f787154cc7faf6c1cfb08a8445e7d94997c2b0bb90f4f59bdcb0d392aeee1b"
@@ -63,8 +68,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 8461,
-      "sha256": "ce2b13a4f6e4b0d7dae1271e644a36bc5129f36fca6904052a06ecb9a9fb08ef"
+      "bytes": 8765,
+      "sha256": "de16d7abcc1a2e5b475f140432a35725861261a6a1e269d26adb2a248720c738"
     },
     {
       "path": "CONTRATO-DIADEMAS.md",
@@ -88,18 +93,18 @@
     },
     {
       "path": "PROVENIENCIA.json",
-      "bytes": 10719,
-      "sha256": "50a4f5ac5ac705201bd4f78e0215ec2725c9b1bcab7fc51b2dac8923a7e31071"
+      "bytes": 10769,
+      "sha256": "25b9ee99fa5ad4a2f166c0afaca052d9121320a00603f735533979dd047a6366"
     },
     {
       "path": "README.md",
-      "bytes": 10699,
-      "sha256": "911a411abc5ab2665212b62dc99079f8bd33c5f0a9a0858116203b7a2a65a146"
+      "bytes": 10895,
+      "sha256": "dcdea8cb6ecc96bb2ddd6a683d521665a98f6802743e8adb22921cae5e3dc9ae"
     },
     {
       "path": "REGRAS-0.3.md",
-      "bytes": 6454,
-      "sha256": "1e8b4462f2462842afbe124eb44d7841c83845dfcd44263cbf8f04ec11a0bb50"
+      "bytes": 6523,
+      "sha256": "68f13b1708231393c4c850ea28be3d87423197f6ac077ba9cbf3a5609d058143"
     },
     {
       "path": "VALIDACAO-0.5.0.md",
@@ -303,8 +308,8 @@
     },
     {
       "path": "client/properties/properties.js",
-      "bytes": 18564,
-      "sha256": "e7791644a0e14212ce69a2e0eade3aeec191e1c323e107a42b05213c04e17f27"
+      "bytes": 18585,
+      "sha256": "67dc2f9333ef5e1e81de0d65e67a9729c903c7d3ddcc92dd622a6123a13b5ffd"
     },
     {
       "path": "client/residences/app.js",
@@ -322,6 +327,11 @@
       "sha256": "742510fe25c32e0a763ccf50d942857842eabe5595008ea37a8d8c21b568e542"
     },
     {
+      "path": "compat/0.5.2-para-0.5.3.patch",
+      "bytes": 3974,
+      "sha256": "5f8e3db487657907429e8362627d54f561bfcde369e0194eb84a93a9f624a6b5"
+    },
+    {
       "path": "compat/IPTU3-0.5.2/manifest.json",
       "bytes": 2254,
       "sha256": "f060bcc43497a60ccb60270b9a29440ebb26fc283a93acc093aa56e69d0aa109"
@@ -330,6 +340,16 @@
       "path": "compat/IPTU3-0.5.2/residencias-0.5.2.patch",
       "bytes": 45122,
       "sha256": "881b5b892df5583490f2d9cb6b7a7bba56f737b52c1d6c00f88251c92bd89754"
+    },
+    {
+      "path": "compat/IPTU3-0.5.3/manifest.json",
+      "bytes": 2254,
+      "sha256": "cd980489fef9b4d73aea1fa0b3be7deb9ed702337082d5532faaa6cdcb0d60b7"
+    },
+    {
+      "path": "compat/IPTU3-0.5.3/residencias-0.5.3.patch",
+      "bytes": 47525,
+      "sha256": "0b88d4e9b5034a8677d9d71eae05e0748bf75cd3f7c2347a64b5805ed6415ed5"
     },
     {
       "path": "compat/IPTU3/manifest.json",
@@ -374,12 +394,12 @@
     {
       "path": "package-lock.json",
       "bytes": 5930,
-      "sha256": "5392f98a27cc598c61616627c742a63dba7954eaf46c6fbaab9ff71b6e3034e9"
+      "sha256": "be2c4624df00f3bc866656f3d6eeab54421491429d9884861a8e589aaa7461d8"
     },
     {
       "path": "package.json",
       "bytes": 521,
-      "sha256": "cc6c05401c539b8634521fd6be8ec34d36cb6f6a3048a62d9da4ef92bf161a61"
+      "sha256": "031d4c74b7417f501961aee2134118d6bc621441515e85df596c0c8547c3bfd8"
     },
     {
       "path": "server/config/residences.json",
@@ -443,8 +463,8 @@
     },
     {
       "path": "server/gamemode/residences/store.cjs",
-      "bytes": 18690,
-      "sha256": "3fa477ee0109139df0d14f7478d3cb55a8af84e2a0486c0648c7bbf56f43d465"
+      "bytes": 19592,
+      "sha256": "9f059a644167b88bab30c4bd25080a8d6527a14dcc03d4ad549a5f145759e4c2"
     },
     {
       "path": "server/gamemode/residences/tax.cjs",
@@ -458,8 +478,8 @@
     },
     {
       "path": "tests/extensions-sql.test.cjs",
-      "bytes": 10649,
-      "sha256": "f5e28bce6e6cae74f935e1f7e5ae8a60f7f862874d2bb4422a151b9ac9a00acd"
+      "bytes": 11700,
+      "sha256": "d3224fc2078de6e3709b78a1f0b14f798b584a09118c42ae0f5756b222a139d9"
     },
     {
       "path": "tests/extensions.test.cjs",
@@ -494,7 +514,7 @@
     {
       "path": "tools/build-compat-iptu3.cjs",
       "bytes": 4197,
-      "sha256": "7c6d1725c3b86313be90e5ec4807d3b731cc0bc0313919993bb1e91516754cf4"
+      "sha256": "edeb768fce7fffd14dbc93b4d6ce5d97119b1f21c2e5f1b70bc20bd76c493446"
     }
   ]
 }
